@@ -1,0 +1,44 @@
+In file included from ./fpn_tiled_conv_lateral_1.cpp:2:
+./fpn_utils.cpp:88:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=fpn_load_layer_params_from_DRAM_1x1_XLX_SEP_ PragmaOptions=off_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline off
+        ^
+./fpn_utils.cpp:128:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=fpn_load_layer_params_from_DRAM_3x3_XLX_SEP_ PragmaOptions=off_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline off
+        ^
+./fpn_utils.cpp:178:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=fpn_save_partial_output_tile_block_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+./fpn_tiled_conv_lateral_1.cpp:14:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=fpn_tiled_conv_lateral_1_XLX_SEP_ PragmaOptions=m_axi depth=512*92*160 port=input_feature_map bundle=fm_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INTERFACE m_axi depth=512*92*160 port=input_feature_map bundle=fm
+        ^
+./fpn_tiled_conv_lateral_1.cpp:15:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=fpn_tiled_conv_lateral_1_XLX_SEP_ PragmaOptions=m_axi depth=256*512*1*1 port=layer_weights bundle=wt_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INTERFACE m_axi depth=256*512*1*1 port=layer_weights bundle=wt
+        ^
+./fpn_tiled_conv_lateral_1.cpp:16:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=fpn_tiled_conv_lateral_1_XLX_SEP_ PragmaOptions=m_axi depth=256 port=layer_bias bundle=wt_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INTERFACE m_axi depth=256 port=layer_bias bundle=wt
+        ^
+./fpn_tiled_conv_lateral_1.cpp:17:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=fpn_tiled_conv_lateral_1_XLX_SEP_ PragmaOptions=m_axi depth=256*92*160 port=output_feature_map bundle=fm_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INTERFACE m_axi depth=256*92*160 port=output_feature_map bundle=fm
+        ^
+./fpn_tiled_conv_lateral_1.cpp:19:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=fpn_tiled_conv_lateral_1_XLX_SEP_ PragmaOptions=s_axilite register port=return_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INTERFACE s_axilite register port=return
+        ^
+./fpn_tiled_conv_lateral_1.cpp:25:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=fpn_tiled_conv_lateral_1_XLX_SEP_ PragmaOptions=variable=conv_in_buf dim=3 complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS array_partition variable=conv_in_buf dim=3 complete
+        ^
+./fpn_tiled_conv_lateral_1.cpp:28:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=fpn_tiled_conv_lateral_1_XLX_SEP_ PragmaOptions=variable=conv_bias_buf dim=1 complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS array_partition variable=conv_bias_buf dim=1 complete
+        ^
+./fpn_tiled_conv_lateral_1.cpp:31:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=fpn_tiled_conv_lateral_1_XLX_SEP_ PragmaOptions=variable=conv_wt_buf dim=1 complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS array_partition variable=conv_wt_buf dim=1 complete
+        ^
+./fpn_tiled_conv_lateral_1.cpp:34:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=fpn_tiled_conv_lateral_1_XLX_SEP_ PragmaOptions=variable=conv_out_buf dim=1 complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS array_partition variable=conv_out_buf dim=1 complete
+        ^
+./fpn_tiled_conv_lateral_1.cpp:35:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=fpn_tiled_conv_lateral_1_XLX_SEP_ PragmaOptions=variable=conv_out_buf dim=3 complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS array_partition variable=conv_out_buf dim=3 complete
+        ^
+./fpn_tiled_conv_lateral_1.cpp:39:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=fpn_tiled_conv_lateral_1_XLX_SEP_ PragmaOptions=variable=partial_out_fm_buf dim=1 complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS array_partition variable=partial_out_fm_buf dim=1 complete
+        ^
+14 warnings generated.

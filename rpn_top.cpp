@@ -1,6 +1,7 @@
 #include "hls_stream.h"
 #include "qdtrack.h"
 #include "rpn_util.h"
+#include "math.h"
 
 fm_t rpn_anchor0_cls_fm [RPN_CLS_OUT_CH*RPN_INPUT0_IN_FM_HEIGHT*RPN_INPUT0_IN_FM_WIDTH];
 fm_t rpn_anchor1_cls_fm [RPN_CLS_OUT_CH*RPN_INPUT1_IN_FM_HEIGHT*RPN_INPUT1_IN_FM_WIDTH];

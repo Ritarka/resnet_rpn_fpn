@@ -1,3 +1,7 @@
+#include "qdtrack.h"
+// #include "resnet_util.h"
+// #include "resnet.h"
+
 void resnet_layer2(
         fm_t   resnet_layer2_input_fm[RESNET_LAYER2_0_CONV1_IN_CH][RESNET_LAYER2_0_FM_HEIGHT][RESNET_LAYER2_0_FM_WIDTH],
         wt_t   resnet_layer2_0_conv1_weights[RESNET_LAYER2_0_CONV1_OUT_CH][RESNET_LAYER2_0_CONV1_IN_CH],

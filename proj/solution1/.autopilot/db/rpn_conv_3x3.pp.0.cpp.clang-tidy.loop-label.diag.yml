@@ -1,0 +1,94 @@
+---
+MainSourceFile:  /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/rpn_conv_3x3.pp.0.cpp
+Diagnostics:     
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_1213_1:  '
+    FileOffset:      1213
+    FilePath:        /tools/software/xilinx/Vitis_HLS/2023.1/common/technology/autopilot/etc/ap_int_base.h
+    Replacements:    
+      - FilePath:        /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/rpn_conv_3x3.pp.0.cpp
+        Offset:          813666
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_1213_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_676_1:  '
+    FileOffset:      676
+    FilePath:        /tools/software/xilinx/Vitis_HLS/2023.1/common/technology/autopilot/etc/ap_int_ref.h
+    Replacements:    
+      - FilePath:        /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/rpn_conv_3x3.pp.0.cpp
+        Offset:          1041326
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_676_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_690_1:  '
+    FileOffset:      690
+    FilePath:        /tools/software/xilinx/Vitis_HLS/2023.1/common/technology/autopilot/etc/ap_int_ref.h
+    Replacements:    
+      - FilePath:        /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/rpn_conv_3x3.pp.0.cpp
+        Offset:          1041790
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_690_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_704_1:  '
+    FileOffset:      704
+    FilePath:        /tools/software/xilinx/Vitis_HLS/2023.1/common/technology/autopilot/etc/ap_int_ref.h
+    Replacements:    
+      - FilePath:        /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/rpn_conv_3x3.pp.0.cpp
+        Offset:          1042255
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_704_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_1247_1:  '
+    FileOffset:      1247
+    FilePath:        /tools/software/xilinx/Vitis_HLS/2023.1/common/technology/autopilot/etc/ap_fixed_base.h
+    Replacements:    
+      - FilePath:        /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/rpn_conv_3x3.pp.0.cpp
+        Offset:          1325352
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_1247_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_18_1:  '
+    FileOffset:      18
+    FilePath:        /nethome/mjung76/resnet_rpn_fpn/rpn_conv_3x3.cpp
+    Replacements:    
+      - FilePath:        /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/rpn_conv_3x3.pp.0.cpp
+        Offset:          1724913
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_18_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_21_2:  '
+    FileOffset:      21
+    FilePath:        /nethome/mjung76/resnet_rpn_fpn/rpn_conv_3x3.cpp
+    Replacements:    
+      - FilePath:        /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/rpn_conv_3x3.pp.0.cpp
+        Offset:          1724958
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_21_2: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_29_3:  '
+    FileOffset:      29
+    FilePath:        /nethome/mjung76/resnet_rpn_fpn/rpn_conv_3x3.cpp
+    Replacements:    
+      - FilePath:        /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/rpn_conv_3x3.pp.0.cpp
+        Offset:          1725050
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_29_3: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_32_4:  '
+    FileOffset:      32
+    FilePath:        /nethome/mjung76/resnet_rpn_fpn/rpn_conv_3x3.cpp
+    Replacements:    
+      - FilePath:        /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/rpn_conv_3x3.pp.0.cpp
+        Offset:          1725109
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_32_4: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_34_5:  '
+    FileOffset:      34
+    FilePath:        /nethome/mjung76/resnet_rpn_fpn/rpn_conv_3x3.cpp
+    Replacements:    
+      - FilePath:        /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/rpn_conv_3x3.pp.0.cpp
+        Offset:          1725178
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_34_5: '
+...

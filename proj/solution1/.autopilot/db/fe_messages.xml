@@ -1,0 +1,66 @@
+<xilinx:hls_fe_msgs>
+    <msg msg_groups="" msg_id="207-3777" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:37:17" msg_body="use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'?">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-4436" msg_severity="INFO" msg_loc="./resnet_layer1.cpp:6:14" msg_body="'resnet_layer1_input_fm' declared here">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:58:17" msg_body="use of undeclared identifier 'ds_fm'">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:58:34" msg_body="use of undeclared identifier 'resnet_layer_out_fm'">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-3777" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:80:17" msg_body="use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'?">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:80:47" msg_body="use of undeclared identifier 'resnet_layer_out_fm'">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-3777" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:103:17" msg_body="use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'?">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:103:47" msg_body="use of undeclared identifier 'resnet_layer_out_fm'">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-2982" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:114:5" msg_body="no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'?">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-4436" msg_severity="INFO" msg_loc="./qdtrack.h:495:6" msg_body="'resnet_bottleneck_conv3_bn3_relu' declared here">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-3777" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:126:17" msg_body="use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'?">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:126:47" msg_body="use of undeclared identifier 'resnet_layer_out_fm'">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:127:17" msg_body="use of undeclared identifier 'ds_fm'">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:127:34" msg_body="use of undeclared identifier 'resnet_layer_out_fm'">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-3777" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:150:17" msg_body="use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'?">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:150:47" msg_body="use of undeclared identifier 'resnet_layer_out_fm'">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-3777" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:172:17" msg_body="use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'?">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:172:47" msg_body="use of undeclared identifier 'resnet_layer_out_fm'">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-2982" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:183:5" msg_body="no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'?">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-3777" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:194:17" msg_body="use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'?">
+        <args/>
+    </msg>
+    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:194:47" msg_body="use of undeclared identifier 'resnet_layer_out_fm'">
+        <args/>
+    </msg>
+</xilinx:hls_fe_msgs>
+

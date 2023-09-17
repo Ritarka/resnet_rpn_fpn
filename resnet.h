@@ -316,7 +316,7 @@ void resnet_bottleneck_conv2_bn2_relu(
 template<const int  RESNET_IN_FM_DEPTH, const int  RESNET_IN_FM_HEIGHT, const int  RESNET_IN_FM_WIDTH,
          const int RESNET_OUT_FM_DEPTH, const int RESNET_OUT_FM_HEIGHT, const int RESNET_OUT_FM_WIDTH,
          const int STRIDE, const int RESNET_LAYER_EN>
-void resnet_bottleneck_conv3_bn3_relu(
+void resnet_bottleneck_conv3_bn3_add_relu(
         wt_t conv_weights[RESNET_OUT_FM_DEPTH][RESNET_IN_FM_DEPTH],
         wt_t bn_params[3][RESNET_OUT_FM_DEPTH]
 );

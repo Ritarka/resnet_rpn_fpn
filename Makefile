@@ -4,12 +4,14 @@ ASSEMBLE_SRC_ROOT := .
 TB_ROOT := .
 IFLAG += -I "${AUTOPILOT_ROOT}/include"
 IFLAG += -I "${ASSEMBLE_SRC_ROOT}"
-IFLAG += -I "${ASSEMBLE_SRC_ROOT}" 
+IFLAG += -I "${ASSEMBLE_SRC_ROOT}"
+# IFLAG += -I "${TB_ROOT}"
 IFLAG += -I "/usr/include/x86_64-linux-gnu"
 IFLAG += -D__SIM_FPO__ -D__SIM_OPENCV__ -D__SIM_FFT__ -D__SIM_FIR__ -D__SIM_DDS__ -D__DSP48E1__
 
 IFLAG +=  -g 
 CFLAG += -fPIC -std=c++11 -O3 -mcmodel=large #-fsanitize=address
+# CFLAG += -fPIC -03 -std=c++11 -mcmodel=large #-fsanitize=address
 CC      = g++ 
 
 ALLOUT+= csim.out
@@ -94,7 +96,11 @@ main.o:./tb_test_top.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -I "${ASSEMBLE_SRC_ROOT}" -o $@  -c $^   -MMD $(IFLAG)
 
 csim.out: main.o $(IP_DEP)
-	$(CC)  $(GCOV)  $(CFLAG) -MMD $(IFLAG)  -o $@  $^ 
+	$(CC)  $(GCOV)  $(CFLAG) -MMD $(IFLAG)  -o $@  $^ && ./csim.out
+	@$(MAKE) -s clean
+
+synth:
+	vitis_hls script.tcl
 
 clean:
 	rm -f -r csim.d 
