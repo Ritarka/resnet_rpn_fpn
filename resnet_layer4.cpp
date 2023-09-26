@@ -1,6 +1,11 @@
 #include "qdtrack.h"
-// #include "resnet_util.h"
-// #include "resnet.h"
+#include "resnet_util.h"
+
+// extern "C" {
+//     fm_t resnet_layer_out_fm[2048][184][320];
+//     fm_t resnet_layer_in_fm[2048][184][320];
+//     fm_t ds_fm[2048][184][320];
+// }
 
 void resnet_layer4(
         fm_t   resnet_layer4_input_fm[RESNET_LAYER4_0_CONV1_IN_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH],

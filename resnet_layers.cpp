@@ -3,8 +3,8 @@
 
 using namespace std;
 
-#include "layer0.cpp"
-#include "layer1.cpp"
-#include "layer2.cpp"
-#include "layer3.cpp"
-#include "layer4.cpp"
+#include "resnet_layer0.cpp"
+#include "resnet_layer1.cpp"
+#include "resnet_layer2.cpp"
+#include "resnet_layer3.cpp"
+#include "resnet_layer4.cpp"

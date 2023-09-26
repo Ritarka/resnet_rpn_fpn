@@ -2,29 +2,34 @@
 <Messages>
 	<Message severity="WARNING" prefix="[HLS 200-1998]" key="HLS 200-1998" tag="" content="cannot find relative file path &apos;../../bin&apos; in directory(s): /nethome/mjung76/resnet_rpn_fpn/proj/solution /nethome/mjung76/resnet_rpn_fpn" resolution=""/>
 	<Message severity="WARNING" prefix="[HLS 200-40]" key="HLS_40_1310" tag="" content="Cannot find source file ./resent_layer1.cpp; skipping it." resolution=""/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="RUNTIME" content="Finished File checks and directory preparation: CPU user time: 0.09 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.15 seconds; current allocated memory: 1.486 GB." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="RUNTIME" content="Finished File checks and directory preparation: CPU user time: 0.1 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.15 seconds; current allocated memory: 1.486 GB." resolution=""/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./resnet_layer1.cpp&apos; ..." resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-3777]" key="HLS 207-3777" tag="" content="use of undeclared identifier &apos;resnet_layer_in_fm&apos;; did you mean &apos;resnet_layer1_input_fm&apos;? (./resnet_layer1.cpp:37:17)" resolution=""/>
-	<Message severity="INFO" prefix="[HLS 207-4436]" key="HLS 207-4436" tag="" content="&apos;resnet_layer1_input_fm&apos; declared here (./resnet_layer1.cpp:6:14)" resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-3776]" key="HLS 207-3776" tag="" content="use of undeclared identifier &apos;ds_fm&apos; (./resnet_layer1.cpp:58:17)" resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-3776]" key="HLS 207-3776" tag="" content="use of undeclared identifier &apos;resnet_layer_out_fm&apos; (./resnet_layer1.cpp:58:34)" resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-3777]" key="HLS 207-3777" tag="" content="use of undeclared identifier &apos;resnet_layer_in_fm&apos;; did you mean &apos;resnet_layer1_input_fm&apos;? (./resnet_layer1.cpp:80:17)" resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-3776]" key="HLS 207-3776" tag="" content="use of undeclared identifier &apos;resnet_layer_out_fm&apos; (./resnet_layer1.cpp:80:47)" resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-3777]" key="HLS 207-3777" tag="" content="use of undeclared identifier &apos;resnet_layer_in_fm&apos;; did you mean &apos;resnet_layer1_input_fm&apos;? (./resnet_layer1.cpp:103:17)" resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-3776]" key="HLS 207-3776" tag="" content="use of undeclared identifier &apos;resnet_layer_out_fm&apos; (./resnet_layer1.cpp:103:47)" resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-2982]" key="HLS 207-2982" tag="" content="no template named &apos;resnet_bottleneck_conv3_bn3_add_relu&apos;; did you mean &apos;resnet_bottleneck_conv3_bn3_relu&apos;? (./resnet_layer1.cpp:114:5)" resolution=""/>
-	<Message severity="INFO" prefix="[HLS 207-4436]" key="HLS 207-4436" tag="" content="&apos;resnet_bottleneck_conv3_bn3_relu&apos; declared here (./qdtrack.h:495:6)" resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-3777]" key="HLS 207-3777" tag="" content="use of undeclared identifier &apos;resnet_layer_in_fm&apos;; did you mean &apos;resnet_layer1_input_fm&apos;? (./resnet_layer1.cpp:126:17)" resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-3776]" key="HLS 207-3776" tag="" content="use of undeclared identifier &apos;resnet_layer_out_fm&apos; (./resnet_layer1.cpp:126:47)" resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-3776]" key="HLS 207-3776" tag="" content="use of undeclared identifier &apos;ds_fm&apos; (./resnet_layer1.cpp:127:17)" resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-3776]" key="HLS 207-3776" tag="" content="use of undeclared identifier &apos;resnet_layer_out_fm&apos; (./resnet_layer1.cpp:127:34)" resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-3777]" key="HLS 207-3777" tag="" content="use of undeclared identifier &apos;resnet_layer_in_fm&apos;; did you mean &apos;resnet_layer1_input_fm&apos;? (./resnet_layer1.cpp:150:17)" resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-3776]" key="HLS 207-3776" tag="" content="use of undeclared identifier &apos;resnet_layer_out_fm&apos; (./resnet_layer1.cpp:150:47)" resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-3777]" key="HLS 207-3777" tag="" content="use of undeclared identifier &apos;resnet_layer_in_fm&apos;; did you mean &apos;resnet_layer1_input_fm&apos;? (./resnet_layer1.cpp:172:17)" resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-3776]" key="HLS 207-3776" tag="" content="use of undeclared identifier &apos;resnet_layer_out_fm&apos; (./resnet_layer1.cpp:172:47)" resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-2982]" key="HLS 207-2982" tag="" content="no template named &apos;resnet_bottleneck_conv3_bn3_add_relu&apos;; did you mean &apos;resnet_bottleneck_conv3_bn3_relu&apos;? (./resnet_layer1.cpp:183:5)" resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-3777]" key="HLS 207-3777" tag="" content="use of undeclared identifier &apos;resnet_layer_in_fm&apos;; did you mean &apos;resnet_layer1_input_fm&apos;? (./resnet_layer1.cpp:194:17)" resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-3776]" key="HLS 207-3776" tag="" content="use of undeclared identifier &apos;resnet_layer_out_fm&apos; (./resnet_layer1.cpp:194:47)" resolution=""/>
-	<Message severity="ERROR" prefix="[HLS 207-59]" key="HLS 207-59" tag="" content="too many errors emitted, stopping now" resolution=""/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="RUNTIME" content="Finished Command csynth_design CPU user time: 1.2 seconds. CPU system time: 0.51 seconds. Elapsed time: 3.45 seconds; current allocated memory: 0.000 MB." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./rpn_top.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./rpn_conv_3x3.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./rpn_conv_1x1.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./resnet_top.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./resnet_layers.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./resnet_layer4.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./resnet_layer3.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./resnet_layer2.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./resnet_layer0.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./resnet_conv_7x7.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./resnet_conv_3x3.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./resnet_conv_1x1.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./resnet_batchnorm.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./fpn_utils.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./fpn_top.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./fpn_tiled_conv_lateral_3.cpp&apos; ..." resolution=""/>
+	<Message severity="WARNING" prefix="[HLS 207-4072]" key="HLS 207-4072" tag="" content="using directive refers to implicitly-defined namespace &apos;std&apos; (./fpn_tiled_conv_lateral_3.cpp:1:17)" resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./fpn_tiled_conv_lateral_2.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./fpn_tiled_conv_lateral_1.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./fpn_tiled_conv_lateral_0.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./fpn_tiled_conv_fpn_3.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./fpn_tiled_conv_fpn_2.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./fpn_tiled_conv_fpn_1.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./fpn_tiled_conv_fpn_0.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./fpn_conv_3x3.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./fpn_conv_1x1.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="RUNTIME" content="Finished Source Code Analysis and Preprocessing: CPU user time: 140.84 seconds. CPU system time: 31.64 seconds. Elapsed time: 175.87 seconds; current allocated memory: 1.492 GB." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="RUNTIME" content="Finished Command csynth_design CPU user time: 140.98 seconds. CPU system time: 31.73 seconds. Elapsed time: 176.14 seconds; current allocated memory: 6.410 MB." resolution=""/>
 </Messages>

@@ -1297,3 +1297,536 @@ ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you
 ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:194:47)
 ERROR: [HLS 207-59] too many errors emitted, stopping now
 INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 1.2 seconds. CPU system time: 0.51 seconds. Elapsed time: 3.45 seconds; current allocated memory: 0.000 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1.1 (64-bit)
+Tool Version Limit: 2023.06
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu9eg-ffvb1156-2-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xczu9eg-ffvb1156-2-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csynth_design 
+WARNING: [HLS 200-1998] cannot find relative file path '../../bin' in directory(s): /nethome/mjung76/resnet_rpn_fpn/proj/solution /nethome/mjung76/resnet_rpn_fpn
+WARNING: [HLS 200-40] Cannot find source file ./resent_layer1.cpp; skipping it.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.09 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.15 seconds; current allocated memory: 1.486 GB.
+INFO: [HLS 200-10] Analyzing design file './resnet_layer1.cpp' ... 
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:37:17)
+INFO: [HLS 207-4436] 'resnet_layer1_input_fm' declared here (./resnet_layer1.cpp:6:14)
+ERROR: [HLS 207-3776] use of undeclared identifier 'ds_fm' (./resnet_layer1.cpp:58:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:58:34)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:80:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:80:47)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:103:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:103:47)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer1.cpp:114:5)
+INFO: [HLS 207-4436] 'resnet_bottleneck_conv3_bn3_relu' declared here (./qdtrack.h:495:6)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:126:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:126:47)
+ERROR: [HLS 207-3776] use of undeclared identifier 'ds_fm' (./resnet_layer1.cpp:127:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:127:34)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:150:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:150:47)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:172:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:172:47)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer1.cpp:183:5)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:194:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:194:47)
+ERROR: [HLS 207-59] too many errors emitted, stopping now
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 1.11 seconds. CPU system time: 0.42 seconds. Elapsed time: 2.33 seconds; current allocated memory: 0.000 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1.1 (64-bit)
+Tool Version Limit: 2023.06
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu9eg-ffvb1156-2-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xczu9eg-ffvb1156-2-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csynth_design 
+WARNING: [HLS 200-1998] cannot find relative file path '../../bin' in directory(s): /nethome/mjung76/resnet_rpn_fpn/proj/solution /nethome/mjung76/resnet_rpn_fpn
+WARNING: [HLS 200-40] Cannot find source file ./resent_layer1.cpp; skipping it.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.09 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.14 seconds; current allocated memory: 1.486 GB.
+INFO: [HLS 200-10] Analyzing design file './resnet_layer1.cpp' ... 
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:37:17)
+INFO: [HLS 207-4436] 'resnet_layer1_input_fm' declared here (./resnet_layer1.cpp:6:14)
+ERROR: [HLS 207-3776] use of undeclared identifier 'ds_fm' (./resnet_layer1.cpp:58:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:58:34)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:80:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:80:47)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:103:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:103:47)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer1.cpp:114:5)
+INFO: [HLS 207-4436] 'resnet_bottleneck_conv3_bn3_relu' declared here (./qdtrack.h:495:6)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:126:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:126:47)
+ERROR: [HLS 207-3776] use of undeclared identifier 'ds_fm' (./resnet_layer1.cpp:127:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:127:34)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:150:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:150:47)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:172:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:172:47)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer1.cpp:183:5)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:194:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:194:47)
+ERROR: [HLS 207-59] too many errors emitted, stopping now
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 1.18 seconds. CPU system time: 0.41 seconds. Elapsed time: 2.64 seconds; current allocated memory: 0.000 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1.1 (64-bit)
+Tool Version Limit: 2023.06
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu9eg-ffvb1156-2-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xczu9eg-ffvb1156-2-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csynth_design 
+WARNING: [HLS 200-1998] cannot find relative file path '../../bin' in directory(s): /nethome/mjung76/resnet_rpn_fpn/proj/solution /nethome/mjung76/resnet_rpn_fpn
+WARNING: [HLS 200-40] Cannot find source file ./resent_layer1.cpp; skipping it.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.09 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 1.486 GB.
+INFO: [HLS 200-10] Analyzing design file './resnet_layer1.cpp' ... 
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:39:17)
+INFO: [HLS 207-4436] 'resnet_layer1_input_fm' declared here (./resnet_layer1.cpp:8:14)
+ERROR: [HLS 207-3776] use of undeclared identifier 'ds_fm' (./resnet_layer1.cpp:60:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:60:34)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:82:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:82:47)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:105:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:105:47)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer1.cpp:116:5)
+INFO: [HLS 207-4436] 'resnet_bottleneck_conv3_bn3_relu' declared here (./qdtrack.h:495:6)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:128:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:128:47)
+ERROR: [HLS 207-3776] use of undeclared identifier 'ds_fm' (./resnet_layer1.cpp:129:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:129:34)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:152:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:152:47)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:174:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:174:47)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer1.cpp:185:5)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:196:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:196:47)
+ERROR: [HLS 207-59] too many errors emitted, stopping now
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 1.05 seconds. CPU system time: 0.42 seconds. Elapsed time: 1.6 seconds; current allocated memory: 0.000 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1.1 (64-bit)
+Tool Version Limit: 2023.06
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu9eg-ffvb1156-2-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xczu9eg-ffvb1156-2-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csynth_design 
+WARNING: [HLS 200-1998] cannot find relative file path '../../bin' in directory(s): /nethome/mjung76/resnet_rpn_fpn/proj/solution /nethome/mjung76/resnet_rpn_fpn
+WARNING: [HLS 200-40] Cannot find source file ./resent_layer1.cpp; skipping it.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.12 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.19 seconds; current allocated memory: 1.486 GB.
+INFO: [HLS 200-10] Analyzing design file './resnet_layer1.cpp' ... 
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer1.cpp:118:5)
+INFO: [HLS 207-4436] 'resnet_bottleneck_conv3_bn3_relu' declared here (./qdtrack.h:495:6)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer1.cpp:187:5)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer1.cpp:254:5)
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 1 seconds. CPU system time: 0.43 seconds. Elapsed time: 1.53 seconds; current allocated memory: 0.000 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1.1 (64-bit)
+Tool Version Limit: 2023.06
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu9eg-ffvb1156-2-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xczu9eg-ffvb1156-2-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csynth_design 
+WARNING: [HLS 200-1998] cannot find relative file path '../../bin' in directory(s): /nethome/mjung76/resnet_rpn_fpn/proj/solution /nethome/mjung76/resnet_rpn_fpn
+WARNING: [HLS 200-40] Cannot find source file ./resent_layer1.cpp; skipping it.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.09 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 1.486 GB.
+INFO: [HLS 200-10] Analyzing design file './resnet_layer1.cpp' ... 
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:41:17)
+INFO: [HLS 207-4436] 'resnet_layer1_input_fm' declared here (./resnet_layer1.cpp:10:14)
+ERROR: [HLS 207-3776] use of undeclared identifier 'ds_fm' (./resnet_layer1.cpp:62:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:62:34)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:84:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:84:47)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:107:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:107:47)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer1.cpp:118:5)
+INFO: [HLS 207-4436] 'resnet_bottleneck_conv3_bn3_relu' declared here (./qdtrack.h:495:6)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:130:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:130:47)
+ERROR: [HLS 207-3776] use of undeclared identifier 'ds_fm' (./resnet_layer1.cpp:131:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:131:34)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:154:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:154:47)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:176:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:176:47)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer1.cpp:187:5)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:198:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:198:47)
+ERROR: [HLS 207-59] too many errors emitted, stopping now
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 1.04 seconds. CPU system time: 0.5 seconds. Elapsed time: 1.68 seconds; current allocated memory: 0.000 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1.1 (64-bit)
+Tool Version Limit: 2023.06
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu9eg-ffvb1156-2-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xczu9eg-ffvb1156-2-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csynth_design 
+WARNING: [HLS 200-1998] cannot find relative file path '../../bin' in directory(s): /nethome/mjung76/resnet_rpn_fpn/proj/solution /nethome/mjung76/resnet_rpn_fpn
+WARNING: [HLS 200-40] Cannot find source file ./resent_layer1.cpp; skipping it.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.12 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.2 seconds; current allocated memory: 1.486 GB.
+INFO: [HLS 200-10] Analyzing design file './resnet_layer1.cpp' ... 
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:41:17)
+INFO: [HLS 207-4436] 'resnet_layer1_input_fm' declared here (./resnet_layer1.cpp:10:14)
+ERROR: [HLS 207-3776] use of undeclared identifier 'ds_fm' (./resnet_layer1.cpp:62:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:62:34)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:84:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:84:47)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:107:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:107:47)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer1.cpp:118:5)
+INFO: [HLS 207-4436] 'resnet_bottleneck_conv3_bn3_relu' declared here (./qdtrack.h:495:6)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:130:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:130:47)
+ERROR: [HLS 207-3776] use of undeclared identifier 'ds_fm' (./resnet_layer1.cpp:131:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:131:34)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:154:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:154:47)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:176:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:176:47)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer1.cpp:187:5)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:198:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:198:47)
+ERROR: [HLS 207-59] too many errors emitted, stopping now
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 1.25 seconds. CPU system time: 0.46 seconds. Elapsed time: 3.17 seconds; current allocated memory: 0.000 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1.1 (64-bit)
+Tool Version Limit: 2023.06
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu9eg-ffvb1156-2-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xczu9eg-ffvb1156-2-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csynth_design 
+WARNING: [HLS 200-1998] cannot find relative file path '../../bin' in directory(s): /nethome/mjung76/resnet_rpn_fpn/proj/solution /nethome/mjung76/resnet_rpn_fpn
+WARNING: [HLS 200-40] Cannot find source file ./resent_layer1.cpp; skipping it.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.1 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.14 seconds; current allocated memory: 1.486 GB.
+INFO: [HLS 200-10] Analyzing design file './resnet_layer1.cpp' ... 
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:41:17)
+INFO: [HLS 207-4436] 'resnet_layer1_input_fm' declared here (./resnet_layer1.cpp:10:14)
+ERROR: [HLS 207-3776] use of undeclared identifier 'ds_fm' (./resnet_layer1.cpp:62:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:62:34)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:84:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:84:47)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:107:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:107:47)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer1.cpp:118:5)
+INFO: [HLS 207-4436] 'resnet_bottleneck_conv3_bn3_relu' declared here (./qdtrack.h:495:6)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:130:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:130:47)
+ERROR: [HLS 207-3776] use of undeclared identifier 'ds_fm' (./resnet_layer1.cpp:131:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:131:34)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:154:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:154:47)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:176:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:176:47)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer1.cpp:187:5)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:198:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:198:47)
+ERROR: [HLS 207-59] too many errors emitted, stopping now
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 1.14 seconds. CPU system time: 0.46 seconds. Elapsed time: 1.76 seconds; current allocated memory: 0.000 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1.1 (64-bit)
+Tool Version Limit: 2023.06
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu9eg-ffvb1156-2-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xczu9eg-ffvb1156-2-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csynth_design 
+WARNING: [HLS 200-1998] cannot find relative file path '../../bin' in directory(s): /nethome/mjung76/resnet_rpn_fpn/proj/solution /nethome/mjung76/resnet_rpn_fpn
+WARNING: [HLS 200-40] Cannot find source file ./resent_layer1.cpp; skipping it.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.1 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.15 seconds; current allocated memory: 1.486 GB.
+INFO: [HLS 200-10] Analyzing design file './resnet_layer1.cpp' ... 
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:41:17)
+INFO: [HLS 207-4436] 'resnet_layer1_input_fm' declared here (./resnet_layer1.cpp:10:14)
+ERROR: [HLS 207-3776] use of undeclared identifier 'ds_fm' (./resnet_layer1.cpp:62:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:62:34)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:84:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:84:47)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:107:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:107:47)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer1.cpp:118:5)
+INFO: [HLS 207-4436] 'resnet_bottleneck_conv3_bn3_relu' declared here (./qdtrack.h:495:6)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:130:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:130:47)
+ERROR: [HLS 207-3776] use of undeclared identifier 'ds_fm' (./resnet_layer1.cpp:131:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:131:34)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:154:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:154:47)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:176:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:176:47)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer1.cpp:187:5)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'? (./resnet_layer1.cpp:198:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer1.cpp:198:47)
+ERROR: [HLS 207-59] too many errors emitted, stopping now
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 1.24 seconds. CPU system time: 0.45 seconds. Elapsed time: 2.17 seconds; current allocated memory: 0.000 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1.1 (64-bit)
+Tool Version Limit: 2023.06
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu9eg-ffvb1156-2-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xczu9eg-ffvb1156-2-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csynth_design 
+WARNING: [HLS 200-1998] cannot find relative file path '../../bin' in directory(s): /nethome/mjung76/resnet_rpn_fpn/proj/solution /nethome/mjung76/resnet_rpn_fpn
+WARNING: [HLS 200-40] Cannot find source file ./resent_layer1.cpp; skipping it.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.1 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.15 seconds; current allocated memory: 1.486 GB.
+INFO: [HLS 200-10] Analyzing design file './resnet_layer1.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './rpn_top.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './rpn_conv_3x3.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './rpn_conv_1x1.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_top.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layers.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layer4.cpp' ... 
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer4_input_fm'? (./resnet_layer4.cpp:41:17)
+INFO: [HLS 207-4436] 'resnet_layer4_input_fm' declared here (./resnet_layer4.cpp:10:14)
+ERROR: [HLS 207-3776] use of undeclared identifier 'ds_fm' (./resnet_layer4.cpp:62:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer4.cpp:62:34)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer4_input_fm'? (./resnet_layer4.cpp:84:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer4.cpp:84:47)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer4_input_fm'? (./resnet_layer4.cpp:107:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer4.cpp:107:47)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer4.cpp:118:5)
+INFO: [HLS 207-4436] 'resnet_bottleneck_conv3_bn3_relu' declared here (./qdtrack.h:495:6)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer4_input_fm'? (./resnet_layer4.cpp:130:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer4.cpp:130:47)
+ERROR: [HLS 207-3776] use of undeclared identifier 'ds_fm' (./resnet_layer4.cpp:131:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer4.cpp:131:34)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer4_input_fm'? (./resnet_layer4.cpp:154:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer4.cpp:154:47)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer4_input_fm'? (./resnet_layer4.cpp:176:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer4.cpp:176:47)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer4.cpp:187:5)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer4_input_fm'? (./resnet_layer4.cpp:198:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer4.cpp:198:47)
+ERROR: [HLS 207-59] too many errors emitted, stopping now
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 41.18 seconds. CPU system time: 7.99 seconds. Elapsed time: 50.5 seconds; current allocated memory: 6.566 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1.1 (64-bit)
+Tool Version Limit: 2023.06
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu9eg-ffvb1156-2-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xczu9eg-ffvb1156-2-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csynth_design 
+WARNING: [HLS 200-1998] cannot find relative file path '../../bin' in directory(s): /nethome/mjung76/resnet_rpn_fpn/proj/solution /nethome/mjung76/resnet_rpn_fpn
+WARNING: [HLS 200-40] Cannot find source file ./resent_layer1.cpp; skipping it.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.1 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.16 seconds; current allocated memory: 1.486 GB.
+INFO: [HLS 200-10] Analyzing design file './resnet_layer1.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './rpn_top.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './rpn_conv_3x3.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './rpn_conv_1x1.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_top.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layers.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layer4.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layer3.cpp' ... 
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer3_input_fm'? (./resnet_layer3.cpp:59:17)
+INFO: [HLS 207-4436] 'resnet_layer3_input_fm' declared here (./resnet_layer3.cpp:10:14)
+ERROR: [HLS 207-3776] use of undeclared identifier 'ds_fm' (./resnet_layer3.cpp:80:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer3.cpp:80:34)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer3_input_fm'? (./resnet_layer3.cpp:102:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer3.cpp:102:47)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer3_input_fm'? (./resnet_layer3.cpp:125:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer3.cpp:125:47)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer3.cpp:136:5)
+INFO: [HLS 207-4436] 'resnet_bottleneck_conv3_bn3_relu' declared here (./qdtrack.h:495:6)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer3_input_fm'? (./resnet_layer3.cpp:148:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer3.cpp:148:47)
+ERROR: [HLS 207-3776] use of undeclared identifier 'ds_fm' (./resnet_layer3.cpp:149:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer3.cpp:149:34)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer3_input_fm'? (./resnet_layer3.cpp:172:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer3.cpp:172:47)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer3_input_fm'? (./resnet_layer3.cpp:194:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer3.cpp:194:47)
+ERROR: [HLS 207-2982] no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'? (./resnet_layer3.cpp:205:5)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer3_input_fm'? (./resnet_layer3.cpp:216:17)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer_out_fm' (./resnet_layer3.cpp:216:47)
+ERROR: [HLS 207-59] too many errors emitted, stopping now
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 45.45 seconds. CPU system time: 8.71 seconds. Elapsed time: 55.36 seconds; current allocated memory: 5.566 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1.1 (64-bit)
+Tool Version Limit: 2023.06
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu9eg-ffvb1156-2-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xczu9eg-ffvb1156-2-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csynth_design 
+WARNING: [HLS 200-1998] cannot find relative file path '../../bin' in directory(s): /nethome/mjung76/resnet_rpn_fpn/proj/solution /nethome/mjung76/resnet_rpn_fpn
+WARNING: [HLS 200-40] Cannot find source file ./resent_layer1.cpp; skipping it.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.11 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.22 seconds; current allocated memory: 1.486 GB.
+INFO: [HLS 200-10] Analyzing design file './resnet_layer1.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './rpn_top.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './rpn_conv_3x3.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './rpn_conv_1x1.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_top.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layers.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layer4.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layer3.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layer2.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layer0.cpp' ... 
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer0_in_fm'; did you mean 'resnet_layer0_input_fm'? (./resnet_layer0.cpp:22:17)
+INFO: [HLS 207-4436] 'resnet_layer0_input_fm' declared here (./resnet_layer0.cpp:6:14)
+ERROR: [HLS 207-3776] use of undeclared identifier 'in_fm_buf' (./resnet_layer0.cpp:54:23)
+ERROR: [HLS 207-3776] use of undeclared identifier 'in_fm_buf' (./resnet_layer0.cpp:60:23)
+ERROR: [HLS 207-3776] use of undeclared identifier 'in_fm_buf' (./resnet_layer0.cpp:72:23)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer0_in_fm' (./resnet_layer0.cpp:72:51)
+ERROR: [HLS 207-3776] use of undeclared identifier 'weight_buf_7x7' (./resnet_layer0.cpp:87:26)
+ERROR: [HLS 207-3776] use of undeclared identifier 'out_fm_buf' (./resnet_layer0.cpp:93:33)
+ERROR: [HLS 207-3776] use of undeclared identifier 'in_fm_buf' (./resnet_layer0.cpp:93:45)
+ERROR: [HLS 207-3776] use of undeclared identifier 'weight_buf_7x7' (./resnet_layer0.cpp:93:56)
+ERROR: [HLS 207-3776] use of undeclared identifier 'param_buf' (./resnet_layer0.cpp:98:46)
+ERROR: [HLS 207-3776] use of undeclared identifier 'out_fm_buf' (./resnet_layer0.cpp:101:27)
+ERROR: [HLS 207-3776] use of undeclared identifier 'param_buf' (./resnet_layer0.cpp:101:39)
+ERROR: [HLS 207-3777] use of undeclared identifier 'resnet_layer0_mx_fm'; did you mean 'resnet_layer0_input_fm'? (./resnet_layer0.cpp:111:26)
+ERROR: [HLS 207-3776] use of undeclared identifier 'out_fm_buf' (./resnet_layer0.cpp:111:81)
+ERROR: [HLS 207-3776] use of undeclared identifier 'in_fm_buf' (./resnet_layer0.cpp:144:22)
+ERROR: [HLS 207-3776] use of undeclared identifier 'in_fm_buf' (./resnet_layer0.cpp:149:28)
+ERROR: [HLS 207-3776] use of undeclared identifier 'resnet_layer0_mx_fm' (./resnet_layer0.cpp:149:56)
+ERROR: [HLS 207-3776] use of undeclared identifier 'in_fm_buf' (./resnet_layer0.cpp:170:35)
+ERROR: [HLS 207-3776] use of undeclared identifier 'in_fm_buf' (./resnet_layer0.cpp:172:46)
+ERROR: [HLS 207-59] too many errors emitted, stopping now
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 60.29 seconds. CPU system time: 12.39 seconds. Elapsed time: 74.24 seconds; current allocated memory: 5.570 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1.1 (64-bit)
+Tool Version Limit: 2023.06
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu9eg-ffvb1156-2-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xczu9eg-ffvb1156-2-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csynth_design 
+WARNING: [HLS 200-1998] cannot find relative file path '../../bin' in directory(s): /nethome/mjung76/resnet_rpn_fpn/proj/solution /nethome/mjung76/resnet_rpn_fpn
+WARNING: [HLS 200-40] Cannot find source file ./resent_layer1.cpp; skipping it.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.1 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.17 seconds; current allocated memory: 1.486 GB.
+INFO: [HLS 200-10] Analyzing design file './resnet_layer1.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './rpn_top.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './rpn_conv_3x3.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './rpn_conv_1x1.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_top.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layers.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layer4.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layer3.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layer2.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layer0.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_conv_7x7.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_conv_3x3.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_conv_1x1.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_batchnorm.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_utils.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_top.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_tiled_conv_lateral_3.cpp' ... 
+WARNING: [HLS 207-4072] using directive refers to implicitly-defined namespace 'std' (./fpn_tiled_conv_lateral_3.cpp:1:17)
+INFO: [HLS 200-10] Analyzing design file './fpn_tiled_conv_lateral_2.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_tiled_conv_lateral_1.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_tiled_conv_lateral_0.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_tiled_conv_fpn_3.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_tiled_conv_fpn_2.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_tiled_conv_fpn_1.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_tiled_conv_fpn_0.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_conv_3x3.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_conv_1x1.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 141.96 seconds. CPU system time: 32.33 seconds. Elapsed time: 178.02 seconds; current allocated memory: 1.492 GB.
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 142.1 seconds. CPU system time: 32.42 seconds. Elapsed time: 178.31 seconds; current allocated memory: 6.426 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1.1 (64-bit)
+Tool Version Limit: 2023.06
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu9eg-ffvb1156-2-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xczu9eg-ffvb1156-2-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csynth_design 
+WARNING: [HLS 200-1998] cannot find relative file path '../../bin' in directory(s): /nethome/mjung76/resnet_rpn_fpn/proj/solution /nethome/mjung76/resnet_rpn_fpn
+WARNING: [HLS 200-40] Cannot find source file ./resent_layer1.cpp; skipping it.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.1 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.15 seconds; current allocated memory: 1.486 GB.
+INFO: [HLS 200-10] Analyzing design file './resnet_layer1.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './rpn_top.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './rpn_conv_3x3.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './rpn_conv_1x1.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_top.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layers.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layer4.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layer3.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layer2.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_layer0.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_conv_7x7.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_conv_3x3.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_conv_1x1.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './resnet_batchnorm.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_utils.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_top.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_tiled_conv_lateral_3.cpp' ... 
+WARNING: [HLS 207-4072] using directive refers to implicitly-defined namespace 'std' (./fpn_tiled_conv_lateral_3.cpp:1:17)
+INFO: [HLS 200-10] Analyzing design file './fpn_tiled_conv_lateral_2.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_tiled_conv_lateral_1.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_tiled_conv_lateral_0.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_tiled_conv_fpn_3.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_tiled_conv_fpn_2.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_tiled_conv_fpn_1.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_tiled_conv_fpn_0.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_conv_3x3.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file './fpn_conv_1x1.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 140.84 seconds. CPU system time: 31.64 seconds. Elapsed time: 175.87 seconds; current allocated memory: 1.492 GB.
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 140.98 seconds. CPU system time: 31.73 seconds. Elapsed time: 176.14 seconds; current allocated memory: 6.410 MB.

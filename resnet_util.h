@@ -1,22 +1,25 @@
 #include "hls_stream.h"
 #include "qdtrack.h"
 
-// Feature Map Buffers 
-fm_t in_fm_buf[RESNET_IN_BUF_CH][RESNET_IN_BUF_ROWS + 5][RESNET_IN_BUF_COLS + 5];
-fm_t out_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS];
-fm_t partial_out_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS];
-fm_t ds_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS];
+#pragma once 
+
+extern "C" {
+    // Feature Map Buffers 
+    fm_t in_fm_buf[RESNET_IN_BUF_CH][RESNET_IN_BUF_ROWS + 5][RESNET_IN_BUF_COLS + 5];
+    fm_t out_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS];
+    fm_t partial_out_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS];
+    fm_t ds_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS];
+}
 
 // TODO: Replace these by pointer-based access to DRAM
 //float resnet_layer_out_fm[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH];
 //float resnet_layer_in_fm[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH];
 //float ds_fm[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH];
-fm_t resnet_layer_out_fm[2048][184][320];
-fm_t resnet_layer_in_fm[2048][184][320];
-fm_t ds_fm[2048][184][320];
-// fm_t resnet_layer_out_fm[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH];
-// fm_t resnet_layer_in_fm[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH];
-// fm_t ds_fm[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH];
+extern "C" {
+    fm_t resnet_layer_out_fm[2048][184][320];
+    fm_t resnet_layer_in_fm[2048][184][320];
+    fm_t ds_fm[2048][184][320];
+}
 
 fm_t resnet_layer0_in_fm [RESNET_LAYER0_CONV1_IN_CH][RESNET_LAYER0_IN_FM_HEIGHT][RESNET_LAYER0_IN_FM_WIDTH];
 fm_t resnet_layer0_mx_fm [RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_MX_FM_HEIGHT][RESNET_LAYER0_MX_FM_WIDTH];

@@ -23,333 +23,333 @@
       ^~~
       VITIS_LOOP_1247_1: 
 /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:32102:7: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35222:5: warning: Added loop label VITIS_LOOP_43_1:   [xilinx-label-all-loops]
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34828:5: warning: Added loop label VITIS_LOOP_49_1:   [xilinx-label-all-loops]
     for(int c = 0; c < 64; c++)
     ^~~
-    VITIS_LOOP_43_1: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35222:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35224:9: warning: Added loop label VITIS_LOOP_45_2:   [xilinx-label-all-loops]
+    VITIS_LOOP_49_1: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34828:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34830:9: warning: Added loop label VITIS_LOOP_51_2:   [xilinx-label-all-loops]
         for(int i = 0; i < 46 + 5; i++)
         ^~~
-        VITIS_LOOP_45_2: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35224:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35226:13: warning: Added loop label VITIS_LOOP_47_3:   [xilinx-label-all-loops]
+        VITIS_LOOP_51_2: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34830:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34832:13: warning: Added loop label VITIS_LOOP_53_3:   [xilinx-label-all-loops]
             for(int j = 0; j < 40 + 5; j++)
             ^~~
-            VITIS_LOOP_47_3: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35226:13: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35264:5: warning: Added loop label VITIS_LOOP_85_1:   [xilinx-label-all-loops]
+            VITIS_LOOP_53_3: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34832:13: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34870:5: warning: Added loop label VITIS_LOOP_91_1:   [xilinx-label-all-loops]
     for(int c = 0; c < 64; c++)
     ^~~
-    VITIS_LOOP_85_1: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35264:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35266:9: warning: Added loop label VITIS_LOOP_87_2:   [xilinx-label-all-loops]
+    VITIS_LOOP_91_1: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34870:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34872:9: warning: Added loop label VITIS_LOOP_93_2:   [xilinx-label-all-loops]
         for(int i = 0; i < 46; i++)
         ^~~
-        VITIS_LOOP_87_2: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35266:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35268:13: warning: Added loop label VITIS_LOOP_89_3:   [xilinx-label-all-loops]
+        VITIS_LOOP_93_2: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34872:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34874:13: warning: Added loop label VITIS_LOOP_95_3:   [xilinx-label-all-loops]
             for(int j = 0; j < 40; j++)
             ^~~
-            VITIS_LOOP_89_3: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35268:13: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35286:5: warning: Added loop label VITIS_LOOP_107_1:   [xilinx-label-all-loops]
+            VITIS_LOOP_95_3: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34874:13: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34892:5: warning: Added loop label VITIS_LOOP_113_1:   [xilinx-label-all-loops]
     for(int i = 0; i < 64; i++)
     ^~~
-    VITIS_LOOP_107_1: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35286:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35302:5: warning: Added loop label VITIS_LOOP_123_1:   [xilinx-label-all-loops]
+    VITIS_LOOP_113_1: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34892:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34908:5: warning: Added loop label VITIS_LOOP_129_1:   [xilinx-label-all-loops]
     for(int c = 0; c < 64; c++)
     ^~~
-    VITIS_LOOP_123_1: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35302:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35304:9: warning: Added loop label VITIS_LOOP_125_2:   [xilinx-label-all-loops]
+    VITIS_LOOP_129_1: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34908:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34910:9: warning: Added loop label VITIS_LOOP_131_2:   [xilinx-label-all-loops]
         for(int kh = 0; kh < 3; kh++)
         ^~~
-        VITIS_LOOP_125_2: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35304:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35306:10: warning: Added loop label VITIS_LOOP_127_3:   [xilinx-label-all-loops]
+        VITIS_LOOP_131_2: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34910:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34912:10: warning: Added loop label VITIS_LOOP_133_3:   [xilinx-label-all-loops]
          for(int kw = 0; kw < 3; kw++)
          ^~~
-         VITIS_LOOP_127_3: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35306:10: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35326:5: warning: Added loop label VITIS_LOOP_147_1:   [xilinx-label-all-loops]
+         VITIS_LOOP_133_3: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34912:10: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34932:5: warning: Added loop label VITIS_LOOP_153_1:   [xilinx-label-all-loops]
     for(int i = 0; i < 4; i++)
     ^~~
-    VITIS_LOOP_147_1: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35326:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35328:9: warning: Added loop label VITIS_LOOP_149_2:   [xilinx-label-all-loops]
+    VITIS_LOOP_153_1: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34932:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34934:9: warning: Added loop label VITIS_LOOP_155_2:   [xilinx-label-all-loops]
         for(int j = 0; j < 64; j++)
         ^~~
-        VITIS_LOOP_149_2: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35328:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35343:5: warning: Added loop label VITIS_LOOP_164_1:   [xilinx-label-all-loops]
+        VITIS_LOOP_155_2: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34934:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34949:5: warning: Added loop label VITIS_LOOP_170_1:   [xilinx-label-all-loops]
     for(int f = 0; f < 64; f++)
     ^~~
-    VITIS_LOOP_164_1: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35343:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35345:9: warning: Added loop label VITIS_LOOP_166_2:   [xilinx-label-all-loops]
+    VITIS_LOOP_170_1: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34949:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34951:9: warning: Added loop label VITIS_LOOP_172_2:   [xilinx-label-all-loops]
         for(int i = 0; i < 46; i++)
         ^~~
-        VITIS_LOOP_166_2: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35345:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35347:13: warning: Added loop label VITIS_LOOP_168_3:   [xilinx-label-all-loops]
+        VITIS_LOOP_172_2: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34951:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34953:13: warning: Added loop label VITIS_LOOP_174_3:   [xilinx-label-all-loops]
             for(int j = 0; j < 40; j++)
             ^~~
-            VITIS_LOOP_168_3: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35347:13: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35369:5: warning: Added loop label VITIS_LOOP_190_1:   [xilinx-label-all-loops]
+            VITIS_LOOP_174_3: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34953:13: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34975:5: warning: Added loop label VITIS_LOOP_196_1:   [xilinx-label-all-loops]
     for(int f = 0; f < 64; f++)
     ^~~
-    VITIS_LOOP_190_1: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35369:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35371:9: warning: Added loop label VITIS_LOOP_192_2:   [xilinx-label-all-loops]
+    VITIS_LOOP_196_1: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34975:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34977:9: warning: Added loop label VITIS_LOOP_198_2:   [xilinx-label-all-loops]
         for(int i = 0; i < 46/S; i++)
         ^~~
-        VITIS_LOOP_192_2: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35371:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35373:13: warning: Added loop label VITIS_LOOP_194_3:   [xilinx-label-all-loops]
+        VITIS_LOOP_198_2: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34977:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34979:13: warning: Added loop label VITIS_LOOP_200_3:   [xilinx-label-all-loops]
             for(int j = 0; j < 40/S; j++)
             ^~~
-            VITIS_LOOP_194_3: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35373:13: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35395:5: warning: Added loop label VITIS_LOOP_216_1:   [xilinx-label-all-loops]
+            VITIS_LOOP_200_3: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:34979:13: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35001:5: warning: Added loop label VITIS_LOOP_222_1:   [xilinx-label-all-loops]
     for(int ti = 0; ti < (RESNET_IN_FM_HEIGHT / 46) + RESNET_LAST_LAYER_EN; ti++)
     ^~~
-    VITIS_LOOP_216_1: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35395:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35397:9: warning: Added loop label VITIS_LOOP_218_2:   [xilinx-label-all-loops]
+    VITIS_LOOP_222_1: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35001:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35003:9: warning: Added loop label VITIS_LOOP_224_2:   [xilinx-label-all-loops]
         for(int tj = 0; tj < (RESNET_IN_FM_WIDTH / 40); tj++)
         ^~~
-        VITIS_LOOP_218_2: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35397:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35402:13: warning: Added loop label VITIS_LOOP_223_3:   [xilinx-label-all-loops]
+        VITIS_LOOP_224_2: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35003:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35008:13: warning: Added loop label VITIS_LOOP_229_3:   [xilinx-label-all-loops]
             for(int b = 0; b < (RESNET_OUT_FM_DEPTH / 64); b++)
             ^~~
-            VITIS_LOOP_223_3: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35402:13: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35404:17: warning: Added loop label VITIS_LOOP_225_4:   [xilinx-label-all-loops]
+            VITIS_LOOP_229_3: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35008:13: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35010:17: warning: Added loop label VITIS_LOOP_231_4:   [xilinx-label-all-loops]
                 for(int d = 0; d < (RESNET_IN_FM_DEPTH / 64); d++)
                 ^~~
-                VITIS_LOOP_225_4: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35404:17: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35414:18: warning: Added loop label VITIS_LOOP_235_5:   [xilinx-label-all-loops]
+                VITIS_LOOP_231_4: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35010:17: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35020:18: warning: Added loop label VITIS_LOOP_241_5:   [xilinx-label-all-loops]
                  for(int f = 0; f < 64; f++)
                  ^~~
-                 VITIS_LOOP_235_5: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35414:18: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35455:5: warning: Added loop label VITIS_LOOP_276_1:   [xilinx-label-all-loops]
+                 VITIS_LOOP_241_5: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35020:18: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35061:5: warning: Added loop label VITIS_LOOP_282_1:   [xilinx-label-all-loops]
     for(int ti = 0; ti < (RESNET_IN_FM_HEIGHT / 46) + RESNET_LAST_LAYER_EN; ti++)
     ^~~
-    VITIS_LOOP_276_1: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35455:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35457:9: warning: Added loop label VITIS_LOOP_278_2:   [xilinx-label-all-loops]
+    VITIS_LOOP_282_1: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35061:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35063:9: warning: Added loop label VITIS_LOOP_284_2:   [xilinx-label-all-loops]
         for(int tj = 0; tj < (RESNET_IN_FM_WIDTH / 40); tj++)
         ^~~
-        VITIS_LOOP_278_2: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35457:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35462:13: warning: Added loop label VITIS_LOOP_283_3:   [xilinx-label-all-loops]
+        VITIS_LOOP_284_2: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35063:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35068:13: warning: Added loop label VITIS_LOOP_289_3:   [xilinx-label-all-loops]
             for(int b = 0; b < (RESNET_OUT_FM_DEPTH / 64); b++)
             ^~~
-            VITIS_LOOP_283_3: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35462:13: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35464:17: warning: Added loop label VITIS_LOOP_285_4:   [xilinx-label-all-loops]
+            VITIS_LOOP_289_3: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35068:13: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35070:17: warning: Added loop label VITIS_LOOP_291_4:   [xilinx-label-all-loops]
                 for(int d = 0; d < (RESNET_IN_FM_DEPTH / 64); d++)
                 ^~~
-                VITIS_LOOP_285_4: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35464:17: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35474:18: warning: Added loop label VITIS_LOOP_295_5:   [xilinx-label-all-loops]
+                VITIS_LOOP_291_4: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35070:17: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35080:18: warning: Added loop label VITIS_LOOP_301_5:   [xilinx-label-all-loops]
                  for(int f = 0; f < 64; f++)
                  ^~~
-                 VITIS_LOOP_295_5: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35474:18: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35515:5: warning: Added loop label VITIS_LOOP_336_1:   [xilinx-label-all-loops]
+                 VITIS_LOOP_301_5: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35080:18: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35121:5: warning: Added loop label VITIS_LOOP_342_1:   [xilinx-label-all-loops]
     for(int ti = 0; ti < (RESNET_IN_FM_HEIGHT / 46) + RESNET_LAST_LAYER_EN; ti++)
     ^~~
-    VITIS_LOOP_336_1: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35515:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35517:9: warning: Added loop label VITIS_LOOP_338_2:   [xilinx-label-all-loops]
+    VITIS_LOOP_342_1: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35121:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35123:9: warning: Added loop label VITIS_LOOP_344_2:   [xilinx-label-all-loops]
         for(int tj = 0; tj < (RESNET_IN_FM_WIDTH / 40); tj++)
         ^~~
-        VITIS_LOOP_338_2: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35517:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35522:13: warning: Added loop label VITIS_LOOP_343_3:   [xilinx-label-all-loops]
+        VITIS_LOOP_344_2: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35123:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35128:13: warning: Added loop label VITIS_LOOP_349_3:   [xilinx-label-all-loops]
             for(int b = 0; b < (RESNET_OUT_FM_DEPTH / 64); b++)
             ^~~
-            VITIS_LOOP_343_3: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35522:13: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35524:17: warning: Added loop label VITIS_LOOP_345_4:   [xilinx-label-all-loops]
+            VITIS_LOOP_349_3: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35128:13: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35130:17: warning: Added loop label VITIS_LOOP_351_4:   [xilinx-label-all-loops]
                 for(int d = 0; d < (RESNET_IN_FM_DEPTH / 64); d++)
                 ^~~
-                VITIS_LOOP_345_4: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35524:17: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35532:18: warning: Added loop label VITIS_LOOP_353_5:   [xilinx-label-all-loops]
+                VITIS_LOOP_351_4: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35130:17: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35138:18: warning: Added loop label VITIS_LOOP_359_5:   [xilinx-label-all-loops]
                  for(int f = 0; f < 64; f++)
                  ^~~
-                 VITIS_LOOP_353_5: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35532:18: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35591:5: warning: Added loop label VITIS_LOOP_30_1:   [xilinx-label-all-loops]
+                 VITIS_LOOP_359_5: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35138:18: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35203:5: warning: Added loop label VITIS_LOOP_36_1:   [xilinx-label-all-loops]
     for(int c = 0; c < 64; c++)
     ^~~
-    VITIS_LOOP_30_1: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35591:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35593:9: warning: Added loop label VITIS_LOOP_32_2:   [xilinx-label-all-loops]
+    VITIS_LOOP_36_1: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35203:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35205:9: warning: Added loop label VITIS_LOOP_38_2:   [xilinx-label-all-loops]
         for(int h = 0; h < 184; h++)
         ^~~
-        VITIS_LOOP_32_2: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35593:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35595:13: warning: Added loop label VITIS_LOOP_34_3:   [xilinx-label-all-loops]
+        VITIS_LOOP_38_2: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35205:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35207:13: warning: Added loop label VITIS_LOOP_40_3:   [xilinx-label-all-loops]
             for(int w = 0; w < 320; w++)
             ^~~
-            VITIS_LOOP_34_3: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35595:13: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35612:5: warning: Added loop label VITIS_LOOP_51_4:   [xilinx-label-all-loops]
+            VITIS_LOOP_40_3: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35207:13: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35224:5: warning: Added loop label VITIS_LOOP_57_4:   [xilinx-label-all-loops]
     for(int c = 0; c < 256; c++)
     ^~~
-    VITIS_LOOP_51_4: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35612:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35614:9: warning: Added loop label VITIS_LOOP_53_5:   [xilinx-label-all-loops]
+    VITIS_LOOP_57_4: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35224:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35226:9: warning: Added loop label VITIS_LOOP_59_5:   [xilinx-label-all-loops]
         for(int h = 0; h < 184; h++)
         ^~~
-        VITIS_LOOP_53_5: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35614:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35616:13: warning: Added loop label VITIS_LOOP_55_6:   [xilinx-label-all-loops]
+        VITIS_LOOP_59_5: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35226:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35228:13: warning: Added loop label VITIS_LOOP_61_6:   [xilinx-label-all-loops]
             for(int w = 0; w < 320; w++)
             ^~~
-            VITIS_LOOP_55_6: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35616:13: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35634:5: warning: Added loop label VITIS_LOOP_73_7:   [xilinx-label-all-loops]
+            VITIS_LOOP_61_6: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35228:13: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35246:5: warning: Added loop label VITIS_LOOP_79_7:   [xilinx-label-all-loops]
     for(int c = 0; c < 64; c++)
     ^~~
-    VITIS_LOOP_73_7: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35634:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35636:9: warning: Added loop label VITIS_LOOP_75_8:   [xilinx-label-all-loops]
+    VITIS_LOOP_79_7: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35246:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35248:9: warning: Added loop label VITIS_LOOP_81_8:   [xilinx-label-all-loops]
         for(int h = 0; h < 184; h++)
         ^~~
-        VITIS_LOOP_75_8: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35636:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35638:13: warning: Added loop label VITIS_LOOP_77_9:   [xilinx-label-all-loops]
+        VITIS_LOOP_81_8: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35248:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35250:13: warning: Added loop label VITIS_LOOP_83_9:   [xilinx-label-all-loops]
             for(int w = 0; w < 320; w++)
             ^~~
-            VITIS_LOOP_77_9: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35638:13: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35657:5: warning: Added loop label VITIS_LOOP_96_10:   [xilinx-label-all-loops]
+            VITIS_LOOP_83_9: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35250:13: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35269:5: warning: Added loop label VITIS_LOOP_102_10:   [xilinx-label-all-loops]
     for(int c = 0; c < 64; c++)
     ^~~
-    VITIS_LOOP_96_10: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35657:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35659:9: warning: Added loop label VITIS_LOOP_98_11:   [xilinx-label-all-loops]
+    VITIS_LOOP_102_10: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35269:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35271:9: warning: Added loop label VITIS_LOOP_104_11:   [xilinx-label-all-loops]
         for(int h = 0; h < 184; h++)
         ^~~
-        VITIS_LOOP_98_11: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35659:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35661:13: warning: Added loop label VITIS_LOOP_100_12:   [xilinx-label-all-loops]
+        VITIS_LOOP_104_11: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35271:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35273:13: warning: Added loop label VITIS_LOOP_106_12:   [xilinx-label-all-loops]
             for(int w = 0; w < 320; w++)
             ^~~
-            VITIS_LOOP_100_12: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35661:13: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35680:5: warning: Added loop label VITIS_LOOP_119_13:   [xilinx-label-all-loops]
+            VITIS_LOOP_106_12: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35273:13: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35292:5: warning: Added loop label VITIS_LOOP_125_13:   [xilinx-label-all-loops]
     for(int c = 0; c < 256; c++)
     ^~~
-    VITIS_LOOP_119_13: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35680:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35682:9: warning: Added loop label VITIS_LOOP_121_14:   [xilinx-label-all-loops]
+    VITIS_LOOP_125_13: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35292:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35294:9: warning: Added loop label VITIS_LOOP_127_14:   [xilinx-label-all-loops]
         for(int h = 0; h < 184; h++)
         ^~~
-        VITIS_LOOP_121_14: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35682:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35684:13: warning: Added loop label VITIS_LOOP_123_15:   [xilinx-label-all-loops]
+        VITIS_LOOP_127_14: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35294:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35296:13: warning: Added loop label VITIS_LOOP_129_15:   [xilinx-label-all-loops]
             for(int w = 0; w < 320; w++)
             ^~~
-            VITIS_LOOP_123_15: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35684:13: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35704:5: warning: Added loop label VITIS_LOOP_143_16:   [xilinx-label-all-loops]
+            VITIS_LOOP_129_15: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35296:13: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35316:5: warning: Added loop label VITIS_LOOP_149_16:   [xilinx-label-all-loops]
     for(int c = 0; c < 64; c++)
     ^~~
-    VITIS_LOOP_143_16: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35704:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35706:9: warning: Added loop label VITIS_LOOP_145_17:   [xilinx-label-all-loops]
+    VITIS_LOOP_149_16: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35316:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35318:9: warning: Added loop label VITIS_LOOP_151_17:   [xilinx-label-all-loops]
         for(int h = 0; h < 184; h++)
         ^~~
-        VITIS_LOOP_145_17: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35706:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35708:13: warning: Added loop label VITIS_LOOP_147_18:   [xilinx-label-all-loops]
+        VITIS_LOOP_151_17: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35318:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35320:13: warning: Added loop label VITIS_LOOP_153_18:   [xilinx-label-all-loops]
             for(int w = 0; w < 320; w++)
             ^~~
-            VITIS_LOOP_147_18: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35708:13: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35726:5: warning: Added loop label VITIS_LOOP_165_19:   [xilinx-label-all-loops]
+            VITIS_LOOP_153_18: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35320:13: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35338:5: warning: Added loop label VITIS_LOOP_171_19:   [xilinx-label-all-loops]
     for(int c = 0; c < 64; c++)
     ^~~
-    VITIS_LOOP_165_19: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35726:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35728:9: warning: Added loop label VITIS_LOOP_167_20:   [xilinx-label-all-loops]
+    VITIS_LOOP_171_19: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35338:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35340:9: warning: Added loop label VITIS_LOOP_173_20:   [xilinx-label-all-loops]
         for(int h = 0; h < 184; h++)
         ^~~
-        VITIS_LOOP_167_20: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35728:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35730:13: warning: Added loop label VITIS_LOOP_169_21:   [xilinx-label-all-loops]
+        VITIS_LOOP_173_20: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35340:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35342:13: warning: Added loop label VITIS_LOOP_175_21:   [xilinx-label-all-loops]
             for(int w = 0; w < 320; w++)
             ^~~
-            VITIS_LOOP_169_21: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35730:13: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35748:5: warning: Added loop label VITIS_LOOP_187_22:   [xilinx-label-all-loops]
+            VITIS_LOOP_175_21: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35342:13: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35360:5: warning: Added loop label VITIS_LOOP_193_22:   [xilinx-label-all-loops]
     for(int c = 0; c < 256; c++)
     ^~~
-    VITIS_LOOP_187_22: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35748:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35750:9: warning: Added loop label VITIS_LOOP_189_23:   [xilinx-label-all-loops]
+    VITIS_LOOP_193_22: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35360:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35362:9: warning: Added loop label VITIS_LOOP_195_23:   [xilinx-label-all-loops]
         for(int h = 0; h < 184; h++)
         ^~~
-        VITIS_LOOP_189_23: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35750:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35752:13: warning: Added loop label VITIS_LOOP_191_24:   [xilinx-label-all-loops]
+        VITIS_LOOP_195_23: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35362:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35364:13: warning: Added loop label VITIS_LOOP_197_24:   [xilinx-label-all-loops]
             for(int w = 0; w < 320; w++)
             ^~~
-            VITIS_LOOP_191_24: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35752:13: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35771:5: warning: Added loop label VITIS_LOOP_210_25:   [xilinx-label-all-loops]
+            VITIS_LOOP_197_24: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35364:13: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35383:5: warning: Added loop label VITIS_LOOP_216_25:   [xilinx-label-all-loops]
     for(int c = 0; c < 64; c++)
     ^~~
-    VITIS_LOOP_210_25: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35771:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35773:9: warning: Added loop label VITIS_LOOP_212_26:   [xilinx-label-all-loops]
+    VITIS_LOOP_216_25: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35383:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35385:9: warning: Added loop label VITIS_LOOP_218_26:   [xilinx-label-all-loops]
         for(int h = 0; h < 184; h++)
         ^~~
-        VITIS_LOOP_212_26: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35773:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35775:13: warning: Added loop label VITIS_LOOP_214_27:   [xilinx-label-all-loops]
+        VITIS_LOOP_218_26: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35385:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35387:13: warning: Added loop label VITIS_LOOP_220_27:   [xilinx-label-all-loops]
             for(int w = 0; w < 320; w++)
             ^~~
-            VITIS_LOOP_214_27: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35775:13: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35793:5: warning: Added loop label VITIS_LOOP_232_28:   [xilinx-label-all-loops]
+            VITIS_LOOP_220_27: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35387:13: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35405:5: warning: Added loop label VITIS_LOOP_238_28:   [xilinx-label-all-loops]
     for(int c = 0; c < 64; c++)
     ^~~
-    VITIS_LOOP_232_28: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35793:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35795:9: warning: Added loop label VITIS_LOOP_234_29:   [xilinx-label-all-loops]
+    VITIS_LOOP_238_28: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35405:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35407:9: warning: Added loop label VITIS_LOOP_240_29:   [xilinx-label-all-loops]
         for(int h = 0; h < 184; h++)
         ^~~
-        VITIS_LOOP_234_29: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35795:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35797:13: warning: Added loop label VITIS_LOOP_236_30:   [xilinx-label-all-loops]
+        VITIS_LOOP_240_29: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35407:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35409:13: warning: Added loop label VITIS_LOOP_242_30:   [xilinx-label-all-loops]
             for(int w = 0; w < 320; w++)
             ^~~
-            VITIS_LOOP_236_30: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35797:13: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35815:5: warning: Added loop label VITIS_LOOP_254_31:   [xilinx-label-all-loops]
+            VITIS_LOOP_242_30: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35409:13: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35427:5: warning: Added loop label VITIS_LOOP_260_31:   [xilinx-label-all-loops]
     for(int c = 0; c < 256; c++)
     ^~~
-    VITIS_LOOP_254_31: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35815:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35817:9: warning: Added loop label VITIS_LOOP_256_32:   [xilinx-label-all-loops]
+    VITIS_LOOP_260_31: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35427:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35429:9: warning: Added loop label VITIS_LOOP_262_32:   [xilinx-label-all-loops]
         for(int h = 0; h < 184; h++)
         ^~~
-        VITIS_LOOP_256_32: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35817:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35819:13: warning: Added loop label VITIS_LOOP_258_33:   [xilinx-label-all-loops]
+        VITIS_LOOP_262_32: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35429:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35431:13: warning: Added loop label VITIS_LOOP_264_33:   [xilinx-label-all-loops]
             for(int w = 0; w < 320; w++)
             ^~~
-            VITIS_LOOP_258_33: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35819:13: note: FIX-IT applied suggested code changes
+            VITIS_LOOP_264_33: 
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_layer1.pp.0.cpp:35431:13: note: FIX-IT applied suggested code changes

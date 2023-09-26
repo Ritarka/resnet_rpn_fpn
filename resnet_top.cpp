@@ -1,13 +1,13 @@
 #include "hls_stream.h"
 #include "qdtrack.h"
 #include "resnet_util.h"
-// #include "resnet.h"
 
 #include "resnet_layer0.cpp"
 #include "resnet_layer1.cpp"
 #include "resnet_layer2.cpp"
 #include "resnet_layer3.cpp"
 #include "resnet_layer4.cpp"
+// #include "resnet_layers.cpp"
 
 void resnet_top (
     fm_t   resnet_layer0_input_fm[RESNET_LAYER0_CONV1_IN_CH][RESNET_LAYER0_IN_FM_HEIGHT][RESNET_LAYER0_IN_FM_WIDTH],

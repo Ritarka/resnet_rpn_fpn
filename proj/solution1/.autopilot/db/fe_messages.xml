@@ -1,66 +1,381 @@
 <xilinx:hls_fe_msgs>
-    <msg msg_groups="" msg_id="207-3777" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:37:17" msg_body="use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'?">
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/nethome/mjung76/resnet_rpn_fpn/script.tcl:48:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="directive" ARG_PragmaFunction="rpn_top" ARG_PragmaIsValid="1" ARG_PragmaOptions="name=rpn_top" ARG_PragmaType="top" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./rpn_conv_3x3.cpp:12:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="rpn_conv_3x3" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:88:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_load_layer_params_from_DRAM_1x1" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:128:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_load_layer_params_from_DRAM_3x3" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:178:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_save_partial_output_tile_block" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="" msg_id="207-4072" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_3.cpp:1:17" msg_body="using directive refers to implicitly-defined namespace 'std'">
         <args/>
     </msg>
-    <msg msg_groups="" msg_id="207-4436" msg_severity="INFO" msg_loc="./resnet_layer1.cpp:6:14" msg_body="'resnet_layer1_input_fm' declared here">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:88:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_load_layer_params_from_DRAM_1x1" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:58:17" msg_body="use of undeclared identifier 'ds_fm'">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:128:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_load_layer_params_from_DRAM_3x3" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:58:34" msg_body="use of undeclared identifier 'resnet_layer_out_fm'">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:178:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_save_partial_output_tile_block" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="" msg_id="207-3777" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:80:17" msg_body="use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'?">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_3.cpp:20:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=2048*23*40 port=input_feature_map bundle=fm" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:80:47" msg_body="use of undeclared identifier 'resnet_layer_out_fm'">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_3.cpp:21:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=2048*2048*3*3 port=layer_weights bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="" msg_id="207-3777" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:103:17" msg_body="use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'?">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_3.cpp:22:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=2048 port=layer_bias bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:103:47" msg_body="use of undeclared identifier 'resnet_layer_out_fm'">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_3.cpp:23:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=2048*23*40 port=output_feature_map bundle=fm" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="" msg_id="207-2982" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:114:5" msg_body="no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'?">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_3.cpp:25:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite register port=return" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="" msg_id="207-4436" msg_severity="INFO" msg_loc="./qdtrack.h:495:6" msg_body="'resnet_bottleneck_conv3_bn3_relu' declared here">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_3.cpp:31:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_in_buf dim=3 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="" msg_id="207-3777" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:126:17" msg_body="use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'?">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_3.cpp:34:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_bias_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:126:47" msg_body="use of undeclared identifier 'resnet_layer_out_fm'">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_3.cpp:37:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_wt_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:127:17" msg_body="use of undeclared identifier 'ds_fm'">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_3.cpp:40:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_out_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:127:34" msg_body="use of undeclared identifier 'resnet_layer_out_fm'">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_3.cpp:41:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_out_buf dim=3 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="" msg_id="207-3777" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:150:17" msg_body="use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'?">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_3.cpp:45:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=partial_out_fm_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:150:47" msg_body="use of undeclared identifier 'resnet_layer_out_fm'">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:88:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_load_layer_params_from_DRAM_1x1" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="" msg_id="207-3777" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:172:17" msg_body="use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'?">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:128:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_load_layer_params_from_DRAM_3x3" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:172:47" msg_body="use of undeclared identifier 'resnet_layer_out_fm'">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:178:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_save_partial_output_tile_block" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="" msg_id="207-2982" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:183:5" msg_body="no template named 'resnet_bottleneck_conv3_bn3_add_relu'; did you mean 'resnet_bottleneck_conv3_bn3_relu'?">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_2.cpp:14:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=1024*46*80 port=input_feature_map bundle=fm" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="" msg_id="207-3777" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:194:17" msg_body="use of undeclared identifier 'resnet_layer_in_fm'; did you mean 'resnet_layer1_input_fm'?">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_2.cpp:15:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256*1024*1*1 port=layer_weights bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="" msg_id="207-3776" msg_severity="ERROR" msg_loc="./resnet_layer1.cpp:194:47" msg_body="use of undeclared identifier 'resnet_layer_out_fm'">
-        <args/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_2.cpp:16:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256 port=layer_bias bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_2.cpp:17:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256*46*80 port=output_feature_map bundle=fm" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_2.cpp:19:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite register port=return" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_2.cpp:25:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_in_buf dim=3 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_2.cpp:28:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_bias_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_2.cpp:31:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_wt_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_2.cpp:34:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_out_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_2.cpp:35:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_out_buf dim=3 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_2.cpp:39:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=partial_out_fm_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:88:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_load_layer_params_from_DRAM_1x1" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:128:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_load_layer_params_from_DRAM_3x3" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:178:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_save_partial_output_tile_block" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_1.cpp:14:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=512*92*160 port=input_feature_map bundle=fm" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_1.cpp:15:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256*512*1*1 port=layer_weights bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_1.cpp:16:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256 port=layer_bias bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_1.cpp:17:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256*92*160 port=output_feature_map bundle=fm" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_1.cpp:19:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite register port=return" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_1.cpp:25:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_in_buf dim=3 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_1.cpp:28:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_bias_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_1.cpp:31:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_wt_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_1.cpp:34:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_out_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_1.cpp:35:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_out_buf dim=3 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_1.cpp:39:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=partial_out_fm_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:88:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_load_layer_params_from_DRAM_1x1" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:128:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_load_layer_params_from_DRAM_3x3" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:178:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_save_partial_output_tile_block" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_0.cpp:16:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256*184*320 port=input_feature_map bundle=fm" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_0.cpp:17:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256*256*1*1 port=layer_weights bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_0.cpp:18:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256 port=layer_bias bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_0.cpp:19:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256*184*320 port=output_feature_map bundle=fm" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_0.cpp:21:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite register port=return" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_0.cpp:27:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_in_buf dim=3 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_0.cpp:30:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_bias_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_0.cpp:33:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_wt_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_0.cpp:36:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_out_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_0.cpp:37:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_out_buf dim=3 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_0.cpp:41:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_lateral_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=partial_out_fm_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:88:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_load_layer_params_from_DRAM_1x1" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:128:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_load_layer_params_from_DRAM_3x3" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:178:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_save_partial_output_tile_block" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_3.cpp:19:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256*23*40 port=input_feature_map bundle=fm" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_3.cpp:20:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256*256*3*3 port=layer_weights bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_3.cpp:21:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256 port=layer_bias bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_3.cpp:22:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256*23*40 port=output_feature_map bundle=fm" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_3.cpp:24:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite register port=return" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_3.cpp:30:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_in_buf dim=3 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_3.cpp:33:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_bias_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_3.cpp:36:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_wt_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_3.cpp:39:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_out_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_3.cpp:40:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_out_buf dim=3 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_3.cpp:44:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_3" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=partial_out_fm_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:88:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_load_layer_params_from_DRAM_1x1" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:128:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_load_layer_params_from_DRAM_3x3" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:178:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_save_partial_output_tile_block" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_2.cpp:21:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256*46*80 port=input_feature_map bundle=fm" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_2.cpp:22:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256*256*3*3 port=layer_weights bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_2.cpp:23:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256 port=layer_bias bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_2.cpp:24:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256*46*80 port=output_feature_map bundle=fm" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_2.cpp:26:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite register port=return" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_2.cpp:32:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_in_buf dim=3 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_2.cpp:35:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_bias_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_2.cpp:38:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_wt_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_2.cpp:41:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_out_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_2.cpp:42:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_out_buf dim=3 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_2.cpp:46:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=partial_out_fm_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:88:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_load_layer_params_from_DRAM_1x1" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:128:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_load_layer_params_from_DRAM_3x3" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:178:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_save_partial_output_tile_block" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_1.cpp:20:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256*92*160 port=input_feature_map bundle=fm" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_1.cpp:21:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256*256*3*3 port=layer_weights bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_1.cpp:22:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256 port=layer_bias bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_1.cpp:23:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256*92*160 port=output_feature_map bundle=fm" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_1.cpp:25:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite register port=return" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_1.cpp:31:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_in_buf dim=3 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_1.cpp:34:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_bias_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_1.cpp:37:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_wt_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_1.cpp:40:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_out_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_1.cpp:41:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_out_buf dim=3 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_1.cpp:45:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_1" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=partial_out_fm_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:88:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_load_layer_params_from_DRAM_1x1" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:128:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_load_layer_params_from_DRAM_3x3" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:178:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_save_partial_output_tile_block" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_0.cpp:19:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256*184*320 port=input_feature_map bundle=fm" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_0.cpp:20:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256*256*3*3 port=layer_weights bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_0.cpp:21:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256 port=layer_bias bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_0.cpp:22:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=256*184*320 port=output_feature_map bundle=fm" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_0.cpp:24:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite register port=return" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_0.cpp:30:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_in_buf dim=3 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_0.cpp:33:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_bias_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_0.cpp:36:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_wt_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_0.cpp:39:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_out_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_0.cpp:40:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=conv_out_buf dim=3 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_fpn_0.cpp:44:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_tiled_conv_fpn_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=partial_out_fm_buf dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_conv_3x3.cpp:25:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_conv_3x3" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=temp dim=0 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_conv_3x3.cpp:39:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_conv_3x3" ARG_PragmaIsValid="1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_conv_3x3.cpp:44:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_conv_3x3" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_conv_3x3.cpp:52:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_conv_3x3" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_conv_1x1.cpp:10:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_conv_1x1" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=temp dim=0 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_conv_1x1.cpp:24:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_conv_1x1" ARG_PragmaIsValid="1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_conv_1x1.cpp:29:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_conv_1x1" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_conv_1x1.cpp:37:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="fpn_conv_1x1" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
 </xilinx:hls_fe_msgs>
 
