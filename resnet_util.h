@@ -3,35 +3,31 @@
 
 #pragma once 
 
-extern "C" {
-    // Feature Map Buffers 
-    fm_t in_fm_buf[RESNET_IN_BUF_CH][RESNET_IN_BUF_ROWS + 5][RESNET_IN_BUF_COLS + 5];
-    fm_t out_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS];
-    fm_t partial_out_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS];
-    fm_t ds_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS];
-}
+// Feature Map Buffers 
+extern fm_t in_fm_buf[RESNET_IN_BUF_CH][RESNET_IN_BUF_ROWS + 5][RESNET_IN_BUF_COLS + 5];
+extern fm_t out_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS];
+extern fm_t partial_out_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS];
+extern fm_t ds_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS];
 
 // TODO: Replace these by pointer-based access to DRAM
 //float resnet_layer_out_fm[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH];
 //float resnet_layer_in_fm[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH];
 //float ds_fm[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH];
-extern "C" {
-    fm_t resnet_layer_out_fm[2048][184][320];
-    fm_t resnet_layer_in_fm[2048][184][320];
-    fm_t ds_fm[2048][184][320];
-}
+extern fm_t resnet_layer_out_fm[2048][184][320];
+extern fm_t resnet_layer_in_fm[2048][184][320];
+extern fm_t ds_fm[2048][184][320];
 
-fm_t resnet_layer0_in_fm [RESNET_LAYER0_CONV1_IN_CH][RESNET_LAYER0_IN_FM_HEIGHT][RESNET_LAYER0_IN_FM_WIDTH];
-fm_t resnet_layer0_mx_fm [RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_MX_FM_HEIGHT][RESNET_LAYER0_MX_FM_WIDTH];
-fm_t resnet_layer0_out_fm[RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_OUT_FM_HEIGHT][RESNET_LAYER0_OUT_FM_WIDTH];
+extern fm_t resnet_layer0_in_fm [RESNET_LAYER0_CONV1_IN_CH][RESNET_LAYER0_IN_FM_HEIGHT][RESNET_LAYER0_IN_FM_WIDTH];
+extern fm_t resnet_layer0_mx_fm [RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_MX_FM_HEIGHT][RESNET_LAYER0_MX_FM_WIDTH];
+extern fm_t resnet_layer0_out_fm[RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_OUT_FM_HEIGHT][RESNET_LAYER0_OUT_FM_WIDTH];
 
 // Convolution Weight Buffers
-wt_t weight_buf_1x1[RESNET_IN_BUF_CH];
-wt_t weight_buf_3x3[RESNET_IN_BUF_CH][3][3];
-wt_t weight_buf_7x7[RESNET_IN_BUF_CH][7][7];
+extern wt_t weight_buf_1x1[RESNET_IN_BUF_CH];
+extern wt_t weight_buf_3x3[RESNET_IN_BUF_CH][3][3];
+extern wt_t weight_buf_7x7[RESNET_IN_BUF_CH][7][7];
 
 // BatchNorm Parameter Buffer
-wt_t param_buf[3][RESNET_OUT_BUF_CH];
+extern wt_t param_buf[3][RESNET_OUT_BUF_CH];
 
 // Load input feature map tile
 // TODO: Replace with pointer-based DRAM access
@@ -80,7 +76,7 @@ void resnet_load_input_fm_tile (
 }
 
 // Load previous resnet_layer's output (shortcut connection)
-void resnet_load_residual_fm_tile (
+static void resnet_load_residual_fm_tile (
         fm_t in_fm_buf[RESNET_IN_BUF_CH][RESNET_IN_BUF_ROWS][RESNET_IN_BUF_COLS], 
         fm_t in_fm[2048][184][320], 
         int   ti, 
@@ -161,7 +157,7 @@ void resnet_load_batchnorm_params (
 
 // Save partial outputs when depth of output feature map is more than
 // the output buffer depth
-void resnet_save_partial_out_buf (
+static void resnet_save_partial_out_buf (
         fm_t partial_out_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS], 
         fm_t out_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS],
         int d

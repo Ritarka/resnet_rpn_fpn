@@ -1,5 +1,5 @@
 # TCL commands for batch-mode HLS
-open_project proj
+open_project -reset proj
 
 #Define the top modules
 set_top fpn_top

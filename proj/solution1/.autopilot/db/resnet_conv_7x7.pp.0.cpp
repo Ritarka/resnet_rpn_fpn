@@ -33875,10 +33875,10 @@ inline __attribute__((nodebug)) bool operator!=(
 # 366 "/tools/software/xilinx/Vitis_HLS/2023.1/common/technology/autopilot/ap_fixed.h" 2
 # 361 "/tools/software/xilinx/Vitis_HLS/2023.1/common/technology/autopilot/ap_int.h" 2
 # 7 "./qdtrack.h" 2
-# 22 "./qdtrack.h"
+# 24 "./qdtrack.h"
     typedef float fm_t;
     typedef float wt_t;
-# 380 "./qdtrack.h"
+# 382 "./qdtrack.h"
 template<const int RESNET_IN_FM_DEPTH, const int RESNET_IN_FM_HEIGHT, const int RESNET_IN_FM_WIDTH,
          const int RESNET_LAST_LAYER_EN>
 void resnet_load_input_fm_tile (
@@ -33888,14 +33888,6 @@ void resnet_load_input_fm_tile (
         int tj,
         int P,
         int d
-);
-
-void resnet_load_residual_fm_tile (
-        fm_t in_fm_buf[64][46][40],
-        fm_t in_fm[2048][184][320],
-        int ti,
-        int tj,
-        int b
 );
 
 template<const int RESNET_OUT_CH, const int RESNET_IN_CH>
@@ -33928,12 +33920,6 @@ void resnet_load_batchnorm_params (
         fm_t param_buf[3][64],
         wt_t params[3][RESNET_OUT_CH],
         int b
-);
-
-void resnet_save_partial_out_buf (
-        fm_t partial_out_fm_buf[64][46][40],
-        fm_t out_fm_buf[64][46][40],
-        int d
 );
 
 template<const int S>

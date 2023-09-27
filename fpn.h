@@ -4,6 +4,8 @@
 #include <ap_int.h>
 #include <ap_fixed.h>
 
+#pragma once
+
 #define CSIM_DEBUG
 
 #ifdef  CSIM_DEBUG

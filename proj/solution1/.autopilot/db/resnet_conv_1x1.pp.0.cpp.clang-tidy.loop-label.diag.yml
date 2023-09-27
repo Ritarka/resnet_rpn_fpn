@@ -52,7 +52,7 @@ Diagnostics:
     FilePath:        /nethome/mjung76/resnet_rpn_fpn/resnet_conv_1x1.cpp
     Replacements:    
       - FilePath:        /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_conv_1x1.pp.0.cpp
-        Offset:          1724899
+        Offset:          1724606
         Length:          0
         ReplacementText: 'VITIS_LOOP_17_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -61,7 +61,7 @@ Diagnostics:
     FilePath:        /nethome/mjung76/resnet_rpn_fpn/resnet_conv_1x1.cpp
     Replacements:    
       - FilePath:        /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_conv_1x1.pp.0.cpp
-        Offset:          1724944
+        Offset:          1724651
         Length:          0
         ReplacementText: 'VITIS_LOOP_20_2: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -70,7 +70,7 @@ Diagnostics:
     FilePath:        /nethome/mjung76/resnet_rpn_fpn/resnet_conv_1x1.cpp
     Replacements:    
       - FilePath:        /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_conv_1x1.pp.0.cpp
-        Offset:          1725034
+        Offset:          1724741
         Length:          0
         ReplacementText: 'VITIS_LOOP_26_3: '
 ...

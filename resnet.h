@@ -6,6 +6,8 @@
 #include <ap_int.h>
 #include <ap_fixed.h>
 
+#pragma once
+
 //--------------------------------------------------------------------------
 // Compiler Defines
 //--------------------------------------------------------------------------
@@ -250,12 +252,6 @@ void resnet_load_batchnorm_params (
         fm_t param_buf[3][RESNET_OUT_BUF_CH], 
         wt_t params[3][RESNET_OUT_CH], 
         int b
-);
-
-void resnet_save_partial_out_buf (
-        fm_t partial_out_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS], 
-        fm_t out_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS],
-        int d
 );
 
 template<const int S>

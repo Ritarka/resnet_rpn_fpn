@@ -33749,9 +33749,11 @@ inline __attribute__((nodebug)) bool operator!=(
 
 
 
+
+
     typedef float fm_t;
     typedef float wt_t;
-# 126 "./fpn.h"
+# 128 "./fpn.h"
 void fpn_top(
  fm_t lateral_3_input_feature_map[2048][23][40],
      wt_t lateral_3_layer_weights[256][2048][1][1],
@@ -33902,169 +33904,7 @@ void fpn_store_output_tile_to_DRAM (
 );
 # 5 "./fpn_tiled_conv_fpn_1.cpp" 2
 # 1 "./fpn_utils.cpp" 1
-# 1 "./fpn.h" 1
 
-
-
-# 1 "/tools/software/xilinx/Vitis_HLS/2023.1/common/technology/autopilot/ap_int.h" 1
-# 5 "./fpn.h" 2
-
-
-
-
-
-    typedef float fm_t;
-    typedef float wt_t;
-# 126 "./fpn.h"
-void fpn_top(
- fm_t lateral_3_input_feature_map[2048][23][40],
-     wt_t lateral_3_layer_weights[256][2048][1][1],
-     wt_t lateral_3_layer_bias[256],
- fm_t lateral_2_input_feature_map[1024][46][80],
-     wt_t lateral_2_layer_weights[256][1024][1][1],
-     wt_t lateral_2_layer_bias[256],
- fm_t lateral_1_input_feature_map[512][92][160],
-     wt_t lateral_1_layer_weights[256][512][1][1],
-     wt_t lateral_1_layer_bias[256],
- fm_t lateral_0_input_feature_map[256][184][320],
-     wt_t lateral_0_layer_weights[256][256][1][1],
-     wt_t lateral_0_layer_bias[256],
-     wt_t fpn_3_layer_weights[256][256][3][3],
-     wt_t fpn_3_layer_bias[256],
-     fm_t fpn_3_output_feature_map[256][23][40],
-     wt_t fpn_2_layer_weights[256][256][3][3],
-     wt_t fpn_2_layer_bias[256],
-     fm_t fpn_2_output_feature_map[256][46][80],
-     wt_t fpn_1_layer_weights[256][256][3][3],
-     wt_t fpn_1_layer_bias[256],
-     fm_t fpn_1_output_feature_map[256][92][160],
-     wt_t fpn_0_layer_weights[256][256][3][3],
-     wt_t fpn_0_layer_bias[256],
-     fm_t fpn_0_output_feature_map[256][184][320]
-
-
-
-
-);
-
-void fpn_conv_3x3 (
-        fm_t Y_buf[16][23][20],
-        fm_t X_buf[8][23 +2][20 +2],
-        wt_t W_buf[16][8][3][3]
-);
-void fpn_conv_1x1(
-    fm_t Y_buf[16][23][20],
-    fm_t X_buf[8][23][20],
-    wt_t W_buf[16][8][1][1]
-);
-void fpn_tiled_conv_fpn_3 (
-    fm_t input_feature_map[256][23][40],
-    wt_t layer_weights[256][256][3][3],
-    wt_t layer_bias[256],
-    fm_t output_feature_map[256][23][40]
-);
-void fpn_tiled_conv_fpn_2 (
-    fm_t input_feature_map[256][46][80],
-    wt_t layer_weights[256][256][3][3],
-    wt_t layer_bias[256],
-    fm_t output_feature_map[256][46][80]
-);
-void fpn_tiled_conv_fpn_1 (
-    fm_t input_feature_map[256][92][160],
-    wt_t layer_weights[256][256][3][3],
-    wt_t layer_bias[256],
-    fm_t output_feature_map[256][92][160]
-);
-void fpn_tiled_conv_fpn_0 (
-    fm_t input_feature_map[256][184][320],
-    wt_t layer_weights[256][256][3][3],
-    wt_t layer_bias[256],
-    fm_t output_feature_map[256][184][320]
-);
-void fpn_tiled_conv_lateral_3 (
-    fm_t input_feature_map[2048][23][40],
-    wt_t layer_weights[256][2048][1][1],
-    wt_t layer_bias[256],
-    fm_t output_feature_map[256][23][40]
-);
-void fpn_tiled_conv_lateral_2 (
-    fm_t input_feature_map[1024][46][80],
-    wt_t layer_weights[256][1024][1][1],
-    wt_t layer_bias[256],
-    fm_t output_feature_map[256][46][80]
-);
-void fpn_tiled_conv_lateral_1 (
-    fm_t input_feature_map[512][92][160],
-    wt_t layer_weights[256][512][1][1],
-    wt_t layer_bias[256],
-    fm_t output_feature_map[256][92][160]
-);
-void fpn_tiled_conv_lateral_0 (
-    fm_t input_feature_map[256][184][320],
-    wt_t layer_weights[256][256][1][1],
-    wt_t layer_bias[256],
-    fm_t output_feature_map[256][184][320]
-);
-
-template<const int fm_input_depth,const int fm_input_height,const int fm_input_width,const int N_TILE_ROWS,const int N_TILE_COLS>
-void fpn_load_input_tile_block_from_DRAM_3x3 (
-    fm_t in_fm_buf[8][23 +2][20 +2],
-    fm_t in_fm[fm_input_depth][fm_input_height][fm_input_width],
-    int ti,
-    int tj,
-    int d
-);
-
-template<const int fm_input_depth,const int fm_input_height,const int fm_input_width,const int N_TILE_ROWS,const int N_TILE_COLS>
-void fpn_load_input_tile_block_from_DRAM_1x1 (
-    fm_t in_fm_buf[8][23][20],
-    fm_t in_fm[fm_input_depth][fm_input_height][fm_input_width],
-    int ti,
-    int tj,
-    int d
-);
-template<const int output_depth,const int input_depth>
-void fpn_load_layer_params_from_DRAM_1x1 (
-    wt_t weight_buf[16][8][1][1],
-    wt_t bias_buf[16],
-    wt_t weights[output_depth][input_depth][1][1],
-    wt_t bias[output_depth],
-    int b,
-    int d
-);
-template<const int output_depth,const int input_depth>
-void fpn_load_layer_params_from_DRAM_3x3 (
-    wt_t weight_buf[16][8][3][3],
-    wt_t bias_buf[16],
-    wt_t weights[output_depth][input_depth][3][3],
-    wt_t bias[output_depth],
-    int b,
-    int d
-);
-
-
-
-
-template<const int output_depth>
-void fpn_save_partial_output_tile_block (
-    fm_t partial_out_buf[16][23][20],
-    fm_t out_fm_buf[16][23][20],
-    wt_t bias_buf[16],
-    int d
-);
-
-
-
-
-template<const int fm_output_depth,const int fm_output_height,const int fm_output_width>
-void fpn_store_output_tile_to_DRAM (
-    fm_t out_fm[fm_output_depth][fm_output_height][fm_output_width],
-    fm_t out_fm_buf[16][23][20],
-    int ti,
-    int tj,
-    int b
-);
-# 2 "./fpn_utils.cpp" 2
 
 template<const int fm_input_depth,const int fm_input_height,const int fm_input_width,const int N_TILE_ROWS,const int N_TILE_COLS>
 void fpn_load_input_tile_block_from_DRAM_3x3 (

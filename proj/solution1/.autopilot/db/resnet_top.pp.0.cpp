@@ -33875,10 +33875,10 @@ inline __attribute__((nodebug)) bool operator!=(
 # 366 "/tools/software/xilinx/Vitis_HLS/2023.1/common/technology/autopilot/ap_fixed.h" 2
 # 361 "/tools/software/xilinx/Vitis_HLS/2023.1/common/technology/autopilot/ap_int.h" 2
 # 7 "./qdtrack.h" 2
-# 22 "./qdtrack.h"
+# 24 "./qdtrack.h"
     typedef float fm_t;
     typedef float wt_t;
-# 380 "./qdtrack.h"
+# 382 "./qdtrack.h"
 template<const int RESNET_IN_FM_DEPTH, const int RESNET_IN_FM_HEIGHT, const int RESNET_IN_FM_WIDTH,
          const int RESNET_LAST_LAYER_EN>
 void resnet_load_input_fm_tile (
@@ -33888,14 +33888,6 @@ void resnet_load_input_fm_tile (
         int tj,
         int P,
         int d
-);
-
-void resnet_load_residual_fm_tile (
-        fm_t in_fm_buf[64][46][40],
-        fm_t in_fm[2048][184][320],
-        int ti,
-        int tj,
-        int b
 );
 
 template<const int RESNET_OUT_CH, const int RESNET_IN_CH>
@@ -33928,12 +33920,6 @@ void resnet_load_batchnorm_params (
         fm_t param_buf[3][64],
         wt_t params[3][RESNET_OUT_CH],
         int b
-);
-
-void resnet_save_partial_out_buf (
-        fm_t partial_out_fm_buf[64][46][40],
-        fm_t out_fm_buf[64][46][40],
-        int d
 );
 
 template<const int S>
@@ -34783,35 +34769,31 @@ void test_top (
 
 
 
-extern "C" {
 
-    fm_t in_fm_buf[64][46 + 5][40 + 5];
-    fm_t out_fm_buf[64][46][40];
-    fm_t partial_out_fm_buf[64][46][40];
-    fm_t ds_fm_buf[64][46][40];
-}
+extern fm_t in_fm_buf[64][46 + 5][40 + 5];
+extern fm_t out_fm_buf[64][46][40];
+extern fm_t partial_out_fm_buf[64][46][40];
+extern fm_t ds_fm_buf[64][46][40];
 
 
 
 
 
-extern "C" {
-    fm_t resnet_layer_out_fm[2048][184][320];
-    fm_t resnet_layer_in_fm[2048][184][320];
-    fm_t ds_fm[2048][184][320];
-}
+extern fm_t resnet_layer_out_fm[2048][184][320];
+extern fm_t resnet_layer_in_fm[2048][184][320];
+extern fm_t ds_fm[2048][184][320];
 
-fm_t resnet_layer0_in_fm [3][736][1280];
-fm_t resnet_layer0_mx_fm [64][368][640];
-fm_t resnet_layer0_out_fm[64][184][320];
+extern fm_t resnet_layer0_in_fm [3][736][1280];
+extern fm_t resnet_layer0_mx_fm [64][368][640];
+extern fm_t resnet_layer0_out_fm[64][184][320];
 
 
-wt_t weight_buf_1x1[64];
-wt_t weight_buf_3x3[64][3][3];
-wt_t weight_buf_7x7[64][7][7];
+extern wt_t weight_buf_1x1[64];
+extern wt_t weight_buf_3x3[64][3][3];
+extern wt_t weight_buf_7x7[64][7][7];
 
 
-wt_t param_buf[3][64];
+extern wt_t param_buf[3][64];
 
 
 
@@ -34826,11 +34808,11 @@ void resnet_load_input_fm_tile (
         int d
 )
 {
-    VITIS_LOOP_49_1: for(int c = 0; c < 64; c++)
+    VITIS_LOOP_45_1: for(int c = 0; c < 64; c++)
     {
-        VITIS_LOOP_51_2: for(int i = 0; i < 46 + 5; i++)
+        VITIS_LOOP_47_2: for(int i = 0; i < 46 + 5; i++)
         {
-            VITIS_LOOP_53_3: for(int j = 0; j < 40 + 5; j++)
+            VITIS_LOOP_49_3: for(int j = 0; j < 40 + 5; j++)
             {
 
                 if((ti == 0 && i < P) || (tj == 0 && j < P))
@@ -34860,7 +34842,7 @@ void resnet_load_input_fm_tile (
 }
 
 
-void resnet_load_residual_fm_tile (
+static void resnet_load_residual_fm_tile (
         fm_t in_fm_buf[64][46][40],
         fm_t in_fm[2048][184][320],
         int ti,
@@ -34868,11 +34850,11 @@ void resnet_load_residual_fm_tile (
         int b
 )
 {
-    VITIS_LOOP_91_1: for(int c = 0; c < 64; c++)
+    VITIS_LOOP_87_1: for(int c = 0; c < 64; c++)
     {
-        VITIS_LOOP_93_2: for(int i = 0; i < 46; i++)
+        VITIS_LOOP_89_2: for(int i = 0; i < 46; i++)
         {
-            VITIS_LOOP_95_3: for(int j = 0; j < 40; j++)
+            VITIS_LOOP_91_3: for(int j = 0; j < 40; j++)
             {
           in_fm_buf[c][i][j] = in_fm[b*64 + c][ti*46 + i][tj*40 + j];
             }
@@ -34890,7 +34872,7 @@ void resnet_load_weights_1x1 (
         int d
 )
 {
-    VITIS_LOOP_113_1: for(int i = 0; i < 64; i++)
+    VITIS_LOOP_109_1: for(int i = 0; i < 64; i++)
     {
      weight_buf_1x1[i] = weights[b * 64 + f][d * 64 + i];
     }
@@ -34906,11 +34888,11 @@ void resnet_load_weights_3x3 (
         int d
 )
 {
-    VITIS_LOOP_129_1: for(int c = 0; c < 64; c++)
+    VITIS_LOOP_125_1: for(int c = 0; c < 64; c++)
     {
-        VITIS_LOOP_131_2: for(int kh = 0; kh < 3; kh++)
+        VITIS_LOOP_127_2: for(int kh = 0; kh < 3; kh++)
      {
-         VITIS_LOOP_133_3: for(int kw = 0; kw < 3; kw++)
+         VITIS_LOOP_129_3: for(int kw = 0; kw < 3; kw++)
          {
              weight_buf_3x3[c][kh][kw] = weights[b * 64 + f][d * 64 + c][kh][kw];
             }
@@ -34930,9 +34912,9 @@ void resnet_load_batchnorm_params (
         int b
 )
 {
-    VITIS_LOOP_153_1: for(int i = 0; i < 4; i++)
+    VITIS_LOOP_149_1: for(int i = 0; i < 4; i++)
     {
-        VITIS_LOOP_155_2: for(int j = 0; j < 64; j++)
+        VITIS_LOOP_151_2: for(int j = 0; j < 64; j++)
         {
             param_buf[i][j] = params[i][b * 64 + j];
         }
@@ -34941,17 +34923,17 @@ void resnet_load_batchnorm_params (
 
 
 
-void resnet_save_partial_out_buf (
+static void resnet_save_partial_out_buf (
         fm_t partial_out_fm_buf[64][46][40],
         fm_t out_fm_buf[64][46][40],
         int d
 )
 {
-    VITIS_LOOP_170_1: for(int f = 0; f < 64; f++)
+    VITIS_LOOP_166_1: for(int f = 0; f < 64; f++)
     {
-        VITIS_LOOP_172_2: for(int i = 0; i < 46; i++)
+        VITIS_LOOP_168_2: for(int i = 0; i < 46; i++)
         {
-            VITIS_LOOP_174_3: for(int j = 0; j < 40; j++)
+            VITIS_LOOP_170_3: for(int j = 0; j < 40; j++)
             {
                 if(d==0)
                     partial_out_fm_buf[f][i][j] = out_fm_buf[f][i][j];
@@ -34973,11 +34955,11 @@ void resnet_store_out_buf_to_DDR(
         int b
 )
 {
-    VITIS_LOOP_196_1: for(int f = 0; f < 64; f++)
+    VITIS_LOOP_192_1: for(int f = 0; f < 64; f++)
     {
-        VITIS_LOOP_198_2: for(int i = 0; i < 46/S; i++)
+        VITIS_LOOP_194_2: for(int i = 0; i < 46/S; i++)
         {
-            VITIS_LOOP_200_3: for(int j = 0; j < 40/S; j++)
+            VITIS_LOOP_196_3: for(int j = 0; j < 40/S; j++)
             {
                  out_fm[b*64 + f][ti*(46/S) + i][tj*(40/S) + j] = fm_buf[f][i][j];
             }
@@ -34999,16 +34981,16 @@ void resnet_bottleneck_conv1_bn1(
     const int num_of_tiles = ((RESNET_IN_FM_HEIGHT / 46) + RESNET_LAST_LAYER_EN) * (RESNET_IN_FM_WIDTH / 40);
     std::cout << "\nNo. of tiles in input feature map = " << num_of_tiles << std::endl;
 
-    VITIS_LOOP_222_1: for(int ti = 0; ti < (RESNET_IN_FM_HEIGHT / 46) + RESNET_LAST_LAYER_EN; ti++)
+    VITIS_LOOP_218_1: for(int ti = 0; ti < (RESNET_IN_FM_HEIGHT / 46) + RESNET_LAST_LAYER_EN; ti++)
     {
-        VITIS_LOOP_224_2: for(int tj = 0; tj < (RESNET_IN_FM_WIDTH / 40); tj++)
+        VITIS_LOOP_220_2: for(int tj = 0; tj < (RESNET_IN_FM_WIDTH / 40); tj++)
         {
             std::cout << "Processing Tile " << ti*(RESNET_IN_FM_WIDTH / 40) + tj + 1;
             std::cout << "/" << num_of_tiles << std::endl;
 
-            VITIS_LOOP_229_3: for(int b = 0; b < (RESNET_OUT_FM_DEPTH / 64); b++)
+            VITIS_LOOP_225_3: for(int b = 0; b < (RESNET_OUT_FM_DEPTH / 64); b++)
          {
-                VITIS_LOOP_231_4: for(int d = 0; d < (RESNET_IN_FM_DEPTH / 64); d++)
+                VITIS_LOOP_227_4: for(int d = 0; d < (RESNET_IN_FM_DEPTH / 64); d++)
                 {
 
 
@@ -35018,7 +35000,7 @@ void resnet_bottleneck_conv1_bn1(
                                       (in_fm_buf, resnet_layer_in_fm, ti, tj, 0, d);
 
 
-                 VITIS_LOOP_241_5: for(int f = 0; f < 64; f++)
+                 VITIS_LOOP_237_5: for(int f = 0; f < 64; f++)
                  {
 
                         resnet_load_weights_1x1<RESNET_OUT_FM_DEPTH, RESNET_IN_FM_DEPTH>
@@ -35059,16 +35041,16 @@ void resnet_bottleneck_conv2_bn2_relu(
     const int num_of_tiles = ((RESNET_IN_FM_HEIGHT / 46) + RESNET_LAST_LAYER_EN) * (RESNET_IN_FM_WIDTH / 40);
     std::cout << "\nNo. of tiles in input feature map = " << num_of_tiles << std::endl;
 
-    VITIS_LOOP_282_1: for(int ti = 0; ti < (RESNET_IN_FM_HEIGHT / 46) + RESNET_LAST_LAYER_EN; ti++)
+    VITIS_LOOP_278_1: for(int ti = 0; ti < (RESNET_IN_FM_HEIGHT / 46) + RESNET_LAST_LAYER_EN; ti++)
     {
-        VITIS_LOOP_284_2: for(int tj = 0; tj < (RESNET_IN_FM_WIDTH / 40); tj++)
+        VITIS_LOOP_280_2: for(int tj = 0; tj < (RESNET_IN_FM_WIDTH / 40); tj++)
         {
             std::cout << "Processing Tile " << ti*(RESNET_IN_FM_WIDTH / 40) + tj + 1;
             std::cout << "/" << num_of_tiles << std::endl;
 
-            VITIS_LOOP_289_3: for(int b = 0; b < (RESNET_OUT_FM_DEPTH / 64); b++)
+            VITIS_LOOP_285_3: for(int b = 0; b < (RESNET_OUT_FM_DEPTH / 64); b++)
          {
-                VITIS_LOOP_291_4: for(int d = 0; d < (RESNET_IN_FM_DEPTH / 64); d++)
+                VITIS_LOOP_287_4: for(int d = 0; d < (RESNET_IN_FM_DEPTH / 64); d++)
                 {
 
 
@@ -35078,7 +35060,7 @@ void resnet_bottleneck_conv2_bn2_relu(
                                       (in_fm_buf, resnet_layer_in_fm, ti, tj, 1, d);
 
 
-                 VITIS_LOOP_301_5: for(int f = 0; f < 64; f++)
+                 VITIS_LOOP_297_5: for(int f = 0; f < 64; f++)
                  {
 
                         resnet_load_weights_3x3<RESNET_OUT_FM_DEPTH, RESNET_IN_FM_DEPTH>
@@ -35119,16 +35101,16 @@ void resnet_bottleneck_conv3_bn3_add_relu(
     const int num_of_tiles = ((RESNET_IN_FM_HEIGHT / 46) + RESNET_LAST_LAYER_EN) * (RESNET_IN_FM_WIDTH / 40);
     std::cout << "\nNo. of tiles in input feature map = " << num_of_tiles << std::endl;
 
-    VITIS_LOOP_342_1: for(int ti = 0; ti < (RESNET_IN_FM_HEIGHT / 46) + RESNET_LAST_LAYER_EN; ti++)
+    VITIS_LOOP_338_1: for(int ti = 0; ti < (RESNET_IN_FM_HEIGHT / 46) + RESNET_LAST_LAYER_EN; ti++)
     {
-        VITIS_LOOP_344_2: for(int tj = 0; tj < (RESNET_IN_FM_WIDTH / 40); tj++)
+        VITIS_LOOP_340_2: for(int tj = 0; tj < (RESNET_IN_FM_WIDTH / 40); tj++)
         {
             std::cout << "Processing Tile " << ti*(RESNET_IN_FM_WIDTH / 40) + tj + 1;
             std::cout << "/" << num_of_tiles << std::endl;
 
-            VITIS_LOOP_349_3: for(int b = 0; b < (RESNET_OUT_FM_DEPTH / 64); b++)
+            VITIS_LOOP_345_3: for(int b = 0; b < (RESNET_OUT_FM_DEPTH / 64); b++)
          {
-                VITIS_LOOP_351_4: for(int d = 0; d < (RESNET_IN_FM_DEPTH / 64); d++)
+                VITIS_LOOP_347_4: for(int d = 0; d < (RESNET_IN_FM_DEPTH / 64); d++)
                 {
 
 
@@ -35136,7 +35118,7 @@ void resnet_bottleneck_conv3_bn3_add_relu(
                                       (in_fm_buf, resnet_layer_in_fm, ti, tj, 0, d);
 
 
-                 VITIS_LOOP_359_5: for(int f = 0; f < 64; f++)
+                 VITIS_LOOP_355_5: for(int f = 0; f < 64; f++)
                  {
 
                         resnet_load_weights_1x1<RESNET_OUT_FM_DEPTH, RESNET_IN_FM_DEPTH>
@@ -35168,6 +35150,18 @@ void resnet_bottleneck_conv3_bn3_add_relu(
     }
 }
 # 4 "./resnet_top.cpp" 2
+
+
+
+
+
+
+# 1 "./resnet_layers.cpp" 1
+
+
+
+using namespace std;
+
 
 # 1 "./resnet_layer0.cpp" 1
 
@@ -35379,9 +35373,11 @@ void resnet_layer0(
 
     std::cout << "Layer 0.0.2 done" << std::endl;
 }
-# 6 "./resnet_top.cpp" 2
+# 7 "./resnet_layers.cpp" 2
 # 1 "./resnet_layer1.cpp" 1
-# 10 "./resnet_layer1.cpp"
+
+
+
 void resnet_layer1(
         fm_t resnet_layer1_input_fm[64][184][320],
         wt_t resnet_layer1_0_conv1_weights[64][64],
@@ -35408,11 +35404,11 @@ void resnet_layer1(
 )
 {
 
-    VITIS_LOOP_36_1: for(int c = 0; c < 64; c++)
+    VITIS_LOOP_30_1: for(int c = 0; c < 64; c++)
     {
-        VITIS_LOOP_38_2: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_32_2: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_40_3: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_34_3: for(int w = 0; w < 320; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer1_input_fm[c][h][w];
             }
@@ -35429,11 +35425,11 @@ void resnet_layer1(
                         (resnet_layer1_0_downsample_0_weights, resnet_layer1_0_downsample_1_params, false);
 
 
-    VITIS_LOOP_57_4: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_51_4: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_59_5: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_53_5: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_61_6: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_55_6: for(int w = 0; w < 320; w++)
             {
                 ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -35451,11 +35447,11 @@ void resnet_layer1(
                         (resnet_layer1_0_conv1_weights, resnet_layer1_0_bn1_params, true);
 
 
-    VITIS_LOOP_79_7: for(int c = 0; c < 64; c++)
+    VITIS_LOOP_73_7: for(int c = 0; c < 64; c++)
     {
-        VITIS_LOOP_81_8: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_75_8: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_83_9: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_77_9: for(int w = 0; w < 320; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -35474,11 +35470,11 @@ void resnet_layer1(
                              (resnet_layer1_0_conv2_weights, resnet_layer1_0_bn2_params);
 
 
-    VITIS_LOOP_102_10: for(int c = 0; c < 64; c++)
+    VITIS_LOOP_96_10: for(int c = 0; c < 64; c++)
     {
-        VITIS_LOOP_104_11: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_98_11: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_106_12: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_100_12: for(int w = 0; w < 320; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -35497,11 +35493,11 @@ void resnet_layer1(
                                  (resnet_layer1_0_conv3_weights, resnet_layer1_0_bn3_params);
 
 
-    VITIS_LOOP_125_13: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_119_13: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_127_14: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_121_14: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_129_15: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_123_15: for(int w = 0; w < 320; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
                 ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
@@ -35521,11 +35517,11 @@ void resnet_layer1(
                         (resnet_layer1_1_conv1_weights, resnet_layer1_1_bn1_params, true);
 
 
-    VITIS_LOOP_149_16: for(int c = 0; c < 64; c++)
+    VITIS_LOOP_143_16: for(int c = 0; c < 64; c++)
     {
-        VITIS_LOOP_151_17: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_145_17: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_153_18: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_147_18: for(int w = 0; w < 320; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -35543,11 +35539,11 @@ void resnet_layer1(
                               1, 0>
                              (resnet_layer1_1_conv2_weights, resnet_layer1_1_bn2_params);
 
-    VITIS_LOOP_171_19: for(int c = 0; c < 64; c++)
+    VITIS_LOOP_165_19: for(int c = 0; c < 64; c++)
     {
-        VITIS_LOOP_173_20: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_167_20: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_175_21: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_169_21: for(int w = 0; w < 320; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -35565,11 +35561,11 @@ void resnet_layer1(
                                   1, 0>
                                  (resnet_layer1_1_conv3_weights, resnet_layer1_1_bn3_params);
 
-    VITIS_LOOP_193_22: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_187_22: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_195_23: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_189_23: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_197_24: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_191_24: for(int w = 0; w < 320; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
                 ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
@@ -35588,11 +35584,11 @@ void resnet_layer1(
                         (resnet_layer1_2_conv1_weights, resnet_layer1_2_bn1_params, true);
 
 
-    VITIS_LOOP_216_25: for(int c = 0; c < 64; c++)
+    VITIS_LOOP_210_25: for(int c = 0; c < 64; c++)
     {
-        VITIS_LOOP_218_26: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_212_26: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_220_27: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_214_27: for(int w = 0; w < 320; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -35610,11 +35606,11 @@ void resnet_layer1(
                               1, 0>
                              (resnet_layer1_2_conv2_weights, resnet_layer1_2_bn2_params);
 
-    VITIS_LOOP_238_28: for(int c = 0; c < 64; c++)
+    VITIS_LOOP_232_28: for(int c = 0; c < 64; c++)
     {
-        VITIS_LOOP_240_29: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_234_29: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_242_30: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_236_30: for(int w = 0; w < 320; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -35632,11 +35628,11 @@ void resnet_layer1(
                                   1, 0>
                                  (resnet_layer1_2_conv3_weights, resnet_layer1_2_bn3_params);
 
-    VITIS_LOOP_260_31: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_254_31: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_262_32: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_256_32: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_264_33: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_258_33: for(int w = 0; w < 320; w++)
             {
                 resnet_layer1_output_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -35645,9 +35641,11 @@ void resnet_layer1(
 
     std::cout << "Layer 1.2.3 done" << std::endl;
 }
-# 7 "./resnet_top.cpp" 2
+# 8 "./resnet_layers.cpp" 2
 # 1 "./resnet_layer2.cpp" 1
-# 10 "./resnet_layer2.cpp"
+
+
+
 void resnet_layer2(
         fm_t resnet_layer2_input_fm[256][184][320],
         wt_t resnet_layer2_0_conv1_weights[128][256],
@@ -35680,11 +35678,11 @@ void resnet_layer2(
 )
 {
 
-    VITIS_LOOP_42_1: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_36_1: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_44_2: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_38_2: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_46_3: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_40_3: for(int w = 0; w < 320; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer2_input_fm[c][h][w];
             }
@@ -35701,11 +35699,11 @@ void resnet_layer2(
                         (resnet_layer2_0_downsample_0_weights, resnet_layer2_0_downsample_1_params, false);
 
 
-    VITIS_LOOP_63_4: for(int c = 0; c < 512; c++)
+    VITIS_LOOP_57_4: for(int c = 0; c < 512; c++)
     {
-        VITIS_LOOP_65_5: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_59_5: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_67_6: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_61_6: for(int w = 0; w < 160; w++)
             {
                 ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -35723,11 +35721,11 @@ void resnet_layer2(
                         (resnet_layer2_0_conv1_weights, resnet_layer2_0_bn1_params, true);
 
 
-    VITIS_LOOP_85_7: for(int c = 0; c < 128; c++)
+    VITIS_LOOP_79_7: for(int c = 0; c < 128; c++)
     {
-        VITIS_LOOP_87_8: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_81_8: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_89_9: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_83_9: for(int w = 0; w < 320; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -35746,11 +35744,11 @@ void resnet_layer2(
                              (resnet_layer2_0_conv2_weights, resnet_layer2_0_bn2_params);
 
 
-    VITIS_LOOP_108_10: for(int c = 0; c < 128; c++)
+    VITIS_LOOP_102_10: for(int c = 0; c < 128; c++)
     {
-        VITIS_LOOP_110_11: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_104_11: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_112_12: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_106_12: for(int w = 0; w < 160; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -35769,11 +35767,11 @@ void resnet_layer2(
                                  (resnet_layer2_0_conv3_weights, resnet_layer2_0_bn3_params);
 
 
-    VITIS_LOOP_131_13: for(int c = 0; c < 512; c++)
+    VITIS_LOOP_125_13: for(int c = 0; c < 512; c++)
     {
-        VITIS_LOOP_133_14: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_127_14: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_135_15: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_129_15: for(int w = 0; w < 160; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
                 ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
@@ -35793,11 +35791,11 @@ void resnet_layer2(
                         (resnet_layer2_1_conv1_weights, resnet_layer2_1_bn1_params, true);
 
 
-    VITIS_LOOP_155_16: for(int c = 0; c < 128; c++)
+    VITIS_LOOP_149_16: for(int c = 0; c < 128; c++)
     {
-        VITIS_LOOP_157_17: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_151_17: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_159_18: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_153_18: for(int w = 0; w < 160; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -35815,11 +35813,11 @@ void resnet_layer2(
                               1, 0>
                              (resnet_layer2_1_conv2_weights, resnet_layer2_1_bn2_params);
 
-    VITIS_LOOP_177_19: for(int c = 0; c < 128; c++)
+    VITIS_LOOP_171_19: for(int c = 0; c < 128; c++)
     {
-        VITIS_LOOP_179_20: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_173_20: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_181_21: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_175_21: for(int w = 0; w < 160; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -35837,11 +35835,11 @@ void resnet_layer2(
                                   1, 0>
                                  (resnet_layer2_1_conv3_weights, resnet_layer2_1_bn3_params);
 
-    VITIS_LOOP_199_22: for(int c = 0; c < 512; c++)
+    VITIS_LOOP_193_22: for(int c = 0; c < 512; c++)
     {
-        VITIS_LOOP_201_23: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_195_23: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_203_24: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_197_24: for(int w = 0; w < 160; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
                 ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
@@ -35860,11 +35858,11 @@ void resnet_layer2(
                         (resnet_layer2_2_conv1_weights, resnet_layer2_2_bn1_params, true);
 
 
-    VITIS_LOOP_222_25: for(int c = 0; c < 128; c++)
+    VITIS_LOOP_216_25: for(int c = 0; c < 128; c++)
     {
-        VITIS_LOOP_224_26: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_218_26: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_226_27: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_220_27: for(int w = 0; w < 160; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -35882,11 +35880,11 @@ void resnet_layer2(
                               1, 0>
                              (resnet_layer2_2_conv2_weights, resnet_layer2_2_bn2_params);
 
-    VITIS_LOOP_244_28: for(int c = 0; c < 128; c++)
+    VITIS_LOOP_238_28: for(int c = 0; c < 128; c++)
     {
-        VITIS_LOOP_246_29: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_240_29: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_248_30: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_242_30: for(int w = 0; w < 160; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -35904,11 +35902,11 @@ void resnet_layer2(
                                   1, 0>
                                  (resnet_layer2_2_conv3_weights, resnet_layer2_2_bn3_params);
 
-    VITIS_LOOP_266_31: for(int c = 0; c < 512; c++)
+    VITIS_LOOP_260_31: for(int c = 0; c < 512; c++)
     {
-        VITIS_LOOP_268_32: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_262_32: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_270_33: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_264_33: for(int w = 0; w < 160; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
                 ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
@@ -35927,11 +35925,11 @@ void resnet_layer2(
                         (resnet_layer2_3_conv1_weights, resnet_layer2_3_bn1_params, true);
 
 
-    VITIS_LOOP_289_34: for(int c = 0; c < 128; c++)
+    VITIS_LOOP_283_34: for(int c = 0; c < 128; c++)
     {
-        VITIS_LOOP_291_35: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_285_35: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_293_36: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_287_36: for(int w = 0; w < 160; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -35949,11 +35947,11 @@ void resnet_layer2(
                               1, 0>
                              (resnet_layer2_3_conv2_weights, resnet_layer2_3_bn2_params);
 
-    VITIS_LOOP_311_37: for(int c = 0; c < 128; c++)
+    VITIS_LOOP_305_37: for(int c = 0; c < 128; c++)
     {
-        VITIS_LOOP_313_38: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_307_38: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_315_39: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_309_39: for(int w = 0; w < 160; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -35971,11 +35969,11 @@ void resnet_layer2(
                                   1, 0>
                                  (resnet_layer2_3_conv3_weights, resnet_layer2_3_bn3_params);
 
-    VITIS_LOOP_333_40: for(int c = 0; c < 512; c++)
+    VITIS_LOOP_327_40: for(int c = 0; c < 512; c++)
     {
-        VITIS_LOOP_335_41: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_329_41: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_337_42: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_331_42: for(int w = 0; w < 160; w++)
             {
                 resnet_layer2_output_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -35984,9 +35982,11 @@ void resnet_layer2(
 
     std::cout << "Layer 2.3.3 done" << std::endl;
 }
-# 8 "./resnet_top.cpp" 2
+# 9 "./resnet_layers.cpp" 2
 # 1 "./resnet_layer3.cpp" 1
-# 10 "./resnet_layer3.cpp"
+
+
+
 void resnet_layer3(
         fm_t resnet_layer3_input_fm[512][92][160],
         wt_t resnet_layer3_0_conv1_weights[256][512],
@@ -36031,11 +36031,11 @@ void resnet_layer3(
 )
 {
 
-    VITIS_LOOP_54_1: for(int c = 0; c < 512; c++)
+    VITIS_LOOP_48_1: for(int c = 0; c < 512; c++)
     {
-        VITIS_LOOP_56_2: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_50_2: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_58_3: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_52_3: for(int w = 0; w < 160; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer3_input_fm[c][h][w];
             }
@@ -36052,11 +36052,11 @@ void resnet_layer3(
                         (resnet_layer3_0_downsample_0_weights, resnet_layer3_0_downsample_1_params, false);
 
 
-    VITIS_LOOP_75_4: for(int c = 0; c < 1024; c++)
+    VITIS_LOOP_69_4: for(int c = 0; c < 1024; c++)
     {
-        VITIS_LOOP_77_5: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_71_5: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_79_6: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_73_6: for(int w = 0; w < 80; w++)
             {
                 ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36074,11 +36074,11 @@ void resnet_layer3(
                         (resnet_layer3_0_conv1_weights, resnet_layer3_0_bn1_params, true);
 
 
-    VITIS_LOOP_97_7: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_91_7: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_99_8: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_93_8: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_101_9: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_95_9: for(int w = 0; w < 160; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36097,11 +36097,11 @@ void resnet_layer3(
                              (resnet_layer3_0_conv2_weights, resnet_layer3_0_bn2_params);
 
 
-    VITIS_LOOP_120_10: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_114_10: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_122_11: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_116_11: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_124_12: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_118_12: for(int w = 0; w < 80; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36120,11 +36120,11 @@ void resnet_layer3(
                                  (resnet_layer3_0_conv3_weights, resnet_layer3_0_bn3_params);
 
 
-    VITIS_LOOP_143_13: for(int c = 0; c < 1024; c++)
+    VITIS_LOOP_137_13: for(int c = 0; c < 1024; c++)
     {
-        VITIS_LOOP_145_14: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_139_14: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_147_15: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_141_15: for(int w = 0; w < 80; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
                 ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
@@ -36144,11 +36144,11 @@ void resnet_layer3(
                         (resnet_layer3_1_conv1_weights, resnet_layer3_1_bn1_params, true);
 
 
-    VITIS_LOOP_167_16: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_161_16: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_169_17: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_163_17: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_171_18: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_165_18: for(int w = 0; w < 80; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36166,11 +36166,11 @@ void resnet_layer3(
                               1, 0>
                              (resnet_layer3_1_conv2_weights, resnet_layer3_1_bn2_params);
 
-    VITIS_LOOP_189_19: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_183_19: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_191_20: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_185_20: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_193_21: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_187_21: for(int w = 0; w < 80; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36188,11 +36188,11 @@ void resnet_layer3(
                                   1, 0>
                                  (resnet_layer3_1_conv3_weights, resnet_layer3_1_bn3_params);
 
-    VITIS_LOOP_211_22: for(int c = 0; c < 1024; c++)
+    VITIS_LOOP_205_22: for(int c = 0; c < 1024; c++)
     {
-        VITIS_LOOP_213_23: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_207_23: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_215_24: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_209_24: for(int w = 0; w < 80; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
                 ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
@@ -36211,11 +36211,11 @@ void resnet_layer3(
                         (resnet_layer3_2_conv1_weights, resnet_layer3_2_bn1_params, true);
 
 
-    VITIS_LOOP_234_25: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_228_25: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_236_26: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_230_26: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_238_27: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_232_27: for(int w = 0; w < 80; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36233,11 +36233,11 @@ void resnet_layer3(
                               1, 0>
                              (resnet_layer3_2_conv2_weights, resnet_layer3_2_bn2_params);
 
-    VITIS_LOOP_256_28: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_250_28: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_258_29: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_252_29: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_260_30: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_254_30: for(int w = 0; w < 80; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36255,11 +36255,11 @@ void resnet_layer3(
                                   1, 0>
                                  (resnet_layer3_2_conv3_weights, resnet_layer3_2_bn3_params);
 
-    VITIS_LOOP_278_31: for(int c = 0; c < 1024; c++)
+    VITIS_LOOP_272_31: for(int c = 0; c < 1024; c++)
     {
-        VITIS_LOOP_280_32: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_274_32: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_282_33: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_276_33: for(int w = 0; w < 80; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
                 ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
@@ -36278,11 +36278,11 @@ void resnet_layer3(
                         (resnet_layer3_3_conv1_weights, resnet_layer3_3_bn1_params, true);
 
 
-    VITIS_LOOP_301_34: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_295_34: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_303_35: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_297_35: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_305_36: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_299_36: for(int w = 0; w < 80; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36300,11 +36300,11 @@ void resnet_layer3(
                               1, 0>
                              (resnet_layer3_3_conv2_weights, resnet_layer3_3_bn2_params);
 
-    VITIS_LOOP_323_37: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_317_37: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_325_38: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_319_38: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_327_39: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_321_39: for(int w = 0; w < 80; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36322,11 +36322,11 @@ void resnet_layer3(
                                   1, 0>
                                  (resnet_layer3_3_conv3_weights, resnet_layer3_3_bn3_params);
 
-    VITIS_LOOP_345_40: for(int c = 0; c < 1024; c++)
+    VITIS_LOOP_339_40: for(int c = 0; c < 1024; c++)
     {
-        VITIS_LOOP_347_41: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_341_41: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_349_42: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_343_42: for(int w = 0; w < 80; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
                 ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
@@ -36345,11 +36345,11 @@ void resnet_layer3(
                         (resnet_layer3_4_conv1_weights, resnet_layer3_4_bn1_params, true);
 
 
-    VITIS_LOOP_368_43: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_362_43: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_370_44: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_364_44: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_372_45: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_366_45: for(int w = 0; w < 80; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36367,11 +36367,11 @@ void resnet_layer3(
                               1, 0>
                              (resnet_layer3_4_conv2_weights, resnet_layer3_4_bn2_params);
 
-    VITIS_LOOP_390_46: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_384_46: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_392_47: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_386_47: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_394_48: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_388_48: for(int w = 0; w < 80; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36389,11 +36389,11 @@ void resnet_layer3(
                                   1, 0>
                                  (resnet_layer3_4_conv3_weights, resnet_layer3_4_bn3_params);
 
-    VITIS_LOOP_412_49: for(int c = 0; c < 1024; c++)
+    VITIS_LOOP_406_49: for(int c = 0; c < 1024; c++)
     {
-        VITIS_LOOP_414_50: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_408_50: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_416_51: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_410_51: for(int w = 0; w < 80; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
                 ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
@@ -36412,11 +36412,11 @@ void resnet_layer3(
                         (resnet_layer3_5_conv1_weights, resnet_layer3_5_bn1_params, true);
 
 
-    VITIS_LOOP_435_52: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_429_52: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_437_53: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_431_53: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_439_54: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_433_54: for(int w = 0; w < 80; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36434,11 +36434,11 @@ void resnet_layer3(
                               1, 0>
                              (resnet_layer3_5_conv2_weights, resnet_layer3_5_bn2_params);
 
-    VITIS_LOOP_457_55: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_451_55: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_459_56: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_453_56: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_461_57: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_455_57: for(int w = 0; w < 80; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36457,11 +36457,11 @@ void resnet_layer3(
                                  (resnet_layer3_5_conv3_weights, resnet_layer3_5_bn3_params);
 
 
-    VITIS_LOOP_480_58: for(int c = 0; c < 1024; c++)
+    VITIS_LOOP_474_58: for(int c = 0; c < 1024; c++)
     {
-        VITIS_LOOP_482_59: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_476_59: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_484_60: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_478_60: for(int w = 0; w < 80; w++)
             {
                 resnet_layer3_output_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36470,9 +36470,11 @@ void resnet_layer3(
 
     std::cout << "Layer 3.5.3 done" << std::endl;
 }
-# 9 "./resnet_top.cpp" 2
+# 10 "./resnet_layers.cpp" 2
 # 1 "./resnet_layer4.cpp" 1
-# 10 "./resnet_layer4.cpp"
+
+
+
 void resnet_layer4(
         fm_t resnet_layer4_input_fm[1024][46][80],
         wt_t resnet_layer4_0_conv1_weights[512][1024],
@@ -36499,11 +36501,11 @@ void resnet_layer4(
 )
 {
 
-    VITIS_LOOP_36_1: for(int c = 0; c < 1024; c++)
+    VITIS_LOOP_30_1: for(int c = 0; c < 1024; c++)
     {
-        VITIS_LOOP_38_2: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_32_2: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_40_3: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_34_3: for(int w = 0; w < 80; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer4_input_fm[c][h][w];
             }
@@ -36520,11 +36522,11 @@ void resnet_layer4(
                         (resnet_layer4_0_downsample_0_weights, resnet_layer4_0_downsample_1_params, false);
 
 
-    VITIS_LOOP_57_4: for(int c = 0; c < 2048; c++)
+    VITIS_LOOP_51_4: for(int c = 0; c < 2048; c++)
     {
-        VITIS_LOOP_59_5: for(int h = 0; h < 23; h++)
+        VITIS_LOOP_53_5: for(int h = 0; h < 23; h++)
         {
-            VITIS_LOOP_61_6: for(int w = 0; w < 40; w++)
+            VITIS_LOOP_55_6: for(int w = 0; w < 40; w++)
             {
                 ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36542,11 +36544,11 @@ void resnet_layer4(
                         (resnet_layer4_0_conv1_weights, resnet_layer4_0_bn1_params, true);
 
 
-    VITIS_LOOP_79_7: for(int c = 0; c < 512; c++)
+    VITIS_LOOP_73_7: for(int c = 0; c < 512; c++)
     {
-        VITIS_LOOP_81_8: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_75_8: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_83_9: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_77_9: for(int w = 0; w < 80; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36565,11 +36567,11 @@ void resnet_layer4(
                              (resnet_layer4_0_conv2_weights, resnet_layer4_0_bn2_params);
 
 
-    VITIS_LOOP_102_10: for(int c = 0; c < 512; c++)
+    VITIS_LOOP_96_10: for(int c = 0; c < 512; c++)
     {
-        VITIS_LOOP_104_11: for(int h = 0; h < 23; h++)
+        VITIS_LOOP_98_11: for(int h = 0; h < 23; h++)
         {
-            VITIS_LOOP_106_12: for(int w = 0; w < 40; w++)
+            VITIS_LOOP_100_12: for(int w = 0; w < 40; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36588,11 +36590,11 @@ void resnet_layer4(
                                  (resnet_layer4_0_conv3_weights, resnet_layer4_0_bn3_params);
 
 
-    VITIS_LOOP_125_13: for(int c = 0; c < 2048; c++)
+    VITIS_LOOP_119_13: for(int c = 0; c < 2048; c++)
     {
-        VITIS_LOOP_127_14: for(int h = 0; h < 23; h++)
+        VITIS_LOOP_121_14: for(int h = 0; h < 23; h++)
         {
-            VITIS_LOOP_129_15: for(int w = 0; w < 40; w++)
+            VITIS_LOOP_123_15: for(int w = 0; w < 40; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
                 ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
@@ -36612,11 +36614,11 @@ void resnet_layer4(
                         (resnet_layer4_1_conv1_weights, resnet_layer4_1_bn1_params, true);
 
 
-    VITIS_LOOP_149_16: for(int c = 0; c < 512; c++)
+    VITIS_LOOP_143_16: for(int c = 0; c < 512; c++)
     {
-        VITIS_LOOP_151_17: for(int h = 0; h < 23; h++)
+        VITIS_LOOP_145_17: for(int h = 0; h < 23; h++)
         {
-            VITIS_LOOP_153_18: for(int w = 0; w < 40; w++)
+            VITIS_LOOP_147_18: for(int w = 0; w < 40; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36634,11 +36636,11 @@ void resnet_layer4(
                               1, 1>
                              (resnet_layer4_1_conv2_weights, resnet_layer4_1_bn2_params);
 
-    VITIS_LOOP_171_19: for(int c = 0; c < 512; c++)
+    VITIS_LOOP_165_19: for(int c = 0; c < 512; c++)
     {
-        VITIS_LOOP_173_20: for(int h = 0; h < 23; h++)
+        VITIS_LOOP_167_20: for(int h = 0; h < 23; h++)
         {
-            VITIS_LOOP_175_21: for(int w = 0; w < 40; w++)
+            VITIS_LOOP_169_21: for(int w = 0; w < 40; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36656,11 +36658,11 @@ void resnet_layer4(
                                   1, 1>
                                  (resnet_layer4_1_conv3_weights, resnet_layer4_1_bn3_params);
 
-    VITIS_LOOP_193_22: for(int c = 0; c < 2048; c++)
+    VITIS_LOOP_187_22: for(int c = 0; c < 2048; c++)
     {
-        VITIS_LOOP_195_23: for(int h = 0; h < 23; h++)
+        VITIS_LOOP_189_23: for(int h = 0; h < 23; h++)
         {
-            VITIS_LOOP_197_24: for(int w = 0; w < 40; w++)
+            VITIS_LOOP_191_24: for(int w = 0; w < 40; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
                 ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
@@ -36679,11 +36681,11 @@ void resnet_layer4(
                         (resnet_layer4_2_conv1_weights, resnet_layer4_2_bn1_params, true);
 
 
-    VITIS_LOOP_216_25: for(int c = 0; c < 512; c++)
+    VITIS_LOOP_210_25: for(int c = 0; c < 512; c++)
     {
-        VITIS_LOOP_218_26: for(int h = 0; h < 23; h++)
+        VITIS_LOOP_212_26: for(int h = 0; h < 23; h++)
         {
-            VITIS_LOOP_220_27: for(int w = 0; w < 40; w++)
+            VITIS_LOOP_214_27: for(int w = 0; w < 40; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36701,11 +36703,11 @@ void resnet_layer4(
                               1, 1>
                              (resnet_layer4_2_conv2_weights, resnet_layer4_2_bn2_params);
 
-    VITIS_LOOP_238_28: for(int c = 0; c < 512; c++)
+    VITIS_LOOP_232_28: for(int c = 0; c < 512; c++)
     {
-        VITIS_LOOP_240_29: for(int h = 0; h < 23; h++)
+        VITIS_LOOP_234_29: for(int h = 0; h < 23; h++)
         {
-            VITIS_LOOP_242_30: for(int w = 0; w < 40; w++)
+            VITIS_LOOP_236_30: for(int w = 0; w < 40; w++)
             {
                 resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36723,11 +36725,11 @@ void resnet_layer4(
                                   1, 1>
                                  (resnet_layer4_2_conv3_weights, resnet_layer4_2_bn3_params);
 
-    VITIS_LOOP_260_31: for(int c = 0; c < 2048; c++)
+    VITIS_LOOP_254_31: for(int c = 0; c < 2048; c++)
     {
-        VITIS_LOOP_262_32: for(int h = 0; h < 23; h++)
+        VITIS_LOOP_256_32: for(int h = 0; h < 23; h++)
         {
-            VITIS_LOOP_264_33: for(int w = 0; w < 40; w++)
+            VITIS_LOOP_258_33: for(int w = 0; w < 40; w++)
             {
                 resnet_layer4_output_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
             }
@@ -36736,8 +36738,26 @@ void resnet_layer4(
 
     std::cout << "Layer 4.2.3 done" << std::endl;
 }
-# 10 "./resnet_top.cpp" 2
+# 11 "./resnet_layers.cpp" 2
+# 11 "./resnet_top.cpp" 2
 
+fm_t in_fm_buf[64][46 + 5][40 + 5];
+fm_t out_fm_buf[64][46][40];
+fm_t partial_out_fm_buf[64][46][40];
+fm_t ds_fm_buf[64][46][40];
+fm_t resnet_layer_out_fm[2048][184][320];
+fm_t resnet_layer_in_fm[2048][184][320];
+fm_t ds_fm[2048][184][320];
+
+fm_t resnet_layer0_in_fm [3][736][1280];
+fm_t resnet_layer0_mx_fm [64][368][640];
+fm_t resnet_layer0_out_fm[64][184][320];
+
+wt_t weight_buf_1x1[64];
+wt_t weight_buf_3x3[64][3][3];
+wt_t weight_buf_7x7[64][7][7];
+
+wt_t param_buf[3][64];
 
 void resnet_top (
     fm_t resnet_layer0_input_fm[3][736][1280],
@@ -36875,11 +36895,11 @@ void resnet_top (
     std::cout << "Layer 0 Processing Complete!" << std::endl << std::endl;
 
 
-    VITIS_LOOP_148_1: for(int c = 0; c < 64; c++)
+    VITIS_LOOP_166_1: for(int c = 0; c < 64; c++)
     {
-        VITIS_LOOP_150_2: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_168_2: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_152_3: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_170_3: for(int w = 0; w < 320; w++)
             {
                 resnet_layer1_input_fm[c][h][w] = resnet_layer0_output_fm[c][h][w];
             }
@@ -36908,11 +36928,11 @@ void resnet_top (
     std::cout << "Layer 1 Processing Complete!" << std::endl << std::endl;
 
 
-    VITIS_LOOP_181_4: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_199_4: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_183_5: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_201_5: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_185_6: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_203_6: for(int w = 0; w < 320; w++)
             {
                 resnet_layer2_input_fm[c][h][w] = resnet_layer1_output_fm[c][h][w];
             }
@@ -36944,11 +36964,11 @@ void resnet_top (
     std::cout << "Layer 2 Processing Complete!" << std::endl << std::endl;
 
 
-    VITIS_LOOP_217_7: for(int c = 0; c < 512; c++)
+    VITIS_LOOP_235_7: for(int c = 0; c < 512; c++)
     {
-        VITIS_LOOP_219_8: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_237_8: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_221_9: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_239_9: for(int w = 0; w < 160; w++)
             {
                 resnet_layer3_input_fm[c][h][w] = resnet_layer2_output_fm[c][h][w];
             }
@@ -36986,11 +37006,11 @@ void resnet_top (
     std::cout << "Layer 3 Processing Complete!" << std::endl << std::endl;
 
 
-    VITIS_LOOP_259_10: for(int c = 0; c < 1024; c++)
+    VITIS_LOOP_277_10: for(int c = 0; c < 1024; c++)
     {
-        VITIS_LOOP_261_11: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_279_11: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_263_12: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_281_12: for(int w = 0; w < 80; w++)
             {
                 resnet_layer4_input_fm[c][h][w] = resnet_layer3_output_fm[c][h][w];
             }

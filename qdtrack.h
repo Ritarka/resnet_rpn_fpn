@@ -6,6 +6,8 @@
 #include <ap_int.h>
 #include <ap_fixed.h>
 
+#pragma once
+
 //--------------------------------------------------------------------------
 // Compiler Defines
 //--------------------------------------------------------------------------
@@ -388,14 +390,6 @@ void resnet_load_input_fm_tile (
         int   d
 );
 
-void resnet_load_residual_fm_tile (
-        fm_t in_fm_buf[RESNET_IN_BUF_CH][RESNET_IN_BUF_ROWS][RESNET_IN_BUF_COLS], 
-        fm_t in_fm[2048][184][320], 
-        int   ti, 
-        int   tj,
-        int   b 
-);
-
 template<const int RESNET_OUT_CH, const int RESNET_IN_CH>
 void resnet_load_weights_1x1 (
         wt_t weight_buf_1x1[RESNET_IN_BUF_CH],
@@ -426,12 +420,6 @@ void resnet_load_batchnorm_params (
         fm_t param_buf[3][RESNET_OUT_BUF_CH], 
         wt_t params[3][RESNET_OUT_CH], 
         int b
-);
-
-void resnet_save_partial_out_buf (
-        fm_t partial_out_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS], 
-        fm_t out_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS],
-        int d
 );
 
 template<const int S>

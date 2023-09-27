@@ -1,0 +1,7 @@
+proj/
+solution/
+.autopilot/
+db/
+vlog/
+
+*.dat
