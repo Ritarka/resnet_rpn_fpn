@@ -1213,47 +1213,47 @@ void fpn_convert_type()
 
 void rpn_load_weights ()
 {
-    ifstream ifs_rpn_conv_weight_param("/usr/scratch/pchhatrapati3/hls/weights/module.rpn_head.rpn_conv.weight.bin", ios::in | ios::binary);
+    ifstream ifs_rpn_conv_weight_param("/usr/scratch/rsamanta9/weights/module.rpn_head.rpn_conv.weight.bin", ios::in | ios::binary);
     ifs_rpn_conv_weight_param.read((char*)(***fl_rpn_conv_weight), RPN_CONV_OUT_CH*RPN_CONV_IN_CH*3*3*sizeof(float));
     ifs_rpn_conv_weight_param.close();
 
-    ifstream ifs_rpn_conv_bias_param("/usr/scratch/pchhatrapati3/hls/weights/module.rpn_head.rpn_conv.bias.bin", ios::in | ios::binary);
+    ifstream ifs_rpn_conv_bias_param("/usr/scratch/rsamanta9/weights/module.rpn_head.rpn_conv.bias.bin", ios::in | ios::binary);
     ifs_rpn_conv_bias_param.read((char*)(fl_rpn_conv_bias), RPN_CONV_OUT_CH*sizeof(float));
     ifs_rpn_conv_bias_param.close();
 
-    ifstream ifs_rpn_cls_weight_param("/usr/scratch/pchhatrapati3/hls/weights/module.rpn_head.rpn_cls.weight.bin", ios::in | ios::binary);
+    ifstream ifs_rpn_cls_weight_param("/usr/scratch/rsamanta9/weights/module.rpn_head.rpn_cls.weight.bin", ios::in | ios::binary);
     ifs_rpn_cls_weight_param.read((char*)(***fl_rpn_cls_weight), RPN_CLS_OUT_CH*RPN_CLS_IN_CH*1*1*sizeof(float));
     ifs_rpn_cls_weight_param.close();
 
-    ifstream ifs_rpn_cls_bias_param("/usr/scratch/pchhatrapati3/hls/weights/module.rpn_head.rpn_cls.bias.bin", ios::in | ios::binary);
+    ifstream ifs_rpn_cls_bias_param("/usr/scratch/rsamanta9/weights/module.rpn_head.rpn_cls.bias.bin", ios::in | ios::binary);
     ifs_rpn_cls_bias_param.read((char*)(fl_rpn_cls_bias), RPN_CLS_OUT_CH*sizeof(float));
     ifs_rpn_cls_bias_param.close();
 
-    ifstream ifs_rpn_reg_weight_param("/usr/scratch/pchhatrapati3/hls/weights/module.rpn_head.rpn_reg.weight.bin", ios::in | ios::binary);
+    ifstream ifs_rpn_reg_weight_param("/usr/scratch/rsamanta9/weights/module.rpn_head.rpn_reg.weight.bin", ios::in | ios::binary);
     ifs_rpn_reg_weight_param.read((char*)(***fl_rpn_reg_weight), RPN_REG_OUT_CH*RPN_REG_IN_CH*1*1*sizeof(float));
     ifs_rpn_reg_weight_param.close();
 
-    ifstream ifs_rpn_reg_bias_param("/usr/scratch/pchhatrapati3/hls/weights/module.rpn_head.rpn_reg.bias.bin", ios::in | ios::binary);
+    ifstream ifs_rpn_reg_bias_param("/usr/scratch/rsamanta9/weights/module.rpn_head.rpn_reg.bias.bin", ios::in | ios::binary);
     ifs_rpn_reg_bias_param.read((char*)(fl_rpn_reg_bias), RPN_REG_OUT_CH*sizeof(float));
     ifs_rpn_reg_bias_param.close();
 
-    ifstream ifs_rpn_anchor0_param("/usr/scratch/pchhatrapati3/hls/weights/anchor0.bin", ios::in | ios::binary);
+    ifstream ifs_rpn_anchor0_param("/usr/scratch/rsamanta9/weights/anchor0.bin", ios::in | ios::binary);
     ifs_rpn_anchor0_param.read((char*)(fl_anchor_box0), RPN_ANCHORS0_IN_FM*4*sizeof(float));
     ifs_rpn_anchor0_param.close();
 
-    ifstream ifs_rpn_anchor1_param("/usr/scratch/pchhatrapati3/hls/weights/anchor1.bin", ios::in | ios::binary);
+    ifstream ifs_rpn_anchor1_param("/usr/scratch/rsamanta9/weights/anchor1.bin", ios::in | ios::binary);
     ifs_rpn_anchor1_param.read((char*)(fl_anchor_box1), RPN_ANCHORS1_IN_FM*4*sizeof(float));
     ifs_rpn_anchor1_param.close();
     
-    ifstream ifs_rpn_anchor2_param("/usr/scratch/pchhatrapati3/hls/weights/anchor2.bin", ios::in | ios::binary);
+    ifstream ifs_rpn_anchor2_param("/usr/scratch/rsamanta9/weights/anchor2.bin", ios::in | ios::binary);
     ifs_rpn_anchor2_param.read((char*)(fl_anchor_box2), RPN_ANCHORS2_IN_FM*4*sizeof(float));
     ifs_rpn_anchor2_param.close();
 
-    ifstream ifs_rpn_anchor3_param("/usr/scratch/pchhatrapati3/hls/weights/anchor3.bin", ios::in | ios::binary);
+    ifstream ifs_rpn_anchor3_param("/usr/scratch/rsamanta9/weights/anchor3.bin", ios::in | ios::binary);
     ifs_rpn_anchor3_param.read((char*)(fl_anchor_box3), RPN_ANCHORS3_IN_FM*4*sizeof(float));
     ifs_rpn_anchor3_param.close();
 
-    ifstream ifs_rpn_anchor4_param("/usr/scratch/pchhatrapati3/hls/weights/anchor4.bin", ios::in | ios::binary);
+    ifstream ifs_rpn_anchor4_param("/usr/scratch/rsamanta9/weights/anchor4.bin", ios::in | ios::binary);
     ifs_rpn_anchor4_param.read((char*)(fl_anchor_box4), RPN_ANCHORS4_IN_FM*4*sizeof(float));
     ifs_rpn_anchor4_param.close();
 
