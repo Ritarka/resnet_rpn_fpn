@@ -1,5 +1,4 @@
 #include "qdtrack.h"
-// #include "resnet.h"
 #include "resnet_util.h"
 
 void resnet_layer0(

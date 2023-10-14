@@ -1,4 +1,3 @@
-// #include "resnet.h"
 #include "resnet_util.h"
 
 using namespace std;

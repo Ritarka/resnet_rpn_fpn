@@ -2,11 +2,6 @@
 #include "qdtrack.h"
 #include "resnet_util.h"
 
-// #include "resnet_layer0.cpp"
-// #include "resnet_layer1.cpp"
-// #include "resnet_layer2.cpp"
-// #include "resnet_layer3.cpp"
-// #include "resnet_layer4.cpp"
 #include "resnet_layers.cpp"
 
 fm_t in_fm_buf[RESNET_IN_BUF_CH][RESNET_IN_BUF_ROWS + 5][RESNET_IN_BUF_COLS + 5];
