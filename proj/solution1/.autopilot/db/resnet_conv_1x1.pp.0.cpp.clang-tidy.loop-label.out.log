@@ -23,18 +23,18 @@
       ^~~
       VITIS_LOOP_1247_1: 
 /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_conv_1x1.pp.0.cpp:32102:7: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_conv_1x1.pp.0.cpp:34780:5: warning: Added loop label VITIS_LOOP_17_1:   [xilinx-label-all-loops]
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_conv_1x1.pp.0.cpp:34783:5: warning: Added loop label VITIS_LOOP_17_1:   [xilinx-label-all-loops]
     for(int i = 0; i < 46; i=i+S)
     ^~~
     VITIS_LOOP_17_1: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_conv_1x1.pp.0.cpp:34780:5: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_conv_1x1.pp.0.cpp:34783:9: warning: Added loop label VITIS_LOOP_20_2:   [xilinx-label-all-loops]
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_conv_1x1.pp.0.cpp:34783:5: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_conv_1x1.pp.0.cpp:34786:9: warning: Added loop label VITIS_LOOP_20_2:   [xilinx-label-all-loops]
         for(int j = 0; j < 40; j=j+S)
         ^~~
         VITIS_LOOP_20_2: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_conv_1x1.pp.0.cpp:34783:9: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_conv_1x1.pp.0.cpp:34789:10: warning: Added loop label VITIS_LOOP_26_3:   [xilinx-label-all-loops]
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_conv_1x1.pp.0.cpp:34786:9: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_conv_1x1.pp.0.cpp:34792:10: warning: Added loop label VITIS_LOOP_26_3:   [xilinx-label-all-loops]
          for(int c = 0; c < 64; c++)
          ^~~
          VITIS_LOOP_26_3: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_conv_1x1.pp.0.cpp:34789:10: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_conv_1x1.pp.0.cpp:34792:10: note: FIX-IT applied suggested code changes

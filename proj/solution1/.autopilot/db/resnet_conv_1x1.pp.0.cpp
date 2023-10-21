@@ -34130,7 +34130,7 @@ void resnet_layer4(
         fm_t resnet_layer4_output_fm[2048][46][80]
 );
 
-void resnet_top (
+void resnet_top_1 (
     fm_t resnet_layer0_input_fm[3][736][1280],
     wt_t resnet_layer0_conv1_weights[64][3][7][7],
     wt_t resnet_layer0_bn1_params[3][64],
@@ -34186,8 +34186,11 @@ void resnet_top (
  wt_t resnet_layer2_3_bn2_params[3][128],
     wt_t resnet_layer2_3_conv3_weights[512][128],
  wt_t resnet_layer2_3_bn3_params[3][512],
-    fm_t resnet_layer2_output_fm[512][184][320],
+    fm_t resnet_layer2_output_fm[512][184][320]
+);
 
+void resnet_top_2(
+    fm_t resnet_layer2_output_fm[512][184][320],
     fm_t resnet_layer3_input_fm[512][92][160],
     wt_t resnet_layer3_0_conv1_weights[256][512],
  wt_t resnet_layer3_0_bn1_params[3][256],

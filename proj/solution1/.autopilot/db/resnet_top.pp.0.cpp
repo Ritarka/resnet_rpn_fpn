@@ -34131,7 +34131,7 @@ void resnet_layer4(
         fm_t resnet_layer4_output_fm[2048][46][80]
 );
 
-void resnet_top (
+void resnet_top_1 (
     fm_t resnet_layer0_input_fm[3][736][1280],
     wt_t resnet_layer0_conv1_weights[64][3][7][7],
     wt_t resnet_layer0_bn1_params[3][64],
@@ -34187,8 +34187,11 @@ void resnet_top (
  wt_t resnet_layer2_3_bn2_params[3][128],
     wt_t resnet_layer2_3_conv3_weights[512][128],
  wt_t resnet_layer2_3_bn3_params[3][512],
-    fm_t resnet_layer2_output_fm[512][184][320],
+    fm_t resnet_layer2_output_fm[512][184][320]
+);
 
+void resnet_top_2(
+    fm_t resnet_layer2_output_fm[512][184][320],
     fm_t resnet_layer3_input_fm[512][92][160],
     wt_t resnet_layer3_0_conv1_weights[256][512],
  wt_t resnet_layer3_0_bn1_params[3][256],
@@ -34763,6 +34766,9 @@ void test_top (
     fm_t dets[1000][5]
 );
 # 3 "./resnet_top.cpp" 2
+
+
+# 1 "./resnet_layers.cpp" 1
 # 1 "./resnet_util.h" 1
 
 
@@ -35149,22 +35155,12 @@ void resnet_bottleneck_conv3_bn3_add_relu(
         }
     }
 }
-# 4 "./resnet_top.cpp" 2
-
-
-
-
-
-
-# 1 "./resnet_layers.cpp" 1
-
-
+# 2 "./resnet_layers.cpp" 2
 
 using namespace std;
 
 
 # 1 "./resnet_layer0.cpp" 1
-
 
 
 
@@ -35178,11 +35174,11 @@ void resnet_layer0(
 
 
 
-    VITIS_LOOP_15_1: for(int c = 0; c < 3; c++)
+    VITIS_LOOP_14_1: for(int c = 0; c < 3; c++)
     {
-        VITIS_LOOP_17_2: for(int h = 0; h < 736; h++)
+        VITIS_LOOP_16_2: for(int h = 0; h < 736; h++)
         {
-            VITIS_LOOP_19_3: for(int w = 0; w < 1280; w++)
+            VITIS_LOOP_18_3: for(int w = 0; w < 1280; w++)
             {
 
                 resnet_layer0_in_fm[c][h][w] = resnet_layer0_input_fm[c][h][w];
@@ -35199,20 +35195,20 @@ void resnet_layer0(
     const int num_of_tiles = (736 / 46) * (1280 / 40);
     std::cout << "\nNo. of tiles in input feature map = " << num_of_tiles << std::endl << std::endl;
 
-    VITIS_LOOP_36_4: for(int ti = 0; ti < (736 / 46); ti++)
+    VITIS_LOOP_35_4: for(int ti = 0; ti < (736 / 46); ti++)
     {
-        VITIS_LOOP_38_5: for(int tj = 0; tj < (1280 / 40); tj++)
+        VITIS_LOOP_37_5: for(int tj = 0; tj < (1280 / 40); tj++)
         {
 
             std::cout << "Processing Tile " << ti*(1280 / 40) + tj + 1;
             std::cout << "/" << num_of_tiles << std::endl;
 
 
-            VITIS_LOOP_45_6: for(int c = 0; c < 3; c++)
+            VITIS_LOOP_44_6: for(int c = 0; c < 3; c++)
             {
-                VITIS_LOOP_47_7: for(int i = 0; i < 46 + 5; i++)
+                VITIS_LOOP_46_7: for(int i = 0; i < 46 + 5; i++)
                 {
-                    VITIS_LOOP_49_8: for(int j = 0; j < 40 + 5; j++)
+                    VITIS_LOOP_48_8: for(int j = 0; j < 40 + 5; j++)
                     {
 
                         if((ti == 0 && i < P) || (tj == 0 && j < P))
@@ -35241,14 +35237,14 @@ void resnet_layer0(
                 }
             }
 
-            VITIS_LOOP_78_9: for(int f = 0; f < 64; f++)
+            VITIS_LOOP_77_9: for(int f = 0; f < 64; f++)
          {
 
-                VITIS_LOOP_81_10: for(int c = 0; c < 3; c++)
+                VITIS_LOOP_80_10: for(int c = 0; c < 3; c++)
                 {
-                    VITIS_LOOP_83_11: for(int kh = 0; kh < 7; kh++)
+                    VITIS_LOOP_82_11: for(int kh = 0; kh < 7; kh++)
                  {
-                     VITIS_LOOP_85_12: for(int kw = 0; kw < 7; kw++)
+                     VITIS_LOOP_84_12: for(int kw = 0; kw < 7; kw++)
                      {
                          weight_buf_7x7[c][kh][kw] = resnet_layer0_conv1_weights[f][c][kh][kw];
                         }
@@ -35268,11 +35264,11 @@ void resnet_layer0(
 
 
 
-            VITIS_LOOP_105_13: for(int f = 0; f < 64; f++)
+            VITIS_LOOP_104_13: for(int f = 0; f < 64; f++)
             {
-                VITIS_LOOP_107_14: for(int i = 0; i < 46/S; i++)
+                VITIS_LOOP_106_14: for(int i = 0; i < 46/S; i++)
                 {
-                    VITIS_LOOP_109_15: for(int j = 0; j < 40/S; j++)
+                    VITIS_LOOP_108_15: for(int j = 0; j < 40/S; j++)
                     {
                          resnet_layer0_mx_fm[f][ti*(46/S) + i][tj*(40/S) + j] = out_fm_buf[f][i][j];
                     }
@@ -35294,16 +35290,16 @@ void resnet_layer0(
 
     fm_t max_val = 0.0;
 
-    VITIS_LOOP_131_16: for(int ti = 0; ti < (368 / 46); ti++)
+    VITIS_LOOP_130_16: for(int ti = 0; ti < (368 / 46); ti++)
     {
-       VITIS_LOOP_133_17: for(int tj = 0; tj < (640 / 40); tj++)
+       VITIS_LOOP_132_17: for(int tj = 0; tj < (640 / 40); tj++)
        {
 
-           VITIS_LOOP_136_18: for(int c = 0; c < 64; c++)
+           VITIS_LOOP_135_18: for(int c = 0; c < 64; c++)
            {
-               VITIS_LOOP_138_19: for(int i = 0; i < 46 + P; i++)
+               VITIS_LOOP_137_19: for(int i = 0; i < 46 + P; i++)
                {
-                   VITIS_LOOP_140_20: for(int j = 0; j < 40 + P; j++)
+                   VITIS_LOOP_139_20: for(int j = 0; j < 40 + P; j++)
                    {
                        if((ti == 0 && i < P) || (tj == 0 && j < P))
                  {
@@ -35319,19 +35315,19 @@ void resnet_layer0(
            }
 
 
-           VITIS_LOOP_156_21: for(int c = 0; c < 64; c++)
+           VITIS_LOOP_155_21: for(int c = 0; c < 64; c++)
            {
-               VITIS_LOOP_158_22: for(int i = P; i < 46 + P; i+=S)
+               VITIS_LOOP_157_22: for(int i = P; i < 46 + P; i+=S)
                {
-                   VITIS_LOOP_160_23: for(int j = P; j < 40 + P; j+=S)
+                   VITIS_LOOP_159_23: for(int j = P; j < 40 + P; j+=S)
                    {
 
                        max_val = 0.0;
 
 
-                       VITIS_LOOP_166_24: for(int m = i-1; m <= i+1; m++)
+                       VITIS_LOOP_165_24: for(int m = i-1; m <= i+1; m++)
                        {
-                           VITIS_LOOP_168_25: for(int n = j-1; n <= j+1; n++)
+                           VITIS_LOOP_167_25: for(int n = j-1; n <= j+1; n++)
                            {
                                if(in_fm_buf[c][m][n] > max_val)
                                {
@@ -35347,11 +35343,11 @@ void resnet_layer0(
            }
 
 
-           VITIS_LOOP_184_26: for(int c = 0; c < 64; c++)
+           VITIS_LOOP_183_26: for(int c = 0; c < 64; c++)
            {
-               VITIS_LOOP_186_27: for(int i = 0; i < 46/S; i++)
+               VITIS_LOOP_185_27: for(int i = 0; i < 46/S; i++)
                {
-                   VITIS_LOOP_188_28: for(int j = 0; j < 40/S; j++)
+                   VITIS_LOOP_187_28: for(int j = 0; j < 40/S; j++)
                    {
                         resnet_layer0_out_fm[c][ti*(46/S) + i][tj*(40/S) + j] = out_fm_buf[c][i][j];
                    }
@@ -35360,11 +35356,11 @@ void resnet_layer0(
        }
     }
 
-    VITIS_LOOP_197_29: for(int c = 0; c < 64; c++)
+    VITIS_LOOP_196_29: for(int c = 0; c < 64; c++)
     {
-        VITIS_LOOP_199_30: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_198_30: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_201_31: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_200_31: for(int w = 0; w < 320; w++)
             {
                 resnet_layer0_output_fm[c][h][w] = resnet_layer0_out_fm[c][h][w];
             }
@@ -35373,7 +35369,7 @@ void resnet_layer0(
 
     std::cout << "Layer 0.0.2 done" << std::endl;
 }
-# 7 "./resnet_layers.cpp" 2
+# 6 "./resnet_layers.cpp" 2
 # 1 "./resnet_layer1.cpp" 1
 
 
@@ -35641,7 +35637,7 @@ void resnet_layer1(
 
     std::cout << "Layer 1.2.3 done" << std::endl;
 }
-# 8 "./resnet_layers.cpp" 2
+# 7 "./resnet_layers.cpp" 2
 # 1 "./resnet_layer2.cpp" 1
 
 
@@ -35982,764 +35978,8 @@ void resnet_layer2(
 
     std::cout << "Layer 2.3.3 done" << std::endl;
 }
-# 9 "./resnet_layers.cpp" 2
-# 1 "./resnet_layer3.cpp" 1
-
-
-
-void resnet_layer3(
-        fm_t resnet_layer3_input_fm[512][92][160],
-        wt_t resnet_layer3_0_conv1_weights[256][512],
-     wt_t resnet_layer3_0_bn1_params[4][256],
-        wt_t resnet_layer3_0_conv2_weights[256][256][3][3],
-     wt_t resnet_layer3_0_bn2_params[4][256],
-        wt_t resnet_layer3_0_conv3_weights[1024][256],
-     wt_t resnet_layer3_0_bn3_params[4][1024],
-        wt_t resnet_layer3_0_downsample_0_weights[1024][512],
-     wt_t resnet_layer3_0_downsample_1_params[4][1024],
-        wt_t resnet_layer3_1_conv1_weights[256][1024],
-     wt_t resnet_layer3_1_bn1_params[4][256],
-        wt_t resnet_layer3_1_conv2_weights[256][256][3][3],
-     wt_t resnet_layer3_1_bn2_params[4][256],
-        wt_t resnet_layer3_1_conv3_weights[1024][256],
-     wt_t resnet_layer3_1_bn3_params[4][1024],
-        wt_t resnet_layer3_2_conv1_weights[256][1024],
-     wt_t resnet_layer3_2_bn1_params[4][256],
-        wt_t resnet_layer3_2_conv2_weights[256][256][3][3],
-     wt_t resnet_layer3_2_bn2_params[4][256],
-        wt_t resnet_layer3_2_conv3_weights[1024][256],
-     wt_t resnet_layer3_2_bn3_params[4][1024],
-        wt_t resnet_layer3_3_conv1_weights[256][1024],
-     wt_t resnet_layer3_3_bn1_params[4][256],
-        wt_t resnet_layer3_3_conv2_weights[256][256][3][3],
-     wt_t resnet_layer3_3_bn2_params[4][256],
-        wt_t resnet_layer3_3_conv3_weights[1024][256],
-     wt_t resnet_layer3_3_bn3_params[4][1024],
-        wt_t resnet_layer3_4_conv1_weights[256][1024],
-     wt_t resnet_layer3_4_bn1_params[4][256],
-        wt_t resnet_layer3_4_conv2_weights[256][256][3][3],
-     wt_t resnet_layer3_4_bn2_params[4][256],
-        wt_t resnet_layer3_4_conv3_weights[1024][256],
-     wt_t resnet_layer3_4_bn3_params[4][1024],
-        wt_t resnet_layer3_5_conv1_weights[256][1024],
-     wt_t resnet_layer3_5_bn1_params[4][256],
-        wt_t resnet_layer3_5_conv2_weights[256][256][3][3],
-     wt_t resnet_layer3_5_bn2_params[4][256],
-        wt_t resnet_layer3_5_conv3_weights[1024][256],
-     wt_t resnet_layer3_5_bn3_params[4][1024],
-        fm_t resnet_layer3_output_fm[1024][92][160]
-)
-{
-
-    VITIS_LOOP_48_1: for(int c = 0; c < 512; c++)
-    {
-        VITIS_LOOP_50_2: for(int h = 0; h < 92; h++)
-        {
-            VITIS_LOOP_52_3: for(int w = 0; w < 160; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer3_input_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "\nStarting resnet_layer 3.0.0" << std::endl;
-
-
-
-    resnet_bottleneck_conv1_bn1<512, 92, 160,
-                         1024, 46, 80,
-                         2, 0>
-                        (resnet_layer3_0_downsample_0_weights, resnet_layer3_0_downsample_1_params, false);
-
-
-    VITIS_LOOP_69_4: for(int c = 0; c < 1024; c++)
-    {
-        VITIS_LOOP_71_5: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_73_6: for(int w = 0; w < 80; w++)
-            {
-                ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-    std::cout << "Layer 3.0.0 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 3.0.1" << std::endl;
-
-
-
-    resnet_bottleneck_conv1_bn1<512, 92, 160,
-                         256, 92, 160,
-                         1, 0>
-                        (resnet_layer3_0_conv1_weights, resnet_layer3_0_bn1_params, true);
-
-
-    VITIS_LOOP_91_7: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_93_8: for(int h = 0; h < 92; h++)
-        {
-            VITIS_LOOP_95_9: for(int w = 0; w < 160; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 3.0.1 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 3.0.2" << std::endl;
-
-
-
-    resnet_bottleneck_conv2_bn2_relu<256, 92, 160,
-                              256, 46, 80,
-                              2, 0>
-                             (resnet_layer3_0_conv2_weights, resnet_layer3_0_bn2_params);
-
-
-    VITIS_LOOP_114_10: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_116_11: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_118_12: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 3.0.2 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 3.0.3" << std::endl;
-
-
-
-    resnet_bottleneck_conv3_bn3_add_relu<256, 46, 80,
-                                  1024, 46, 80,
-                                  1, 0>
-                                 (resnet_layer3_0_conv3_weights, resnet_layer3_0_bn3_params);
-
-
-    VITIS_LOOP_137_13: for(int c = 0; c < 1024; c++)
-    {
-        VITIS_LOOP_139_14: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_141_15: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-                ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 3.0.3 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 3.1.1" << std::endl;
-
-
-
-    resnet_bottleneck_conv1_bn1<1024, 46, 80,
-                         256, 46, 80,
-                         1, 0>
-                        (resnet_layer3_1_conv1_weights, resnet_layer3_1_bn1_params, true);
-
-
-    VITIS_LOOP_161_16: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_163_17: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_165_18: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 3.1.1 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 3.1.2" << std::endl;
-
-
-
-    resnet_bottleneck_conv2_bn2_relu<256, 46, 80,
-                              256, 46, 80,
-                              1, 0>
-                             (resnet_layer3_1_conv2_weights, resnet_layer3_1_bn2_params);
-
-    VITIS_LOOP_183_19: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_185_20: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_187_21: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 3.1.2 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 3.1.3" << std::endl;
-
-
-
-    resnet_bottleneck_conv3_bn3_add_relu<256, 46, 80,
-                                  1024, 46, 80,
-                                  1, 0>
-                                 (resnet_layer3_1_conv3_weights, resnet_layer3_1_bn3_params);
-
-    VITIS_LOOP_205_22: for(int c = 0; c < 1024; c++)
-    {
-        VITIS_LOOP_207_23: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_209_24: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-                ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-    std::cout << "Layer 3.1.3 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 3.2.1" << std::endl;
-
-
-
-    resnet_bottleneck_conv1_bn1<1024, 46, 80,
-                         256, 46, 80,
-                         1, 0>
-                        (resnet_layer3_2_conv1_weights, resnet_layer3_2_bn1_params, true);
-
-
-    VITIS_LOOP_228_25: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_230_26: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_232_27: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 3.2.1 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 3.2.2" << std::endl;
-
-
-
-    resnet_bottleneck_conv2_bn2_relu<256, 46, 80,
-                              256, 46, 80,
-                              1, 0>
-                             (resnet_layer3_2_conv2_weights, resnet_layer3_2_bn2_params);
-
-    VITIS_LOOP_250_28: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_252_29: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_254_30: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 3.2.2 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 3.2.3" << std::endl;
-
-
-
-    resnet_bottleneck_conv3_bn3_add_relu<256, 46, 80,
-                                  1024, 46, 80,
-                                  1, 0>
-                                 (resnet_layer3_2_conv3_weights, resnet_layer3_2_bn3_params);
-
-    VITIS_LOOP_272_31: for(int c = 0; c < 1024; c++)
-    {
-        VITIS_LOOP_274_32: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_276_33: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-                ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-    std::cout << "Layer 3.2.3 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 3.3.1" << std::endl;
-
-
-
-    resnet_bottleneck_conv1_bn1<1024, 46, 80,
-                         256, 46, 80,
-                         1, 0>
-                        (resnet_layer3_3_conv1_weights, resnet_layer3_3_bn1_params, true);
-
-
-    VITIS_LOOP_295_34: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_297_35: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_299_36: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 3.3.1 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 3.3.2" << std::endl;
-
-
-
-    resnet_bottleneck_conv2_bn2_relu<256, 46, 80,
-                              256, 46, 80,
-                              1, 0>
-                             (resnet_layer3_3_conv2_weights, resnet_layer3_3_bn2_params);
-
-    VITIS_LOOP_317_37: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_319_38: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_321_39: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 3.3.2 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 3.3.3" << std::endl;
-
-
-
-    resnet_bottleneck_conv3_bn3_add_relu<256, 46, 80,
-                                  1024, 46, 80,
-                                  1, 0>
-                                 (resnet_layer3_3_conv3_weights, resnet_layer3_3_bn3_params);
-
-    VITIS_LOOP_339_40: for(int c = 0; c < 1024; c++)
-    {
-        VITIS_LOOP_341_41: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_343_42: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-                ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-    std::cout << "Layer 3.3.3 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 3.4.1" << std::endl;
-
-
-
-    resnet_bottleneck_conv1_bn1<1024, 46, 80,
-                         256, 46, 80,
-                         1, 0>
-                        (resnet_layer3_4_conv1_weights, resnet_layer3_4_bn1_params, true);
-
-
-    VITIS_LOOP_362_43: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_364_44: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_366_45: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 3.4.1 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 3.4.2" << std::endl;
-
-
-
-    resnet_bottleneck_conv2_bn2_relu<256, 46, 80,
-                              256, 46, 80,
-                              1, 0>
-                             (resnet_layer3_4_conv2_weights, resnet_layer3_4_bn2_params);
-
-    VITIS_LOOP_384_46: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_386_47: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_388_48: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 3.4.2 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 3.4.3" << std::endl;
-
-
-
-    resnet_bottleneck_conv3_bn3_add_relu<256, 46, 80,
-                                  1024, 46, 80,
-                                  1, 0>
-                                 (resnet_layer3_4_conv3_weights, resnet_layer3_4_bn3_params);
-
-    VITIS_LOOP_406_49: for(int c = 0; c < 1024; c++)
-    {
-        VITIS_LOOP_408_50: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_410_51: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-                ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-    std::cout << "Layer 3.4.3 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 3.5.1" << std::endl;
-
-
-
-    resnet_bottleneck_conv1_bn1<1024, 46, 80,
-                         256, 46, 80,
-                         1, 0>
-                        (resnet_layer3_5_conv1_weights, resnet_layer3_5_bn1_params, true);
-
-
-    VITIS_LOOP_429_52: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_431_53: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_433_54: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 3.5.1 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 3.5.2" << std::endl;
-
-
-
-    resnet_bottleneck_conv2_bn2_relu<256, 46, 80,
-                              256, 46, 80,
-                              1, 0>
-                             (resnet_layer3_5_conv2_weights, resnet_layer3_5_bn2_params);
-
-    VITIS_LOOP_451_55: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_453_56: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_455_57: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 3.5.2 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 3.5.3" << std::endl;
-
-
-
-    resnet_bottleneck_conv3_bn3_add_relu<256, 46, 80,
-                                  1024, 46, 80,
-                                  1, 0>
-                                 (resnet_layer3_5_conv3_weights, resnet_layer3_5_bn3_params);
-
-
-    VITIS_LOOP_474_58: for(int c = 0; c < 1024; c++)
-    {
-        VITIS_LOOP_476_59: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_478_60: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer3_output_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 3.5.3 done" << std::endl;
-}
-# 10 "./resnet_layers.cpp" 2
-# 1 "./resnet_layer4.cpp" 1
-
-
-
-void resnet_layer4(
-        fm_t resnet_layer4_input_fm[1024][46][80],
-        wt_t resnet_layer4_0_conv1_weights[512][1024],
-     wt_t resnet_layer4_0_bn1_params[4][512],
-        wt_t resnet_layer4_0_conv2_weights[512][512][3][3],
-     wt_t resnet_layer4_0_bn2_params[4][512],
-        wt_t resnet_layer4_0_conv3_weights[2048][512],
-     wt_t resnet_layer4_0_bn3_params[4][2048],
-        wt_t resnet_layer4_0_downsample_0_weights[2048][1024],
-     wt_t resnet_layer4_0_downsample_1_params[4][2048],
-        wt_t resnet_layer4_1_conv1_weights[512][2048],
-     wt_t resnet_layer4_1_bn1_params[4][512],
-        wt_t resnet_layer4_1_conv2_weights[512][512][3][3],
-     wt_t resnet_layer4_1_bn2_params[4][512],
-        wt_t resnet_layer4_1_conv3_weights[2048][512],
-     wt_t resnet_layer4_1_bn3_params[4][2048],
-        wt_t resnet_layer4_2_conv1_weights[512][2048],
-     wt_t resnet_layer4_2_bn1_params[4][512],
-        wt_t resnet_layer4_2_conv2_weights[512][512][3][3],
-     wt_t resnet_layer4_2_bn2_params[4][512],
-        wt_t resnet_layer4_2_conv3_weights[2048][512],
-     wt_t resnet_layer4_2_bn3_params[4][2048],
-        fm_t resnet_layer4_output_fm[2048][46][80]
-)
-{
-
-    VITIS_LOOP_30_1: for(int c = 0; c < 1024; c++)
-    {
-        VITIS_LOOP_32_2: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_34_3: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer4_input_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "\nStarting resnet_layer 4.0.0" << std::endl;
-
-
-
-    resnet_bottleneck_conv1_bn1<1024, 46, 80,
-                         2048, 23, 40,
-                         2, 0>
-                        (resnet_layer4_0_downsample_0_weights, resnet_layer4_0_downsample_1_params, false);
-
-
-    VITIS_LOOP_51_4: for(int c = 0; c < 2048; c++)
-    {
-        VITIS_LOOP_53_5: for(int h = 0; h < 23; h++)
-        {
-            VITIS_LOOP_55_6: for(int w = 0; w < 40; w++)
-            {
-                ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-    std::cout << "Layer 4.0.0 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 4.0.1" << std::endl;
-
-
-
-    resnet_bottleneck_conv1_bn1<1024, 46, 80,
-                         512, 46, 80,
-                         1, 0>
-                        (resnet_layer4_0_conv1_weights, resnet_layer4_0_bn1_params, true);
-
-
-    VITIS_LOOP_73_7: for(int c = 0; c < 512; c++)
-    {
-        VITIS_LOOP_75_8: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_77_9: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 4.0.1 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 4.0.2" << std::endl;
-
-
-
-    resnet_bottleneck_conv2_bn2_relu<512, 46, 80,
-                              512, 23, 40,
-                              2, 0>
-                             (resnet_layer4_0_conv2_weights, resnet_layer4_0_bn2_params);
-
-
-    VITIS_LOOP_96_10: for(int c = 0; c < 512; c++)
-    {
-        VITIS_LOOP_98_11: for(int h = 0; h < 23; h++)
-        {
-            VITIS_LOOP_100_12: for(int w = 0; w < 40; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 4.0.2 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 4.0.3" << std::endl;
-
-
-
-    resnet_bottleneck_conv3_bn3_add_relu<512, 23, 40,
-                                  2048, 23, 40,
-                                  1, 1>
-                                 (resnet_layer4_0_conv3_weights, resnet_layer4_0_bn3_params);
-
-
-    VITIS_LOOP_119_13: for(int c = 0; c < 2048; c++)
-    {
-        VITIS_LOOP_121_14: for(int h = 0; h < 23; h++)
-        {
-            VITIS_LOOP_123_15: for(int w = 0; w < 40; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-                ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 4.0.3 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 4.1.1" << std::endl;
-
-
-
-    resnet_bottleneck_conv1_bn1<2048, 23, 40,
-                         512, 23, 40,
-                         1, 1>
-                        (resnet_layer4_1_conv1_weights, resnet_layer4_1_bn1_params, true);
-
-
-    VITIS_LOOP_143_16: for(int c = 0; c < 512; c++)
-    {
-        VITIS_LOOP_145_17: for(int h = 0; h < 23; h++)
-        {
-            VITIS_LOOP_147_18: for(int w = 0; w < 40; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 4.1.1 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 4.1.2" << std::endl;
-
-
-
-    resnet_bottleneck_conv2_bn2_relu<512, 23, 40,
-                              512, 23, 40,
-                              1, 1>
-                             (resnet_layer4_1_conv2_weights, resnet_layer4_1_bn2_params);
-
-    VITIS_LOOP_165_19: for(int c = 0; c < 512; c++)
-    {
-        VITIS_LOOP_167_20: for(int h = 0; h < 23; h++)
-        {
-            VITIS_LOOP_169_21: for(int w = 0; w < 40; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 4.1.2 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 4.1.3" << std::endl;
-
-
-
-    resnet_bottleneck_conv3_bn3_add_relu<512, 23, 40,
-                                  2048, 23, 40,
-                                  1, 1>
-                                 (resnet_layer4_1_conv3_weights, resnet_layer4_1_bn3_params);
-
-    VITIS_LOOP_187_22: for(int c = 0; c < 2048; c++)
-    {
-        VITIS_LOOP_189_23: for(int h = 0; h < 23; h++)
-        {
-            VITIS_LOOP_191_24: for(int w = 0; w < 40; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-                ds_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-    std::cout << "Layer 4.1.3 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 4.2.1" << std::endl;
-
-
-
-    resnet_bottleneck_conv1_bn1<2048, 23, 40,
-                         512, 23, 40,
-                         1, 1>
-                        (resnet_layer4_2_conv1_weights, resnet_layer4_2_bn1_params, true);
-
-
-    VITIS_LOOP_210_25: for(int c = 0; c < 512; c++)
-    {
-        VITIS_LOOP_212_26: for(int h = 0; h < 23; h++)
-        {
-            VITIS_LOOP_214_27: for(int w = 0; w < 40; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 4.2.1 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 4.2.2" << std::endl;
-
-
-
-    resnet_bottleneck_conv2_bn2_relu<512, 23, 40,
-                              512, 23, 40,
-                              1, 1>
-                             (resnet_layer4_2_conv2_weights, resnet_layer4_2_bn2_params);
-
-    VITIS_LOOP_232_28: for(int c = 0; c < 512; c++)
-    {
-        VITIS_LOOP_234_29: for(int h = 0; h < 23; h++)
-        {
-            VITIS_LOOP_236_30: for(int w = 0; w < 40; w++)
-            {
-                resnet_layer_in_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 4.2.2 done" << std::endl;
-
-    std::cout << "\nStarting resnet_layer 4.2.3" << std::endl;
-
-
-
-    resnet_bottleneck_conv3_bn3_add_relu<512, 23, 40,
-                                  2048, 23, 40,
-                                  1, 1>
-                                 (resnet_layer4_2_conv3_weights, resnet_layer4_2_bn3_params);
-
-    VITIS_LOOP_254_31: for(int c = 0; c < 2048; c++)
-    {
-        VITIS_LOOP_256_32: for(int h = 0; h < 23; h++)
-        {
-            VITIS_LOOP_258_33: for(int w = 0; w < 40; w++)
-            {
-                resnet_layer4_output_fm[c][h][w] = resnet_layer_out_fm[c][h][w];
-            }
-        }
-    }
-
-    std::cout << "Layer 4.2.3 done" << std::endl;
-}
-# 11 "./resnet_layers.cpp" 2
-# 11 "./resnet_top.cpp" 2
+# 8 "./resnet_layers.cpp" 2
+# 6 "./resnet_top.cpp" 2
 
 fm_t in_fm_buf[64][46 + 5][40 + 5];
 fm_t out_fm_buf[64][46][40];
@@ -36759,7 +35999,7 @@ wt_t weight_buf_7x7[64][7][7];
 
 wt_t param_buf[3][64];
 
-void resnet_top (
+void resnet_top_1 (
     fm_t resnet_layer0_input_fm[3][736][1280],
     wt_t resnet_layer0_conv1_weights[64][3][7][7],
     wt_t resnet_layer0_bn1_params[3][64],
@@ -36815,71 +36055,8 @@ void resnet_top (
  wt_t resnet_layer2_3_bn2_params[3][128],
     wt_t resnet_layer2_3_conv3_weights[512][128],
  wt_t resnet_layer2_3_bn3_params[3][512],
-    fm_t resnet_layer2_output_fm[512][184][320],
-
-    fm_t resnet_layer3_input_fm[512][92][160],
-    wt_t resnet_layer3_0_conv1_weights[256][512],
- wt_t resnet_layer3_0_bn1_params[4][256],
-    wt_t resnet_layer3_0_conv2_weights[256][256][3][3],
- wt_t resnet_layer3_0_bn2_params[4][256],
-    wt_t resnet_layer3_0_conv3_weights[1024][256],
- wt_t resnet_layer3_0_bn3_params[4][1024],
-    wt_t resnet_layer3_0_downsample_0_weights[1024][512],
- wt_t resnet_layer3_0_downsample_1_params[4][1024],
-    wt_t resnet_layer3_1_conv1_weights[256][1024],
- wt_t resnet_layer3_1_bn1_params[4][256],
-    wt_t resnet_layer3_1_conv2_weights[256][256][3][3],
- wt_t resnet_layer3_1_bn2_params[4][256],
-    wt_t resnet_layer3_1_conv3_weights[1024][256],
- wt_t resnet_layer3_1_bn3_params[4][1024],
-    wt_t resnet_layer3_2_conv1_weights[256][1024],
- wt_t resnet_layer3_2_bn1_params[4][256],
-    wt_t resnet_layer3_2_conv2_weights[256][256][3][3],
- wt_t resnet_layer3_2_bn2_params[4][256],
-    wt_t resnet_layer3_2_conv3_weights[1024][256],
- wt_t resnet_layer3_2_bn3_params[4][1024],
-    wt_t resnet_layer3_3_conv1_weights[256][1024],
- wt_t resnet_layer3_3_bn1_params[4][256],
-    wt_t resnet_layer3_3_conv2_weights[256][256][3][3],
- wt_t resnet_layer3_3_bn2_params[4][256],
-    wt_t resnet_layer3_3_conv3_weights[1024][256],
- wt_t resnet_layer3_3_bn3_params[4][1024],
-    wt_t resnet_layer3_4_conv1_weights[256][1024],
- wt_t resnet_layer3_4_bn1_params[4][256],
-    wt_t resnet_layer3_4_conv2_weights[256][256][3][3],
- wt_t resnet_layer3_4_bn2_params[4][256],
-    wt_t resnet_layer3_4_conv3_weights[1024][256],
- wt_t resnet_layer3_4_bn3_params[4][1024],
-    wt_t resnet_layer3_5_conv1_weights[256][1024],
- wt_t resnet_layer3_5_bn1_params[4][256],
-    wt_t resnet_layer3_5_conv2_weights[256][256][3][3],
- wt_t resnet_layer3_5_bn2_params[4][256],
-    wt_t resnet_layer3_5_conv3_weights[1024][256],
- wt_t resnet_layer3_5_bn3_params[4][1024],
-    fm_t resnet_layer3_output_fm[1024][92][160],
-
-    fm_t resnet_layer4_input_fm[1024][46][80],
-    wt_t resnet_layer4_0_conv1_weights[512][1024],
- wt_t resnet_layer4_0_bn1_params[4][512],
-    wt_t resnet_layer4_0_conv2_weights[512][512][3][3],
- wt_t resnet_layer4_0_bn2_params[4][512],
-    wt_t resnet_layer4_0_conv3_weights[2048][512],
- wt_t resnet_layer4_0_bn3_params[4][2048],
-    wt_t resnet_layer4_0_downsample_0_weights[2048][1024],
- wt_t resnet_layer4_0_downsample_1_params[4][2048],
-    wt_t resnet_layer4_1_conv1_weights[512][2048],
- wt_t resnet_layer4_1_bn1_params[4][512],
-    wt_t resnet_layer4_1_conv2_weights[512][512][3][3],
- wt_t resnet_layer4_1_bn2_params[4][512],
-    wt_t resnet_layer4_1_conv3_weights[2048][512],
- wt_t resnet_layer4_1_bn3_params[4][2048],
-    wt_t resnet_layer4_2_conv1_weights[512][2048],
- wt_t resnet_layer4_2_bn1_params[4][512],
-    wt_t resnet_layer4_2_conv2_weights[512][512][3][3],
- wt_t resnet_layer4_2_bn2_params[4][512],
-    wt_t resnet_layer4_2_conv3_weights[2048][512],
- wt_t resnet_layer4_2_bn3_params[4][2048],
-    fm_t resnet_layer4_output_fm[2048][46][80]
+    fm_t resnet_layer2_output_fm[512][184][320]
+# 146 "./resnet_top.cpp"
 )
 {
 
@@ -36895,11 +36072,11 @@ void resnet_top (
     std::cout << "Layer 0 Processing Complete!" << std::endl << std::endl;
 
 
-    VITIS_LOOP_166_1: for(int c = 0; c < 64; c++)
+    VITIS_LOOP_161_1: for(int c = 0; c < 64; c++)
     {
-        VITIS_LOOP_168_2: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_163_2: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_170_3: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_165_3: for(int w = 0; w < 320; w++)
             {
                 resnet_layer1_input_fm[c][h][w] = resnet_layer0_output_fm[c][h][w];
             }
@@ -36928,11 +36105,11 @@ void resnet_top (
     std::cout << "Layer 1 Processing Complete!" << std::endl << std::endl;
 
 
-    VITIS_LOOP_199_4: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_194_4: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_201_5: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_196_5: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_203_6: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_198_6: for(int w = 0; w < 320; w++)
             {
                 resnet_layer2_input_fm[c][h][w] = resnet_layer1_output_fm[c][h][w];
             }
@@ -36962,80 +36139,5 @@ void resnet_top (
     );
 
     std::cout << "Layer 2 Processing Complete!" << std::endl << std::endl;
-
-
-    VITIS_LOOP_235_7: for(int c = 0; c < 512; c++)
-    {
-        VITIS_LOOP_237_8: for(int h = 0; h < 92; h++)
-        {
-            VITIS_LOOP_239_9: for(int w = 0; w < 160; w++)
-            {
-                resnet_layer3_input_fm[c][h][w] = resnet_layer2_output_fm[c][h][w];
-            }
-        }
-    }
-
-
-
-
-    std::cout << "Begin processing Layer 3..." << std::endl;
-
-    resnet_layer3( resnet_layer3_input_fm,
-            resnet_layer3_0_conv1_weights, resnet_layer3_0_bn1_params,
-            resnet_layer3_0_conv2_weights, resnet_layer3_0_bn2_params,
-            resnet_layer3_0_conv3_weights, resnet_layer3_0_bn3_params,
-            resnet_layer3_0_downsample_0_weights, resnet_layer3_0_downsample_1_params,
-            resnet_layer3_1_conv1_weights, resnet_layer3_1_bn1_params,
-            resnet_layer3_1_conv2_weights, resnet_layer3_1_bn2_params,
-            resnet_layer3_1_conv3_weights, resnet_layer3_1_bn3_params,
-            resnet_layer3_2_conv1_weights, resnet_layer3_2_bn1_params,
-            resnet_layer3_2_conv2_weights, resnet_layer3_2_bn2_params,
-            resnet_layer3_2_conv3_weights, resnet_layer3_2_bn3_params,
-            resnet_layer3_3_conv1_weights, resnet_layer3_3_bn1_params,
-            resnet_layer3_3_conv2_weights, resnet_layer3_3_bn2_params,
-            resnet_layer3_3_conv3_weights, resnet_layer3_3_bn3_params,
-            resnet_layer3_4_conv1_weights, resnet_layer3_4_bn1_params,
-            resnet_layer3_4_conv2_weights, resnet_layer3_4_bn2_params,
-            resnet_layer3_4_conv3_weights, resnet_layer3_4_bn3_params,
-            resnet_layer3_5_conv1_weights, resnet_layer3_5_bn1_params,
-            resnet_layer3_5_conv2_weights, resnet_layer3_5_bn2_params,
-            resnet_layer3_5_conv3_weights, resnet_layer3_5_bn3_params,
-            resnet_layer3_output_fm
-    );
-
-    std::cout << "Layer 3 Processing Complete!" << std::endl << std::endl;
-
-
-    VITIS_LOOP_277_10: for(int c = 0; c < 1024; c++)
-    {
-        VITIS_LOOP_279_11: for(int h = 0; h < 46; h++)
-        {
-            VITIS_LOOP_281_12: for(int w = 0; w < 80; w++)
-            {
-                resnet_layer4_input_fm[c][h][w] = resnet_layer3_output_fm[c][h][w];
-            }
-        }
-    }
-
-
-
-
-    std::cout << "Begin processing Layer 4..." << std::endl;
-
-    resnet_layer4( resnet_layer4_input_fm,
-            resnet_layer4_0_conv1_weights, resnet_layer4_0_bn1_params,
-            resnet_layer4_0_conv2_weights, resnet_layer4_0_bn2_params,
-            resnet_layer4_0_conv3_weights, resnet_layer4_0_bn3_params,
-            resnet_layer4_0_downsample_0_weights, resnet_layer4_0_downsample_1_params,
-            resnet_layer4_1_conv1_weights, resnet_layer4_1_bn1_params,
-            resnet_layer4_1_conv2_weights, resnet_layer4_1_bn2_params,
-            resnet_layer4_1_conv3_weights, resnet_layer4_1_bn3_params,
-            resnet_layer4_2_conv1_weights, resnet_layer4_2_bn1_params,
-            resnet_layer4_2_conv2_weights, resnet_layer4_2_bn2_params,
-            resnet_layer4_2_conv3_weights, resnet_layer4_2_bn3_params,
-            resnet_layer4_output_fm
-    );
-
-    std::cout << "Layer 4 Processing Complete!" << std::endl << std::endl;
-
+# 304 "./resnet_top.cpp"
 }

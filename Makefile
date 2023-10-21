@@ -29,6 +29,8 @@ resnet_conv_7x7.o:./resnet_conv_7x7.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 resnet_top.o:./resnet_top.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+resnet_top2.o:./resnet_top2.cpp
+	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 
 fpn_conv_3x3.o:./fpn_conv_3x3.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
@@ -72,6 +74,7 @@ IP_DEP+=resnet_conv_3x3.o
 IP_DEP+=resnet_conv_7x7.o
 IP_DEP+=resnet_batchnorm.o
 IP_DEP+=resnet_top.o
+IP_DEP+=resnet_top2.o
 
 IP_DEP+=fpn_conv_3x3.o
 IP_DEP+=fpn_conv_1x1.o

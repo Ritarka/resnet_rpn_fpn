@@ -23,6 +23,7 @@ add_files ./resnet_conv_1x1.cpp
 add_files ./resnet_conv_3x3.cpp
 add_files ./resnet_conv_7x7.cpp
 add_files ./resnet_top.cpp
+add_files ./resnet_top2.cpp
 
 
 set_top rpn_top
