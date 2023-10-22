@@ -1,26 +1,40 @@
 #include "hls_stream.h"
 #include "qdtrack.h"
 
+#pragma once 
+
+extern fm_t rpn_anchor0_cls_fm[RPN_CLS_OUT_CH*RPN_INPUT0_IN_FM_HEIGHT*RPN_INPUT0_IN_FM_WIDTH];
+extern fm_t rpn_anchor1_cls_fm[RPN_CLS_OUT_CH*RPN_INPUT1_IN_FM_HEIGHT*RPN_INPUT1_IN_FM_WIDTH];
+extern fm_t rpn_anchor2_cls_fm[RPN_CLS_OUT_CH*RPN_INPUT2_IN_FM_HEIGHT*RPN_INPUT2_IN_FM_WIDTH];
+
+extern fm_t rpn_anchor0_reg_fm[RPN_REG_OUT_CH*RPN_INPUT0_IN_FM_HEIGHT*RPN_INPUT0_IN_FM_WIDTH/4][4];
+extern fm_t rpn_anchor1_reg_fm[RPN_REG_OUT_CH*RPN_INPUT1_IN_FM_HEIGHT*RPN_INPUT1_IN_FM_WIDTH/4][4];
+extern fm_t rpn_anchor2_reg_fm[RPN_REG_OUT_CH*RPN_INPUT2_IN_FM_HEIGHT*RPN_INPUT2_IN_FM_WIDTH/4][4];
+
+extern int rpn_topk_index0[RPN_PRE_NMS_SIZE0];
+extern int rpn_topk_index1[RPN_PRE_NMS_SIZE1];
+extern int rpn_topk_index2[RPN_PRE_NMS_SIZE2];
+
 // Feature Map Buffers 
-fm_t rpn_in_fm_buf[RPN_IN_BUF_CH][RPN_IN_BUF_ROWS + 5][RPN_IN_BUF_COLS + 5];
-fm_t rpn_out_fm_buf[RPN_OUT_BUF_CH][RPN_OUT_BUF_ROWS][RPN_OUT_BUF_COLS];
-fm_t rpn_partial_out_fm_buf[RPN_OUT_BUF_CH][RPN_OUT_BUF_ROWS][RPN_OUT_BUF_COLS];
-fm_t rpn_ds_fm_buf[RPN_OUT_BUF_CH][RPN_OUT_BUF_ROWS][RPN_OUT_BUF_COLS];
+extern fm_t rpn_in_fm_buf[RPN_IN_BUF_CH][RPN_IN_BUF_ROWS + 5][RPN_IN_BUF_COLS + 5];
+extern fm_t rpn_out_fm_buf[RPN_OUT_BUF_CH][RPN_OUT_BUF_ROWS][RPN_OUT_BUF_COLS];
+extern fm_t rpn_partial_out_fm_buf[RPN_OUT_BUF_CH][RPN_OUT_BUF_ROWS][RPN_OUT_BUF_COLS];
+extern fm_t rpn_ds_fm_buf[RPN_OUT_BUF_CH][RPN_OUT_BUF_ROWS][RPN_OUT_BUF_COLS];
 
 // TODO: Replace these by pointer-based access to DRAM
 //float rpn_layer_out_fm[N_LAYER4_0_DS_OUT_CH][N_LAYER4_0_FM_HEIGHT][N_LAYER4_0_FM_WIDTH];
 //float rpn_layer_in_fm[N_LAYER4_0_DS_OUT_CH][N_LAYER4_0_FM_HEIGHT][N_LAYER4_0_FM_WIDTH];
 //float ds_fm[N_LAYER4_0_DS_OUT_CH][N_LAYER4_0_FM_HEIGHT][N_LAYER4_0_FM_WIDTH];
-fm_t rpn_layer_out_fm[2048][184][320];
-fm_t rpn_layer_in_fm[2048][184][320];
+extern fm_t rpn_layer_out_fm[2048][184][320];
+extern fm_t rpn_layer_in_fm[2048][184][320];
 
 // Convolution Weight Buffers
-wt_t rpn_weight_buf_1x1[RPN_IN_BUF_CH][1][1];
-wt_t rpn_weight_buf_3x3[RPN_IN_BUF_CH][3][3];
-wt_t rpn_weight_buf_7x7[RPN_IN_BUF_CH][7][7];
+extern wt_t rpn_weight_buf_1x1[RPN_IN_BUF_CH][1][1];
+extern wt_t rpn_weight_buf_3x3[RPN_IN_BUF_CH][3][3];
+extern wt_t rpn_weight_buf_7x7[RPN_IN_BUF_CH][7][7];
 
 // Conv bias
-wt_t rpn_param_buf[RPN_OUT_BUF_CH];
+extern wt_t rpn_param_buf[RPN_OUT_BUF_CH];
 
 template<const int N_OUT_CH>
 void rpn_load_bias_params (
@@ -36,7 +50,7 @@ void rpn_load_bias_params (
 }
 
 
-void rpn_conv_bias_add(
+static void rpn_conv_bias_add(
         fm_t feature_map[RPN_OUT_BUF_CH][RPN_OUT_BUF_ROWS][RPN_OUT_BUF_COLS], 
         wt_t bias_params[RPN_OUT_BUF_CH], 
         bool relu)
@@ -103,7 +117,7 @@ void rpn_load_input_fm_tile (
 }
 
 // Load previous layer's output (shortcut connection)
-void rpn_load_residual_fm_tile (
+static void rpn_load_residual_fm_tile (
         fm_t in_fm_buf[RPN_IN_BUF_CH][RPN_IN_BUF_ROWS][RPN_IN_BUF_COLS], 
         fm_t in_fm[2048][184][320], 
         int   ti, 
@@ -161,7 +175,7 @@ void rpn_load_weights_1x1 (
 }
 // Save partial outputs when depth of output feature map is more than
 // the output buffer depth
-void rpn_save_partial_out_buf (
+static void rpn_save_partial_out_buf (
         fm_t partial_out_fm_buf[RPN_OUT_BUF_CH][RPN_OUT_BUF_ROWS][RPN_OUT_BUF_COLS], 
         fm_t out_fm_buf[RPN_OUT_BUF_CH][RPN_OUT_BUF_ROWS][RPN_OUT_BUF_COLS],
         int d

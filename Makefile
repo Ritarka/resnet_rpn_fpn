@@ -63,6 +63,8 @@ rpn_conv_3x3.o:./rpn_conv_3x3.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 rpn_top.o:./rpn_top.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+rpn_top2.o:./rpn_top2.cpp
+	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 
 test_top.o: ./test_top.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
@@ -92,6 +94,7 @@ IP_DEP+=fpn_top.o
 IP_DEP+=rpn_conv_1x1.o
 IP_DEP+=rpn_conv_3x3.o
 IP_DEP+=rpn_top.o
+IP_DEP+=rpn_top2.o
 
 IP_DEP+=test_top.o
 
