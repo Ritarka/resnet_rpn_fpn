@@ -367,9 +367,6 @@ void test_top (
     rpn_input0_fm,
     rpn_input1_fm,
     rpn_input2_fm,
-    // rpn_input3_fm,
-    // rpn_input4_fm,
-
 
     //Weights and Bias for convolutions
     rpn_conv_weight,
@@ -382,28 +379,14 @@ void test_top (
     rpn_output0_cls_fm,
     rpn_output1_cls_fm,
     rpn_output2_cls_fm,
-    // rpn_output3_cls_fm,
-    // rpn_output4_cls_fm,
-
 
     rpn_output0_reg_fm,
     rpn_output1_reg_fm,
     rpn_output2_reg_fm,
-    // rpn_output3_reg_fm,
-    // rpn_output4_reg_fm,
-
-
 
     rpn_output0_fm,
     rpn_output1_fm,
-    rpn_output2_fm,
-    // rpn_output3_fm,
-    // rpn_output4_fm,
-    
-    
-
-    bboxes,
-    dets
+    rpn_output2_fm
 );
 
  rpn_top2 (
@@ -420,12 +403,8 @@ void test_top (
     rpn_anchor2_cls_fm,
 
     //Inputs to RPN
-    // rpn_input0_fm,
-    // rpn_input1_fm,
-    // rpn_input2_fm,
     rpn_input3_fm,
     rpn_input4_fm,
-
 
     //Weights and Bias for convolutions
     rpn_conv_weight,
@@ -435,35 +414,20 @@ void test_top (
     rpn_reg_weight,
     rpn_reg_bias,
 
-    // rpn_output0_cls_fm,
-    // rpn_output1_cls_fm,
-    // rpn_output2_cls_fm,
     rpn_output3_cls_fm,
     rpn_output4_cls_fm,
 
-
-    // rpn_output0_reg_fm,
-    // rpn_output1_reg_fm,
-    // rpn_output2_reg_fm,
     rpn_output3_reg_fm,
     rpn_output4_reg_fm,
 
-
-
-    // rpn_output0_fm,
-    // rpn_output1_fm,
-    // rpn_output2_fm,
     rpn_output3_fm,
     rpn_output4_fm,
     
-
-
     anchor_box0,
     anchor_box1,
     anchor_box2,
     anchor_box3,
     anchor_box4,
-    
 
     bboxes,
     dets
