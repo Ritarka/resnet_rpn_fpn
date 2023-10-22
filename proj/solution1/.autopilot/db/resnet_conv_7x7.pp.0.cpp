@@ -34414,16 +34414,7 @@ void rpn_load_bias_params (
         wt_t params[N_OUT_CH],
         int b
 );
-
-
-void rpn_conv_bias_add(
-        fm_t feature_map[64][46][40],
-        wt_t bias_params[64],
-        bool relu
-);
-
-
-
+# 927 "./qdtrack.h"
 template<const int N_IN_FM_DEPTH, const int N_IN_FM_HEIGHT, const int N_IN_FM_WIDTH,
          const int LAST_LAYER_EN>
 void rpn_load_input_fm_tile (
@@ -34434,16 +34425,7 @@ void rpn_load_input_fm_tile (
         int P,
         int d
 );
-
-void rpn_load_residual_fm_tile (
-        fm_t in_fm_buf[64][46][40],
-        fm_t in_fm[2048][184][320],
-        int ti,
-        int tj,
-        int b
-);
-
-
+# 947 "./qdtrack.h"
 template<const int N_OUT_CH, const int N_IN_CH>
 void rpn_load_weights_3x3 (
         wt_t weight_buf_3x3[64][3][3],
@@ -34452,14 +34434,7 @@ void rpn_load_weights_3x3 (
         int b,
         int d
 );
-
-
-void rpn_save_partial_out_buf (
-        fm_t partial_out_fm_buf[64][46][40],
-        fm_t out_fm_buf[64][46][40],
-        int d
-);
-
+# 963 "./qdtrack.h"
 template<const int S>
 void rpn_store_out_buf_to_DDR(
         fm_t out_fm[2048][184][320],
@@ -34519,8 +34494,8 @@ void rpn_top(
     fm_t rpn_input0_fm[256][184][320],
     fm_t rpn_input1_fm[256][92][160],
     fm_t rpn_input2_fm[256][46][80],
-    fm_t rpn_input3_fm[256][23][40],
-    fm_t rpn_input4_fm[256][12][20],
+
+
 
 
 
@@ -34534,21 +34509,80 @@ void rpn_top(
     fm_t rpn_output0_cls_fm[3][184][320],
     fm_t rpn_output1_cls_fm[3][92][160],
     fm_t rpn_output2_cls_fm[3][46][80],
-    fm_t rpn_output3_cls_fm[3][23][40],
-    fm_t rpn_output4_cls_fm[3][12][20],
+
+
 
 
     fm_t rpn_output0_reg_fm[12][184][320],
     fm_t rpn_output1_reg_fm[12][92][160],
     fm_t rpn_output2_reg_fm[12][46][80],
-    fm_t rpn_output3_reg_fm[12][23][40],
-    fm_t rpn_output4_reg_fm[12][12][20],
+
+
 
 
 
     fm_t rpn_output0_fm[256][184][320],
     fm_t rpn_output1_fm[256][92][160],
     fm_t rpn_output2_fm[256][46][80],
+
+
+
+
+
+    fm_t bboxes[4720][4],
+    fm_t dets[1000][5]
+
+
+
+);
+
+void rpn_top2(
+    int rpn_topk_index0[1000],
+    int rpn_topk_index1[1000],
+    int rpn_topk_index2[1000],
+
+    fm_t rpn_anchor0_reg_fm [12*184*320/4][4],
+    fm_t rpn_anchor1_reg_fm [12*184*320/4][4],
+    fm_t rpn_anchor2_reg_fm [12*184*320/4][4],
+
+    fm_t rpn_anchor0_cls_fm [3*184*320],
+    fm_t rpn_anchor1_cls_fm [3*92*160],
+    fm_t rpn_anchor2_cls_fm [3*46*80],
+
+
+
+
+
+    fm_t rpn_input3_fm[256][23][40],
+    fm_t rpn_input4_fm[256][12][20],
+
+
+
+    wt_t rpn_conv_weight[256][256][3][3],
+    wt_t rpn_conv_bias[256],
+    wt_t rpn_cls_weight[3][256][1][1],
+    wt_t rpn_cls_bias[3],
+    wt_t rpn_reg_weight[12][256][1][1],
+    wt_t rpn_reg_bias[12],
+
+
+
+
+    fm_t rpn_output3_cls_fm[3][23][40],
+    fm_t rpn_output4_cls_fm[3][12][20],
+
+
+
+
+
+    fm_t rpn_output3_reg_fm[12][23][40],
+    fm_t rpn_output4_reg_fm[12][12][20],
+
+
+
+
+
+
     fm_t rpn_output3_fm[256][23][40],
     fm_t rpn_output4_fm[256][12][20],
 
@@ -34715,6 +34749,18 @@ void test_top (
      wt_t fpn_0_layer_weights[256][256][3][3],
      wt_t fpn_0_layer_bias[256],
      fm_t fpn_0_output_feature_map[256][184][320],
+
+    int rpn_topk_index0[1000],
+    int rpn_topk_index1[1000],
+    int rpn_topk_index2[1000],
+
+    fm_t rpn_anchor0_reg_fm [12*184*320/4][4],
+    fm_t rpn_anchor1_reg_fm [12*184*320/4][4],
+    fm_t rpn_anchor2_reg_fm [12*184*320/4][4],
+
+    fm_t rpn_anchor0_cls_fm[3*184*320],
+    fm_t rpn_anchor1_cls_fm[3*92*160],
+    fm_t rpn_anchor2_cls_fm[3*46*80],
 
 
     fm_t rpn_input0_fm[256][184][320],

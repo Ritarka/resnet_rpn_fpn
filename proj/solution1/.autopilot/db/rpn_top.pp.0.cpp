@@ -34414,16 +34414,7 @@ void rpn_load_bias_params (
         wt_t params[N_OUT_CH],
         int b
 );
-
-
-void rpn_conv_bias_add(
-        fm_t feature_map[64][46][40],
-        wt_t bias_params[64],
-        bool relu
-);
-
-
-
+# 927 "./qdtrack.h"
 template<const int N_IN_FM_DEPTH, const int N_IN_FM_HEIGHT, const int N_IN_FM_WIDTH,
          const int LAST_LAYER_EN>
 void rpn_load_input_fm_tile (
@@ -34434,16 +34425,7 @@ void rpn_load_input_fm_tile (
         int P,
         int d
 );
-
-void rpn_load_residual_fm_tile (
-        fm_t in_fm_buf[64][46][40],
-        fm_t in_fm[2048][184][320],
-        int ti,
-        int tj,
-        int b
-);
-
-
+# 947 "./qdtrack.h"
 template<const int N_OUT_CH, const int N_IN_CH>
 void rpn_load_weights_3x3 (
         wt_t weight_buf_3x3[64][3][3],
@@ -34452,14 +34434,7 @@ void rpn_load_weights_3x3 (
         int b,
         int d
 );
-
-
-void rpn_save_partial_out_buf (
-        fm_t partial_out_fm_buf[64][46][40],
-        fm_t out_fm_buf[64][46][40],
-        int d
-);
-
+# 963 "./qdtrack.h"
 template<const int S>
 void rpn_store_out_buf_to_DDR(
         fm_t out_fm[2048][184][320],
@@ -34519,8 +34494,8 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
     fm_t rpn_input0_fm[256][184][320],
     fm_t rpn_input1_fm[256][92][160],
     fm_t rpn_input2_fm[256][46][80],
-    fm_t rpn_input3_fm[256][23][40],
-    fm_t rpn_input4_fm[256][12][20],
+
+
 
 
 
@@ -34534,21 +34509,80 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
     fm_t rpn_output0_cls_fm[3][184][320],
     fm_t rpn_output1_cls_fm[3][92][160],
     fm_t rpn_output2_cls_fm[3][46][80],
-    fm_t rpn_output3_cls_fm[3][23][40],
-    fm_t rpn_output4_cls_fm[3][12][20],
+
+
 
 
     fm_t rpn_output0_reg_fm[12][184][320],
     fm_t rpn_output1_reg_fm[12][92][160],
     fm_t rpn_output2_reg_fm[12][46][80],
-    fm_t rpn_output3_reg_fm[12][23][40],
-    fm_t rpn_output4_reg_fm[12][12][20],
+
+
 
 
 
     fm_t rpn_output0_fm[256][184][320],
     fm_t rpn_output1_fm[256][92][160],
     fm_t rpn_output2_fm[256][46][80],
+
+
+
+
+
+    fm_t bboxes[4720][4],
+    fm_t dets[1000][5]
+
+
+
+);
+
+void rpn_top2(
+    int rpn_topk_index0[1000],
+    int rpn_topk_index1[1000],
+    int rpn_topk_index2[1000],
+
+    fm_t rpn_anchor0_reg_fm [12*184*320/4][4],
+    fm_t rpn_anchor1_reg_fm [12*184*320/4][4],
+    fm_t rpn_anchor2_reg_fm [12*184*320/4][4],
+
+    fm_t rpn_anchor0_cls_fm [3*184*320],
+    fm_t rpn_anchor1_cls_fm [3*92*160],
+    fm_t rpn_anchor2_cls_fm [3*46*80],
+
+
+
+
+
+    fm_t rpn_input3_fm[256][23][40],
+    fm_t rpn_input4_fm[256][12][20],
+
+
+
+    wt_t rpn_conv_weight[256][256][3][3],
+    wt_t rpn_conv_bias[256],
+    wt_t rpn_cls_weight[3][256][1][1],
+    wt_t rpn_cls_bias[3],
+    wt_t rpn_reg_weight[12][256][1][1],
+    wt_t rpn_reg_bias[12],
+
+
+
+
+    fm_t rpn_output3_cls_fm[3][23][40],
+    fm_t rpn_output4_cls_fm[3][12][20],
+
+
+
+
+
+    fm_t rpn_output3_reg_fm[12][23][40],
+    fm_t rpn_output4_reg_fm[12][12][20],
+
+
+
+
+
+
     fm_t rpn_output3_fm[256][23][40],
     fm_t rpn_output4_fm[256][12][20],
 
@@ -34716,6 +34750,18 @@ void test_top (
      wt_t fpn_0_layer_bias[256],
      fm_t fpn_0_output_feature_map[256][184][320],
 
+    int rpn_topk_index0[1000],
+    int rpn_topk_index1[1000],
+    int rpn_topk_index2[1000],
+
+    fm_t rpn_anchor0_reg_fm [12*184*320/4][4],
+    fm_t rpn_anchor1_reg_fm [12*184*320/4][4],
+    fm_t rpn_anchor2_reg_fm [12*184*320/4][4],
+
+    fm_t rpn_anchor0_cls_fm[3*184*320],
+    fm_t rpn_anchor1_cls_fm[3*92*160],
+    fm_t rpn_anchor2_cls_fm[3*46*80],
+
 
     fm_t rpn_input0_fm[256][184][320],
     fm_t rpn_input1_fm[256][92][160],
@@ -34771,25 +34817,39 @@ void test_top (
 
 
 
-fm_t rpn_in_fm_buf[64][46 + 5][40 + 5];
-fm_t rpn_out_fm_buf[64][46][40];
-fm_t rpn_partial_out_fm_buf[64][46][40];
-fm_t rpn_ds_fm_buf[64][46][40];
+
+extern fm_t rpn_anchor0_cls_fm[3*184*320];
+extern fm_t rpn_anchor1_cls_fm[3*92*160];
+extern fm_t rpn_anchor2_cls_fm[3*46*80];
+
+extern fm_t rpn_anchor0_reg_fm[12*184*320/4][4];
+extern fm_t rpn_anchor1_reg_fm[12*92*160/4][4];
+extern fm_t rpn_anchor2_reg_fm[12*46*80/4][4];
+
+extern int rpn_topk_index0[1000];
+extern int rpn_topk_index1[1000];
+extern int rpn_topk_index2[1000];
+
+
+extern fm_t rpn_in_fm_buf[64][46 + 5][40 + 5];
+extern fm_t rpn_out_fm_buf[64][46][40];
+extern fm_t rpn_partial_out_fm_buf[64][46][40];
+extern fm_t rpn_ds_fm_buf[64][46][40];
 
 
 
 
 
-fm_t rpn_layer_out_fm[2048][184][320];
-fm_t rpn_layer_in_fm[2048][184][320];
+extern fm_t rpn_layer_out_fm[2048][184][320];
+extern fm_t rpn_layer_in_fm[2048][184][320];
 
 
-wt_t rpn_weight_buf_1x1[64][1][1];
-wt_t rpn_weight_buf_3x3[64][3][3];
-wt_t rpn_weight_buf_7x7[64][7][7];
+extern wt_t rpn_weight_buf_1x1[64][1][1];
+extern wt_t rpn_weight_buf_3x3[64][3][3];
+extern wt_t rpn_weight_buf_7x7[64][7][7];
 
 
-wt_t rpn_param_buf[64];
+extern wt_t rpn_param_buf[64];
 
 template<const int N_OUT_CH>
 void rpn_load_bias_params (
@@ -34798,23 +34858,23 @@ void rpn_load_bias_params (
         int b
 )
 {
-    VITIS_LOOP_32_1: for(int j = 0; j < 64; j++)
+    VITIS_LOOP_46_1: for(int j = 0; j < 64; j++)
     {
         param_buf[j] = params[b * 64 + j];
     }
 }
 
 
-void rpn_conv_bias_add(
+static void rpn_conv_bias_add(
         fm_t feature_map[64][46][40],
         wt_t bias_params[64],
         bool relu)
 {
-   VITIS_LOOP_44_1: for(int k = 0; k < 64; k++)
+   VITIS_LOOP_58_1: for(int k = 0; k < 64; k++)
    {
-       VITIS_LOOP_46_2: for(int i = 0; i < 46; i++)
+       VITIS_LOOP_60_2: for(int i = 0; i < 46; i++)
        {
-           VITIS_LOOP_48_3: for(int j = 0; j < 40; j++)
+           VITIS_LOOP_62_3: for(int j = 0; j < 40; j++)
         {
             feature_map[k][i][j] += bias_params[k];
                if(relu && feature_map[k][i][j]<=0) feature_map[k][i][j]=0;
@@ -34838,11 +34898,11 @@ void rpn_load_input_fm_tile (
         int d
 )
 {
-    VITIS_LOOP_72_1: for(int c = 0; c < 64; c++)
+    VITIS_LOOP_86_1: for(int c = 0; c < 64; c++)
     {
-        VITIS_LOOP_74_2: for(int i = 0; i < 46 + 5; i++)
+        VITIS_LOOP_88_2: for(int i = 0; i < 46 + 5; i++)
         {
-            VITIS_LOOP_76_3: for(int j = 0; j < 40 + 5; j++)
+            VITIS_LOOP_90_3: for(int j = 0; j < 40 + 5; j++)
             {
 
                 if((ti == 0 && i < P) || (tj == 0 && j < P))
@@ -34872,7 +34932,7 @@ void rpn_load_input_fm_tile (
 }
 
 
-void rpn_load_residual_fm_tile (
+static void rpn_load_residual_fm_tile (
         fm_t in_fm_buf[64][46][40],
         fm_t in_fm[2048][184][320],
         int ti,
@@ -34880,11 +34940,11 @@ void rpn_load_residual_fm_tile (
         int b
 )
 {
-    VITIS_LOOP_114_1: for(int c = 0; c < 64; c++)
+    VITIS_LOOP_128_1: for(int c = 0; c < 64; c++)
     {
-        VITIS_LOOP_116_2: for(int i = 0; i < 46; i++)
+        VITIS_LOOP_130_2: for(int i = 0; i < 46; i++)
         {
-            VITIS_LOOP_118_3: for(int j = 0; j < 40; j++)
+            VITIS_LOOP_132_3: for(int j = 0; j < 40; j++)
             {
           in_fm_buf[c][i][j] = in_fm[b*64 + c][ti*46 + i][tj*40 + j];
             }
@@ -34902,11 +34962,11 @@ void rpn_load_weights_3x3 (
         int d
 )
 {
-    VITIS_LOOP_136_1: for(int c = 0; c < 64; c++)
+    VITIS_LOOP_150_1: for(int c = 0; c < 64; c++)
     {
-        VITIS_LOOP_138_2: for(int kh = 0; kh < 3; kh++)
+        VITIS_LOOP_152_2: for(int kh = 0; kh < 3; kh++)
      {
-         VITIS_LOOP_140_3: for(int kw = 0; kw < 3; kw++)
+         VITIS_LOOP_154_3: for(int kw = 0; kw < 3; kw++)
          {
              weight_buf_3x3[c][kh][kw] = weights[b * 64 + f][d * 64 + c][kh][kw];
             }
@@ -34923,24 +34983,24 @@ void rpn_load_weights_1x1 (
         int d
 )
 {
-    VITIS_LOOP_157_1: for(int i = 0; i < 64; i++)
+    VITIS_LOOP_171_1: for(int i = 0; i < 64; i++)
     {
      weight_buf_1x1[i][0][0] = weights[b * 64 + f][d * 64 + i][0][0];
     }
 }
 
 
-void rpn_save_partial_out_buf (
+static void rpn_save_partial_out_buf (
         fm_t partial_out_fm_buf[64][46][40],
         fm_t out_fm_buf[64][46][40],
         int d
 )
 {
-    VITIS_LOOP_170_1: for(int f = 0; f < 64; f++)
+    VITIS_LOOP_184_1: for(int f = 0; f < 64; f++)
     {
-        VITIS_LOOP_172_2: for(int i = 0; i < 46; i++)
+        VITIS_LOOP_186_2: for(int i = 0; i < 46; i++)
         {
-            VITIS_LOOP_174_3: for(int j = 0; j < 40; j++)
+            VITIS_LOOP_188_3: for(int j = 0; j < 40; j++)
             {
                 if(d==0)
                     partial_out_fm_buf[f][i][j] = out_fm_buf[f][i][j];
@@ -34962,11 +35022,11 @@ void rpn_store_out_buf_to_DDR(
         int b
 )
 {
-    VITIS_LOOP_196_1: for(int f = 0; f < 64; f++)
+    VITIS_LOOP_210_1: for(int f = 0; f < 64; f++)
     {
-        VITIS_LOOP_198_2: for(int i = 0; i < 46/S; i++)
+        VITIS_LOOP_212_2: for(int i = 0; i < 46/S; i++)
         {
-            VITIS_LOOP_200_3: for(int j = 0; j < 40/S; j++)
+            VITIS_LOOP_214_3: for(int j = 0; j < 40/S; j++)
             {
                  out_fm[b*64 + f][ti*(46/S) + i][tj*(40/S) + j] = fm_buf[f][i][j];
             }
@@ -34992,16 +35052,16 @@ void rpn_1x1_conv(
     const int num_of_tiles = ((N_IN_FM_HEIGHT / 46) +row_mod ) * ((N_IN_FM_WIDTH / 40)+col_mod);
     std::cout << "\nNo. of tiles in input feature map = " << num_of_tiles << std::endl;
 
-    VITIS_LOOP_226_1: for(int ti = 0; ti < (N_IN_FM_HEIGHT / 46) + row_mod; ti++)
+    VITIS_LOOP_240_1: for(int ti = 0; ti < (N_IN_FM_HEIGHT / 46) + row_mod; ti++)
     {
-        VITIS_LOOP_228_2: for(int tj = 0; tj < (N_IN_FM_WIDTH / 40) +col_mod; tj++)
+        VITIS_LOOP_242_2: for(int tj = 0; tj < (N_IN_FM_WIDTH / 40) +col_mod; tj++)
         {
             std::cout << "Processing Tile " << ti*(N_IN_FM_WIDTH / 40) + tj + 1;
             std::cout << "/" << num_of_tiles << std::endl;
 
-            VITIS_LOOP_233_3: for(int b = 0; b < (N_OUT_FM_DEPTH / 64)+o_depth_mod; b++)
+            VITIS_LOOP_247_3: for(int b = 0; b < (N_OUT_FM_DEPTH / 64)+o_depth_mod; b++)
          {
-                VITIS_LOOP_235_4: for(int d = 0; d < (N_IN_FM_DEPTH / 64)+i_depth_mod; d++)
+                VITIS_LOOP_249_4: for(int d = 0; d < (N_IN_FM_DEPTH / 64)+i_depth_mod; d++)
                 {
 
 
@@ -35011,7 +35071,7 @@ void rpn_1x1_conv(
                                       (rpn_in_fm_buf, rpn_layer_in_fm, ti, tj, 0, d);
 
 
-                 VITIS_LOOP_245_5: for(int f = 0; f < 64; f++)
+                 VITIS_LOOP_259_5: for(int f = 0; f < 64; f++)
                  {
 
                         rpn_load_weights_1x1<N_OUT_FM_DEPTH, N_IN_FM_DEPTH>
@@ -35051,14 +35111,14 @@ void rpn_3x3_conv(
 
     loop1: for(int ti = 0; ti < (N_IN_FM_HEIGHT / 46) + ROW_MOD; ti++)
     {
-        VITIS_LOOP_285_1: for(int tj = 0; tj < (N_IN_FM_WIDTH / 40) +ROW_MOD; tj++)
+        VITIS_LOOP_299_1: for(int tj = 0; tj < (N_IN_FM_WIDTH / 40) +ROW_MOD; tj++)
         {
             std::cout << "Processing Tile " << ti*(N_IN_FM_WIDTH / 40) + tj + 1;
             std::cout << "/" << num_of_tiles << std::endl;
 
-            VITIS_LOOP_290_2: for(int b = 0; b < (N_OUT_FM_DEPTH / 64); b++)
+            VITIS_LOOP_304_2: for(int b = 0; b < (N_OUT_FM_DEPTH / 64); b++)
          {
-                VITIS_LOOP_292_3: for(int d = 0; d < (N_IN_FM_DEPTH / 64); d++)
+                VITIS_LOOP_306_3: for(int d = 0; d < (N_IN_FM_DEPTH / 64); d++)
                 {
 
 
@@ -35068,7 +35128,7 @@ void rpn_3x3_conv(
                                       (rpn_in_fm_buf, rpn_layer_in_fm, ti, tj, 1, d);
 
 
-                 VITIS_LOOP_302_4: for(int f = 0; f < 64; f++)
+                 VITIS_LOOP_316_4: for(int f = 0; f < 64; f++)
                  {
 
                         rpn_load_weights_3x3<N_OUT_FM_DEPTH, N_IN_FM_DEPTH>
@@ -39204,22 +39264,40 @@ using std::tgamma;
 using std::trunc;
 # 5 "./rpn_top.cpp" 2
 
-fm_t rpn_anchor0_cls_fm [3*184*320];
-fm_t rpn_anchor1_cls_fm [3*92*160];
-fm_t rpn_anchor2_cls_fm [3*46*80];
-fm_t rpn_anchor3_cls_fm [3*23*40];
-fm_t rpn_anchor4_cls_fm [3*12*20];
+fm_t rpn_anchor0_cls_fm[3*184*320];
+fm_t rpn_anchor1_cls_fm[3*92*160];
+fm_t rpn_anchor2_cls_fm[3*46*80];
 
-fm_t rpn_anchor0_reg_fm [12*184*320/4][4];
-fm_t rpn_anchor1_reg_fm [12*92*160/4][4];
-fm_t rpn_anchor2_reg_fm [12*46*80/4][4];
-fm_t rpn_anchor3_reg_fm [12*23*40/4][4];
-fm_t rpn_anchor4_reg_fm [12*12*20/4][4];
+
+
+fm_t rpn_anchor0_reg_fm[12*184*320/4][4];
+fm_t rpn_anchor1_reg_fm[12*92*160/4][4];
+fm_t rpn_anchor2_reg_fm[12*46*80/4][4];
+
+
 
 int rpn_topk_index0[1000];
 int rpn_topk_index1[1000];
 int rpn_topk_index2[1000];
-int rpn_topk_index3[1000];
+
+
+
+fm_t rpn_in_fm_buf[64][46 + 5][40 + 5];
+fm_t rpn_out_fm_buf[64][46][40];
+fm_t rpn_partial_out_fm_buf[64][46][40];
+fm_t rpn_ds_fm_buf[64][46][40];
+
+
+fm_t rpn_layer_out_fm[2048][184][320];
+fm_t rpn_layer_in_fm[2048][184][320];
+
+
+wt_t rpn_weight_buf_1x1[64][1][1];
+wt_t rpn_weight_buf_3x3[64][3][3];
+wt_t rpn_weight_buf_7x7[64][7][7];
+
+
+wt_t rpn_param_buf[64];
 
 
 
@@ -39232,8 +39310,8 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
     fm_t rpn_input0_fm[256][184][320],
     fm_t rpn_input1_fm[256][92][160],
     fm_t rpn_input2_fm[256][46][80],
-    fm_t rpn_input3_fm[256][23][40],
-    fm_t rpn_input4_fm[256][12][20],
+
+
 
 
 
@@ -39247,49 +39325,38 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
     fm_t rpn_output0_cls_fm[3][184][320],
     fm_t rpn_output1_cls_fm[3][92][160],
     fm_t rpn_output2_cls_fm[3][46][80],
-    fm_t rpn_output3_cls_fm[3][23][40],
-    fm_t rpn_output4_cls_fm[3][12][20],
+
+
 
 
     fm_t rpn_output0_reg_fm[12][184][320],
     fm_t rpn_output1_reg_fm[12][92][160],
     fm_t rpn_output2_reg_fm[12][46][80],
-    fm_t rpn_output3_reg_fm[12][23][40],
-    fm_t rpn_output4_reg_fm[12][12][20],
+
+
 
 
 
     fm_t rpn_output0_fm[256][184][320],
     fm_t rpn_output1_fm[256][92][160],
     fm_t rpn_output2_fm[256][46][80],
-    fm_t rpn_output3_fm[256][23][40],
-    fm_t rpn_output4_fm[256][12][20],
-
-
-
-    wt_t anchor_box0[176640][4],
-    wt_t anchor_box1[44160][4],
-    wt_t anchor_box2[11040][4],
-    wt_t anchor_box3[2760][4],
-    wt_t anchor_box4[720][4],
-
-
+# 94 "./rpn_top.cpp"
     fm_t bboxes[4720][4],
     fm_t dets[1000][5]
 )
 {
-#line 49 "/nethome/mjung76/resnet_rpn_fpn/script.tcl"
+#line 50 "/nethome/mjung76/resnet_rpn_fpn/script.tcl"
 #pragma HLSDIRECTIVE TOP name=rpn_top
-# 79 "./rpn_top.cpp"
+# 97 "./rpn_top.cpp"
 
     std::cout << "Begin processing RPN CONV 0..." << std::endl;
 
 
-    VITIS_LOOP_83_1: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_101_1: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_85_2: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_103_2: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_87_3: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_105_3: for(int w = 0; w < 320; w++)
             {
                 rpn_layer_in_fm[c][h][w] = rpn_input0_fm[c][h][w];
 
@@ -39305,11 +39372,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
                     (rpn_conv_weight, rpn_conv_bias, true);
 
 
-    VITIS_LOOP_103_4: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_121_4: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_105_5: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_123_5: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_107_6: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_125_6: for(int w = 0; w < 320; w++)
             {
                 rpn_output0_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
                 rpn_layer_in_fm[c][h][w]=0;
@@ -39321,11 +39388,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
 
     std::cout << "Begin processing RPN CONV 1..." << std::endl;
 
-    VITIS_LOOP_119_7: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_137_7: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_121_8: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_139_8: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_123_9: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_141_9: for(int w = 0; w < 160; w++)
             {
                 rpn_layer_in_fm[c][h][w] = rpn_input1_fm[c][h][w];
             }
@@ -39339,11 +39406,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
                     (rpn_conv_weight, rpn_conv_bias, true);
 
 
-    VITIS_LOOP_137_10: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_155_10: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_139_11: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_157_11: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_141_12: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_159_12: for(int w = 0; w < 160; w++)
             {
                 rpn_output1_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
                 rpn_layer_in_fm[c][h][w]=0;
@@ -39357,11 +39424,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
     std::cout << "Begin processing RPN CONV 2..." << std::endl;
 
 
-    VITIS_LOOP_155_13: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_173_13: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_157_14: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_175_14: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_159_15: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_177_15: for(int w = 0; w < 80; w++)
             {
                 rpn_layer_in_fm[c][h][w] = rpn_input2_fm[c][h][w];
             }
@@ -39375,11 +39442,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
                     (rpn_conv_weight, rpn_conv_bias, true);
 
 
-    VITIS_LOOP_173_16: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_191_16: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_175_17: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_193_17: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_177_18: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_195_18: for(int w = 0; w < 80; w++)
             {
                 rpn_output2_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
                 rpn_layer_in_fm[c][h][w]=0;
@@ -39387,88 +39454,16 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
             }
         }
     }
-
-    std::cout << "Begin processing RPN CONV 3..." << std::endl;
-
-
-
-    VITIS_LOOP_190_19: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_192_20: for(int h = 0; h < 23; h++)
-        {
-            VITIS_LOOP_194_21: for(int w = 0; w < 40; w++)
-            {
-                rpn_layer_in_fm[c][h][w] = rpn_input3_fm[c][h][w];
-            }
-        }
-    }
-
-
-    rpn_3x3_conv <256, 23, 40,
-                    256, 23, 40,
-                    1, 0,1>
-                    (rpn_conv_weight, rpn_conv_bias, true);
-
-
-    VITIS_LOOP_208_22: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_210_23: for(int h = 0; h < 23; h++)
-        {
-            VITIS_LOOP_212_24: for(int w = 0; w < 40; w++)
-            {
-                rpn_output3_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
-                rpn_layer_in_fm[c][h][w]=0;
-                rpn_layer_out_fm[c][h][w]=0;
-            }
-        }
-    }
-
-    std::cout << "Begin processing RPN CONV 4..." << std::endl;
-
-
-
-    VITIS_LOOP_225_25: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_227_26: for(int h = 0; h < 12; h++)
-        {
-            VITIS_LOOP_229_27: for(int w = 0; w < 20; w++)
-            {
-                rpn_layer_in_fm[c][h][w] = rpn_input4_fm[c][h][w];
-
-            }
-
-        }
-    }
-
-
-    rpn_3x3_conv <256, 12, 20,
-                    256, 12, 20,
-                    1, 0,1>
-                    (rpn_conv_weight, rpn_conv_bias, true);
-
-
-    VITIS_LOOP_245_28: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_247_29: for(int h = 0; h < 12; h++)
-        {
-            VITIS_LOOP_249_30: for(int w = 0; w < 20; w++)
-            {
-                rpn_output4_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
-                rpn_layer_in_fm[c][h][w]=0;
-                rpn_layer_out_fm[c][h][w]=0;
-            }
-        }
-    }
-# 265 "./rpn_top.cpp"
+# 283 "./rpn_top.cpp"
     std::cout << "Begin processing RPN CLS 0..." << std::endl;
 
 
 
-    VITIS_LOOP_269_31: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_287_19: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_271_32: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_289_20: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_273_33: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_291_21: for(int w = 0; w < 320; w++)
             {
                 rpn_layer_in_fm[c][h][w] = rpn_output0_fm[c][h][w];
 
@@ -39484,11 +39479,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
                     (rpn_cls_weight, rpn_cls_bias, false);
 
 
-    VITIS_LOOP_289_34: for(int h = 0; h < 184; h++)
+    VITIS_LOOP_307_22: for(int h = 0; h < 184; h++)
     {
-        VITIS_LOOP_291_35: for(int w = 0; w < 320; w++)
+        VITIS_LOOP_309_23: for(int w = 0; w < 320; w++)
         {
-            VITIS_LOOP_293_36: for(int c = 0; c < 3; c++)
+            VITIS_LOOP_311_24: for(int c = 0; c < 3; c++)
             {
                 rpn_output0_cls_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
                 rpn_anchor0_cls_fm[h*(320*3) + w*3 + c] = 1/(1+(fm_t)exp((float)(-1*rpn_layer_out_fm[c][h][w])));
@@ -39504,11 +39499,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
 
 
 
-    VITIS_LOOP_309_37: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_327_25: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_311_38: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_329_26: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_313_39: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_331_27: for(int w = 0; w < 160; w++)
             {
                 rpn_layer_in_fm[c][h][w] = rpn_output1_fm[c][h][w];
             }
@@ -39521,11 +39516,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
                     (rpn_cls_weight, rpn_cls_bias, false);
 
 
-    VITIS_LOOP_326_40: for(int h = 0; h < 92; h++)
+    VITIS_LOOP_344_28: for(int h = 0; h < 92; h++)
     {
-        VITIS_LOOP_328_41: for(int w = 0; w < 160; w++)
+        VITIS_LOOP_346_29: for(int w = 0; w < 160; w++)
         {
-            VITIS_LOOP_330_42: for(int c = 0; c < 3; c++)
+            VITIS_LOOP_348_30: for(int c = 0; c < 3; c++)
             {
                 rpn_output1_cls_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
                 rpn_anchor1_cls_fm[h*(160*3) + w*3 + c] = 1/(1+(fm_t)exp((float)(-1*rpn_layer_out_fm[c][h][w])));
@@ -39537,11 +39532,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
 
     std::cout << "Begin processing RPN CLS 2..." << std::endl;
 
-    VITIS_LOOP_342_43: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_360_31: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_344_44: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_362_32: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_346_45: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_364_33: for(int w = 0; w < 80; w++)
             {
                 rpn_layer_in_fm[c][h][w] = rpn_output2_fm[c][h][w];
             }
@@ -39554,11 +39549,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
                     (rpn_cls_weight, rpn_cls_bias, false);
 
 
-    VITIS_LOOP_359_46: for(int h = 0; h < 46; h++)
+    VITIS_LOOP_377_34: for(int h = 0; h < 46; h++)
     {
-        VITIS_LOOP_361_47: for(int w = 0; w < 80; w++)
+        VITIS_LOOP_379_35: for(int w = 0; w < 80; w++)
         {
-            VITIS_LOOP_363_48: for(int c = 0; c < 3; c++)
+            VITIS_LOOP_381_36: for(int c = 0; c < 3; c++)
             {
                 rpn_output2_cls_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
                 rpn_anchor2_cls_fm[h*(80*3) + w*3 + c] = 1/(1+(fm_t)exp((float)(-1*rpn_layer_out_fm[c][h][w])));
@@ -39567,90 +39562,16 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
             }
         }
     }
-
-    std::cout << "Begin processing RPN CLS 3..." << std::endl;
-
-    VITIS_LOOP_375_49: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_377_50: for(int h = 0; h < 23; h++)
-        {
-            VITIS_LOOP_379_51: for(int w = 0; w < 40; w++)
-            {
-                rpn_layer_in_fm[c][h][w] = rpn_output3_fm[c][h][w];
-            }
-        }
-    }
-
-
-    rpn_1x1_conv <256, 23, 40,
-                    3, 23, 40,
-                    1, 0,1,0,1,0>
-                    (rpn_cls_weight, rpn_cls_bias, false);
-
-
-    VITIS_LOOP_393_52: for(int h = 0; h < 23; h++)
-    {
-        VITIS_LOOP_395_53: for(int w = 0; w < 40; w++)
-        {
-            VITIS_LOOP_397_54: for(int c = 0; c < 3; c++)
-            {
-                rpn_output3_cls_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
-                rpn_anchor3_cls_fm[h*(40*3) + w*3 + c] = 1/(1+(fm_t)exp((float)(-1*rpn_layer_out_fm[c][h][w])));
-                rpn_layer_in_fm[c][h][w]=0;
-                rpn_layer_out_fm[c][h][w]=0;
-            }
-
-        }
-    }
-
-
-
-
-   std::cout << "Begin processing RPN CLS 4..." << std::endl;
-
-
-
-    VITIS_LOOP_415_55: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_417_56: for(int h = 0; h < 12; h++)
-        {
-            VITIS_LOOP_419_57: for(int w = 0; w < 20; w++)
-            {
-                rpn_layer_in_fm[c][h][w] = rpn_output4_fm[c][h][w];
-            }
-        }
-    }
-
-
-    rpn_1x1_conv <256, 12, 20,
-                    3, 12, 20,
-                    1, 0,1,1,1,0>
-                    (rpn_cls_weight, rpn_cls_bias, false);
-
-
-    VITIS_LOOP_433_58: for(int h = 0; h < 12; h++)
-    {
-        VITIS_LOOP_435_59: for(int w = 0; w < 20; w++)
-        {
-            VITIS_LOOP_437_60: for(int c = 0; c < 3; c++)
-            {
-                rpn_output4_cls_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
-                rpn_anchor4_cls_fm[h*(20*3) + w*3 + c] = 1/(1+exp((float)(-1*rpn_layer_out_fm[c][h][w])));
-                rpn_layer_in_fm[c][h][w]=0;
-                rpn_layer_out_fm[c][h][w]=0;
-            }
-        }
-    }
-# 456 "./rpn_top.cpp"
+# 474 "./rpn_top.cpp"
     std::cout << "Begin processing RPN REG 0..." << std::endl;
 
 
 
-    VITIS_LOOP_460_61: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_478_37: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_462_62: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_480_38: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_464_63: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_482_39: for(int w = 0; w < 320; w++)
             {
                 rpn_layer_in_fm[c][h][w] = rpn_output0_fm[c][h][w];
             }
@@ -39664,11 +39585,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
                     (rpn_reg_weight, rpn_reg_bias, false);
 
 
-    VITIS_LOOP_478_64: for(int h = 0; h < 184; h++)
+    VITIS_LOOP_496_40: for(int h = 0; h < 184; h++)
     {
-        VITIS_LOOP_480_65: for(int w = 0; w < 320; w++)
+        VITIS_LOOP_498_41: for(int w = 0; w < 320; w++)
         {
-            VITIS_LOOP_482_66: for(int c = 0; c < 12; c++)
+            VITIS_LOOP_500_42: for(int c = 0; c < 12; c++)
             {
                 rpn_output0_reg_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
                 rpn_anchor0_reg_fm[(h*(320*12)+w*12 +c)/4][(h*(320*12)+w*12 +c)%4]= rpn_layer_out_fm[c][h][w];
@@ -39683,11 +39604,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
 
 
 
-    VITIS_LOOP_497_67: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_515_43: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_499_68: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_517_44: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_501_69: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_519_45: for(int w = 0; w < 160; w++)
             {
                 rpn_layer_in_fm[c][h][w] = rpn_output1_fm[c][h][w];
             }
@@ -39701,11 +39622,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
                     (rpn_reg_weight, rpn_reg_bias, false);
 
 
-    VITIS_LOOP_515_70: for(int h = 0; h < 92; h++)
+    VITIS_LOOP_533_46: for(int h = 0; h < 92; h++)
     {
-        VITIS_LOOP_517_71: for(int w = 0; w < 160; w++)
+        VITIS_LOOP_535_47: for(int w = 0; w < 160; w++)
         {
-            VITIS_LOOP_519_72: for(int c = 0; c < 12; c++)
+            VITIS_LOOP_537_48: for(int c = 0; c < 12; c++)
             {
                 rpn_output1_reg_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
                 rpn_anchor1_reg_fm[(h*(160*12)+w*12 +c)/4][(h*(160*12)+w*12 +c)%4]= rpn_layer_out_fm[c][h][w];
@@ -39720,11 +39641,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
 
 
 
-    VITIS_LOOP_534_73: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_552_49: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_536_74: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_554_50: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_538_75: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_556_51: for(int w = 0; w < 80; w++)
             {
                 rpn_layer_in_fm[c][h][w] = rpn_output2_fm[c][h][w];
             }
@@ -39738,11 +39659,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
                     (rpn_reg_weight, rpn_reg_bias, false);
 
 
-    VITIS_LOOP_552_76: for(int h = 0; h < 46; h++)
+    VITIS_LOOP_570_52: for(int h = 0; h < 46; h++)
     {
-        VITIS_LOOP_554_77: for(int w = 0; w < 80; w++)
+        VITIS_LOOP_572_53: for(int w = 0; w < 80; w++)
         {
-            VITIS_LOOP_556_78: for(int c = 0; c < 12; c++)
+            VITIS_LOOP_574_54: for(int c = 0; c < 12; c++)
             {
                 rpn_output2_reg_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
                 rpn_anchor2_reg_fm[(h*(80*12)+w*12 +c)/4][(h*(80*12)+w*12 +c)%4]= rpn_layer_out_fm[c][h][w];
@@ -39751,91 +39672,16 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
             }
         }
     }
-# 575 "./rpn_top.cpp"
-    std::cout << "Begin processing RPN REG 3..." << std::endl;
-
-
-
-    VITIS_LOOP_579_79: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_581_80: for(int h = 0; h < 23; h++)
-        {
-            VITIS_LOOP_583_81: for(int w = 0; w < 40; w++)
-            {
-                rpn_layer_in_fm[c][h][w] = rpn_output3_fm[c][h][w];
-            }
-        }
-    }
-
-
-    rpn_1x1_conv <256, 23, 40,
-                    12, 23, 40,
-                    1, 0,1,0,1,0>
-                    (rpn_reg_weight, rpn_reg_bias, false);
-
-
-    VITIS_LOOP_597_82: for(int h = 0; h < 23; h++)
-    {
-        VITIS_LOOP_599_83: for(int w = 0; w < 40; w++)
-        {
-            VITIS_LOOP_601_84: for(int c = 0; c < 12; c++)
-            {
-                rpn_output3_reg_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
-                rpn_anchor3_reg_fm[(h*(40*12)+w*12 +c)/4][(h*(40*12)+w*12 +c)%4]= rpn_layer_out_fm[c][h][w];
-                rpn_layer_in_fm[c][h][w]=0;
-                rpn_layer_out_fm[c][h][w]=0;
-            }
-        }
-    }
-
-
-
-
-   std::cout << "Begin processing RPN REG 4..." << std::endl;
-
-
-
-    VITIS_LOOP_618_85: for(int c = 0; c < 256; c++)
-    {
-        VITIS_LOOP_620_86: for(int h = 0; h < 12; h++)
-        {
-            VITIS_LOOP_622_87: for(int w = 0; w < 20; w++)
-            {
-                rpn_layer_in_fm[c][h][w] = rpn_output4_fm[c][h][w];
-            }
-        }
-    }
-
-
-    rpn_1x1_conv <256, 12, 20,
-                    12, 12, 20,
-                    1, 0,1,1,1,0>
-                    (rpn_reg_weight, rpn_reg_bias, false);
-
-
-    VITIS_LOOP_636_88: for(int h = 0; h < 12; h++)
-    {
-        VITIS_LOOP_638_89: for(int w = 0; w < 20; w++)
-        {
-            VITIS_LOOP_640_90: for(int c = 0; c < 12; c++)
-            {
-                rpn_output4_reg_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
-                rpn_anchor4_reg_fm[(h*(20*12)+w*12 +c)/4][(h*(20*12)+w*12 +c)%4]= rpn_layer_out_fm[c][h][w];
-                rpn_layer_in_fm[c][h][w]=0;
-                rpn_layer_out_fm[c][h][w]=0;
-            }
-        }
-    }
-# 663 "./rpn_top.cpp"
+# 681 "./rpn_top.cpp"
    std::cout << "Begin processing RPN Anchor Gen 0..." << std::endl;
 
 
     bool flag0[3*184*320]={false};
-    VITIS_LOOP_667_91: for(int i = 0; i<1000; i++)
+    VITIS_LOOP_685_55: for(int i = 0; i<1000; i++)
     {
         fm_t maximum_score = 0.0;
         int index = -1;
-        VITIS_LOOP_671_92: for(int j = 0; j<3*184*320; j++)
+        VITIS_LOOP_689_56: for(int j = 0; j<3*184*320; j++)
         {
             if(flag0[j] == true) continue;
             if(rpn_anchor0_cls_fm[j]>maximum_score)
@@ -39854,11 +39700,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
 
 
     bool flag1[3*92*160]={false};
-    VITIS_LOOP_690_93: for(int i = 0; i<1000; i++)
+    VITIS_LOOP_708_57: for(int i = 0; i<1000; i++)
     {
         fm_t maximum_score = 0.0;
         int index = -1;
-        VITIS_LOOP_694_94: for(int j = 0; j<3*92*160; j++)
+        VITIS_LOOP_712_58: for(int j = 0; j<3*92*160; j++)
         {
             if(flag1[j] == true) continue;
             if(rpn_anchor1_cls_fm[j]>maximum_score)
@@ -39877,11 +39723,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
 
 
     bool flag2[3*46*80]={false};
-    VITIS_LOOP_713_95: for(int i = 0; i<1000; i++)
+    VITIS_LOOP_731_59: for(int i = 0; i<1000; i++)
     {
         fm_t maximum_score = 0.0;
         int index = -1;
-        VITIS_LOOP_717_96: for(int j = 0; j<3*46*80; j++)
+        VITIS_LOOP_735_60: for(int j = 0; j<3*46*80; j++)
         {
             if(flag2[j] == true) continue;
             if(rpn_anchor2_cls_fm[j]>maximum_score)
@@ -39894,215 +39740,5 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
             rpn_topk_index2[i]=index;
             flag2[index]=true;
     }
-
-
-   std::cout << "Begin processing RPN Anchor Gen 3..." << std::endl;
-
-
-
-    bool flag3[3*23*40]={false};
-    VITIS_LOOP_737_97: for(int i = 0; i<1000; i++)
-    {
-        fm_t maximum_score = 0.0;
-        int index = -1;
-        VITIS_LOOP_741_98: for(int j = 0; j<3*23*40; j++)
-        {
-            if(flag3[j] == true) continue;
-            if(rpn_anchor3_cls_fm[j]>maximum_score)
-            {
-                maximum_score = rpn_anchor3_cls_fm[j];
-                index = j;
-            }
-        }
-            rpn_topk_index3[i]=index;
-            flag3[index]=true;
-
-    }
-
-
-   std::cout << "Begin processing RPN Anchor Gen 4..." << std::endl;
-# 778 "./rpn_top.cpp"
-    fm_t rois[4720][4];
-    fm_t deltas[4720][4];
-    fm_t scores[4720];
-
-
-    VITIS_LOOP_783_99: for(int i = 0; i<1000; i++)
-    {
-        VITIS_LOOP_785_100: for(int j = 0; j<4 ; j++)
-        {
-            rois[0*1000+i][j]=anchor_box0[rpn_topk_index0[i]][j];
-            rois[1*1000+i][j]=anchor_box1[rpn_topk_index1[i]][j];
-            rois[2*1000+i][j]=anchor_box2[rpn_topk_index2[i]][j];
-            rois[3*1000+i][j]=anchor_box3[rpn_topk_index3[i]][j];
-            deltas[0*1000+i][j]=rpn_anchor0_reg_fm[rpn_topk_index0[i]][j];
-            deltas[1*1000+i][j]=rpn_anchor1_reg_fm[rpn_topk_index1[i]][j];
-            deltas[2*1000+i][j]=rpn_anchor2_reg_fm[rpn_topk_index2[i]][j];
-            deltas[3*1000+i][j]=rpn_anchor3_reg_fm[rpn_topk_index3[i]][j];
-        }
-        scores[0*1000+i]=rpn_anchor0_cls_fm[rpn_topk_index0[i]];
-        scores[1*1000+i]=rpn_anchor1_cls_fm[rpn_topk_index1[i]];
-        scores[2*1000+i]=rpn_anchor2_cls_fm[rpn_topk_index2[i]];
-        scores[3*1000+i]=rpn_anchor3_cls_fm[rpn_topk_index3[i]];
-    }
-    VITIS_LOOP_801_101: for(int i = 0; i<720; i++)
-    {
-        VITIS_LOOP_803_102: for(int j = 0; j<4; j++)
-        {
-            rois[4*1000+i][j]=anchor_box4[i][j];
-            deltas[4*1000+i][j]=rpn_anchor4_reg_fm[i][j];
-        }
-        scores[4*1000+i]=rpn_anchor4_cls_fm[i];
-    }
-
-
-
-
-
-
-    fm_t max_ratio = 4.135166556742355;
-    fm_t dxy[4720][2];
-    fm_t dwh[4720][2];
-    fm_t pxy[4720][2];
-    fm_t pwh[4720][2];
-    fm_t dxy_wh[4720][2];
-    fm_t gxy[4720][2];
-    fm_t gwh[4720][2];
-    fm_t area[4720];
-    fm_t half = 0.5;
-    VITIS_LOOP_826_103: for(int i = 0 ; i< 4720; i++)
-    {
-        dxy[i][0]= deltas[i][0];
-        dwh[i][0]= deltas[i][2];
-        pxy[i][0]= (rois[i][0]+rois[i][2])*half;
-        pwh[i][0]= rois[i][2]-rois[i][0];
-        dxy[i][1]= deltas[i][1];
-        dwh[i][1]= deltas[i][3];
-        pxy[i][1]= (rois[i][1]+rois[i][3])*half;
-        pwh[i][1]= rois[i][3]-rois[i][1];
-        dxy_wh[i][0] = pwh[i][0] * dxy[i][0];
-        dxy_wh[i][1] = pwh[i][1] * dxy[i][1];
-        if(dwh[i][0]>max_ratio) dwh[i][0]= max_ratio;
-        if(dwh[i][0]<-1*max_ratio) dwh[i][0]= -1*max_ratio;
-        if(dwh[i][1]>max_ratio) dwh[i][1]= max_ratio;
-        if(dwh[i][1]<-1*max_ratio) dwh[i][1]= -1*max_ratio;
-        gxy[i][0] = pxy[i][0] + dxy_wh[i][0];
-        gxy[i][1] = pxy[i][1] + dxy_wh[i][1];
-        gwh[i][0] = pwh[i][0] * (fm_t)exp((float)dwh[i][0]);
-        gwh[i][1] = pwh[i][1] * (fm_t)exp((float)dwh[i][1]);
-
-        bboxes[i][0] = gxy[i][0] - (gwh[i][0]*half);
-        bboxes[i][1] = gxy[i][1] - (gwh[i][1]*half);
-        bboxes[i][2] = gxy[i][0] + (gwh[i][0]*half);
-        bboxes[i][3] = gxy[i][1] + (gwh[i][1]*half);
-        if(bboxes[i][0]>1280) bboxes[i][0]=1280;
-        if(bboxes[i][2]>1280) bboxes[i][2]=1280;
-        if(bboxes[i][1]>720) bboxes[i][1]=720;
-        if(bboxes[i][3]>720) bboxes[i][3]=720;
-
-        if(bboxes[i][0]<0) bboxes[i][0]=0;
-        if(bboxes[i][1]<0) bboxes[i][1]=0;
-        if(bboxes[i][2]<0) bboxes[i][2]=0;
-        if(bboxes[i][3]<0) bboxes[i][3]=0;
-        bboxes[i][0] += ((int)(i/1000))*1281;
-        bboxes[i][1] += ((int)(i/1000))*1281;
-        bboxes[i][2] += ((int)(i/1000))*1281;
-        bboxes[i][3] += ((int)(i/1000))*1281;
-
-
-        area[i]= (bboxes[i][2]-bboxes[i][0])*(bboxes[i][3]-bboxes[i][1]);
-    }
-
-
-
-
-
-
-
-    std::cout << "Begin processing NMS..." << std::endl;
-
-    int nms_index[4720];
-    bool nms_flag[4720]={false};
-
-    VITIS_LOOP_880_104: for(int i = 0; i<4720; i++)
-    {
-        fm_t tm = -100;
-        int index = -1;
-        VITIS_LOOP_884_105: for(int j = 0; j < 4720; j++)
-        {
-            if(nms_flag[j]==true) continue;
-            if(tm<scores[j])
-            {
-                tm = scores[j];
-                index = j;
-            }
-        }
-        nms_flag[index]=true;
-        nms_index[i]=index;
-    }
-
-    VITIS_LOOP_897_106: for(int i = 0; i<4720; i++) nms_flag[i]=true;
-
-
-    VITIS_LOOP_900_107: for (int _i = 0; _i < 4720; _i++) {
-        if (nms_flag[_i] == false) continue;
-        int i = nms_index[_i];
-        fm_t ix1 = bboxes[i][0];
-        fm_t iy1 = bboxes[i][1];
-        fm_t ix2 = bboxes[i][2];
-        fm_t iy2 = bboxes[i][3];
-        fm_t iarea = area[i];
-
-        VITIS_LOOP_909_108: for (int64_t _j = _i + 1; _j < 4720; _j++) {
-            if (nms_flag[_j] == false) continue;
-            int j = nms_index[_j];
-
-            fm_t xx1 = (ix1> bboxes[j][0])?ix1:bboxes[j][0];
-            fm_t yy1 = (iy1> bboxes[j][1])?iy1:bboxes[j][1];
-            fm_t xx2 = (ix2< bboxes[j][2])?ix2:bboxes[j][2];
-            fm_t yy2 = (iy2< bboxes[j][3])?iy2:bboxes[j][3];
-            fm_t w = (xx2 - xx1 );
-            fm_t h = (yy2 - yy1);
-            fm_t inter = w * h;
-            fm_t ovr = inter / (iarea + area[j] - inter);
-            if (ovr > 0.7) nms_flag[_j] = false;
-        }
-    }
-
-    int ind = 0;
-    VITIS_LOOP_926_109: for(int i = 0; i<4720; i++){
-        if(nms_flag[i]==false) continue;
-        nms_index[ind]=nms_index[i];
-        ind++;
-    }
-    int numSize = ind;
-
-    VITIS_LOOP_933_110: for(int i =0; i<1000; i++){
-        VITIS_LOOP_934_111: for(int j = 0; j<5; j++){
-            switch(j){
-                case 0:
-                    dets[i][j]=bboxes[nms_index[i]][0]-(((int)(nms_index[i]/1000))*1281);
-                    break;
-                case 1:
-                    dets[i][j]=bboxes[nms_index[i]][1]-(((int)(nms_index[i]/1000))*1281);
-                    break;
-                case 2:
-                    dets[i][j]=bboxes[nms_index[i]][2]-(((int)(nms_index[i]/1000))*1281);
-                    break;
-                case 3:
-                    dets[i][j]=bboxes[nms_index[i]][3]-(((int)(nms_index[i]/1000))*1281);
-                    break;
-                case 4:
-                    dets[i][j]=scores[nms_index[i]];
-
-            }
-
-        }
-
-    }
-
-
-
-
-
+# 979 "./rpn_top.cpp"
 }

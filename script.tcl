@@ -30,6 +30,7 @@ set_top rpn_top
 add_files ./rpn_conv_1x1.cpp
 add_files ./rpn_conv_3x3.cpp
 add_files ./rpn_top.cpp
+add_files ./rpn_top2.cpp
 
 
 # add_files -tb ./bin

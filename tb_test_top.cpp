@@ -404,6 +404,26 @@ fm_t    fixp_conv_3_output_feature_map[FPN_CONV_3_OD][FPN_CONV_3_OH][FPN_CONV_3_
 //--------------------------------------------------------------------------
 // RPN
 //--------------------------------------------------------------------------
+int rpn_topk_index0_2[RPN_PRE_NMS_SIZE0];
+int rpn_topk_index1_2[RPN_PRE_NMS_SIZE1];
+int rpn_topk_index2_2[RPN_PRE_NMS_SIZE2];
+
+fm_t rpn_anchor0_reg_fm_2[RPN_REG_OUT_CH*RPN_INPUT0_IN_FM_HEIGHT*RPN_INPUT0_IN_FM_WIDTH/4][4];
+fm_t rpn_anchor1_reg_fm_2[RPN_REG_OUT_CH*RPN_INPUT0_IN_FM_HEIGHT*RPN_INPUT0_IN_FM_WIDTH/4][4];
+fm_t rpn_anchor2_reg_fm_2[RPN_REG_OUT_CH*RPN_INPUT0_IN_FM_HEIGHT*RPN_INPUT0_IN_FM_WIDTH/4][4];
+
+// float rpn_anchor0_reg[RPN_REG_OUT_CH*RPN_INPUT0_IN_FM_HEIGHT*RPN_INPUT0_IN_FM_WIDTH/4][4];
+// float rpn_anchor1_reg[RPN_REG_OUT_CH*RPN_INPUT0_IN_FM_HEIGHT*RPN_INPUT0_IN_FM_WIDTH/4][4];
+// float rpn_anchor2_reg[RPN_REG_OUT_CH*RPN_INPUT0_IN_FM_HEIGHT*RPN_INPUT0_IN_FM_WIDTH/4][4];
+
+fm_t rpn_anchor0_cls_fm_2[RPN_CLS_OUT_CH*RPN_INPUT0_IN_FM_HEIGHT*RPN_INPUT0_IN_FM_WIDTH];
+fm_t rpn_anchor1_cls_fm_2[RPN_CLS_OUT_CH*RPN_INPUT1_IN_FM_HEIGHT*RPN_INPUT1_IN_FM_WIDTH];
+fm_t rpn_anchor2_cls_fm_2[RPN_CLS_OUT_CH*RPN_INPUT2_IN_FM_HEIGHT*RPN_INPUT2_IN_FM_WIDTH];
+
+// float rpn_anchor0_cls[RPN_CLS_OUT_CH*RPN_INPUT0_IN_FM_HEIGHT*RPN_INPUT0_IN_FM_WIDTH];
+// float rpn_anchor1_cls[RPN_CLS_OUT_CH*RPN_INPUT1_IN_FM_HEIGHT*RPN_INPUT1_IN_FM_WIDTH];
+// float rpn_anchor2_cls[RPN_CLS_OUT_CH*RPN_INPUT2_IN_FM_HEIGHT*RPN_INPUT2_IN_FM_WIDTH];
+
 fm_t rpn_input0_fm[RPN_CONV_IN_CH][RPN_INPUT0_IN_FM_HEIGHT][RPN_INPUT0_IN_FM_WIDTH];
 fm_t rpn_input1_fm[RPN_CONV_IN_CH][RPN_INPUT1_IN_FM_HEIGHT][RPN_INPUT1_IN_FM_WIDTH];
 fm_t rpn_input2_fm[RPN_CONV_IN_CH][RPN_INPUT2_IN_FM_HEIGHT][RPN_INPUT2_IN_FM_WIDTH];
@@ -1845,6 +1865,18 @@ int main ()
                 fixp_conv_0_weights,
                 fixp_conv_0_bias,
                 fixp_conv_0_output_feature_map,
+
+    rpn_topk_index0_2,
+    rpn_topk_index1_2,
+    rpn_topk_index2_2,
+
+    rpn_anchor0_reg_fm_2,
+    rpn_anchor1_reg_fm_2,
+    rpn_anchor2_reg_fm_2,
+
+    rpn_anchor0_cls_fm_2,
+    rpn_anchor1_cls_fm_2,
+    rpn_anchor2_cls_fm_2,
 
     rpn_input0_fm,
     rpn_input1_fm,
