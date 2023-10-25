@@ -151,49 +151,4 @@ void fpn_top(
                 fpn_3_layer_bias,
                 fpn_3_output_feature_map
     );
-
-    // Create an output file for each FPN layer
-    // std::ofstream outputFile("fpn_layer_outputs.txt", std::ios::app);
-
-    // if (outputFile.is_open()) {
-    //     outputFile << "FPN Layer 0:" << " ";
-    //     for (int d = 0; d < FPN_CONV_0_OD; d++) {
-    //         for (int h = 0; h < FPN_CONV_0_IH; h++) {
-    //             for (int w = 0; w < FPN_CONV_0_IW; w++) {
-    //                 outputFile << fpn_0_output_feature_map[d][h][w] << " ";
-    //             }
-    //             outputFile << endl;  // Start a new line for each height
-    //         }
-    //     }
-    //     outputFile << endl; // start a new line for each matrix
-    // } else {
-    //     cerr << "Unable to open the file for writing." << endl;
-    // }
-    #include <opencv2/opencv.hpp>
-
-    // Your existing code
-
-    // Assuming fpn_0_output_feature_map, fpn_1_output_feature_map, etc., are cv::Mat objects
-    // If not, convert your arrays to cv::Mat objects
-
-    // Save FPN layer 0 feature map as an image
-    saveFeatureMapAsImage(fpn_0_output_feature_map, "fpn_layer_0_output.png");
-
-    // Save FPN layer 1 feature map as an image
-    saveFeatureMapAsImage(fpn_1_output_feature_map, "fpn_layer_1_output.png");
-
-    // Save FPN layer 2 feature map as an image
-    saveFeatureMapAsImage(fpn_2_output_feature_map, "fpn_layer_2_output.png");
-
-    // Save FPN layer 3 feature map as an image
-    saveFeatureMapAsImage(fpn_3_output_feature_map, "fpn_layer_3_output.png");
-
-    void saveFeatureMapAsImage(const cv::Mat& feature_map, const std::string& filename) {
-        // Normalize the feature map to the range [0, 255] and convert it to an 8-bit image
-        cv::Mat normalized_feature_map;
-        cv::normalize(feature_map, normalized_feature_map, 0, 255, cv::NORM_MINMAX, CV_8U);
-
-        // Save the feature map as an image
-        cv::imwrite(filename, normalized_feature_map);
-    }
 }
