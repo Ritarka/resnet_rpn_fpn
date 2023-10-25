@@ -1923,7 +1923,7 @@ int main ()
 
     );
     
-    ifstream ifs_l4_output_golden("/usr/scratch/akamath47/IP2/bin/resnet_backbone/layer4_2_relu.bin", ios::in | ios::binary);
+    ifstream ifs_l4_output_golden("/usr/scratch/rsamanta9/bin/resnet_backbone/layer4_2_relu.bin", ios::in | ios::binary);
     ifs_l4_output_golden.read((char*)(**golden_layer4_2_bn3_relu_out), RESNET_LAYER4_CONV3_OUT_CH*RESNET_LAYER4_FM_HEIGHT*RESNET_LAYER4_FM_WIDTH*sizeof(float));    
     ifs_l4_output_golden.close();
     

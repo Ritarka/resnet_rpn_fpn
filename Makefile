@@ -108,8 +108,11 @@ csim.out: main.o $(IP_DEP)
 synth:
 	vitis_hls script.tcl
 
-synthresnet:
+synth_resnet:
 	vitis_hls script_resnet.tcl
+
+synth_fpn:
+	vitis_hls script_fpn.tcl
 
 clean:
 	rm -f -r csim.d 
