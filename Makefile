@@ -32,39 +32,39 @@ resnet_top.o:./resnet_top.cpp
 resnet_top2.o:./resnet_top2.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 
-fpn_conv_3x3.o:./fpn_conv_3x3.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_conv_1x1.o:./fpn_conv_1x1.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_tiled_conv_fpn_3.o:./fpn_tiled_conv_fpn_3.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_tiled_conv_fpn_2.o:./fpn_tiled_conv_fpn_2.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_tiled_conv_fpn_1.o:./fpn_tiled_conv_fpn_1.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_tiled_conv_fpn_0.o:./fpn_tiled_conv_fpn_0.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_tiled_conv_lateral_3.o:./fpn_tiled_conv_lateral_3.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_tiled_conv_lateral_2.o:./fpn_tiled_conv_lateral_2.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_tiled_conv_lateral_1.o:./fpn_tiled_conv_lateral_1.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_tiled_conv_lateral_0.o:./fpn_tiled_conv_lateral_0.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_utils.o:./fpn_utils.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_top.o:./fpn_top.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_conv_3x3.o:./fpn_conv_3x3.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_conv_1x1.o:./fpn_conv_1x1.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_tiled_conv_fpn_3.o:./fpn_tiled_conv_fpn_3.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_tiled_conv_fpn_2.o:./fpn_tiled_conv_fpn_2.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_tiled_conv_fpn_1.o:./fpn_tiled_conv_fpn_1.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_tiled_conv_fpn_0.o:./fpn_tiled_conv_fpn_0.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_tiled_conv_lateral_3.o:./fpn_tiled_conv_lateral_3.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_tiled_conv_lateral_2.o:./fpn_tiled_conv_lateral_2.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_tiled_conv_lateral_1.o:./fpn_tiled_conv_lateral_1.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_tiled_conv_lateral_0.o:./fpn_tiled_conv_lateral_0.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_utils.o:./fpn_utils.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_top.o:./fpn_top.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 
-rpn_conv_1x1.o:./rpn_conv_1x1.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-rpn_conv_3x3.o:./rpn_conv_3x3.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-rpn_top.o:./rpn_top.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-rpn_top2.o:./rpn_top2.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# rpn_conv_1x1.o:./rpn_conv_1x1.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# rpn_conv_3x3.o:./rpn_conv_3x3.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# rpn_top.o:./rpn_top.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# rpn_top2.o:./rpn_top2.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 
 test_top.o: ./test_top.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
@@ -78,23 +78,23 @@ IP_DEP+=resnet_batchnorm.o
 IP_DEP+=resnet_top.o
 IP_DEP+=resnet_top2.o
 
-IP_DEP+=fpn_conv_3x3.o
-IP_DEP+=fpn_conv_1x1.o
-IP_DEP+=fpn_tiled_conv_fpn_3.o
-IP_DEP+=fpn_tiled_conv_fpn_2.o
-IP_DEP+=fpn_tiled_conv_fpn_1.o
-IP_DEP+=fpn_tiled_conv_fpn_0.o
-IP_DEP+=fpn_tiled_conv_lateral_3.o
-IP_DEP+=fpn_tiled_conv_lateral_2.o
-IP_DEP+=fpn_tiled_conv_lateral_1.o
-IP_DEP+=fpn_tiled_conv_lateral_0.o
-IP_DEP+=fpn_utils.o
-IP_DEP+=fpn_top.o
+# IP_DEP+=fpn_conv_3x3.o
+# IP_DEP+=fpn_conv_1x1.o
+# IP_DEP+=fpn_tiled_conv_fpn_3.o
+# IP_DEP+=fpn_tiled_conv_fpn_2.o
+# IP_DEP+=fpn_tiled_conv_fpn_1.o
+# IP_DEP+=fpn_tiled_conv_fpn_0.o
+# IP_DEP+=fpn_tiled_conv_lateral_3.o
+# IP_DEP+=fpn_tiled_conv_lateral_2.o
+# IP_DEP+=fpn_tiled_conv_lateral_1.o
+# IP_DEP+=fpn_tiled_conv_lateral_0.o
+# IP_DEP+=fpn_utils.o
+# IP_DEP+=fpn_top.o
 
-IP_DEP+=rpn_conv_1x1.o
-IP_DEP+=rpn_conv_3x3.o
-IP_DEP+=rpn_top.o
-IP_DEP+=rpn_top2.o
+# IP_DEP+=rpn_conv_1x1.o
+# IP_DEP+=rpn_conv_3x3.o
+# IP_DEP+=rpn_top.o
+# IP_DEP+=rpn_top2.o
 
 IP_DEP+=test_top.o
 

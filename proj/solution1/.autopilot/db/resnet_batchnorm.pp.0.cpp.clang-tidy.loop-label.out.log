@@ -23,33 +23,33 @@
       ^~~
       VITIS_LOOP_1247_1: 
 /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:32102:7: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34824:4: warning: Added loop label VITIS_LOOP_12_1:   [xilinx-label-all-loops]
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34393:4: warning: Added loop label VITIS_LOOP_12_1:   [xilinx-label-all-loops]
    for(int k = 0; k < 64; k++)
    ^~~
    VITIS_LOOP_12_1: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34824:4: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34826:8: warning: Added loop label VITIS_LOOP_14_2:   [xilinx-label-all-loops]
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34393:4: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34395:8: warning: Added loop label VITIS_LOOP_14_2:   [xilinx-label-all-loops]
        for(int i = 0; i < 46; i++)
        ^~~
        VITIS_LOOP_14_2: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34826:8: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34828:12: warning: Added loop label VITIS_LOOP_16_3:   [xilinx-label-all-loops]
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34395:8: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34397:12: warning: Added loop label VITIS_LOOP_16_3:   [xilinx-label-all-loops]
            for(int j = 0; j < 40; j++)
            ^~~
            VITIS_LOOP_16_3: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34828:12: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34849:4: warning: Added loop label VITIS_LOOP_37_1:   [xilinx-label-all-loops]
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34397:12: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34418:4: warning: Added loop label VITIS_LOOP_37_1:   [xilinx-label-all-loops]
    for(int k = 0; k < 64; k++)
    ^~~
    VITIS_LOOP_37_1: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34849:4: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34851:8: warning: Added loop label VITIS_LOOP_39_2:   [xilinx-label-all-loops]
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34418:4: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34420:8: warning: Added loop label VITIS_LOOP_39_2:   [xilinx-label-all-loops]
        for(int i = 0; i < 46; i++)
        ^~~
        VITIS_LOOP_39_2: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34851:8: note: FIX-IT applied suggested code changes
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34853:12: warning: Added loop label VITIS_LOOP_41_3:   [xilinx-label-all-loops]
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34420:8: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34422:12: warning: Added loop label VITIS_LOOP_41_3:   [xilinx-label-all-loops]
            for(int j = 0; j < 40; j++)
            ^~~
            VITIS_LOOP_41_3: 
-/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34853:12: note: FIX-IT applied suggested code changes
+/nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp:34422:12: note: FIX-IT applied suggested code changes

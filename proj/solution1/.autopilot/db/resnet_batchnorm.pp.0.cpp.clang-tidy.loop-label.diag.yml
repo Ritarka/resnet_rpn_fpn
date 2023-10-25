@@ -52,7 +52,7 @@ Diagnostics:
     FilePath:        /nethome/mjung76/resnet_rpn_fpn/resnet_batchnorm.cpp
     Replacements:    
       - FilePath:        /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp
-        Offset:          1725344
+        Offset:          1714209
         Length:          0
         ReplacementText: 'VITIS_LOOP_12_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -61,7 +61,7 @@ Diagnostics:
     FilePath:        /nethome/mjung76/resnet_rpn_fpn/resnet_batchnorm.cpp
     Replacements:    
       - FilePath:        /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp
-        Offset:          1725384
+        Offset:          1714249
         Length:          0
         ReplacementText: 'VITIS_LOOP_14_2: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -70,7 +70,7 @@ Diagnostics:
     FilePath:        /nethome/mjung76/resnet_rpn_fpn/resnet_batchnorm.cpp
     Replacements:    
       - FilePath:        /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp
-        Offset:          1725432
+        Offset:          1714297
         Length:          0
         ReplacementText: 'VITIS_LOOP_16_3: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -79,7 +79,7 @@ Diagnostics:
     FilePath:        /nethome/mjung76/resnet_rpn_fpn/resnet_batchnorm.cpp
     Replacements:    
       - FilePath:        /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp
-        Offset:          1725907
+        Offset:          1714772
         Length:          0
         ReplacementText: 'VITIS_LOOP_37_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -88,7 +88,7 @@ Diagnostics:
     FilePath:        /nethome/mjung76/resnet_rpn_fpn/resnet_batchnorm.cpp
     Replacements:    
       - FilePath:        /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp
-        Offset:          1725947
+        Offset:          1714812
         Length:          0
         ReplacementText: 'VITIS_LOOP_39_2: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -97,7 +97,7 @@ Diagnostics:
     FilePath:        /nethome/mjung76/resnet_rpn_fpn/resnet_batchnorm.cpp
     Replacements:    
       - FilePath:        /nethome/mjung76/resnet_rpn_fpn/proj/solution1/.autopilot/db/resnet_batchnorm.pp.0.cpp
-        Offset:          1725995
+        Offset:          1714860
         Length:          0
         ReplacementText: 'VITIS_LOOP_41_3: '
 ...
