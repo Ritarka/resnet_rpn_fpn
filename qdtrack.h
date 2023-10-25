@@ -376,534 +376,534 @@
 #define RPN_PRE_NMS_SIZE 4720
 #define IOU_THRESHOLD 0.7
 
-//--------------------------------------------------------------------------
-// ResNet-50 Function Declarations
-//--------------------------------------------------------------------------
-template<const int RESNET_IN_FM_DEPTH, const int RESNET_IN_FM_HEIGHT, const int RESNET_IN_FM_WIDTH,
-         const int RESNET_LAST_LAYER_EN>
-void resnet_load_input_fm_tile (
-        fm_t in_fm_buf[RESNET_IN_BUF_CH][RESNET_IN_BUF_ROWS + 5][RESNET_IN_BUF_COLS + 5], 
-        fm_t in_fm[2048][184][320], 
-        int   ti, 
-        int   tj, 
-        int   P,
-        int   d
-);
+// //--------------------------------------------------------------------------
+// // ResNet-50 Function Declarations
+// //--------------------------------------------------------------------------
+// template<const int RESNET_IN_FM_DEPTH, const int RESNET_IN_FM_HEIGHT, const int RESNET_IN_FM_WIDTH,
+//          const int RESNET_LAST_LAYER_EN>
+// void resnet_load_input_fm_tile (
+//         fm_t in_fm_buf[RESNET_IN_BUF_CH][RESNET_IN_BUF_ROWS + 5][RESNET_IN_BUF_COLS + 5], 
+//         fm_t in_fm[2048][184][320], 
+//         int   ti, 
+//         int   tj, 
+//         int   P,
+//         int   d
+// );
 
-template<const int RESNET_OUT_CH, const int RESNET_IN_CH>
-void resnet_load_weights_1x1 (
-        wt_t weight_buf_1x1[RESNET_IN_BUF_CH],
-        wt_t weights[RESNET_OUT_CH][RESNET_IN_CH],
-        int f,
-        int b,
-        int d
-);
+// template<const int RESNET_OUT_CH, const int RESNET_IN_CH>
+// void resnet_load_weights_1x1 (
+//         wt_t weight_buf_1x1[RESNET_IN_BUF_CH],
+//         wt_t weights[RESNET_OUT_CH][RESNET_IN_CH],
+//         int f,
+//         int b,
+//         int d
+// );
 
-template<const int RESNET_OUT_CH, const int RESNET_IN_CH>
-void resnet_load_weights_3x3 (
-        wt_t weight_buf_3x3[RESNET_IN_BUF_CH][3][3],
-        wt_t weights[RESNET_OUT_CH][RESNET_IN_CH][3][3],
-        int f,
-        int b,
-        int d
-);
+// template<const int RESNET_OUT_CH, const int RESNET_IN_CH>
+// void resnet_load_weights_3x3 (
+//         wt_t weight_buf_3x3[RESNET_IN_BUF_CH][3][3],
+//         wt_t weights[RESNET_OUT_CH][RESNET_IN_CH][3][3],
+//         int f,
+//         int b,
+//         int d
+// );
 
-void resnet_conv_7x7 (
-        fm_t Y_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS], 
-        fm_t X_buf[RESNET_IN_BUF_CH][RESNET_IN_BUF_ROWS + 5][RESNET_IN_BUF_COLS + 5],
-        wt_t W_buf[RESNET_IN_BUF_CH][7][7],
-        int f
-);
+// void resnet_conv_7x7 (
+//         fm_t Y_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS], 
+//         fm_t X_buf[RESNET_IN_BUF_CH][RESNET_IN_BUF_ROWS + 5][RESNET_IN_BUF_COLS + 5],
+//         wt_t W_buf[RESNET_IN_BUF_CH][7][7],
+//         int f
+// );
 
-template<const int RESNET_OUT_CH>
-void resnet_load_batchnorm_params (
-        fm_t param_buf[3][RESNET_OUT_BUF_CH], 
-        wt_t params[3][RESNET_OUT_CH], 
-        int b
-);
+// template<const int RESNET_OUT_CH>
+// void resnet_load_batchnorm_params (
+//         fm_t param_buf[3][RESNET_OUT_BUF_CH], 
+//         wt_t params[3][RESNET_OUT_CH], 
+//         int b
+// );
 
-template<const int S>
-void resnet_store_out_buf_to_DDR(
-        fm_t out_fm[2048][184][320], 
-        fm_t out_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS], 
-        int ti, 
-        int tj,
-        int b
-);
+// template<const int S>
+// void resnet_store_out_buf_to_DDR(
+//         fm_t out_fm[2048][184][320], 
+//         fm_t out_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS], 
+//         int ti, 
+//         int tj,
+//         int b
+// );
 
-void resnet_conv_1x1 (
-        fm_t Y_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS], 
-        fm_t X_buf[RESNET_IN_BUF_CH][RESNET_IN_BUF_ROWS + 5][RESNET_IN_BUF_COLS + 5],
-        wt_t W_buf[RESNET_IN_BUF_CH],
-        int f,
-        int S
-);
+// void resnet_conv_1x1 (
+//         fm_t Y_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS], 
+//         fm_t X_buf[RESNET_IN_BUF_CH][RESNET_IN_BUF_ROWS + 5][RESNET_IN_BUF_COLS + 5],
+//         wt_t W_buf[RESNET_IN_BUF_CH],
+//         int f,
+//         int S
+// );
 
-//TODO: template<const int S>
-void resnet_conv_3x3 (
-        fm_t Y_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS], 
-        fm_t X_buf[RESNET_IN_BUF_CH][RESNET_IN_BUF_ROWS + 5][RESNET_IN_BUF_COLS + 5],
-        wt_t W_buf[RESNET_IN_BUF_CH][3][3],
-        int f,
-        int S
-);
+// //TODO: template<const int S>
+// void resnet_conv_3x3 (
+//         fm_t Y_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS], 
+//         fm_t X_buf[RESNET_IN_BUF_CH][RESNET_IN_BUF_ROWS + 5][RESNET_IN_BUF_COLS + 5],
+//         wt_t W_buf[RESNET_IN_BUF_CH][3][3],
+//         int f,
+//         int S
+// );
 
-void resnet_batchnorm(
-        fm_t feature_map[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS], 
-        wt_t bn_params[3][RESNET_OUT_BUF_CH],
-        bool  enable_relu
-);
+// void resnet_batchnorm(
+//         fm_t feature_map[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS], 
+//         wt_t bn_params[3][RESNET_OUT_BUF_CH],
+//         bool  enable_relu
+// );
 
-void resnet_add_residual_fm(
-        fm_t feature_map[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS], 
-        fm_t residual_map[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS],
-        bool  enable_relu
-);
+// void resnet_add_residual_fm(
+//         fm_t feature_map[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS], 
+//         fm_t residual_map[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS],
+//         bool  enable_relu
+// );
 
-template<const int RESNET_IN_FM_DEPTH,  const int RESNET_IN_FM_HEIGHT,  const int RESNET_IN_FM_WIDTH,
-         const int RESNET_OUT_FM_DEPTH, const int RESNET_OUT_FM_HEIGHT, const int RESNET_OUT_FM_WIDTH,
-         const int STRIDE, const int RESNET_LAYER_EN>
-void resnet_bottleneck_conv1_bn1(
-        wt_t conv_weights[RESNET_OUT_FM_DEPTH][RESNET_IN_FM_DEPTH],
-        wt_t bn_params[3][RESNET_OUT_FM_DEPTH],
-        bool  enable_relu
-);
+// template<const int RESNET_IN_FM_DEPTH,  const int RESNET_IN_FM_HEIGHT,  const int RESNET_IN_FM_WIDTH,
+//          const int RESNET_OUT_FM_DEPTH, const int RESNET_OUT_FM_HEIGHT, const int RESNET_OUT_FM_WIDTH,
+//          const int STRIDE, const int RESNET_LAYER_EN>
+// void resnet_bottleneck_conv1_bn1(
+//         wt_t conv_weights[RESNET_OUT_FM_DEPTH][RESNET_IN_FM_DEPTH],
+//         wt_t bn_params[3][RESNET_OUT_FM_DEPTH],
+//         bool  enable_relu
+// );
 
-template<const int RESNET_IN_FM_DEPTH,  const int RESNET_IN_FM_HEIGHT,  const int RESNET_IN_FM_WIDTH,
-         const int RESNET_OUT_FM_DEPTH, const int RESNET_OUT_FM_HEIGHT, const int RESNET_OUT_FM_WIDTH,
-         const int STRIDE, const int RESNET_LAYER_EN>
-void resnet_bottleneck_conv2_bn2_relu(
-        wt_t conv_weights[RESNET_OUT_FM_DEPTH][RESNET_IN_FM_DEPTH][3][3],
-        wt_t bn_params[3][RESNET_OUT_FM_DEPTH]
-);
+// template<const int RESNET_IN_FM_DEPTH,  const int RESNET_IN_FM_HEIGHT,  const int RESNET_IN_FM_WIDTH,
+//          const int RESNET_OUT_FM_DEPTH, const int RESNET_OUT_FM_HEIGHT, const int RESNET_OUT_FM_WIDTH,
+//          const int STRIDE, const int RESNET_LAYER_EN>
+// void resnet_bottleneck_conv2_bn2_relu(
+//         wt_t conv_weights[RESNET_OUT_FM_DEPTH][RESNET_IN_FM_DEPTH][3][3],
+//         wt_t bn_params[3][RESNET_OUT_FM_DEPTH]
+// );
 
-template<const int  RESNET_IN_FM_DEPTH, const int  RESNET_IN_FM_HEIGHT, const int  RESNET_IN_FM_WIDTH,
-         const int RESNET_OUT_FM_DEPTH, const int RESNET_OUT_FM_HEIGHT, const int RESNET_OUT_FM_WIDTH,
-         const int STRIDE, const int RESNET_LAYER_EN>
-void resnet_bottleneck_conv3_bn3_relu(
-        wt_t conv_weights[RESNET_OUT_FM_DEPTH][RESNET_IN_FM_DEPTH],
-        wt_t bn_params[3][RESNET_OUT_FM_DEPTH]
-);
+// template<const int  RESNET_IN_FM_DEPTH, const int  RESNET_IN_FM_HEIGHT, const int  RESNET_IN_FM_WIDTH,
+//          const int RESNET_OUT_FM_DEPTH, const int RESNET_OUT_FM_HEIGHT, const int RESNET_OUT_FM_WIDTH,
+//          const int STRIDE, const int RESNET_LAYER_EN>
+// void resnet_bottleneck_conv3_bn3_relu(
+//         wt_t conv_weights[RESNET_OUT_FM_DEPTH][RESNET_IN_FM_DEPTH],
+//         wt_t bn_params[3][RESNET_OUT_FM_DEPTH]
+// );
 
-//--------------------------------------------------------------------------
-// Layer 0
-//--------------------------------------------------------------------------
-void resnet_layer0(
-        fm_t   resnet_layer0_input_fm[RESNET_LAYER0_CONV1_IN_CH][RESNET_LAYER0_IN_FM_HEIGHT][RESNET_LAYER0_IN_FM_WIDTH],
-        wt_t   resnet_layer0_conv1_weights[RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_CONV1_IN_CH][7][7],
-	    wt_t   resnet_layer0_bn1_params[3][RESNET_LAYER0_CONV1_OUT_CH],
-        fm_t   resnet_layer0_output_fm[RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_OUT_FM_HEIGHT][RESNET_LAYER0_OUT_FM_WIDTH]
-);
+// //--------------------------------------------------------------------------
+// // Layer 0
+// //--------------------------------------------------------------------------
+// void resnet_layer0(
+//         fm_t   resnet_layer0_input_fm[RESNET_LAYER0_CONV1_IN_CH][RESNET_LAYER0_IN_FM_HEIGHT][RESNET_LAYER0_IN_FM_WIDTH],
+//         wt_t   resnet_layer0_conv1_weights[RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_CONV1_IN_CH][7][7],
+// 	    wt_t   resnet_layer0_bn1_params[3][RESNET_LAYER0_CONV1_OUT_CH],
+//         fm_t   resnet_layer0_output_fm[RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_OUT_FM_HEIGHT][RESNET_LAYER0_OUT_FM_WIDTH]
+// );
 
-//--------------------------------------------------------------------------
-// Layer 1
-//--------------------------------------------------------------------------
-void resnet_layer1(
-        fm_t   resnet_layer1_input_fm[RESNET_LAYER1_0_CONV1_IN_CH][RESNET_LAYER1_0_FM_HEIGHT][RESNET_LAYER1_0_FM_WIDTH],
-        wt_t   resnet_layer1_0_conv1_weights[RESNET_LAYER1_0_CONV1_OUT_CH][RESNET_LAYER1_0_CONV1_IN_CH],
-	    wt_t   resnet_layer1_0_bn1_params[3][RESNET_LAYER1_0_CONV1_OUT_CH],
-        wt_t   resnet_layer1_0_conv2_weights[RESNET_LAYER1_0_CONV2_OUT_CH][RESNET_LAYER1_0_CONV2_IN_CH][3][3],
-	    wt_t   resnet_layer1_0_bn2_params[3][RESNET_LAYER1_0_CONV2_OUT_CH],
-        wt_t   resnet_layer1_0_conv3_weights[RESNET_LAYER1_0_CONV3_OUT_CH][RESNET_LAYER1_0_CONV3_IN_CH],
-	    wt_t   resnet_layer1_0_bn3_params[3][RESNET_LAYER1_0_CONV3_OUT_CH],
-        wt_t   resnet_layer1_0_downsample_0_weights[RESNET_LAYER1_0_DS_OUT_CH][RESNET_LAYER1_0_DS_IN_CH],
-	    wt_t   resnet_layer1_0_downsample_1_params[3][RESNET_LAYER1_0_DS_OUT_CH],
-        wt_t   resnet_layer1_1_conv1_weights[RESNET_LAYER1_CONV1_OUT_CH][RESNET_LAYER1_CONV1_IN_CH],
-	    wt_t   resnet_layer1_1_bn1_params[3][RESNET_LAYER1_CONV1_OUT_CH],
-        wt_t   resnet_layer1_1_conv2_weights[RESNET_LAYER1_CONV2_OUT_CH][RESNET_LAYER1_CONV2_IN_CH][3][3],
-	    wt_t   resnet_layer1_1_bn2_params[3][RESNET_LAYER1_CONV2_OUT_CH],
-        wt_t   resnet_layer1_1_conv3_weights[RESNET_LAYER1_CONV3_OUT_CH][RESNET_LAYER1_CONV3_IN_CH],
-	    wt_t   resnet_layer1_1_bn3_params[3][RESNET_LAYER1_CONV3_OUT_CH],
-        wt_t   resnet_layer1_2_conv1_weights[RESNET_LAYER1_CONV1_OUT_CH][RESNET_LAYER1_CONV1_IN_CH],
-	    wt_t   resnet_layer1_2_bn1_params[3][RESNET_LAYER1_CONV1_OUT_CH],
-        wt_t   resnet_layer1_2_conv2_weights[RESNET_LAYER1_CONV2_OUT_CH][RESNET_LAYER1_CONV2_IN_CH][3][3],
-	    wt_t   resnet_layer1_2_bn2_params[3][RESNET_LAYER1_CONV2_OUT_CH],
-        wt_t   resnet_layer1_2_conv3_weights[RESNET_LAYER1_CONV3_OUT_CH][RESNET_LAYER1_CONV3_IN_CH],
-	    wt_t   resnet_layer1_2_bn3_params[3][RESNET_LAYER1_CONV3_OUT_CH],
-        fm_t   resnet_layer1_output_fm[RESNET_LAYER1_0_DS_OUT_CH][RESNET_LAYER1_0_FM_HEIGHT][RESNET_LAYER1_0_FM_WIDTH]
-);
+// //--------------------------------------------------------------------------
+// // Layer 1
+// //--------------------------------------------------------------------------
+// void resnet_layer1(
+//         fm_t   resnet_layer1_input_fm[RESNET_LAYER1_0_CONV1_IN_CH][RESNET_LAYER1_0_FM_HEIGHT][RESNET_LAYER1_0_FM_WIDTH],
+//         wt_t   resnet_layer1_0_conv1_weights[RESNET_LAYER1_0_CONV1_OUT_CH][RESNET_LAYER1_0_CONV1_IN_CH],
+// 	    wt_t   resnet_layer1_0_bn1_params[3][RESNET_LAYER1_0_CONV1_OUT_CH],
+//         wt_t   resnet_layer1_0_conv2_weights[RESNET_LAYER1_0_CONV2_OUT_CH][RESNET_LAYER1_0_CONV2_IN_CH][3][3],
+// 	    wt_t   resnet_layer1_0_bn2_params[3][RESNET_LAYER1_0_CONV2_OUT_CH],
+//         wt_t   resnet_layer1_0_conv3_weights[RESNET_LAYER1_0_CONV3_OUT_CH][RESNET_LAYER1_0_CONV3_IN_CH],
+// 	    wt_t   resnet_layer1_0_bn3_params[3][RESNET_LAYER1_0_CONV3_OUT_CH],
+//         wt_t   resnet_layer1_0_downsample_0_weights[RESNET_LAYER1_0_DS_OUT_CH][RESNET_LAYER1_0_DS_IN_CH],
+// 	    wt_t   resnet_layer1_0_downsample_1_params[3][RESNET_LAYER1_0_DS_OUT_CH],
+//         wt_t   resnet_layer1_1_conv1_weights[RESNET_LAYER1_CONV1_OUT_CH][RESNET_LAYER1_CONV1_IN_CH],
+// 	    wt_t   resnet_layer1_1_bn1_params[3][RESNET_LAYER1_CONV1_OUT_CH],
+//         wt_t   resnet_layer1_1_conv2_weights[RESNET_LAYER1_CONV2_OUT_CH][RESNET_LAYER1_CONV2_IN_CH][3][3],
+// 	    wt_t   resnet_layer1_1_bn2_params[3][RESNET_LAYER1_CONV2_OUT_CH],
+//         wt_t   resnet_layer1_1_conv3_weights[RESNET_LAYER1_CONV3_OUT_CH][RESNET_LAYER1_CONV3_IN_CH],
+// 	    wt_t   resnet_layer1_1_bn3_params[3][RESNET_LAYER1_CONV3_OUT_CH],
+//         wt_t   resnet_layer1_2_conv1_weights[RESNET_LAYER1_CONV1_OUT_CH][RESNET_LAYER1_CONV1_IN_CH],
+// 	    wt_t   resnet_layer1_2_bn1_params[3][RESNET_LAYER1_CONV1_OUT_CH],
+//         wt_t   resnet_layer1_2_conv2_weights[RESNET_LAYER1_CONV2_OUT_CH][RESNET_LAYER1_CONV2_IN_CH][3][3],
+// 	    wt_t   resnet_layer1_2_bn2_params[3][RESNET_LAYER1_CONV2_OUT_CH],
+//         wt_t   resnet_layer1_2_conv3_weights[RESNET_LAYER1_CONV3_OUT_CH][RESNET_LAYER1_CONV3_IN_CH],
+// 	    wt_t   resnet_layer1_2_bn3_params[3][RESNET_LAYER1_CONV3_OUT_CH],
+//         fm_t   resnet_layer1_output_fm[RESNET_LAYER1_0_DS_OUT_CH][RESNET_LAYER1_0_FM_HEIGHT][RESNET_LAYER1_0_FM_WIDTH]
+// );
 
-//--------------------------------------------------------------------------
-// Layer 2
-//--------------------------------------------------------------------------
-void resnet_layer2(
-        fm_t   resnet_layer2_input_fm[RESNET_LAYER2_0_CONV1_IN_CH][RESNET_LAYER2_0_FM_HEIGHT][RESNET_LAYER2_0_FM_WIDTH],
-        wt_t   resnet_layer2_0_conv1_weights[RESNET_LAYER2_0_CONV1_OUT_CH][RESNET_LAYER2_0_CONV1_IN_CH],
-	    wt_t   resnet_layer2_0_bn1_params[3][RESNET_LAYER2_0_CONV1_OUT_CH],
-        wt_t   resnet_layer2_0_conv2_weights[RESNET_LAYER2_0_CONV2_OUT_CH][RESNET_LAYER2_0_CONV2_IN_CH][3][3],
-	    wt_t   resnet_layer2_0_bn2_params[3][RESNET_LAYER2_0_CONV2_OUT_CH],
-        wt_t   resnet_layer2_0_conv3_weights[RESNET_LAYER2_0_CONV3_OUT_CH][RESNET_LAYER2_0_CONV3_IN_CH],
-	    wt_t   resnet_layer2_0_bn3_params[3][RESNET_LAYER2_0_CONV3_OUT_CH],
-        wt_t   resnet_layer2_0_downsample_0_weights[RESNET_LAYER2_0_DS_OUT_CH][RESNET_LAYER2_0_DS_IN_CH],
-	    wt_t   resnet_layer2_0_downsample_1_params[3][RESNET_LAYER2_0_DS_OUT_CH],
-        wt_t   resnet_layer2_1_conv1_weights[RESNET_LAYER2_CONV1_OUT_CH][RESNET_LAYER2_CONV1_IN_CH],
-	    wt_t   resnet_layer2_1_bn1_params[3][RESNET_LAYER2_CONV1_OUT_CH],
-        wt_t   resnet_layer2_1_conv2_weights[RESNET_LAYER2_CONV2_OUT_CH][RESNET_LAYER2_CONV2_IN_CH][3][3],
-	    wt_t   resnet_layer2_1_bn2_params[3][RESNET_LAYER2_CONV2_OUT_CH],
-        wt_t   resnet_layer2_1_conv3_weights[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_CONV3_IN_CH],
-	    wt_t   resnet_layer2_1_bn3_params[3][RESNET_LAYER2_CONV3_OUT_CH],
-        wt_t   resnet_layer2_2_conv1_weights[RESNET_LAYER2_CONV1_OUT_CH][RESNET_LAYER2_CONV1_IN_CH],
-	    wt_t   resnet_layer2_2_bn1_params[3][RESNET_LAYER2_CONV1_OUT_CH],
-        wt_t   resnet_layer2_2_conv2_weights[RESNET_LAYER2_CONV2_OUT_CH][RESNET_LAYER2_CONV2_IN_CH][3][3],
-	    wt_t   resnet_layer2_2_bn2_params[3][RESNET_LAYER2_CONV2_OUT_CH],
-        wt_t   resnet_layer2_2_conv3_weights[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_CONV3_IN_CH],
-	    wt_t   resnet_layer2_2_bn3_params[3][RESNET_LAYER2_CONV3_OUT_CH],
-        wt_t   resnet_layer2_3_conv1_weights[RESNET_LAYER2_CONV1_OUT_CH][RESNET_LAYER2_CONV1_IN_CH],
-	    wt_t   resnet_layer2_3_bn1_params[3][RESNET_LAYER2_CONV1_OUT_CH],
-        wt_t   resnet_layer2_3_conv2_weights[RESNET_LAYER2_CONV2_OUT_CH][RESNET_LAYER2_CONV2_IN_CH][3][3],
-	    wt_t   resnet_layer2_3_bn2_params[3][RESNET_LAYER2_CONV2_OUT_CH],
-        wt_t   resnet_layer2_3_conv3_weights[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_CONV3_IN_CH],
-	    wt_t   resnet_layer2_3_bn3_params[3][RESNET_LAYER2_CONV3_OUT_CH],
-        fm_t   resnet_layer2_output_fm[RESNET_LAYER2_0_DS_OUT_CH][RESNET_LAYER2_0_FM_HEIGHT][RESNET_LAYER2_0_FM_WIDTH]
-);
+// //--------------------------------------------------------------------------
+// // Layer 2
+// //--------------------------------------------------------------------------
+// void resnet_layer2(
+//         fm_t   resnet_layer2_input_fm[RESNET_LAYER2_0_CONV1_IN_CH][RESNET_LAYER2_0_FM_HEIGHT][RESNET_LAYER2_0_FM_WIDTH],
+//         wt_t   resnet_layer2_0_conv1_weights[RESNET_LAYER2_0_CONV1_OUT_CH][RESNET_LAYER2_0_CONV1_IN_CH],
+// 	    wt_t   resnet_layer2_0_bn1_params[3][RESNET_LAYER2_0_CONV1_OUT_CH],
+//         wt_t   resnet_layer2_0_conv2_weights[RESNET_LAYER2_0_CONV2_OUT_CH][RESNET_LAYER2_0_CONV2_IN_CH][3][3],
+// 	    wt_t   resnet_layer2_0_bn2_params[3][RESNET_LAYER2_0_CONV2_OUT_CH],
+//         wt_t   resnet_layer2_0_conv3_weights[RESNET_LAYER2_0_CONV3_OUT_CH][RESNET_LAYER2_0_CONV3_IN_CH],
+// 	    wt_t   resnet_layer2_0_bn3_params[3][RESNET_LAYER2_0_CONV3_OUT_CH],
+//         wt_t   resnet_layer2_0_downsample_0_weights[RESNET_LAYER2_0_DS_OUT_CH][RESNET_LAYER2_0_DS_IN_CH],
+// 	    wt_t   resnet_layer2_0_downsample_1_params[3][RESNET_LAYER2_0_DS_OUT_CH],
+//         wt_t   resnet_layer2_1_conv1_weights[RESNET_LAYER2_CONV1_OUT_CH][RESNET_LAYER2_CONV1_IN_CH],
+// 	    wt_t   resnet_layer2_1_bn1_params[3][RESNET_LAYER2_CONV1_OUT_CH],
+//         wt_t   resnet_layer2_1_conv2_weights[RESNET_LAYER2_CONV2_OUT_CH][RESNET_LAYER2_CONV2_IN_CH][3][3],
+// 	    wt_t   resnet_layer2_1_bn2_params[3][RESNET_LAYER2_CONV2_OUT_CH],
+//         wt_t   resnet_layer2_1_conv3_weights[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_CONV3_IN_CH],
+// 	    wt_t   resnet_layer2_1_bn3_params[3][RESNET_LAYER2_CONV3_OUT_CH],
+//         wt_t   resnet_layer2_2_conv1_weights[RESNET_LAYER2_CONV1_OUT_CH][RESNET_LAYER2_CONV1_IN_CH],
+// 	    wt_t   resnet_layer2_2_bn1_params[3][RESNET_LAYER2_CONV1_OUT_CH],
+//         wt_t   resnet_layer2_2_conv2_weights[RESNET_LAYER2_CONV2_OUT_CH][RESNET_LAYER2_CONV2_IN_CH][3][3],
+// 	    wt_t   resnet_layer2_2_bn2_params[3][RESNET_LAYER2_CONV2_OUT_CH],
+//         wt_t   resnet_layer2_2_conv3_weights[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_CONV3_IN_CH],
+// 	    wt_t   resnet_layer2_2_bn3_params[3][RESNET_LAYER2_CONV3_OUT_CH],
+//         wt_t   resnet_layer2_3_conv1_weights[RESNET_LAYER2_CONV1_OUT_CH][RESNET_LAYER2_CONV1_IN_CH],
+// 	    wt_t   resnet_layer2_3_bn1_params[3][RESNET_LAYER2_CONV1_OUT_CH],
+//         wt_t   resnet_layer2_3_conv2_weights[RESNET_LAYER2_CONV2_OUT_CH][RESNET_LAYER2_CONV2_IN_CH][3][3],
+// 	    wt_t   resnet_layer2_3_bn2_params[3][RESNET_LAYER2_CONV2_OUT_CH],
+//         wt_t   resnet_layer2_3_conv3_weights[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_CONV3_IN_CH],
+// 	    wt_t   resnet_layer2_3_bn3_params[3][RESNET_LAYER2_CONV3_OUT_CH],
+//         fm_t   resnet_layer2_output_fm[RESNET_LAYER2_0_DS_OUT_CH][RESNET_LAYER2_0_FM_HEIGHT][RESNET_LAYER2_0_FM_WIDTH]
+// );
 
-//--------------------------------------------------------------------------
-// Layer 3
-//--------------------------------------------------------------------------
-void resnet_layer3(
-        fm_t   resnet_layer3_input_fm[RESNET_LAYER3_0_CONV1_IN_CH][RESNET_LAYER3_0_FM_HEIGHT][RESNET_LAYER3_0_FM_WIDTH],
-        wt_t   resnet_layer3_0_conv1_weights[RESNET_LAYER3_0_CONV1_OUT_CH][RESNET_LAYER3_0_CONV1_IN_CH],
-	    wt_t   resnet_layer3_0_bn1_params[3][RESNET_LAYER3_0_CONV1_OUT_CH],
-        wt_t   resnet_layer3_0_conv2_weights[RESNET_LAYER3_0_CONV2_OUT_CH][RESNET_LAYER3_0_CONV2_IN_CH][3][3],
-	    wt_t   resnet_layer3_0_bn2_params[3][RESNET_LAYER3_0_CONV2_OUT_CH],
-        wt_t   resnet_layer3_0_conv3_weights[RESNET_LAYER3_0_CONV3_OUT_CH][RESNET_LAYER3_0_CONV3_IN_CH],
-	    wt_t   resnet_layer3_0_bn3_params[3][RESNET_LAYER3_0_CONV3_OUT_CH],
-        wt_t   resnet_layer3_0_downsample_0_weights[RESNET_LAYER3_0_DS_OUT_CH][RESNET_LAYER3_0_DS_IN_CH],
-	    wt_t   resnet_layer3_0_downsample_1_params[3][RESNET_LAYER3_0_DS_OUT_CH],
-        wt_t   resnet_layer3_1_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
-	    wt_t   resnet_layer3_1_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
-        wt_t   resnet_layer3_1_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
-	    wt_t   resnet_layer3_1_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
-        wt_t   resnet_layer3_1_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
-	    wt_t   resnet_layer3_1_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
-        wt_t   resnet_layer3_2_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
-	    wt_t   resnet_layer3_2_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
-        wt_t   resnet_layer3_2_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
-	    wt_t   resnet_layer3_2_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
-        wt_t   resnet_layer3_2_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
-	    wt_t   resnet_layer3_2_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
-        wt_t   resnet_layer3_3_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
-	    wt_t   resnet_layer3_3_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
-        wt_t   resnet_layer3_3_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
-	    wt_t   resnet_layer3_3_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
-        wt_t   resnet_layer3_3_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
-	    wt_t   resnet_layer3_3_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
-        wt_t   resnet_layer3_4_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
-	    wt_t   resnet_layer3_4_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
-        wt_t   resnet_layer3_4_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
-	    wt_t   resnet_layer3_4_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
-        wt_t   resnet_layer3_4_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
-	    wt_t   resnet_layer3_4_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
-        wt_t   resnet_layer3_5_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
-	    wt_t   resnet_layer3_5_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
-        wt_t   resnet_layer3_5_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
-	    wt_t   resnet_layer3_5_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
-        wt_t   resnet_layer3_5_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
-	    wt_t   resnet_layer3_5_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
-        fm_t   resnet_layer3_output_fm[RESNET_LAYER3_0_DS_OUT_CH][RESNET_LAYER3_0_FM_HEIGHT][RESNET_LAYER3_0_FM_WIDTH]
-);
+// //--------------------------------------------------------------------------
+// // Layer 3
+// //--------------------------------------------------------------------------
+// void resnet_layer3(
+//         fm_t   resnet_layer3_input_fm[RESNET_LAYER3_0_CONV1_IN_CH][RESNET_LAYER3_0_FM_HEIGHT][RESNET_LAYER3_0_FM_WIDTH],
+//         wt_t   resnet_layer3_0_conv1_weights[RESNET_LAYER3_0_CONV1_OUT_CH][RESNET_LAYER3_0_CONV1_IN_CH],
+// 	    wt_t   resnet_layer3_0_bn1_params[3][RESNET_LAYER3_0_CONV1_OUT_CH],
+//         wt_t   resnet_layer3_0_conv2_weights[RESNET_LAYER3_0_CONV2_OUT_CH][RESNET_LAYER3_0_CONV2_IN_CH][3][3],
+// 	    wt_t   resnet_layer3_0_bn2_params[3][RESNET_LAYER3_0_CONV2_OUT_CH],
+//         wt_t   resnet_layer3_0_conv3_weights[RESNET_LAYER3_0_CONV3_OUT_CH][RESNET_LAYER3_0_CONV3_IN_CH],
+// 	    wt_t   resnet_layer3_0_bn3_params[3][RESNET_LAYER3_0_CONV3_OUT_CH],
+//         wt_t   resnet_layer3_0_downsample_0_weights[RESNET_LAYER3_0_DS_OUT_CH][RESNET_LAYER3_0_DS_IN_CH],
+// 	    wt_t   resnet_layer3_0_downsample_1_params[3][RESNET_LAYER3_0_DS_OUT_CH],
+//         wt_t   resnet_layer3_1_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
+// 	    wt_t   resnet_layer3_1_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
+//         wt_t   resnet_layer3_1_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
+// 	    wt_t   resnet_layer3_1_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
+//         wt_t   resnet_layer3_1_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
+// 	    wt_t   resnet_layer3_1_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
+//         wt_t   resnet_layer3_2_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
+// 	    wt_t   resnet_layer3_2_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
+//         wt_t   resnet_layer3_2_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
+// 	    wt_t   resnet_layer3_2_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
+//         wt_t   resnet_layer3_2_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
+// 	    wt_t   resnet_layer3_2_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
+//         wt_t   resnet_layer3_3_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
+// 	    wt_t   resnet_layer3_3_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
+//         wt_t   resnet_layer3_3_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
+// 	    wt_t   resnet_layer3_3_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
+//         wt_t   resnet_layer3_3_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
+// 	    wt_t   resnet_layer3_3_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
+//         wt_t   resnet_layer3_4_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
+// 	    wt_t   resnet_layer3_4_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
+//         wt_t   resnet_layer3_4_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
+// 	    wt_t   resnet_layer3_4_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
+//         wt_t   resnet_layer3_4_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
+// 	    wt_t   resnet_layer3_4_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
+//         wt_t   resnet_layer3_5_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
+// 	    wt_t   resnet_layer3_5_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
+//         wt_t   resnet_layer3_5_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
+// 	    wt_t   resnet_layer3_5_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
+//         wt_t   resnet_layer3_5_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
+// 	    wt_t   resnet_layer3_5_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
+//         fm_t   resnet_layer3_output_fm[RESNET_LAYER3_0_DS_OUT_CH][RESNET_LAYER3_0_FM_HEIGHT][RESNET_LAYER3_0_FM_WIDTH]
+// );
 
-//--------------------------------------------------------------------------
-// Layer 4
-//--------------------------------------------------------------------------
-void resnet_layer4(
-        fm_t   resnet_layer4_input_fm[RESNET_LAYER4_0_CONV1_IN_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH],
-        wt_t   resnet_layer4_0_conv1_weights[RESNET_LAYER4_0_CONV1_OUT_CH][RESNET_LAYER4_0_CONV1_IN_CH],
-	    wt_t   resnet_layer4_0_bn1_params[3][RESNET_LAYER4_0_CONV1_OUT_CH],
-        wt_t   resnet_layer4_0_conv2_weights[RESNET_LAYER4_0_CONV2_OUT_CH][RESNET_LAYER4_0_CONV2_IN_CH][3][3],
-	    wt_t   resnet_layer4_0_bn2_params[3][RESNET_LAYER4_0_CONV2_OUT_CH],
-        wt_t   resnet_layer4_0_conv3_weights[RESNET_LAYER4_0_CONV3_OUT_CH][RESNET_LAYER4_0_CONV3_IN_CH],
-	    wt_t   resnet_layer4_0_bn3_params[3][RESNET_LAYER4_0_CONV3_OUT_CH],
-        wt_t   resnet_layer4_0_downsample_0_weights[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_DS_IN_CH],
-	    wt_t   resnet_layer4_0_downsample_1_params[3][RESNET_LAYER4_0_DS_OUT_CH],
-        wt_t   resnet_layer4_1_conv1_weights[RESNET_LAYER4_CONV1_OUT_CH][RESNET_LAYER4_CONV1_IN_CH],
-	    wt_t   resnet_layer4_1_bn1_params[3][RESNET_LAYER4_CONV1_OUT_CH],
-        wt_t   resnet_layer4_1_conv2_weights[RESNET_LAYER4_CONV2_OUT_CH][RESNET_LAYER4_CONV2_IN_CH][3][3],
-	    wt_t   resnet_layer4_1_bn2_params[3][RESNET_LAYER4_CONV2_OUT_CH],
-        wt_t   resnet_layer4_1_conv3_weights[RESNET_LAYER4_CONV3_OUT_CH][RESNET_LAYER4_CONV3_IN_CH],
-	    wt_t   resnet_layer4_1_bn3_params[3][RESNET_LAYER4_CONV3_OUT_CH],
-        wt_t   resnet_layer4_2_conv1_weights[RESNET_LAYER4_CONV1_OUT_CH][RESNET_LAYER4_CONV1_IN_CH],
-	    wt_t   resnet_layer4_2_bn1_params[3][RESNET_LAYER4_CONV1_OUT_CH],
-        wt_t   resnet_layer4_2_conv2_weights[RESNET_LAYER4_CONV2_OUT_CH][RESNET_LAYER4_CONV2_IN_CH][3][3],
-	    wt_t   resnet_layer4_2_bn2_params[3][RESNET_LAYER4_CONV2_OUT_CH],
-        wt_t   resnet_layer4_2_conv3_weights[RESNET_LAYER4_CONV3_OUT_CH][RESNET_LAYER4_CONV3_IN_CH],
-	    wt_t   resnet_layer4_2_bn3_params[3][RESNET_LAYER4_CONV3_OUT_CH],
-        fm_t   resnet_layer4_output_fm[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH]
-);
+// //--------------------------------------------------------------------------
+// // Layer 4
+// //--------------------------------------------------------------------------
+// void resnet_layer4(
+//         fm_t   resnet_layer4_input_fm[RESNET_LAYER4_0_CONV1_IN_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH],
+//         wt_t   resnet_layer4_0_conv1_weights[RESNET_LAYER4_0_CONV1_OUT_CH][RESNET_LAYER4_0_CONV1_IN_CH],
+// 	    wt_t   resnet_layer4_0_bn1_params[3][RESNET_LAYER4_0_CONV1_OUT_CH],
+//         wt_t   resnet_layer4_0_conv2_weights[RESNET_LAYER4_0_CONV2_OUT_CH][RESNET_LAYER4_0_CONV2_IN_CH][3][3],
+// 	    wt_t   resnet_layer4_0_bn2_params[3][RESNET_LAYER4_0_CONV2_OUT_CH],
+//         wt_t   resnet_layer4_0_conv3_weights[RESNET_LAYER4_0_CONV3_OUT_CH][RESNET_LAYER4_0_CONV3_IN_CH],
+// 	    wt_t   resnet_layer4_0_bn3_params[3][RESNET_LAYER4_0_CONV3_OUT_CH],
+//         wt_t   resnet_layer4_0_downsample_0_weights[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_DS_IN_CH],
+// 	    wt_t   resnet_layer4_0_downsample_1_params[3][RESNET_LAYER4_0_DS_OUT_CH],
+//         wt_t   resnet_layer4_1_conv1_weights[RESNET_LAYER4_CONV1_OUT_CH][RESNET_LAYER4_CONV1_IN_CH],
+// 	    wt_t   resnet_layer4_1_bn1_params[3][RESNET_LAYER4_CONV1_OUT_CH],
+//         wt_t   resnet_layer4_1_conv2_weights[RESNET_LAYER4_CONV2_OUT_CH][RESNET_LAYER4_CONV2_IN_CH][3][3],
+// 	    wt_t   resnet_layer4_1_bn2_params[3][RESNET_LAYER4_CONV2_OUT_CH],
+//         wt_t   resnet_layer4_1_conv3_weights[RESNET_LAYER4_CONV3_OUT_CH][RESNET_LAYER4_CONV3_IN_CH],
+// 	    wt_t   resnet_layer4_1_bn3_params[3][RESNET_LAYER4_CONV3_OUT_CH],
+//         wt_t   resnet_layer4_2_conv1_weights[RESNET_LAYER4_CONV1_OUT_CH][RESNET_LAYER4_CONV1_IN_CH],
+// 	    wt_t   resnet_layer4_2_bn1_params[3][RESNET_LAYER4_CONV1_OUT_CH],
+//         wt_t   resnet_layer4_2_conv2_weights[RESNET_LAYER4_CONV2_OUT_CH][RESNET_LAYER4_CONV2_IN_CH][3][3],
+// 	    wt_t   resnet_layer4_2_bn2_params[3][RESNET_LAYER4_CONV2_OUT_CH],
+//         wt_t   resnet_layer4_2_conv3_weights[RESNET_LAYER4_CONV3_OUT_CH][RESNET_LAYER4_CONV3_IN_CH],
+// 	    wt_t   resnet_layer4_2_bn3_params[3][RESNET_LAYER4_CONV3_OUT_CH],
+//         fm_t   resnet_layer4_output_fm[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH]
+// );
 
-void resnet_top_1 (
-    fm_t   resnet_layer0_input_fm[RESNET_LAYER0_CONV1_IN_CH][RESNET_LAYER0_IN_FM_HEIGHT][RESNET_LAYER0_IN_FM_WIDTH],
-    wt_t   resnet_layer0_conv1_weights[RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_CONV1_IN_CH][7][7],
-    wt_t   resnet_layer0_bn1_params[3][RESNET_LAYER0_CONV1_OUT_CH],
-    fm_t   resnet_layer0_output_fm[RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_OUT_FM_HEIGHT][RESNET_LAYER0_OUT_FM_WIDTH],
+// void resnet_top_1 (
+//     fm_t   resnet_layer0_input_fm[RESNET_LAYER0_CONV1_IN_CH][RESNET_LAYER0_IN_FM_HEIGHT][RESNET_LAYER0_IN_FM_WIDTH],
+//     wt_t   resnet_layer0_conv1_weights[RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_CONV1_IN_CH][7][7],
+//     wt_t   resnet_layer0_bn1_params[3][RESNET_LAYER0_CONV1_OUT_CH],
+//     fm_t   resnet_layer0_output_fm[RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_OUT_FM_HEIGHT][RESNET_LAYER0_OUT_FM_WIDTH],
 
-    fm_t   resnet_layer1_input_fm[RESNET_LAYER1_0_CONV1_IN_CH][RESNET_LAYER1_0_FM_HEIGHT][RESNET_LAYER1_0_FM_WIDTH],
-    wt_t   resnet_layer1_0_conv1_weights[RESNET_LAYER1_0_CONV1_OUT_CH][RESNET_LAYER1_0_CONV1_IN_CH],
-    wt_t   resnet_layer1_0_bn1_params[4][RESNET_LAYER1_0_CONV1_OUT_CH],
-    wt_t   resnet_layer1_0_conv2_weights[RESNET_LAYER1_0_CONV2_OUT_CH][RESNET_LAYER1_0_CONV2_IN_CH][3][3],
-    wt_t   resnet_layer1_0_bn2_params[4][RESNET_LAYER1_0_CONV2_OUT_CH],
-    wt_t   resnet_layer1_0_conv3_weights[RESNET_LAYER1_0_CONV3_OUT_CH][RESNET_LAYER1_0_CONV3_IN_CH],
-    wt_t   resnet_layer1_0_bn3_params[4][RESNET_LAYER1_0_CONV3_OUT_CH],
-    wt_t   resnet_layer1_0_downsample_0_weights[RESNET_LAYER1_0_DS_OUT_CH][RESNET_LAYER1_0_DS_IN_CH],
-    wt_t   resnet_layer1_0_downsample_1_params[4][RESNET_LAYER1_0_DS_OUT_CH],
-    wt_t   resnet_layer1_1_conv1_weights[RESNET_LAYER1_CONV1_OUT_CH][RESNET_LAYER1_CONV1_IN_CH],
-    wt_t   resnet_layer1_1_bn1_params[4][RESNET_LAYER1_CONV1_OUT_CH],
-    wt_t   resnet_layer1_1_conv2_weights[RESNET_LAYER1_CONV2_OUT_CH][RESNET_LAYER1_CONV2_IN_CH][3][3],
-    wt_t   resnet_layer1_1_bn2_params[4][RESNET_LAYER1_CONV2_OUT_CH],
-    wt_t   resnet_layer1_1_conv3_weights[RESNET_LAYER1_CONV3_OUT_CH][RESNET_LAYER1_CONV3_IN_CH],
-    wt_t   resnet_layer1_1_bn3_params[4][RESNET_LAYER1_CONV3_OUT_CH],
-    wt_t   resnet_layer1_2_conv1_weights[RESNET_LAYER1_CONV1_OUT_CH][RESNET_LAYER1_CONV1_IN_CH],
-    wt_t   resnet_layer1_2_bn1_params[4][RESNET_LAYER1_CONV1_OUT_CH],
-    wt_t   resnet_layer1_2_conv2_weights[RESNET_LAYER1_CONV2_OUT_CH][RESNET_LAYER1_CONV2_IN_CH][3][3],
-    wt_t   resnet_layer1_2_bn2_params[4][RESNET_LAYER1_CONV2_OUT_CH],
-    wt_t   resnet_layer1_2_conv3_weights[RESNET_LAYER1_CONV3_OUT_CH][RESNET_LAYER1_CONV3_IN_CH],
-    wt_t   resnet_layer1_2_bn3_params[4][RESNET_LAYER1_CONV3_OUT_CH],
-    fm_t   resnet_layer1_output_fm[RESNET_LAYER1_0_DS_OUT_CH][RESNET_LAYER1_0_FM_HEIGHT][RESNET_LAYER1_0_FM_WIDTH],
+//     fm_t   resnet_layer1_input_fm[RESNET_LAYER1_0_CONV1_IN_CH][RESNET_LAYER1_0_FM_HEIGHT][RESNET_LAYER1_0_FM_WIDTH],
+//     wt_t   resnet_layer1_0_conv1_weights[RESNET_LAYER1_0_CONV1_OUT_CH][RESNET_LAYER1_0_CONV1_IN_CH],
+//     wt_t   resnet_layer1_0_bn1_params[4][RESNET_LAYER1_0_CONV1_OUT_CH],
+//     wt_t   resnet_layer1_0_conv2_weights[RESNET_LAYER1_0_CONV2_OUT_CH][RESNET_LAYER1_0_CONV2_IN_CH][3][3],
+//     wt_t   resnet_layer1_0_bn2_params[4][RESNET_LAYER1_0_CONV2_OUT_CH],
+//     wt_t   resnet_layer1_0_conv3_weights[RESNET_LAYER1_0_CONV3_OUT_CH][RESNET_LAYER1_0_CONV3_IN_CH],
+//     wt_t   resnet_layer1_0_bn3_params[4][RESNET_LAYER1_0_CONV3_OUT_CH],
+//     wt_t   resnet_layer1_0_downsample_0_weights[RESNET_LAYER1_0_DS_OUT_CH][RESNET_LAYER1_0_DS_IN_CH],
+//     wt_t   resnet_layer1_0_downsample_1_params[4][RESNET_LAYER1_0_DS_OUT_CH],
+//     wt_t   resnet_layer1_1_conv1_weights[RESNET_LAYER1_CONV1_OUT_CH][RESNET_LAYER1_CONV1_IN_CH],
+//     wt_t   resnet_layer1_1_bn1_params[4][RESNET_LAYER1_CONV1_OUT_CH],
+//     wt_t   resnet_layer1_1_conv2_weights[RESNET_LAYER1_CONV2_OUT_CH][RESNET_LAYER1_CONV2_IN_CH][3][3],
+//     wt_t   resnet_layer1_1_bn2_params[4][RESNET_LAYER1_CONV2_OUT_CH],
+//     wt_t   resnet_layer1_1_conv3_weights[RESNET_LAYER1_CONV3_OUT_CH][RESNET_LAYER1_CONV3_IN_CH],
+//     wt_t   resnet_layer1_1_bn3_params[4][RESNET_LAYER1_CONV3_OUT_CH],
+//     wt_t   resnet_layer1_2_conv1_weights[RESNET_LAYER1_CONV1_OUT_CH][RESNET_LAYER1_CONV1_IN_CH],
+//     wt_t   resnet_layer1_2_bn1_params[4][RESNET_LAYER1_CONV1_OUT_CH],
+//     wt_t   resnet_layer1_2_conv2_weights[RESNET_LAYER1_CONV2_OUT_CH][RESNET_LAYER1_CONV2_IN_CH][3][3],
+//     wt_t   resnet_layer1_2_bn2_params[4][RESNET_LAYER1_CONV2_OUT_CH],
+//     wt_t   resnet_layer1_2_conv3_weights[RESNET_LAYER1_CONV3_OUT_CH][RESNET_LAYER1_CONV3_IN_CH],
+//     wt_t   resnet_layer1_2_bn3_params[4][RESNET_LAYER1_CONV3_OUT_CH],
+//     fm_t   resnet_layer1_output_fm[RESNET_LAYER1_0_DS_OUT_CH][RESNET_LAYER1_0_FM_HEIGHT][RESNET_LAYER1_0_FM_WIDTH],
 
-    fm_t   resnet_layer2_input_fm[RESNET_LAYER2_0_CONV1_IN_CH][RESNET_LAYER2_0_FM_HEIGHT][RESNET_LAYER2_0_FM_WIDTH],
-    wt_t   resnet_layer2_0_conv1_weights[RESNET_LAYER2_0_CONV1_OUT_CH][RESNET_LAYER2_0_CONV1_IN_CH],
-	wt_t   resnet_layer2_0_bn1_params[3][RESNET_LAYER2_0_CONV1_OUT_CH],
-    wt_t   resnet_layer2_0_conv2_weights[RESNET_LAYER2_0_CONV2_OUT_CH][RESNET_LAYER2_0_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer2_0_bn2_params[3][RESNET_LAYER2_0_CONV2_OUT_CH],
-    wt_t   resnet_layer2_0_conv3_weights[RESNET_LAYER2_0_CONV3_OUT_CH][RESNET_LAYER2_0_CONV3_IN_CH],
-	wt_t   resnet_layer2_0_bn3_params[3][RESNET_LAYER2_0_CONV3_OUT_CH],
-    wt_t   resnet_layer2_0_downsample_0_weights[RESNET_LAYER2_0_DS_OUT_CH][RESNET_LAYER2_0_DS_IN_CH],
-	wt_t   resnet_layer2_0_downsample_1_params[3][RESNET_LAYER2_0_DS_OUT_CH],
-    wt_t   resnet_layer2_1_conv1_weights[RESNET_LAYER2_CONV1_OUT_CH][RESNET_LAYER2_CONV1_IN_CH],
-	wt_t   resnet_layer2_1_bn1_params[3][RESNET_LAYER2_CONV1_OUT_CH],
-    wt_t   resnet_layer2_1_conv2_weights[RESNET_LAYER2_CONV2_OUT_CH][RESNET_LAYER2_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer2_1_bn2_params[3][RESNET_LAYER2_CONV2_OUT_CH],
-    wt_t   resnet_layer2_1_conv3_weights[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_CONV3_IN_CH],
-	wt_t   resnet_layer2_1_bn3_params[3][RESNET_LAYER2_CONV3_OUT_CH],
-    wt_t   resnet_layer2_2_conv1_weights[RESNET_LAYER2_CONV1_OUT_CH][RESNET_LAYER2_CONV1_IN_CH],
-	wt_t   resnet_layer2_2_bn1_params[3][RESNET_LAYER2_CONV1_OUT_CH],
-    wt_t   resnet_layer2_2_conv2_weights[RESNET_LAYER2_CONV2_OUT_CH][RESNET_LAYER2_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer2_2_bn2_params[3][RESNET_LAYER2_CONV2_OUT_CH],
-    wt_t   resnet_layer2_2_conv3_weights[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_CONV3_IN_CH],
-	wt_t   resnet_layer2_2_bn3_params[3][RESNET_LAYER2_CONV3_OUT_CH],
-    wt_t   resnet_layer2_3_conv1_weights[RESNET_LAYER2_CONV1_OUT_CH][RESNET_LAYER2_CONV1_IN_CH],
-	wt_t   resnet_layer2_3_bn1_params[3][RESNET_LAYER2_CONV1_OUT_CH],
-    wt_t   resnet_layer2_3_conv2_weights[RESNET_LAYER2_CONV2_OUT_CH][RESNET_LAYER2_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer2_3_bn2_params[3][RESNET_LAYER2_CONV2_OUT_CH],
-    wt_t   resnet_layer2_3_conv3_weights[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_CONV3_IN_CH],
-	wt_t   resnet_layer2_3_bn3_params[3][RESNET_LAYER2_CONV3_OUT_CH],
-    fm_t   resnet_layer2_output_fm[RESNET_LAYER2_0_DS_OUT_CH][RESNET_LAYER2_0_FM_HEIGHT][RESNET_LAYER2_0_FM_WIDTH]
-);
+//     fm_t   resnet_layer2_input_fm[RESNET_LAYER2_0_CONV1_IN_CH][RESNET_LAYER2_0_FM_HEIGHT][RESNET_LAYER2_0_FM_WIDTH],
+//     wt_t   resnet_layer2_0_conv1_weights[RESNET_LAYER2_0_CONV1_OUT_CH][RESNET_LAYER2_0_CONV1_IN_CH],
+// 	wt_t   resnet_layer2_0_bn1_params[3][RESNET_LAYER2_0_CONV1_OUT_CH],
+//     wt_t   resnet_layer2_0_conv2_weights[RESNET_LAYER2_0_CONV2_OUT_CH][RESNET_LAYER2_0_CONV2_IN_CH][3][3],
+// 	wt_t   resnet_layer2_0_bn2_params[3][RESNET_LAYER2_0_CONV2_OUT_CH],
+//     wt_t   resnet_layer2_0_conv3_weights[RESNET_LAYER2_0_CONV3_OUT_CH][RESNET_LAYER2_0_CONV3_IN_CH],
+// 	wt_t   resnet_layer2_0_bn3_params[3][RESNET_LAYER2_0_CONV3_OUT_CH],
+//     wt_t   resnet_layer2_0_downsample_0_weights[RESNET_LAYER2_0_DS_OUT_CH][RESNET_LAYER2_0_DS_IN_CH],
+// 	wt_t   resnet_layer2_0_downsample_1_params[3][RESNET_LAYER2_0_DS_OUT_CH],
+//     wt_t   resnet_layer2_1_conv1_weights[RESNET_LAYER2_CONV1_OUT_CH][RESNET_LAYER2_CONV1_IN_CH],
+// 	wt_t   resnet_layer2_1_bn1_params[3][RESNET_LAYER2_CONV1_OUT_CH],
+//     wt_t   resnet_layer2_1_conv2_weights[RESNET_LAYER2_CONV2_OUT_CH][RESNET_LAYER2_CONV2_IN_CH][3][3],
+// 	wt_t   resnet_layer2_1_bn2_params[3][RESNET_LAYER2_CONV2_OUT_CH],
+//     wt_t   resnet_layer2_1_conv3_weights[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_CONV3_IN_CH],
+// 	wt_t   resnet_layer2_1_bn3_params[3][RESNET_LAYER2_CONV3_OUT_CH],
+//     wt_t   resnet_layer2_2_conv1_weights[RESNET_LAYER2_CONV1_OUT_CH][RESNET_LAYER2_CONV1_IN_CH],
+// 	wt_t   resnet_layer2_2_bn1_params[3][RESNET_LAYER2_CONV1_OUT_CH],
+//     wt_t   resnet_layer2_2_conv2_weights[RESNET_LAYER2_CONV2_OUT_CH][RESNET_LAYER2_CONV2_IN_CH][3][3],
+// 	wt_t   resnet_layer2_2_bn2_params[3][RESNET_LAYER2_CONV2_OUT_CH],
+//     wt_t   resnet_layer2_2_conv3_weights[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_CONV3_IN_CH],
+// 	wt_t   resnet_layer2_2_bn3_params[3][RESNET_LAYER2_CONV3_OUT_CH],
+//     wt_t   resnet_layer2_3_conv1_weights[RESNET_LAYER2_CONV1_OUT_CH][RESNET_LAYER2_CONV1_IN_CH],
+// 	wt_t   resnet_layer2_3_bn1_params[3][RESNET_LAYER2_CONV1_OUT_CH],
+//     wt_t   resnet_layer2_3_conv2_weights[RESNET_LAYER2_CONV2_OUT_CH][RESNET_LAYER2_CONV2_IN_CH][3][3],
+// 	wt_t   resnet_layer2_3_bn2_params[3][RESNET_LAYER2_CONV2_OUT_CH],
+//     wt_t   resnet_layer2_3_conv3_weights[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_CONV3_IN_CH],
+// 	wt_t   resnet_layer2_3_bn3_params[3][RESNET_LAYER2_CONV3_OUT_CH],
+//     fm_t   resnet_layer2_output_fm[RESNET_LAYER2_0_DS_OUT_CH][RESNET_LAYER2_0_FM_HEIGHT][RESNET_LAYER2_0_FM_WIDTH]
+// );
 
-void resnet_top_2(
-    fm_t   resnet_layer2_output_fm[RESNET_LAYER2_0_DS_OUT_CH][RESNET_LAYER2_0_FM_HEIGHT][RESNET_LAYER2_0_FM_WIDTH],
-    fm_t   resnet_layer3_input_fm[RESNET_LAYER3_0_CONV1_IN_CH][RESNET_LAYER3_0_FM_HEIGHT][RESNET_LAYER3_0_FM_WIDTH],
-    wt_t   resnet_layer3_0_conv1_weights[RESNET_LAYER3_0_CONV1_OUT_CH][RESNET_LAYER3_0_CONV1_IN_CH],
-	wt_t   resnet_layer3_0_bn1_params[3][RESNET_LAYER3_0_CONV1_OUT_CH],
-    wt_t   resnet_layer3_0_conv2_weights[RESNET_LAYER3_0_CONV2_OUT_CH][RESNET_LAYER3_0_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer3_0_bn2_params[3][RESNET_LAYER3_0_CONV2_OUT_CH],
-    wt_t   resnet_layer3_0_conv3_weights[RESNET_LAYER3_0_CONV3_OUT_CH][RESNET_LAYER3_0_CONV3_IN_CH],
-	wt_t   resnet_layer3_0_bn3_params[3][RESNET_LAYER3_0_CONV3_OUT_CH],
-    wt_t   resnet_layer3_0_downsample_0_weights[RESNET_LAYER3_0_DS_OUT_CH][RESNET_LAYER3_0_DS_IN_CH],
-	wt_t   resnet_layer3_0_downsample_1_params[3][RESNET_LAYER3_0_DS_OUT_CH],
-    wt_t   resnet_layer3_1_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
-	wt_t   resnet_layer3_1_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
-    wt_t   resnet_layer3_1_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer3_1_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
-    wt_t   resnet_layer3_1_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
-	wt_t   resnet_layer3_1_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
-    wt_t   resnet_layer3_2_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
-	wt_t   resnet_layer3_2_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
-    wt_t   resnet_layer3_2_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer3_2_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
-    wt_t   resnet_layer3_2_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
-	wt_t   resnet_layer3_2_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
-    wt_t   resnet_layer3_3_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
-	wt_t   resnet_layer3_3_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
-    wt_t   resnet_layer3_3_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer3_3_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
-    wt_t   resnet_layer3_3_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
-	wt_t   resnet_layer3_3_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
-    wt_t   resnet_layer3_4_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
-	wt_t   resnet_layer3_4_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
-    wt_t   resnet_layer3_4_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer3_4_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
-    wt_t   resnet_layer3_4_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
-	wt_t   resnet_layer3_4_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
-    wt_t   resnet_layer3_5_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
-	wt_t   resnet_layer3_5_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
-    wt_t   resnet_layer3_5_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer3_5_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
-    wt_t   resnet_layer3_5_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
-	wt_t   resnet_layer3_5_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
-    fm_t   resnet_layer3_output_fm[RESNET_LAYER3_0_DS_OUT_CH][RESNET_LAYER3_0_FM_HEIGHT][RESNET_LAYER3_0_FM_WIDTH],
+// void resnet_top_2(
+//     fm_t   resnet_layer2_output_fm[RESNET_LAYER2_0_DS_OUT_CH][RESNET_LAYER2_0_FM_HEIGHT][RESNET_LAYER2_0_FM_WIDTH],
+//     fm_t   resnet_layer3_input_fm[RESNET_LAYER3_0_CONV1_IN_CH][RESNET_LAYER3_0_FM_HEIGHT][RESNET_LAYER3_0_FM_WIDTH],
+//     wt_t   resnet_layer3_0_conv1_weights[RESNET_LAYER3_0_CONV1_OUT_CH][RESNET_LAYER3_0_CONV1_IN_CH],
+// 	wt_t   resnet_layer3_0_bn1_params[3][RESNET_LAYER3_0_CONV1_OUT_CH],
+//     wt_t   resnet_layer3_0_conv2_weights[RESNET_LAYER3_0_CONV2_OUT_CH][RESNET_LAYER3_0_CONV2_IN_CH][3][3],
+// 	wt_t   resnet_layer3_0_bn2_params[3][RESNET_LAYER3_0_CONV2_OUT_CH],
+//     wt_t   resnet_layer3_0_conv3_weights[RESNET_LAYER3_0_CONV3_OUT_CH][RESNET_LAYER3_0_CONV3_IN_CH],
+// 	wt_t   resnet_layer3_0_bn3_params[3][RESNET_LAYER3_0_CONV3_OUT_CH],
+//     wt_t   resnet_layer3_0_downsample_0_weights[RESNET_LAYER3_0_DS_OUT_CH][RESNET_LAYER3_0_DS_IN_CH],
+// 	wt_t   resnet_layer3_0_downsample_1_params[3][RESNET_LAYER3_0_DS_OUT_CH],
+//     wt_t   resnet_layer3_1_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
+// 	wt_t   resnet_layer3_1_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
+//     wt_t   resnet_layer3_1_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
+// 	wt_t   resnet_layer3_1_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
+//     wt_t   resnet_layer3_1_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
+// 	wt_t   resnet_layer3_1_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
+//     wt_t   resnet_layer3_2_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
+// 	wt_t   resnet_layer3_2_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
+//     wt_t   resnet_layer3_2_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
+// 	wt_t   resnet_layer3_2_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
+//     wt_t   resnet_layer3_2_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
+// 	wt_t   resnet_layer3_2_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
+//     wt_t   resnet_layer3_3_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
+// 	wt_t   resnet_layer3_3_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
+//     wt_t   resnet_layer3_3_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
+// 	wt_t   resnet_layer3_3_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
+//     wt_t   resnet_layer3_3_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
+// 	wt_t   resnet_layer3_3_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
+//     wt_t   resnet_layer3_4_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
+// 	wt_t   resnet_layer3_4_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
+//     wt_t   resnet_layer3_4_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
+// 	wt_t   resnet_layer3_4_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
+//     wt_t   resnet_layer3_4_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
+// 	wt_t   resnet_layer3_4_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
+//     wt_t   resnet_layer3_5_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
+// 	wt_t   resnet_layer3_5_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
+//     wt_t   resnet_layer3_5_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
+// 	wt_t   resnet_layer3_5_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
+//     wt_t   resnet_layer3_5_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
+// 	wt_t   resnet_layer3_5_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
+//     fm_t   resnet_layer3_output_fm[RESNET_LAYER3_0_DS_OUT_CH][RESNET_LAYER3_0_FM_HEIGHT][RESNET_LAYER3_0_FM_WIDTH],
 
-    fm_t   resnet_layer4_input_fm[RESNET_LAYER4_0_CONV1_IN_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH],
-    wt_t   resnet_layer4_0_conv1_weights[RESNET_LAYER4_0_CONV1_OUT_CH][RESNET_LAYER4_0_CONV1_IN_CH],
-	wt_t   resnet_layer4_0_bn1_params[3][RESNET_LAYER4_0_CONV1_OUT_CH],
-    wt_t   resnet_layer4_0_conv2_weights[RESNET_LAYER4_0_CONV2_OUT_CH][RESNET_LAYER4_0_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer4_0_bn2_params[3][RESNET_LAYER4_0_CONV2_OUT_CH],
-    wt_t   resnet_layer4_0_conv3_weights[RESNET_LAYER4_0_CONV3_OUT_CH][RESNET_LAYER4_0_CONV3_IN_CH],
-	wt_t   resnet_layer4_0_bn3_params[3][RESNET_LAYER4_0_CONV3_OUT_CH],
-    wt_t   resnet_layer4_0_downsample_0_weights[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_DS_IN_CH],
-	wt_t   resnet_layer4_0_downsample_1_params[3][RESNET_LAYER4_0_DS_OUT_CH],
-    wt_t   resnet_layer4_1_conv1_weights[RESNET_LAYER4_CONV1_OUT_CH][RESNET_LAYER4_CONV1_IN_CH],
-	wt_t   resnet_layer4_1_bn1_params[3][RESNET_LAYER4_CONV1_OUT_CH],
-    wt_t   resnet_layer4_1_conv2_weights[RESNET_LAYER4_CONV2_OUT_CH][RESNET_LAYER4_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer4_1_bn2_params[3][RESNET_LAYER4_CONV2_OUT_CH],
-    wt_t   resnet_layer4_1_conv3_weights[RESNET_LAYER4_CONV3_OUT_CH][RESNET_LAYER4_CONV3_IN_CH],
-	wt_t   resnet_layer4_1_bn3_params[3][RESNET_LAYER4_CONV3_OUT_CH],
-    wt_t   resnet_layer4_2_conv1_weights[RESNET_LAYER4_CONV1_OUT_CH][RESNET_LAYER4_CONV1_IN_CH],
-	wt_t   resnet_layer4_2_bn1_params[3][RESNET_LAYER4_CONV1_OUT_CH],
-    wt_t   resnet_layer4_2_conv2_weights[RESNET_LAYER4_CONV2_OUT_CH][RESNET_LAYER4_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer4_2_bn2_params[3][RESNET_LAYER4_CONV2_OUT_CH],
-    wt_t   resnet_layer4_2_conv3_weights[RESNET_LAYER4_CONV3_OUT_CH][RESNET_LAYER4_CONV3_IN_CH],
-	wt_t   resnet_layer4_2_bn3_params[3][RESNET_LAYER4_CONV3_OUT_CH],
-    fm_t   resnet_layer4_output_fm[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH]
-);
+//     fm_t   resnet_layer4_input_fm[RESNET_LAYER4_0_CONV1_IN_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH],
+//     wt_t   resnet_layer4_0_conv1_weights[RESNET_LAYER4_0_CONV1_OUT_CH][RESNET_LAYER4_0_CONV1_IN_CH],
+// 	wt_t   resnet_layer4_0_bn1_params[3][RESNET_LAYER4_0_CONV1_OUT_CH],
+//     wt_t   resnet_layer4_0_conv2_weights[RESNET_LAYER4_0_CONV2_OUT_CH][RESNET_LAYER4_0_CONV2_IN_CH][3][3],
+// 	wt_t   resnet_layer4_0_bn2_params[3][RESNET_LAYER4_0_CONV2_OUT_CH],
+//     wt_t   resnet_layer4_0_conv3_weights[RESNET_LAYER4_0_CONV3_OUT_CH][RESNET_LAYER4_0_CONV3_IN_CH],
+// 	wt_t   resnet_layer4_0_bn3_params[3][RESNET_LAYER4_0_CONV3_OUT_CH],
+//     wt_t   resnet_layer4_0_downsample_0_weights[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_DS_IN_CH],
+// 	wt_t   resnet_layer4_0_downsample_1_params[3][RESNET_LAYER4_0_DS_OUT_CH],
+//     wt_t   resnet_layer4_1_conv1_weights[RESNET_LAYER4_CONV1_OUT_CH][RESNET_LAYER4_CONV1_IN_CH],
+// 	wt_t   resnet_layer4_1_bn1_params[3][RESNET_LAYER4_CONV1_OUT_CH],
+//     wt_t   resnet_layer4_1_conv2_weights[RESNET_LAYER4_CONV2_OUT_CH][RESNET_LAYER4_CONV2_IN_CH][3][3],
+// 	wt_t   resnet_layer4_1_bn2_params[3][RESNET_LAYER4_CONV2_OUT_CH],
+//     wt_t   resnet_layer4_1_conv3_weights[RESNET_LAYER4_CONV3_OUT_CH][RESNET_LAYER4_CONV3_IN_CH],
+// 	wt_t   resnet_layer4_1_bn3_params[3][RESNET_LAYER4_CONV3_OUT_CH],
+//     wt_t   resnet_layer4_2_conv1_weights[RESNET_LAYER4_CONV1_OUT_CH][RESNET_LAYER4_CONV1_IN_CH],
+// 	wt_t   resnet_layer4_2_bn1_params[3][RESNET_LAYER4_CONV1_OUT_CH],
+//     wt_t   resnet_layer4_2_conv2_weights[RESNET_LAYER4_CONV2_OUT_CH][RESNET_LAYER4_CONV2_IN_CH][3][3],
+// 	wt_t   resnet_layer4_2_bn2_params[3][RESNET_LAYER4_CONV2_OUT_CH],
+//     wt_t   resnet_layer4_2_conv3_weights[RESNET_LAYER4_CONV3_OUT_CH][RESNET_LAYER4_CONV3_IN_CH],
+// 	wt_t   resnet_layer4_2_bn3_params[3][RESNET_LAYER4_CONV3_OUT_CH],
+//     fm_t   resnet_layer4_output_fm[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH]
+// );
 
-//--------------------------------------------------------------------------
-// FPN Function Declarations
-//--------------------------------------------------------------------------
-void fpn_top(
-	fm_t lateral_3_input_feature_map[LATERAL_CONV_3_ID][LATERAL_CONV_3_IH][LATERAL_CONV_3_IW],
-    	wt_t lateral_3_layer_weights[LATERAL_CONV_3_OD][LATERAL_CONV_3_ID][1][1],
-    	wt_t lateral_3_layer_bias[LATERAL_CONV_3_OD],
-	fm_t lateral_2_input_feature_map[LATERAL_CONV_2_ID][LATERAL_CONV_2_IH][LATERAL_CONV_2_IW],
-    	wt_t lateral_2_layer_weights[LATERAL_CONV_2_OD][LATERAL_CONV_2_ID][1][1],
-    	wt_t lateral_2_layer_bias[LATERAL_CONV_2_OD],
-	fm_t lateral_1_input_feature_map[LATERAL_CONV_1_ID][LATERAL_CONV_1_IH][LATERAL_CONV_1_IW],
-    	wt_t lateral_1_layer_weights[LATERAL_CONV_1_OD][LATERAL_CONV_1_ID][1][1],
-    	wt_t lateral_1_layer_bias[LATERAL_CONV_1_OD],
-	fm_t lateral_0_input_feature_map[LATERAL_CONV_0_ID][LATERAL_CONV_0_IH][LATERAL_CONV_0_IW],
-    	wt_t lateral_0_layer_weights[LATERAL_CONV_0_OD][LATERAL_CONV_0_ID][1][1],
-    	wt_t lateral_0_layer_bias[LATERAL_CONV_0_OD],
-    	wt_t fpn_3_layer_weights[FPN_CONV_3_OD][FPN_CONV_3_ID][3][3],
-    	wt_t fpn_3_layer_bias[FPN_CONV_3_OD],
-    	fm_t fpn_3_output_feature_map[FPN_CONV_3_OD][FPN_CONV_3_IH][FPN_CONV_3_IW],
-    	wt_t fpn_2_layer_weights[FPN_CONV_2_OD][FPN_CONV_2_ID][3][3],
-    	wt_t fpn_2_layer_bias[FPN_CONV_2_OD],
-    	fm_t fpn_2_output_feature_map[FPN_CONV_2_OD][FPN_CONV_2_IH][FPN_CONV_2_IW],
-    	wt_t fpn_1_layer_weights[FPN_CONV_1_OD][FPN_CONV_1_ID][3][3],
-    	wt_t fpn_1_layer_bias[FPN_CONV_1_OD],
-    	fm_t fpn_1_output_feature_map[FPN_CONV_1_OD][FPN_CONV_1_IH][FPN_CONV_1_IW],
-    	wt_t fpn_0_layer_weights[FPN_CONV_0_OD][FPN_CONV_0_ID][3][3],
-    	wt_t fpn_0_layer_bias[FPN_CONV_0_OD],
-    	fm_t fpn_0_output_feature_map[FPN_CONV_0_OD][FPN_CONV_0_IH][FPN_CONV_0_IW]
-);
+// //--------------------------------------------------------------------------
+// // FPN Function Declarations
+// //--------------------------------------------------------------------------
+// void fpn_top(
+// 	fm_t lateral_3_input_feature_map[LATERAL_CONV_3_ID][LATERAL_CONV_3_IH][LATERAL_CONV_3_IW],
+//     	wt_t lateral_3_layer_weights[LATERAL_CONV_3_OD][LATERAL_CONV_3_ID][1][1],
+//     	wt_t lateral_3_layer_bias[LATERAL_CONV_3_OD],
+// 	fm_t lateral_2_input_feature_map[LATERAL_CONV_2_ID][LATERAL_CONV_2_IH][LATERAL_CONV_2_IW],
+//     	wt_t lateral_2_layer_weights[LATERAL_CONV_2_OD][LATERAL_CONV_2_ID][1][1],
+//     	wt_t lateral_2_layer_bias[LATERAL_CONV_2_OD],
+// 	fm_t lateral_1_input_feature_map[LATERAL_CONV_1_ID][LATERAL_CONV_1_IH][LATERAL_CONV_1_IW],
+//     	wt_t lateral_1_layer_weights[LATERAL_CONV_1_OD][LATERAL_CONV_1_ID][1][1],
+//     	wt_t lateral_1_layer_bias[LATERAL_CONV_1_OD],
+// 	fm_t lateral_0_input_feature_map[LATERAL_CONV_0_ID][LATERAL_CONV_0_IH][LATERAL_CONV_0_IW],
+//     	wt_t lateral_0_layer_weights[LATERAL_CONV_0_OD][LATERAL_CONV_0_ID][1][1],
+//     	wt_t lateral_0_layer_bias[LATERAL_CONV_0_OD],
+//     	wt_t fpn_3_layer_weights[FPN_CONV_3_OD][FPN_CONV_3_ID][3][3],
+//     	wt_t fpn_3_layer_bias[FPN_CONV_3_OD],
+//     	fm_t fpn_3_output_feature_map[FPN_CONV_3_OD][FPN_CONV_3_IH][FPN_CONV_3_IW],
+//     	wt_t fpn_2_layer_weights[FPN_CONV_2_OD][FPN_CONV_2_ID][3][3],
+//     	wt_t fpn_2_layer_bias[FPN_CONV_2_OD],
+//     	fm_t fpn_2_output_feature_map[FPN_CONV_2_OD][FPN_CONV_2_IH][FPN_CONV_2_IW],
+//     	wt_t fpn_1_layer_weights[FPN_CONV_1_OD][FPN_CONV_1_ID][3][3],
+//     	wt_t fpn_1_layer_bias[FPN_CONV_1_OD],
+//     	fm_t fpn_1_output_feature_map[FPN_CONV_1_OD][FPN_CONV_1_IH][FPN_CONV_1_IW],
+//     	wt_t fpn_0_layer_weights[FPN_CONV_0_OD][FPN_CONV_0_ID][3][3],
+//     	wt_t fpn_0_layer_bias[FPN_CONV_0_OD],
+//     	fm_t fpn_0_output_feature_map[FPN_CONV_0_OD][FPN_CONV_0_IH][FPN_CONV_0_IW]
+// );
 
-void fpn_conv_3x3 (
-        fm_t Y_buf[FPN_OUT_BUF_CH][FPN_OUT_BUF_ROWS][FPN_OUT_BUF_COLS], 
-        fm_t X_buf[FPN_IN_BUF_CH][FPN_IN_BUF_ROWS+2][FPN_IN_BUF_COLS+2],
-        wt_t W_buf[FPN_OUT_BUF_CH][FPN_IN_BUF_CH][3][3]
-);
-void fpn_conv_1x1( 
-    fm_t Y_buf[FPN_OUT_BUF_CH][FPN_OUT_BUF_ROWS][FPN_OUT_BUF_COLS], 
-    fm_t X_buf[FPN_IN_BUF_CH][FPN_IN_BUF_ROWS][FPN_IN_BUF_COLS],
-    wt_t W_buf[FPN_OUT_BUF_CH][FPN_IN_BUF_CH][1][1]
-);
-void fpn_tiled_conv_fpn_3 (
-    fm_t input_feature_map[FPN_CONV_3_ID][FPN_CONV_3_IH][FPN_CONV_3_IW],
-    wt_t layer_weights[FPN_CONV_3_OD][FPN_CONV_3_ID][3][3],
-    wt_t layer_bias[FPN_CONV_3_OD],
-    fm_t output_feature_map[FPN_CONV_3_OD][FPN_CONV_3_OH][FPN_CONV_3_OW]
-);
-void fpn_tiled_conv_fpn_2 (
-    fm_t input_feature_map[FPN_CONV_2_ID][FPN_CONV_2_IH][FPN_CONV_2_IW],
-    wt_t layer_weights[FPN_CONV_2_OD][FPN_CONV_2_ID][3][3],
-    wt_t layer_bias[FPN_CONV_2_OD],
-    fm_t output_feature_map[FPN_CONV_2_OD][FPN_CONV_2_OH][FPN_CONV_2_OW]
-);
-void fpn_tiled_conv_fpn_1 (
-    fm_t input_feature_map[FPN_CONV_1_ID][FPN_CONV_1_IH][FPN_CONV_1_IW],
-    wt_t layer_weights[FPN_CONV_1_OD][FPN_CONV_1_ID][3][3],
-    wt_t layer_bias[FPN_CONV_1_OD],
-    fm_t output_feature_map[FPN_CONV_1_OD][FPN_CONV_1_OH][FPN_CONV_1_OW]
-);
-void fpn_tiled_conv_fpn_0 (
-    fm_t input_feature_map[FPN_CONV_0_ID][FPN_CONV_0_IH][FPN_CONV_0_IW],
-    wt_t layer_weights[FPN_CONV_0_OD][FPN_CONV_0_ID][3][3],
-    wt_t layer_bias[FPN_CONV_0_OD],
-    fm_t output_feature_map[FPN_CONV_0_OD][FPN_CONV_0_OH][FPN_CONV_0_OW]
-);
-void fpn_tiled_conv_lateral_3 (
-    fm_t input_feature_map[LATERAL_CONV_3_ID][LATERAL_CONV_3_IH][LATERAL_CONV_3_IW],
-    wt_t layer_weights[LATERAL_CONV_3_OD][LATERAL_CONV_3_ID][1][1],
-    wt_t layer_bias[LATERAL_CONV_3_OD],
-    fm_t output_feature_map[LATERAL_CONV_3_OD][LATERAL_CONV_3_IH][LATERAL_CONV_3_IW]
-);
-void fpn_tiled_conv_lateral_2 (
-    fm_t input_feature_map[LATERAL_CONV_2_ID][LATERAL_CONV_2_IH][LATERAL_CONV_2_IW],
-    wt_t layer_weights[LATERAL_CONV_2_OD][LATERAL_CONV_2_ID][1][1],
-    wt_t layer_bias[LATERAL_CONV_2_OD],
-    fm_t output_feature_map[LATERAL_CONV_2_OD][LATERAL_CONV_2_IH][LATERAL_CONV_2_IW]
-);
-void fpn_tiled_conv_lateral_1 (
-    fm_t input_feature_map[LATERAL_CONV_1_ID][LATERAL_CONV_1_IH][LATERAL_CONV_1_IW],
-    wt_t layer_weights[LATERAL_CONV_1_OD][LATERAL_CONV_1_ID][1][1],
-    wt_t layer_bias[LATERAL_CONV_1_OD],
-    fm_t output_feature_map[LATERAL_CONV_1_OD][LATERAL_CONV_1_IH][LATERAL_CONV_1_IW]
-);
-void fpn_tiled_conv_lateral_0 (
-    fm_t input_feature_map[LATERAL_CONV_0_ID][LATERAL_CONV_0_IH][LATERAL_CONV_0_IW],
-    wt_t layer_weights[LATERAL_CONV_0_OD][LATERAL_CONV_0_ID][1][1],
-    wt_t layer_bias[LATERAL_CONV_0_OD],
-    fm_t output_feature_map[LATERAL_CONV_0_OD][LATERAL_CONV_0_IH][LATERAL_CONV_0_IW]
-);
+// void fpn_conv_3x3 (
+//         fm_t Y_buf[FPN_OUT_BUF_CH][FPN_OUT_BUF_ROWS][FPN_OUT_BUF_COLS], 
+//         fm_t X_buf[FPN_IN_BUF_CH][FPN_IN_BUF_ROWS+2][FPN_IN_BUF_COLS+2],
+//         wt_t W_buf[FPN_OUT_BUF_CH][FPN_IN_BUF_CH][3][3]
+// );
+// void fpn_conv_1x1( 
+//     fm_t Y_buf[FPN_OUT_BUF_CH][FPN_OUT_BUF_ROWS][FPN_OUT_BUF_COLS], 
+//     fm_t X_buf[FPN_IN_BUF_CH][FPN_IN_BUF_ROWS][FPN_IN_BUF_COLS],
+//     wt_t W_buf[FPN_OUT_BUF_CH][FPN_IN_BUF_CH][1][1]
+// );
+// void fpn_tiled_conv_fpn_3 (
+//     fm_t input_feature_map[FPN_CONV_3_ID][FPN_CONV_3_IH][FPN_CONV_3_IW],
+//     wt_t layer_weights[FPN_CONV_3_OD][FPN_CONV_3_ID][3][3],
+//     wt_t layer_bias[FPN_CONV_3_OD],
+//     fm_t output_feature_map[FPN_CONV_3_OD][FPN_CONV_3_OH][FPN_CONV_3_OW]
+// );
+// void fpn_tiled_conv_fpn_2 (
+//     fm_t input_feature_map[FPN_CONV_2_ID][FPN_CONV_2_IH][FPN_CONV_2_IW],
+//     wt_t layer_weights[FPN_CONV_2_OD][FPN_CONV_2_ID][3][3],
+//     wt_t layer_bias[FPN_CONV_2_OD],
+//     fm_t output_feature_map[FPN_CONV_2_OD][FPN_CONV_2_OH][FPN_CONV_2_OW]
+// );
+// void fpn_tiled_conv_fpn_1 (
+//     fm_t input_feature_map[FPN_CONV_1_ID][FPN_CONV_1_IH][FPN_CONV_1_IW],
+//     wt_t layer_weights[FPN_CONV_1_OD][FPN_CONV_1_ID][3][3],
+//     wt_t layer_bias[FPN_CONV_1_OD],
+//     fm_t output_feature_map[FPN_CONV_1_OD][FPN_CONV_1_OH][FPN_CONV_1_OW]
+// );
+// void fpn_tiled_conv_fpn_0 (
+//     fm_t input_feature_map[FPN_CONV_0_ID][FPN_CONV_0_IH][FPN_CONV_0_IW],
+//     wt_t layer_weights[FPN_CONV_0_OD][FPN_CONV_0_ID][3][3],
+//     wt_t layer_bias[FPN_CONV_0_OD],
+//     fm_t output_feature_map[FPN_CONV_0_OD][FPN_CONV_0_OH][FPN_CONV_0_OW]
+// );
+// void fpn_tiled_conv_lateral_3 (
+//     fm_t input_feature_map[LATERAL_CONV_3_ID][LATERAL_CONV_3_IH][LATERAL_CONV_3_IW],
+//     wt_t layer_weights[LATERAL_CONV_3_OD][LATERAL_CONV_3_ID][1][1],
+//     wt_t layer_bias[LATERAL_CONV_3_OD],
+//     fm_t output_feature_map[LATERAL_CONV_3_OD][LATERAL_CONV_3_IH][LATERAL_CONV_3_IW]
+// );
+// void fpn_tiled_conv_lateral_2 (
+//     fm_t input_feature_map[LATERAL_CONV_2_ID][LATERAL_CONV_2_IH][LATERAL_CONV_2_IW],
+//     wt_t layer_weights[LATERAL_CONV_2_OD][LATERAL_CONV_2_ID][1][1],
+//     wt_t layer_bias[LATERAL_CONV_2_OD],
+//     fm_t output_feature_map[LATERAL_CONV_2_OD][LATERAL_CONV_2_IH][LATERAL_CONV_2_IW]
+// );
+// void fpn_tiled_conv_lateral_1 (
+//     fm_t input_feature_map[LATERAL_CONV_1_ID][LATERAL_CONV_1_IH][LATERAL_CONV_1_IW],
+//     wt_t layer_weights[LATERAL_CONV_1_OD][LATERAL_CONV_1_ID][1][1],
+//     wt_t layer_bias[LATERAL_CONV_1_OD],
+//     fm_t output_feature_map[LATERAL_CONV_1_OD][LATERAL_CONV_1_IH][LATERAL_CONV_1_IW]
+// );
+// void fpn_tiled_conv_lateral_0 (
+//     fm_t input_feature_map[LATERAL_CONV_0_ID][LATERAL_CONV_0_IH][LATERAL_CONV_0_IW],
+//     wt_t layer_weights[LATERAL_CONV_0_OD][LATERAL_CONV_0_ID][1][1],
+//     wt_t layer_bias[LATERAL_CONV_0_OD],
+//     fm_t output_feature_map[LATERAL_CONV_0_OD][LATERAL_CONV_0_IH][LATERAL_CONV_0_IW]
+// );
 
-template<const int fm_input_depth,const int fm_input_height,const int fm_input_width,const int N_TILE_ROWS,const int N_TILE_COLS>
-void fpn_load_input_tile_block_from_DRAM_3x3 (
-    fm_t in_fm_buf[FPN_IN_BUF_CH][FPN_IN_BUF_ROWS+2][FPN_IN_BUF_COLS+2], 
-    fm_t in_fm[fm_input_depth][fm_input_height][fm_input_width], 
-    int  ti, 
-    int  tj, 
-    int  d
-);
+// template<const int fm_input_depth,const int fm_input_height,const int fm_input_width,const int N_TILE_ROWS,const int N_TILE_COLS>
+// void fpn_load_input_tile_block_from_DRAM_3x3 (
+//     fm_t in_fm_buf[FPN_IN_BUF_CH][FPN_IN_BUF_ROWS+2][FPN_IN_BUF_COLS+2], 
+//     fm_t in_fm[fm_input_depth][fm_input_height][fm_input_width], 
+//     int  ti, 
+//     int  tj, 
+//     int  d
+// );
 
-template<const int fm_input_depth,const int fm_input_height,const int fm_input_width,const int N_TILE_ROWS,const int N_TILE_COLS>
-void fpn_load_input_tile_block_from_DRAM_1x1 (
-    fm_t in_fm_buf[FPN_IN_BUF_CH][FPN_IN_BUF_ROWS][FPN_IN_BUF_COLS], 
-    fm_t in_fm[fm_input_depth][fm_input_height][fm_input_width], 
-    int  ti, 
-    int  tj, 
-    int  d
-);
-template<const int output_depth,const int input_depth>
-void fpn_load_layer_params_from_DRAM_1x1 (
-    wt_t weight_buf[FPN_OUT_BUF_CH][FPN_IN_BUF_CH][1][1],
-    wt_t bias_buf[FPN_OUT_BUF_CH],
-    wt_t weights[output_depth][input_depth][1][1],
-    wt_t bias[output_depth],
-    int b,
-    int d
-);
-template<const int output_depth,const int input_depth>
-void fpn_load_layer_params_from_DRAM_3x3 (
-    wt_t weight_buf[FPN_OUT_BUF_CH][FPN_IN_BUF_CH][3][3],
-    wt_t bias_buf[FPN_OUT_BUF_CH],
-    wt_t weights[output_depth][input_depth][3][3],
-    wt_t bias[output_depth],
-    int b,
-    int d
-);
+// template<const int fm_input_depth,const int fm_input_height,const int fm_input_width,const int N_TILE_ROWS,const int N_TILE_COLS>
+// void fpn_load_input_tile_block_from_DRAM_1x1 (
+//     fm_t in_fm_buf[FPN_IN_BUF_CH][FPN_IN_BUF_ROWS][FPN_IN_BUF_COLS], 
+//     fm_t in_fm[fm_input_depth][fm_input_height][fm_input_width], 
+//     int  ti, 
+//     int  tj, 
+//     int  d
+// );
+// template<const int output_depth,const int input_depth>
+// void fpn_load_layer_params_from_DRAM_1x1 (
+//     wt_t weight_buf[FPN_OUT_BUF_CH][FPN_IN_BUF_CH][1][1],
+//     wt_t bias_buf[FPN_OUT_BUF_CH],
+//     wt_t weights[output_depth][input_depth][1][1],
+//     wt_t bias[output_depth],
+//     int b,
+//     int d
+// );
+// template<const int output_depth,const int input_depth>
+// void fpn_load_layer_params_from_DRAM_3x3 (
+//     wt_t weight_buf[FPN_OUT_BUF_CH][FPN_IN_BUF_CH][3][3],
+//     wt_t bias_buf[FPN_OUT_BUF_CH],
+//     wt_t weights[output_depth][input_depth][3][3],
+//     wt_t bias[output_depth],
+//     int b,
+//     int d
+// );
 
-//------------------------------------------------------------------------------
-// Function to save partial outputs on-chip for each input tile slice processed.
-//------------------------------------------------------------------------------
-template<const int output_depth>
-void fpn_save_partial_output_tile_block (
-    fm_t partial_out_buf[FPN_OUT_BUF_CH][FPN_OUT_BUF_ROWS][FPN_OUT_BUF_COLS], 
-    fm_t out_fm_buf[FPN_OUT_BUF_CH][FPN_OUT_BUF_ROWS][FPN_OUT_BUF_COLS],
-    wt_t bias_buf[FPN_OUT_BUF_CH],
-    int  d
-);
+// //------------------------------------------------------------------------------
+// // Function to save partial outputs on-chip for each input tile slice processed.
+// //------------------------------------------------------------------------------
+// template<const int output_depth>
+// void fpn_save_partial_output_tile_block (
+//     fm_t partial_out_buf[FPN_OUT_BUF_CH][FPN_OUT_BUF_ROWS][FPN_OUT_BUF_COLS], 
+//     fm_t out_fm_buf[FPN_OUT_BUF_CH][FPN_OUT_BUF_ROWS][FPN_OUT_BUF_COLS],
+//     wt_t bias_buf[FPN_OUT_BUF_CH],
+//     int  d
+// );
 
-//--------------------------------------------------------------------------
-// Function to store complete output tile block from BRAM to DRAM.
-//--------------------------------------------------------------------------
-template<const int fm_output_depth,const int fm_output_height,const int fm_output_width>
-void fpn_store_output_tile_to_DRAM (
-    fm_t out_fm[fm_output_depth][fm_output_height][fm_output_width], 
-    fm_t out_fm_buf[FPN_OUT_BUF_CH][FPN_OUT_BUF_ROWS][FPN_OUT_BUF_COLS], 
-    int  ti,
-    int  tj,
-    int  b
-);
+// //--------------------------------------------------------------------------
+// // Function to store complete output tile block from BRAM to DRAM.
+// //--------------------------------------------------------------------------
+// template<const int fm_output_depth,const int fm_output_height,const int fm_output_width>
+// void fpn_store_output_tile_to_DRAM (
+//     fm_t out_fm[fm_output_depth][fm_output_height][fm_output_width], 
+//     fm_t out_fm_buf[FPN_OUT_BUF_CH][FPN_OUT_BUF_ROWS][FPN_OUT_BUF_COLS], 
+//     int  ti,
+//     int  tj,
+//     int  b
+// );
 
 //--------------------------------------------------------------------------
 // RPN
@@ -1099,151 +1099,151 @@ void rpn_top2(
 
 
 void test_top (
-    fm_t   resnet_layer0_input_fm[RESNET_LAYER0_CONV1_IN_CH][RESNET_LAYER0_IN_FM_HEIGHT][RESNET_LAYER0_IN_FM_WIDTH],
-    wt_t   resnet_layer0_conv1_weights[RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_CONV1_IN_CH][7][7],
-    wt_t   resnet_layer0_bn1_params[3][RESNET_LAYER0_CONV1_OUT_CH],
-    fm_t   resnet_layer0_output_fm[RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_OUT_FM_HEIGHT][RESNET_LAYER0_OUT_FM_WIDTH],
+    // fm_t   resnet_layer0_input_fm[RESNET_LAYER0_CONV1_IN_CH][RESNET_LAYER0_IN_FM_HEIGHT][RESNET_LAYER0_IN_FM_WIDTH],
+    // wt_t   resnet_layer0_conv1_weights[RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_CONV1_IN_CH][7][7],
+    // wt_t   resnet_layer0_bn1_params[3][RESNET_LAYER0_CONV1_OUT_CH],
+    // fm_t   resnet_layer0_output_fm[RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_OUT_FM_HEIGHT][RESNET_LAYER0_OUT_FM_WIDTH],
 
-    fm_t   resnet_layer1_input_fm[RESNET_LAYER1_0_CONV1_IN_CH][RESNET_LAYER1_0_FM_HEIGHT][RESNET_LAYER1_0_FM_WIDTH],
-    wt_t   resnet_layer1_0_conv1_weights[RESNET_LAYER1_0_CONV1_OUT_CH][RESNET_LAYER1_0_CONV1_IN_CH],
-    wt_t   resnet_layer1_0_bn1_params[4][RESNET_LAYER1_0_CONV1_OUT_CH],
-    wt_t   resnet_layer1_0_conv2_weights[RESNET_LAYER1_0_CONV2_OUT_CH][RESNET_LAYER1_0_CONV2_IN_CH][3][3],
-    wt_t   resnet_layer1_0_bn2_params[4][RESNET_LAYER1_0_CONV2_OUT_CH],
-    wt_t   resnet_layer1_0_conv3_weights[RESNET_LAYER1_0_CONV3_OUT_CH][RESNET_LAYER1_0_CONV3_IN_CH],
-    wt_t   resnet_layer1_0_bn3_params[4][RESNET_LAYER1_0_CONV3_OUT_CH],
-    wt_t   resnet_layer1_0_downsample_0_weights[RESNET_LAYER1_0_DS_OUT_CH][RESNET_LAYER1_0_DS_IN_CH],
-    wt_t   resnet_layer1_0_downsample_1_params[4][RESNET_LAYER1_0_DS_OUT_CH],
-    wt_t   resnet_layer1_1_conv1_weights[RESNET_LAYER1_CONV1_OUT_CH][RESNET_LAYER1_CONV1_IN_CH],
-    wt_t   resnet_layer1_1_bn1_params[4][RESNET_LAYER1_CONV1_OUT_CH],
-    wt_t   resnet_layer1_1_conv2_weights[RESNET_LAYER1_CONV2_OUT_CH][RESNET_LAYER1_CONV2_IN_CH][3][3],
-    wt_t   resnet_layer1_1_bn2_params[4][RESNET_LAYER1_CONV2_OUT_CH],
-    wt_t   resnet_layer1_1_conv3_weights[RESNET_LAYER1_CONV3_OUT_CH][RESNET_LAYER1_CONV3_IN_CH],
-    wt_t   resnet_layer1_1_bn3_params[4][RESNET_LAYER1_CONV3_OUT_CH],
-    wt_t   resnet_layer1_2_conv1_weights[RESNET_LAYER1_CONV1_OUT_CH][RESNET_LAYER1_CONV1_IN_CH],
-    wt_t   resnet_layer1_2_bn1_params[4][RESNET_LAYER1_CONV1_OUT_CH],
-    wt_t   resnet_layer1_2_conv2_weights[RESNET_LAYER1_CONV2_OUT_CH][RESNET_LAYER1_CONV2_IN_CH][3][3],
-    wt_t   resnet_layer1_2_bn2_params[4][RESNET_LAYER1_CONV2_OUT_CH],
-    wt_t   resnet_layer1_2_conv3_weights[RESNET_LAYER1_CONV3_OUT_CH][RESNET_LAYER1_CONV3_IN_CH],
-    wt_t   resnet_layer1_2_bn3_params[4][RESNET_LAYER1_CONV3_OUT_CH],
-    fm_t   resnet_layer1_output_fm[RESNET_LAYER1_0_DS_OUT_CH][RESNET_LAYER1_0_FM_HEIGHT][RESNET_LAYER1_0_FM_WIDTH],
+    // fm_t   resnet_layer1_input_fm[RESNET_LAYER1_0_CONV1_IN_CH][RESNET_LAYER1_0_FM_HEIGHT][RESNET_LAYER1_0_FM_WIDTH],
+    // wt_t   resnet_layer1_0_conv1_weights[RESNET_LAYER1_0_CONV1_OUT_CH][RESNET_LAYER1_0_CONV1_IN_CH],
+    // wt_t   resnet_layer1_0_bn1_params[4][RESNET_LAYER1_0_CONV1_OUT_CH],
+    // wt_t   resnet_layer1_0_conv2_weights[RESNET_LAYER1_0_CONV2_OUT_CH][RESNET_LAYER1_0_CONV2_IN_CH][3][3],
+    // wt_t   resnet_layer1_0_bn2_params[4][RESNET_LAYER1_0_CONV2_OUT_CH],
+    // wt_t   resnet_layer1_0_conv3_weights[RESNET_LAYER1_0_CONV3_OUT_CH][RESNET_LAYER1_0_CONV3_IN_CH],
+    // wt_t   resnet_layer1_0_bn3_params[4][RESNET_LAYER1_0_CONV3_OUT_CH],
+    // wt_t   resnet_layer1_0_downsample_0_weights[RESNET_LAYER1_0_DS_OUT_CH][RESNET_LAYER1_0_DS_IN_CH],
+    // wt_t   resnet_layer1_0_downsample_1_params[4][RESNET_LAYER1_0_DS_OUT_CH],
+    // wt_t   resnet_layer1_1_conv1_weights[RESNET_LAYER1_CONV1_OUT_CH][RESNET_LAYER1_CONV1_IN_CH],
+    // wt_t   resnet_layer1_1_bn1_params[4][RESNET_LAYER1_CONV1_OUT_CH],
+    // wt_t   resnet_layer1_1_conv2_weights[RESNET_LAYER1_CONV2_OUT_CH][RESNET_LAYER1_CONV2_IN_CH][3][3],
+    // wt_t   resnet_layer1_1_bn2_params[4][RESNET_LAYER1_CONV2_OUT_CH],
+    // wt_t   resnet_layer1_1_conv3_weights[RESNET_LAYER1_CONV3_OUT_CH][RESNET_LAYER1_CONV3_IN_CH],
+    // wt_t   resnet_layer1_1_bn3_params[4][RESNET_LAYER1_CONV3_OUT_CH],
+    // wt_t   resnet_layer1_2_conv1_weights[RESNET_LAYER1_CONV1_OUT_CH][RESNET_LAYER1_CONV1_IN_CH],
+    // wt_t   resnet_layer1_2_bn1_params[4][RESNET_LAYER1_CONV1_OUT_CH],
+    // wt_t   resnet_layer1_2_conv2_weights[RESNET_LAYER1_CONV2_OUT_CH][RESNET_LAYER1_CONV2_IN_CH][3][3],
+    // wt_t   resnet_layer1_2_bn2_params[4][RESNET_LAYER1_CONV2_OUT_CH],
+    // wt_t   resnet_layer1_2_conv3_weights[RESNET_LAYER1_CONV3_OUT_CH][RESNET_LAYER1_CONV3_IN_CH],
+    // wt_t   resnet_layer1_2_bn3_params[4][RESNET_LAYER1_CONV3_OUT_CH],
+    // fm_t   resnet_layer1_output_fm[RESNET_LAYER1_0_DS_OUT_CH][RESNET_LAYER1_0_FM_HEIGHT][RESNET_LAYER1_0_FM_WIDTH],
 
-    fm_t   resnet_layer2_input_fm[RESNET_LAYER2_0_CONV1_IN_CH][RESNET_LAYER2_0_FM_HEIGHT][RESNET_LAYER2_0_FM_WIDTH],
-    wt_t   resnet_layer2_0_conv1_weights[RESNET_LAYER2_0_CONV1_OUT_CH][RESNET_LAYER2_0_CONV1_IN_CH],
-	wt_t   resnet_layer2_0_bn1_params[3][RESNET_LAYER2_0_CONV1_OUT_CH],
-    wt_t   resnet_layer2_0_conv2_weights[RESNET_LAYER2_0_CONV2_OUT_CH][RESNET_LAYER2_0_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer2_0_bn2_params[3][RESNET_LAYER2_0_CONV2_OUT_CH],
-    wt_t   resnet_layer2_0_conv3_weights[RESNET_LAYER2_0_CONV3_OUT_CH][RESNET_LAYER2_0_CONV3_IN_CH],
-	wt_t   resnet_layer2_0_bn3_params[3][RESNET_LAYER2_0_CONV3_OUT_CH],
-    wt_t   resnet_layer2_0_downsample_0_weights[RESNET_LAYER2_0_DS_OUT_CH][RESNET_LAYER2_0_DS_IN_CH],
-	wt_t   resnet_layer2_0_downsample_1_params[3][RESNET_LAYER2_0_DS_OUT_CH],
-    wt_t   resnet_layer2_1_conv1_weights[RESNET_LAYER2_CONV1_OUT_CH][RESNET_LAYER2_CONV1_IN_CH],
-	wt_t   resnet_layer2_1_bn1_params[3][RESNET_LAYER2_CONV1_OUT_CH],
-    wt_t   resnet_layer2_1_conv2_weights[RESNET_LAYER2_CONV2_OUT_CH][RESNET_LAYER2_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer2_1_bn2_params[3][RESNET_LAYER2_CONV2_OUT_CH],
-    wt_t   resnet_layer2_1_conv3_weights[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_CONV3_IN_CH],
-	wt_t   resnet_layer2_1_bn3_params[3][RESNET_LAYER2_CONV3_OUT_CH],
-    wt_t   resnet_layer2_2_conv1_weights[RESNET_LAYER2_CONV1_OUT_CH][RESNET_LAYER2_CONV1_IN_CH],
-	wt_t   resnet_layer2_2_bn1_params[3][RESNET_LAYER2_CONV1_OUT_CH],
-    wt_t   resnet_layer2_2_conv2_weights[RESNET_LAYER2_CONV2_OUT_CH][RESNET_LAYER2_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer2_2_bn2_params[3][RESNET_LAYER2_CONV2_OUT_CH],
-    wt_t   resnet_layer2_2_conv3_weights[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_CONV3_IN_CH],
-	wt_t   resnet_layer2_2_bn3_params[3][RESNET_LAYER2_CONV3_OUT_CH],
-    wt_t   resnet_layer2_3_conv1_weights[RESNET_LAYER2_CONV1_OUT_CH][RESNET_LAYER2_CONV1_IN_CH],
-	wt_t   resnet_layer2_3_bn1_params[3][RESNET_LAYER2_CONV1_OUT_CH],
-    wt_t   resnet_layer2_3_conv2_weights[RESNET_LAYER2_CONV2_OUT_CH][RESNET_LAYER2_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer2_3_bn2_params[3][RESNET_LAYER2_CONV2_OUT_CH],
-    wt_t   resnet_layer2_3_conv3_weights[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_CONV3_IN_CH],
-	wt_t   resnet_layer2_3_bn3_params[3][RESNET_LAYER2_CONV3_OUT_CH],
-    fm_t   resnet_layer2_output_fm[RESNET_LAYER2_0_DS_OUT_CH][RESNET_LAYER2_0_FM_HEIGHT][RESNET_LAYER2_0_FM_WIDTH],
+    // fm_t   resnet_layer2_input_fm[RESNET_LAYER2_0_CONV1_IN_CH][RESNET_LAYER2_0_FM_HEIGHT][RESNET_LAYER2_0_FM_WIDTH],
+    // wt_t   resnet_layer2_0_conv1_weights[RESNET_LAYER2_0_CONV1_OUT_CH][RESNET_LAYER2_0_CONV1_IN_CH],
+	// wt_t   resnet_layer2_0_bn1_params[3][RESNET_LAYER2_0_CONV1_OUT_CH],
+    // wt_t   resnet_layer2_0_conv2_weights[RESNET_LAYER2_0_CONV2_OUT_CH][RESNET_LAYER2_0_CONV2_IN_CH][3][3],
+	// wt_t   resnet_layer2_0_bn2_params[3][RESNET_LAYER2_0_CONV2_OUT_CH],
+    // wt_t   resnet_layer2_0_conv3_weights[RESNET_LAYER2_0_CONV3_OUT_CH][RESNET_LAYER2_0_CONV3_IN_CH],
+	// wt_t   resnet_layer2_0_bn3_params[3][RESNET_LAYER2_0_CONV3_OUT_CH],
+    // wt_t   resnet_layer2_0_downsample_0_weights[RESNET_LAYER2_0_DS_OUT_CH][RESNET_LAYER2_0_DS_IN_CH],
+	// wt_t   resnet_layer2_0_downsample_1_params[3][RESNET_LAYER2_0_DS_OUT_CH],
+    // wt_t   resnet_layer2_1_conv1_weights[RESNET_LAYER2_CONV1_OUT_CH][RESNET_LAYER2_CONV1_IN_CH],
+	// wt_t   resnet_layer2_1_bn1_params[3][RESNET_LAYER2_CONV1_OUT_CH],
+    // wt_t   resnet_layer2_1_conv2_weights[RESNET_LAYER2_CONV2_OUT_CH][RESNET_LAYER2_CONV2_IN_CH][3][3],
+	// wt_t   resnet_layer2_1_bn2_params[3][RESNET_LAYER2_CONV2_OUT_CH],
+    // wt_t   resnet_layer2_1_conv3_weights[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_CONV3_IN_CH],
+	// wt_t   resnet_layer2_1_bn3_params[3][RESNET_LAYER2_CONV3_OUT_CH],
+    // wt_t   resnet_layer2_2_conv1_weights[RESNET_LAYER2_CONV1_OUT_CH][RESNET_LAYER2_CONV1_IN_CH],
+	// wt_t   resnet_layer2_2_bn1_params[3][RESNET_LAYER2_CONV1_OUT_CH],
+    // wt_t   resnet_layer2_2_conv2_weights[RESNET_LAYER2_CONV2_OUT_CH][RESNET_LAYER2_CONV2_IN_CH][3][3],
+	// wt_t   resnet_layer2_2_bn2_params[3][RESNET_LAYER2_CONV2_OUT_CH],
+    // wt_t   resnet_layer2_2_conv3_weights[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_CONV3_IN_CH],
+	// wt_t   resnet_layer2_2_bn3_params[3][RESNET_LAYER2_CONV3_OUT_CH],
+    // wt_t   resnet_layer2_3_conv1_weights[RESNET_LAYER2_CONV1_OUT_CH][RESNET_LAYER2_CONV1_IN_CH],
+	// wt_t   resnet_layer2_3_bn1_params[3][RESNET_LAYER2_CONV1_OUT_CH],
+    // wt_t   resnet_layer2_3_conv2_weights[RESNET_LAYER2_CONV2_OUT_CH][RESNET_LAYER2_CONV2_IN_CH][3][3],
+	// wt_t   resnet_layer2_3_bn2_params[3][RESNET_LAYER2_CONV2_OUT_CH],
+    // wt_t   resnet_layer2_3_conv3_weights[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_CONV3_IN_CH],
+	// wt_t   resnet_layer2_3_bn3_params[3][RESNET_LAYER2_CONV3_OUT_CH],
+    // fm_t   resnet_layer2_output_fm[RESNET_LAYER2_0_DS_OUT_CH][RESNET_LAYER2_0_FM_HEIGHT][RESNET_LAYER2_0_FM_WIDTH],
 
-    fm_t   resnet_layer3_input_fm[RESNET_LAYER3_0_CONV1_IN_CH][RESNET_LAYER3_0_FM_HEIGHT][RESNET_LAYER3_0_FM_WIDTH],
-    wt_t   resnet_layer3_0_conv1_weights[RESNET_LAYER3_0_CONV1_OUT_CH][RESNET_LAYER3_0_CONV1_IN_CH],
-	wt_t   resnet_layer3_0_bn1_params[3][RESNET_LAYER3_0_CONV1_OUT_CH],
-    wt_t   resnet_layer3_0_conv2_weights[RESNET_LAYER3_0_CONV2_OUT_CH][RESNET_LAYER3_0_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer3_0_bn2_params[3][RESNET_LAYER3_0_CONV2_OUT_CH],
-    wt_t   resnet_layer3_0_conv3_weights[RESNET_LAYER3_0_CONV3_OUT_CH][RESNET_LAYER3_0_CONV3_IN_CH],
-	wt_t   resnet_layer3_0_bn3_params[3][RESNET_LAYER3_0_CONV3_OUT_CH],
-    wt_t   resnet_layer3_0_downsample_0_weights[RESNET_LAYER3_0_DS_OUT_CH][RESNET_LAYER3_0_DS_IN_CH],
-	wt_t   resnet_layer3_0_downsample_1_params[3][RESNET_LAYER3_0_DS_OUT_CH],
-    wt_t   resnet_layer3_1_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
-	wt_t   resnet_layer3_1_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
-    wt_t   resnet_layer3_1_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer3_1_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
-    wt_t   resnet_layer3_1_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
-	wt_t   resnet_layer3_1_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
-    wt_t   resnet_layer3_2_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
-	wt_t   resnet_layer3_2_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
-    wt_t   resnet_layer3_2_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer3_2_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
-    wt_t   resnet_layer3_2_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
-	wt_t   resnet_layer3_2_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
-    wt_t   resnet_layer3_3_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
-	wt_t   resnet_layer3_3_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
-    wt_t   resnet_layer3_3_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer3_3_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
-    wt_t   resnet_layer3_3_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
-	wt_t   resnet_layer3_3_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
-    wt_t   resnet_layer3_4_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
-	wt_t   resnet_layer3_4_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
-    wt_t   resnet_layer3_4_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer3_4_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
-    wt_t   resnet_layer3_4_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
-	wt_t   resnet_layer3_4_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
-    wt_t   resnet_layer3_5_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
-	wt_t   resnet_layer3_5_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
-    wt_t   resnet_layer3_5_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer3_5_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
-    wt_t   resnet_layer3_5_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
-	wt_t   resnet_layer3_5_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
-    fm_t   resnet_layer3_output_fm[RESNET_LAYER3_0_DS_OUT_CH][RESNET_LAYER3_0_FM_HEIGHT][RESNET_LAYER3_0_FM_WIDTH],
+    // fm_t   resnet_layer3_input_fm[RESNET_LAYER3_0_CONV1_IN_CH][RESNET_LAYER3_0_FM_HEIGHT][RESNET_LAYER3_0_FM_WIDTH],
+    // wt_t   resnet_layer3_0_conv1_weights[RESNET_LAYER3_0_CONV1_OUT_CH][RESNET_LAYER3_0_CONV1_IN_CH],
+	// wt_t   resnet_layer3_0_bn1_params[3][RESNET_LAYER3_0_CONV1_OUT_CH],
+    // wt_t   resnet_layer3_0_conv2_weights[RESNET_LAYER3_0_CONV2_OUT_CH][RESNET_LAYER3_0_CONV2_IN_CH][3][3],
+	// wt_t   resnet_layer3_0_bn2_params[3][RESNET_LAYER3_0_CONV2_OUT_CH],
+    // wt_t   resnet_layer3_0_conv3_weights[RESNET_LAYER3_0_CONV3_OUT_CH][RESNET_LAYER3_0_CONV3_IN_CH],
+	// wt_t   resnet_layer3_0_bn3_params[3][RESNET_LAYER3_0_CONV3_OUT_CH],
+    // wt_t   resnet_layer3_0_downsample_0_weights[RESNET_LAYER3_0_DS_OUT_CH][RESNET_LAYER3_0_DS_IN_CH],
+	// wt_t   resnet_layer3_0_downsample_1_params[3][RESNET_LAYER3_0_DS_OUT_CH],
+    // wt_t   resnet_layer3_1_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
+	// wt_t   resnet_layer3_1_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
+    // wt_t   resnet_layer3_1_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
+	// wt_t   resnet_layer3_1_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
+    // wt_t   resnet_layer3_1_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
+	// wt_t   resnet_layer3_1_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
+    // wt_t   resnet_layer3_2_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
+	// wt_t   resnet_layer3_2_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
+    // wt_t   resnet_layer3_2_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
+	// wt_t   resnet_layer3_2_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
+    // wt_t   resnet_layer3_2_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
+	// wt_t   resnet_layer3_2_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
+    // wt_t   resnet_layer3_3_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
+	// wt_t   resnet_layer3_3_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
+    // wt_t   resnet_layer3_3_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
+	// wt_t   resnet_layer3_3_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
+    // wt_t   resnet_layer3_3_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
+	// wt_t   resnet_layer3_3_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
+    // wt_t   resnet_layer3_4_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
+	// wt_t   resnet_layer3_4_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
+    // wt_t   resnet_layer3_4_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
+	// wt_t   resnet_layer3_4_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
+    // wt_t   resnet_layer3_4_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
+	// wt_t   resnet_layer3_4_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
+    // wt_t   resnet_layer3_5_conv1_weights[RESNET_LAYER3_CONV1_OUT_CH][RESNET_LAYER3_CONV1_IN_CH],
+	// wt_t   resnet_layer3_5_bn1_params[3][RESNET_LAYER3_CONV1_OUT_CH],
+    // wt_t   resnet_layer3_5_conv2_weights[RESNET_LAYER3_CONV2_OUT_CH][RESNET_LAYER3_CONV2_IN_CH][3][3],
+	// wt_t   resnet_layer3_5_bn2_params[3][RESNET_LAYER3_CONV2_OUT_CH],
+    // wt_t   resnet_layer3_5_conv3_weights[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_CONV3_IN_CH],
+	// wt_t   resnet_layer3_5_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH],
+    // fm_t   resnet_layer3_output_fm[RESNET_LAYER3_0_DS_OUT_CH][RESNET_LAYER3_0_FM_HEIGHT][RESNET_LAYER3_0_FM_WIDTH],
 
-    fm_t   resnet_layer4_input_fm[RESNET_LAYER4_0_CONV1_IN_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH],
-    wt_t   resnet_layer4_0_conv1_weights[RESNET_LAYER4_0_CONV1_OUT_CH][RESNET_LAYER4_0_CONV1_IN_CH],
-	wt_t   resnet_layer4_0_bn1_params[3][RESNET_LAYER4_0_CONV1_OUT_CH],
-    wt_t   resnet_layer4_0_conv2_weights[RESNET_LAYER4_0_CONV2_OUT_CH][RESNET_LAYER4_0_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer4_0_bn2_params[3][RESNET_LAYER4_0_CONV2_OUT_CH],
-    wt_t   resnet_layer4_0_conv3_weights[RESNET_LAYER4_0_CONV3_OUT_CH][RESNET_LAYER4_0_CONV3_IN_CH],
-	wt_t   resnet_layer4_0_bn3_params[3][RESNET_LAYER4_0_CONV3_OUT_CH],
-    wt_t   resnet_layer4_0_downsample_0_weights[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_DS_IN_CH],
-	wt_t   resnet_layer4_0_downsample_1_params[3][RESNET_LAYER4_0_DS_OUT_CH],
-    wt_t   resnet_layer4_1_conv1_weights[RESNET_LAYER4_CONV1_OUT_CH][RESNET_LAYER4_CONV1_IN_CH],
-	wt_t   resnet_layer4_1_bn1_params[3][RESNET_LAYER4_CONV1_OUT_CH],
-    wt_t   resnet_layer4_1_conv2_weights[RESNET_LAYER4_CONV2_OUT_CH][RESNET_LAYER4_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer4_1_bn2_params[3][RESNET_LAYER4_CONV2_OUT_CH],
-    wt_t   resnet_layer4_1_conv3_weights[RESNET_LAYER4_CONV3_OUT_CH][RESNET_LAYER4_CONV3_IN_CH],
-	wt_t   resnet_layer4_1_bn3_params[3][RESNET_LAYER4_CONV3_OUT_CH],
-    wt_t   resnet_layer4_2_conv1_weights[RESNET_LAYER4_CONV1_OUT_CH][RESNET_LAYER4_CONV1_IN_CH],
-	wt_t   resnet_layer4_2_bn1_params[3][RESNET_LAYER4_CONV1_OUT_CH],
-    wt_t   resnet_layer4_2_conv2_weights[RESNET_LAYER4_CONV2_OUT_CH][RESNET_LAYER4_CONV2_IN_CH][3][3],
-	wt_t   resnet_layer4_2_bn2_params[3][RESNET_LAYER4_CONV2_OUT_CH],
-    wt_t   resnet_layer4_2_conv3_weights[RESNET_LAYER4_CONV3_OUT_CH][RESNET_LAYER4_CONV3_IN_CH],
-	wt_t   resnet_layer4_2_bn3_params[3][RESNET_LAYER4_CONV3_OUT_CH],
-    fm_t   resnet_layer4_output_fm[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH],
+    // fm_t   resnet_layer4_input_fm[RESNET_LAYER4_0_CONV1_IN_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH],
+    // wt_t   resnet_layer4_0_conv1_weights[RESNET_LAYER4_0_CONV1_OUT_CH][RESNET_LAYER4_0_CONV1_IN_CH],
+	// wt_t   resnet_layer4_0_bn1_params[3][RESNET_LAYER4_0_CONV1_OUT_CH],
+    // wt_t   resnet_layer4_0_conv2_weights[RESNET_LAYER4_0_CONV2_OUT_CH][RESNET_LAYER4_0_CONV2_IN_CH][3][3],
+	// wt_t   resnet_layer4_0_bn2_params[3][RESNET_LAYER4_0_CONV2_OUT_CH],
+    // wt_t   resnet_layer4_0_conv3_weights[RESNET_LAYER4_0_CONV3_OUT_CH][RESNET_LAYER4_0_CONV3_IN_CH],
+	// wt_t   resnet_layer4_0_bn3_params[3][RESNET_LAYER4_0_CONV3_OUT_CH],
+    // wt_t   resnet_layer4_0_downsample_0_weights[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_DS_IN_CH],
+	// wt_t   resnet_layer4_0_downsample_1_params[3][RESNET_LAYER4_0_DS_OUT_CH],
+    // wt_t   resnet_layer4_1_conv1_weights[RESNET_LAYER4_CONV1_OUT_CH][RESNET_LAYER4_CONV1_IN_CH],
+	// wt_t   resnet_layer4_1_bn1_params[3][RESNET_LAYER4_CONV1_OUT_CH],
+    // wt_t   resnet_layer4_1_conv2_weights[RESNET_LAYER4_CONV2_OUT_CH][RESNET_LAYER4_CONV2_IN_CH][3][3],
+	// wt_t   resnet_layer4_1_bn2_params[3][RESNET_LAYER4_CONV2_OUT_CH],
+    // wt_t   resnet_layer4_1_conv3_weights[RESNET_LAYER4_CONV3_OUT_CH][RESNET_LAYER4_CONV3_IN_CH],
+	// wt_t   resnet_layer4_1_bn3_params[3][RESNET_LAYER4_CONV3_OUT_CH],
+    // wt_t   resnet_layer4_2_conv1_weights[RESNET_LAYER4_CONV1_OUT_CH][RESNET_LAYER4_CONV1_IN_CH],
+	// wt_t   resnet_layer4_2_bn1_params[3][RESNET_LAYER4_CONV1_OUT_CH],
+    // wt_t   resnet_layer4_2_conv2_weights[RESNET_LAYER4_CONV2_OUT_CH][RESNET_LAYER4_CONV2_IN_CH][3][3],
+	// wt_t   resnet_layer4_2_bn2_params[3][RESNET_LAYER4_CONV2_OUT_CH],
+    // wt_t   resnet_layer4_2_conv3_weights[RESNET_LAYER4_CONV3_OUT_CH][RESNET_LAYER4_CONV3_IN_CH],
+	// wt_t   resnet_layer4_2_bn3_params[3][RESNET_LAYER4_CONV3_OUT_CH],
+    // fm_t   resnet_layer4_output_fm[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH],
 
-    	fm_t lateral_3_input_feature_map[LATERAL_CONV_3_ID][LATERAL_CONV_3_IH][LATERAL_CONV_3_IW],
-    	wt_t lateral_3_layer_weights[LATERAL_CONV_3_OD][LATERAL_CONV_3_ID][1][1],
-    	wt_t lateral_3_layer_bias[LATERAL_CONV_3_OD],
-	fm_t lateral_2_input_feature_map[LATERAL_CONV_2_ID][LATERAL_CONV_2_IH][LATERAL_CONV_2_IW],
-    	wt_t lateral_2_layer_weights[LATERAL_CONV_2_OD][LATERAL_CONV_2_ID][1][1],
-    	wt_t lateral_2_layer_bias[LATERAL_CONV_2_OD],
-	fm_t lateral_1_input_feature_map[LATERAL_CONV_1_ID][LATERAL_CONV_1_IH][LATERAL_CONV_1_IW],
-    	wt_t lateral_1_layer_weights[LATERAL_CONV_1_OD][LATERAL_CONV_1_ID][1][1],
-    	wt_t lateral_1_layer_bias[LATERAL_CONV_1_OD],
-	fm_t lateral_0_input_feature_map[LATERAL_CONV_0_ID][LATERAL_CONV_0_IH][LATERAL_CONV_0_IW],
-    	wt_t lateral_0_layer_weights[LATERAL_CONV_0_OD][LATERAL_CONV_0_ID][1][1],
-    	wt_t lateral_0_layer_bias[LATERAL_CONV_0_OD],
-    	wt_t fpn_3_layer_weights[FPN_CONV_3_OD][FPN_CONV_3_ID][3][3],
-    	wt_t fpn_3_layer_bias[FPN_CONV_3_OD],
-    	fm_t fpn_3_output_feature_map[FPN_CONV_3_OD][FPN_CONV_3_IH][FPN_CONV_3_IW],
-    	wt_t fpn_2_layer_weights[FPN_CONV_2_OD][FPN_CONV_2_ID][3][3],
-    	wt_t fpn_2_layer_bias[FPN_CONV_2_OD],
-    	fm_t fpn_2_output_feature_map[FPN_CONV_2_OD][FPN_CONV_2_IH][FPN_CONV_2_IW],
-    	wt_t fpn_1_layer_weights[FPN_CONV_1_OD][FPN_CONV_1_ID][3][3],
-    	wt_t fpn_1_layer_bias[FPN_CONV_1_OD],
-    	fm_t fpn_1_output_feature_map[FPN_CONV_1_OD][FPN_CONV_1_IH][FPN_CONV_1_IW],
-    	wt_t fpn_0_layer_weights[FPN_CONV_0_OD][FPN_CONV_0_ID][3][3],
-    	wt_t fpn_0_layer_bias[FPN_CONV_0_OD],
-    	fm_t fpn_0_output_feature_map[FPN_CONV_0_OD][FPN_CONV_0_IH][FPN_CONV_0_IW],
+    // 	fm_t lateral_3_input_feature_map[LATERAL_CONV_3_ID][LATERAL_CONV_3_IH][LATERAL_CONV_3_IW],
+    // 	wt_t lateral_3_layer_weights[LATERAL_CONV_3_OD][LATERAL_CONV_3_ID][1][1],
+    // 	wt_t lateral_3_layer_bias[LATERAL_CONV_3_OD],
+	// fm_t lateral_2_input_feature_map[LATERAL_CONV_2_ID][LATERAL_CONV_2_IH][LATERAL_CONV_2_IW],
+    // 	wt_t lateral_2_layer_weights[LATERAL_CONV_2_OD][LATERAL_CONV_2_ID][1][1],
+    // 	wt_t lateral_2_layer_bias[LATERAL_CONV_2_OD],
+	// fm_t lateral_1_input_feature_map[LATERAL_CONV_1_ID][LATERAL_CONV_1_IH][LATERAL_CONV_1_IW],
+    // 	wt_t lateral_1_layer_weights[LATERAL_CONV_1_OD][LATERAL_CONV_1_ID][1][1],
+    // 	wt_t lateral_1_layer_bias[LATERAL_CONV_1_OD],
+	// fm_t lateral_0_input_feature_map[LATERAL_CONV_0_ID][LATERAL_CONV_0_IH][LATERAL_CONV_0_IW],
+    // 	wt_t lateral_0_layer_weights[LATERAL_CONV_0_OD][LATERAL_CONV_0_ID][1][1],
+    // 	wt_t lateral_0_layer_bias[LATERAL_CONV_0_OD],
+    // 	wt_t fpn_3_layer_weights[FPN_CONV_3_OD][FPN_CONV_3_ID][3][3],
+    // 	wt_t fpn_3_layer_bias[FPN_CONV_3_OD],
+    // 	fm_t fpn_3_output_feature_map[FPN_CONV_3_OD][FPN_CONV_3_IH][FPN_CONV_3_IW],
+    // 	wt_t fpn_2_layer_weights[FPN_CONV_2_OD][FPN_CONV_2_ID][3][3],
+    // 	wt_t fpn_2_layer_bias[FPN_CONV_2_OD],
+    // 	fm_t fpn_2_output_feature_map[FPN_CONV_2_OD][FPN_CONV_2_IH][FPN_CONV_2_IW],
+    // 	wt_t fpn_1_layer_weights[FPN_CONV_1_OD][FPN_CONV_1_ID][3][3],
+    // 	wt_t fpn_1_layer_bias[FPN_CONV_1_OD],
+    // 	fm_t fpn_1_output_feature_map[FPN_CONV_1_OD][FPN_CONV_1_IH][FPN_CONV_1_IW],
+    // 	wt_t fpn_0_layer_weights[FPN_CONV_0_OD][FPN_CONV_0_ID][3][3],
+    // 	wt_t fpn_0_layer_bias[FPN_CONV_0_OD],
+    // 	fm_t fpn_0_output_feature_map[FPN_CONV_0_OD][FPN_CONV_0_IH][FPN_CONV_0_IW],
 
     int rpn_topk_index0[RPN_PRE_NMS_SIZE0],
     int rpn_topk_index1[RPN_PRE_NMS_SIZE1],

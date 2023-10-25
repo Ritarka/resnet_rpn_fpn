@@ -1,35 +1,38 @@
 # TCL commands for batch-mode HLS
 open_project -reset proj
 
-#Define the top modules
-set_top fpn_top
-add_files ./fpn_conv_1x1.cpp
-add_files ./fpn_conv_3x3.cpp
-add_files ./fpn_tiled_conv_fpn_0.cpp
-add_files ./fpn_tiled_conv_fpn_1.cpp
-add_files ./fpn_tiled_conv_fpn_2.cpp
-add_files ./fpn_tiled_conv_fpn_3.cpp
-add_files ./fpn_tiled_conv_lateral_0.cpp
-add_files ./fpn_tiled_conv_lateral_1.cpp
-add_files ./fpn_tiled_conv_lateral_2.cpp
-add_files ./fpn_tiled_conv_lateral_3.cpp
-add_files ./fpn_top.cpp
-add_files ./fpn_utils.cpp
+# Define the top modules
+# set_top fpn_top
+# add_files ./fpn_conv_1x1.cpp
+# add_files ./fpn_conv_3x3.cpp
+# add_files ./fpn_tiled_conv_fpn_0.cpp
+# add_files ./fpn_tiled_conv_fpn_1.cpp
+# add_files ./fpn_tiled_conv_fpn_2.cpp
+# add_files ./fpn_tiled_conv_fpn_3.cpp
+# add_files ./fpn_tiled_conv_lateral_0.cpp
+# add_files ./fpn_tiled_conv_lateral_1.cpp
+# add_files ./fpn_tiled_conv_lateral_2.cpp
+# add_files ./fpn_tiled_conv_lateral_3.cpp
+# add_files ./fpn_top.cpp
+# add_files ./fpn_utils.cpp
 
 
-set_top resnet_top
-add_files ./resnet_batchnorm.cpp
-add_files ./resnet_conv_1x1.cpp
-add_files ./resnet_conv_3x3.cpp
-add_files ./resnet_conv_7x7.cpp
-add_files ./resnet_top.cpp
-add_files ./resnet_top2.cpp
+# set_top resnet_top
+# add_files ./resnet_batchnorm.cpp
+# add_files ./resnet_conv_1x1.cpp
+# add_files ./resnet_conv_3x3.cpp
+# add_files ./resnet_conv_7x7.cpp
+# add_files ./resnet_top.cpp
+# add_files ./resnet_top2.cpp
 
 
 set_top rpn_top
 add_files ./rpn_conv_1x1.cpp
 add_files ./rpn_conv_3x3.cpp
 add_files ./rpn_top.cpp
+set_top rpn_top2
+add_files ./rpn_conv_1x1.cpp
+add_files ./rpn_conv_3x3.cpp
 add_files ./rpn_top2.cpp
 
 

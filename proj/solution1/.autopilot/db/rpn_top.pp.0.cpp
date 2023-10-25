@@ -33878,536 +33878,7 @@ inline __attribute__((nodebug)) bool operator!=(
 # 24 "./qdtrack.h"
     typedef float fm_t;
     typedef float wt_t;
-# 382 "./qdtrack.h"
-template<const int RESNET_IN_FM_DEPTH, const int RESNET_IN_FM_HEIGHT, const int RESNET_IN_FM_WIDTH,
-         const int RESNET_LAST_LAYER_EN>
-void resnet_load_input_fm_tile (
-        fm_t in_fm_buf[64][46 + 5][40 + 5],
-        fm_t in_fm[2048][184][320],
-        int ti,
-        int tj,
-        int P,
-        int d
-);
-
-template<const int RESNET_OUT_CH, const int RESNET_IN_CH>
-void resnet_load_weights_1x1 (
-        wt_t weight_buf_1x1[64],
-        wt_t weights[RESNET_OUT_CH][RESNET_IN_CH],
-        int f,
-        int b,
-        int d
-);
-
-template<const int RESNET_OUT_CH, const int RESNET_IN_CH>
-void resnet_load_weights_3x3 (
-        wt_t weight_buf_3x3[64][3][3],
-        wt_t weights[RESNET_OUT_CH][RESNET_IN_CH][3][3],
-        int f,
-        int b,
-        int d
-);
-
-void resnet_conv_7x7 (
-        fm_t Y_buf[64][46][40],
-        fm_t X_buf[64][46 + 5][40 + 5],
-        wt_t W_buf[64][7][7],
-        int f
-);
-
-template<const int RESNET_OUT_CH>
-void resnet_load_batchnorm_params (
-        fm_t param_buf[3][64],
-        wt_t params[3][RESNET_OUT_CH],
-        int b
-);
-
-template<const int S>
-void resnet_store_out_buf_to_DDR(
-        fm_t out_fm[2048][184][320],
-        fm_t out_fm_buf[64][46][40],
-        int ti,
-        int tj,
-        int b
-);
-
-void resnet_conv_1x1 (
-        fm_t Y_buf[64][46][40],
-        fm_t X_buf[64][46 + 5][40 + 5],
-        wt_t W_buf[64],
-        int f,
-        int S
-);
-
-
-void resnet_conv_3x3 (
-        fm_t Y_buf[64][46][40],
-        fm_t X_buf[64][46 + 5][40 + 5],
-        wt_t W_buf[64][3][3],
-        int f,
-        int S
-);
-
-void resnet_batchnorm(
-        fm_t feature_map[64][46][40],
-        wt_t bn_params[3][64],
-        bool enable_relu
-);
-
-void resnet_add_residual_fm(
-        fm_t feature_map[64][46][40],
-        fm_t residual_map[64][46][40],
-        bool enable_relu
-);
-
-template<const int RESNET_IN_FM_DEPTH, const int RESNET_IN_FM_HEIGHT, const int RESNET_IN_FM_WIDTH,
-         const int RESNET_OUT_FM_DEPTH, const int RESNET_OUT_FM_HEIGHT, const int RESNET_OUT_FM_WIDTH,
-         const int STRIDE, const int RESNET_LAYER_EN>
-void resnet_bottleneck_conv1_bn1(
-        wt_t conv_weights[RESNET_OUT_FM_DEPTH][RESNET_IN_FM_DEPTH],
-        wt_t bn_params[3][RESNET_OUT_FM_DEPTH],
-        bool enable_relu
-);
-
-template<const int RESNET_IN_FM_DEPTH, const int RESNET_IN_FM_HEIGHT, const int RESNET_IN_FM_WIDTH,
-         const int RESNET_OUT_FM_DEPTH, const int RESNET_OUT_FM_HEIGHT, const int RESNET_OUT_FM_WIDTH,
-         const int STRIDE, const int RESNET_LAYER_EN>
-void resnet_bottleneck_conv2_bn2_relu(
-        wt_t conv_weights[RESNET_OUT_FM_DEPTH][RESNET_IN_FM_DEPTH][3][3],
-        wt_t bn_params[3][RESNET_OUT_FM_DEPTH]
-);
-
-template<const int RESNET_IN_FM_DEPTH, const int RESNET_IN_FM_HEIGHT, const int RESNET_IN_FM_WIDTH,
-         const int RESNET_OUT_FM_DEPTH, const int RESNET_OUT_FM_HEIGHT, const int RESNET_OUT_FM_WIDTH,
-         const int STRIDE, const int RESNET_LAYER_EN>
-void resnet_bottleneck_conv3_bn3_relu(
-        wt_t conv_weights[RESNET_OUT_FM_DEPTH][RESNET_IN_FM_DEPTH],
-        wt_t bn_params[3][RESNET_OUT_FM_DEPTH]
-);
-
-
-
-
-void resnet_layer0(
-        fm_t resnet_layer0_input_fm[3][736][1280],
-        wt_t resnet_layer0_conv1_weights[64][3][7][7],
-     wt_t resnet_layer0_bn1_params[3][64],
-        fm_t resnet_layer0_output_fm[64][184][320]
-);
-
-
-
-
-void resnet_layer1(
-        fm_t resnet_layer1_input_fm[64][184][320],
-        wt_t resnet_layer1_0_conv1_weights[64][64],
-     wt_t resnet_layer1_0_bn1_params[3][64],
-        wt_t resnet_layer1_0_conv2_weights[64][64][3][3],
-     wt_t resnet_layer1_0_bn2_params[3][64],
-        wt_t resnet_layer1_0_conv3_weights[256][64],
-     wt_t resnet_layer1_0_bn3_params[3][256],
-        wt_t resnet_layer1_0_downsample_0_weights[256][64],
-     wt_t resnet_layer1_0_downsample_1_params[3][256],
-        wt_t resnet_layer1_1_conv1_weights[64][256],
-     wt_t resnet_layer1_1_bn1_params[3][64],
-        wt_t resnet_layer1_1_conv2_weights[64][64][3][3],
-     wt_t resnet_layer1_1_bn2_params[3][64],
-        wt_t resnet_layer1_1_conv3_weights[256][64],
-     wt_t resnet_layer1_1_bn3_params[3][256],
-        wt_t resnet_layer1_2_conv1_weights[64][256],
-     wt_t resnet_layer1_2_bn1_params[3][64],
-        wt_t resnet_layer1_2_conv2_weights[64][64][3][3],
-     wt_t resnet_layer1_2_bn2_params[3][64],
-        wt_t resnet_layer1_2_conv3_weights[256][64],
-     wt_t resnet_layer1_2_bn3_params[3][256],
-        fm_t resnet_layer1_output_fm[256][184][320]
-);
-
-
-
-
-void resnet_layer2(
-        fm_t resnet_layer2_input_fm[256][184][320],
-        wt_t resnet_layer2_0_conv1_weights[128][256],
-     wt_t resnet_layer2_0_bn1_params[3][128],
-        wt_t resnet_layer2_0_conv2_weights[128][128][3][3],
-     wt_t resnet_layer2_0_bn2_params[3][128],
-        wt_t resnet_layer2_0_conv3_weights[512][128],
-     wt_t resnet_layer2_0_bn3_params[3][512],
-        wt_t resnet_layer2_0_downsample_0_weights[512][256],
-     wt_t resnet_layer2_0_downsample_1_params[3][512],
-        wt_t resnet_layer2_1_conv1_weights[128][512],
-     wt_t resnet_layer2_1_bn1_params[3][128],
-        wt_t resnet_layer2_1_conv2_weights[128][128][3][3],
-     wt_t resnet_layer2_1_bn2_params[3][128],
-        wt_t resnet_layer2_1_conv3_weights[512][128],
-     wt_t resnet_layer2_1_bn3_params[3][512],
-        wt_t resnet_layer2_2_conv1_weights[128][512],
-     wt_t resnet_layer2_2_bn1_params[3][128],
-        wt_t resnet_layer2_2_conv2_weights[128][128][3][3],
-     wt_t resnet_layer2_2_bn2_params[3][128],
-        wt_t resnet_layer2_2_conv3_weights[512][128],
-     wt_t resnet_layer2_2_bn3_params[3][512],
-        wt_t resnet_layer2_3_conv1_weights[128][512],
-     wt_t resnet_layer2_3_bn1_params[3][128],
-        wt_t resnet_layer2_3_conv2_weights[128][128][3][3],
-     wt_t resnet_layer2_3_bn2_params[3][128],
-        wt_t resnet_layer2_3_conv3_weights[512][128],
-     wt_t resnet_layer2_3_bn3_params[3][512],
-        fm_t resnet_layer2_output_fm[512][184][320]
-);
-
-
-
-
-void resnet_layer3(
-        fm_t resnet_layer3_input_fm[512][92][160],
-        wt_t resnet_layer3_0_conv1_weights[256][512],
-     wt_t resnet_layer3_0_bn1_params[3][256],
-        wt_t resnet_layer3_0_conv2_weights[256][256][3][3],
-     wt_t resnet_layer3_0_bn2_params[3][256],
-        wt_t resnet_layer3_0_conv3_weights[1024][256],
-     wt_t resnet_layer3_0_bn3_params[3][1024],
-        wt_t resnet_layer3_0_downsample_0_weights[1024][512],
-     wt_t resnet_layer3_0_downsample_1_params[3][1024],
-        wt_t resnet_layer3_1_conv1_weights[256][1024],
-     wt_t resnet_layer3_1_bn1_params[3][256],
-        wt_t resnet_layer3_1_conv2_weights[256][256][3][3],
-     wt_t resnet_layer3_1_bn2_params[3][256],
-        wt_t resnet_layer3_1_conv3_weights[1024][256],
-     wt_t resnet_layer3_1_bn3_params[3][1024],
-        wt_t resnet_layer3_2_conv1_weights[256][1024],
-     wt_t resnet_layer3_2_bn1_params[3][256],
-        wt_t resnet_layer3_2_conv2_weights[256][256][3][3],
-     wt_t resnet_layer3_2_bn2_params[3][256],
-        wt_t resnet_layer3_2_conv3_weights[1024][256],
-     wt_t resnet_layer3_2_bn3_params[3][1024],
-        wt_t resnet_layer3_3_conv1_weights[256][1024],
-     wt_t resnet_layer3_3_bn1_params[3][256],
-        wt_t resnet_layer3_3_conv2_weights[256][256][3][3],
-     wt_t resnet_layer3_3_bn2_params[3][256],
-        wt_t resnet_layer3_3_conv3_weights[1024][256],
-     wt_t resnet_layer3_3_bn3_params[3][1024],
-        wt_t resnet_layer3_4_conv1_weights[256][1024],
-     wt_t resnet_layer3_4_bn1_params[3][256],
-        wt_t resnet_layer3_4_conv2_weights[256][256][3][3],
-     wt_t resnet_layer3_4_bn2_params[3][256],
-        wt_t resnet_layer3_4_conv3_weights[1024][256],
-     wt_t resnet_layer3_4_bn3_params[3][1024],
-        wt_t resnet_layer3_5_conv1_weights[256][1024],
-     wt_t resnet_layer3_5_bn1_params[3][256],
-        wt_t resnet_layer3_5_conv2_weights[256][256][3][3],
-     wt_t resnet_layer3_5_bn2_params[3][256],
-        wt_t resnet_layer3_5_conv3_weights[1024][256],
-     wt_t resnet_layer3_5_bn3_params[3][1024],
-        fm_t resnet_layer3_output_fm[1024][92][160]
-);
-
-
-
-
-void resnet_layer4(
-        fm_t resnet_layer4_input_fm[1024][46][80],
-        wt_t resnet_layer4_0_conv1_weights[512][1024],
-     wt_t resnet_layer4_0_bn1_params[3][512],
-        wt_t resnet_layer4_0_conv2_weights[512][512][3][3],
-     wt_t resnet_layer4_0_bn2_params[3][512],
-        wt_t resnet_layer4_0_conv3_weights[2048][512],
-     wt_t resnet_layer4_0_bn3_params[3][2048],
-        wt_t resnet_layer4_0_downsample_0_weights[2048][1024],
-     wt_t resnet_layer4_0_downsample_1_params[3][2048],
-        wt_t resnet_layer4_1_conv1_weights[512][2048],
-     wt_t resnet_layer4_1_bn1_params[3][512],
-        wt_t resnet_layer4_1_conv2_weights[512][512][3][3],
-     wt_t resnet_layer4_1_bn2_params[3][512],
-        wt_t resnet_layer4_1_conv3_weights[2048][512],
-     wt_t resnet_layer4_1_bn3_params[3][2048],
-        wt_t resnet_layer4_2_conv1_weights[512][2048],
-     wt_t resnet_layer4_2_bn1_params[3][512],
-        wt_t resnet_layer4_2_conv2_weights[512][512][3][3],
-     wt_t resnet_layer4_2_bn2_params[3][512],
-        wt_t resnet_layer4_2_conv3_weights[2048][512],
-     wt_t resnet_layer4_2_bn3_params[3][2048],
-        fm_t resnet_layer4_output_fm[2048][46][80]
-);
-
-void resnet_top_1 (
-    fm_t resnet_layer0_input_fm[3][736][1280],
-    wt_t resnet_layer0_conv1_weights[64][3][7][7],
-    wt_t resnet_layer0_bn1_params[3][64],
-    fm_t resnet_layer0_output_fm[64][184][320],
-
-    fm_t resnet_layer1_input_fm[64][184][320],
-    wt_t resnet_layer1_0_conv1_weights[64][64],
-    wt_t resnet_layer1_0_bn1_params[4][64],
-    wt_t resnet_layer1_0_conv2_weights[64][64][3][3],
-    wt_t resnet_layer1_0_bn2_params[4][64],
-    wt_t resnet_layer1_0_conv3_weights[256][64],
-    wt_t resnet_layer1_0_bn3_params[4][256],
-    wt_t resnet_layer1_0_downsample_0_weights[256][64],
-    wt_t resnet_layer1_0_downsample_1_params[4][256],
-    wt_t resnet_layer1_1_conv1_weights[64][256],
-    wt_t resnet_layer1_1_bn1_params[4][64],
-    wt_t resnet_layer1_1_conv2_weights[64][64][3][3],
-    wt_t resnet_layer1_1_bn2_params[4][64],
-    wt_t resnet_layer1_1_conv3_weights[256][64],
-    wt_t resnet_layer1_1_bn3_params[4][256],
-    wt_t resnet_layer1_2_conv1_weights[64][256],
-    wt_t resnet_layer1_2_bn1_params[4][64],
-    wt_t resnet_layer1_2_conv2_weights[64][64][3][3],
-    wt_t resnet_layer1_2_bn2_params[4][64],
-    wt_t resnet_layer1_2_conv3_weights[256][64],
-    wt_t resnet_layer1_2_bn3_params[4][256],
-    fm_t resnet_layer1_output_fm[256][184][320],
-
-    fm_t resnet_layer2_input_fm[256][184][320],
-    wt_t resnet_layer2_0_conv1_weights[128][256],
- wt_t resnet_layer2_0_bn1_params[3][128],
-    wt_t resnet_layer2_0_conv2_weights[128][128][3][3],
- wt_t resnet_layer2_0_bn2_params[3][128],
-    wt_t resnet_layer2_0_conv3_weights[512][128],
- wt_t resnet_layer2_0_bn3_params[3][512],
-    wt_t resnet_layer2_0_downsample_0_weights[512][256],
- wt_t resnet_layer2_0_downsample_1_params[3][512],
-    wt_t resnet_layer2_1_conv1_weights[128][512],
- wt_t resnet_layer2_1_bn1_params[3][128],
-    wt_t resnet_layer2_1_conv2_weights[128][128][3][3],
- wt_t resnet_layer2_1_bn2_params[3][128],
-    wt_t resnet_layer2_1_conv3_weights[512][128],
- wt_t resnet_layer2_1_bn3_params[3][512],
-    wt_t resnet_layer2_2_conv1_weights[128][512],
- wt_t resnet_layer2_2_bn1_params[3][128],
-    wt_t resnet_layer2_2_conv2_weights[128][128][3][3],
- wt_t resnet_layer2_2_bn2_params[3][128],
-    wt_t resnet_layer2_2_conv3_weights[512][128],
- wt_t resnet_layer2_2_bn3_params[3][512],
-    wt_t resnet_layer2_3_conv1_weights[128][512],
- wt_t resnet_layer2_3_bn1_params[3][128],
-    wt_t resnet_layer2_3_conv2_weights[128][128][3][3],
- wt_t resnet_layer2_3_bn2_params[3][128],
-    wt_t resnet_layer2_3_conv3_weights[512][128],
- wt_t resnet_layer2_3_bn3_params[3][512],
-    fm_t resnet_layer2_output_fm[512][184][320]
-);
-
-void resnet_top_2(
-    fm_t resnet_layer2_output_fm[512][184][320],
-    fm_t resnet_layer3_input_fm[512][92][160],
-    wt_t resnet_layer3_0_conv1_weights[256][512],
- wt_t resnet_layer3_0_bn1_params[3][256],
-    wt_t resnet_layer3_0_conv2_weights[256][256][3][3],
- wt_t resnet_layer3_0_bn2_params[3][256],
-    wt_t resnet_layer3_0_conv3_weights[1024][256],
- wt_t resnet_layer3_0_bn3_params[3][1024],
-    wt_t resnet_layer3_0_downsample_0_weights[1024][512],
- wt_t resnet_layer3_0_downsample_1_params[3][1024],
-    wt_t resnet_layer3_1_conv1_weights[256][1024],
- wt_t resnet_layer3_1_bn1_params[3][256],
-    wt_t resnet_layer3_1_conv2_weights[256][256][3][3],
- wt_t resnet_layer3_1_bn2_params[3][256],
-    wt_t resnet_layer3_1_conv3_weights[1024][256],
- wt_t resnet_layer3_1_bn3_params[3][1024],
-    wt_t resnet_layer3_2_conv1_weights[256][1024],
- wt_t resnet_layer3_2_bn1_params[3][256],
-    wt_t resnet_layer3_2_conv2_weights[256][256][3][3],
- wt_t resnet_layer3_2_bn2_params[3][256],
-    wt_t resnet_layer3_2_conv3_weights[1024][256],
- wt_t resnet_layer3_2_bn3_params[3][1024],
-    wt_t resnet_layer3_3_conv1_weights[256][1024],
- wt_t resnet_layer3_3_bn1_params[3][256],
-    wt_t resnet_layer3_3_conv2_weights[256][256][3][3],
- wt_t resnet_layer3_3_bn2_params[3][256],
-    wt_t resnet_layer3_3_conv3_weights[1024][256],
- wt_t resnet_layer3_3_bn3_params[3][1024],
-    wt_t resnet_layer3_4_conv1_weights[256][1024],
- wt_t resnet_layer3_4_bn1_params[3][256],
-    wt_t resnet_layer3_4_conv2_weights[256][256][3][3],
- wt_t resnet_layer3_4_bn2_params[3][256],
-    wt_t resnet_layer3_4_conv3_weights[1024][256],
- wt_t resnet_layer3_4_bn3_params[3][1024],
-    wt_t resnet_layer3_5_conv1_weights[256][1024],
- wt_t resnet_layer3_5_bn1_params[3][256],
-    wt_t resnet_layer3_5_conv2_weights[256][256][3][3],
- wt_t resnet_layer3_5_bn2_params[3][256],
-    wt_t resnet_layer3_5_conv3_weights[1024][256],
- wt_t resnet_layer3_5_bn3_params[3][1024],
-    fm_t resnet_layer3_output_fm[1024][92][160],
-
-    fm_t resnet_layer4_input_fm[1024][46][80],
-    wt_t resnet_layer4_0_conv1_weights[512][1024],
- wt_t resnet_layer4_0_bn1_params[3][512],
-    wt_t resnet_layer4_0_conv2_weights[512][512][3][3],
- wt_t resnet_layer4_0_bn2_params[3][512],
-    wt_t resnet_layer4_0_conv3_weights[2048][512],
- wt_t resnet_layer4_0_bn3_params[3][2048],
-    wt_t resnet_layer4_0_downsample_0_weights[2048][1024],
- wt_t resnet_layer4_0_downsample_1_params[3][2048],
-    wt_t resnet_layer4_1_conv1_weights[512][2048],
- wt_t resnet_layer4_1_bn1_params[3][512],
-    wt_t resnet_layer4_1_conv2_weights[512][512][3][3],
- wt_t resnet_layer4_1_bn2_params[3][512],
-    wt_t resnet_layer4_1_conv3_weights[2048][512],
- wt_t resnet_layer4_1_bn3_params[3][2048],
-    wt_t resnet_layer4_2_conv1_weights[512][2048],
- wt_t resnet_layer4_2_bn1_params[3][512],
-    wt_t resnet_layer4_2_conv2_weights[512][512][3][3],
- wt_t resnet_layer4_2_bn2_params[3][512],
-    wt_t resnet_layer4_2_conv3_weights[2048][512],
- wt_t resnet_layer4_2_bn3_params[3][2048],
-    fm_t resnet_layer4_output_fm[2048][46][80]
-);
-
-
-
-
-void fpn_top(
- fm_t lateral_3_input_feature_map[2048][23][40],
-     wt_t lateral_3_layer_weights[256][2048][1][1],
-     wt_t lateral_3_layer_bias[256],
- fm_t lateral_2_input_feature_map[1024][46][80],
-     wt_t lateral_2_layer_weights[256][1024][1][1],
-     wt_t lateral_2_layer_bias[256],
- fm_t lateral_1_input_feature_map[512][92][160],
-     wt_t lateral_1_layer_weights[256][512][1][1],
-     wt_t lateral_1_layer_bias[256],
- fm_t lateral_0_input_feature_map[256][184][320],
-     wt_t lateral_0_layer_weights[256][256][1][1],
-     wt_t lateral_0_layer_bias[256],
-     wt_t fpn_3_layer_weights[256][256][3][3],
-     wt_t fpn_3_layer_bias[256],
-     fm_t fpn_3_output_feature_map[256][23][40],
-     wt_t fpn_2_layer_weights[256][256][3][3],
-     wt_t fpn_2_layer_bias[256],
-     fm_t fpn_2_output_feature_map[256][46][80],
-     wt_t fpn_1_layer_weights[256][256][3][3],
-     wt_t fpn_1_layer_bias[256],
-     fm_t fpn_1_output_feature_map[256][92][160],
-     wt_t fpn_0_layer_weights[256][256][3][3],
-     wt_t fpn_0_layer_bias[256],
-     fm_t fpn_0_output_feature_map[256][184][320]
-);
-
-void fpn_conv_3x3 (
-        fm_t Y_buf[16][23][20],
-        fm_t X_buf[8][23 +2][20 +2],
-        wt_t W_buf[16][8][3][3]
-);
-void fpn_conv_1x1(
-    fm_t Y_buf[16][23][20],
-    fm_t X_buf[8][23][20],
-    wt_t W_buf[16][8][1][1]
-);
-void fpn_tiled_conv_fpn_3 (
-    fm_t input_feature_map[256][23][40],
-    wt_t layer_weights[256][256][3][3],
-    wt_t layer_bias[256],
-    fm_t output_feature_map[256][23][40]
-);
-void fpn_tiled_conv_fpn_2 (
-    fm_t input_feature_map[256][46][80],
-    wt_t layer_weights[256][256][3][3],
-    wt_t layer_bias[256],
-    fm_t output_feature_map[256][46][80]
-);
-void fpn_tiled_conv_fpn_1 (
-    fm_t input_feature_map[256][92][160],
-    wt_t layer_weights[256][256][3][3],
-    wt_t layer_bias[256],
-    fm_t output_feature_map[256][92][160]
-);
-void fpn_tiled_conv_fpn_0 (
-    fm_t input_feature_map[256][184][320],
-    wt_t layer_weights[256][256][3][3],
-    wt_t layer_bias[256],
-    fm_t output_feature_map[256][184][320]
-);
-void fpn_tiled_conv_lateral_3 (
-    fm_t input_feature_map[2048][23][40],
-    wt_t layer_weights[256][2048][1][1],
-    wt_t layer_bias[256],
-    fm_t output_feature_map[256][23][40]
-);
-void fpn_tiled_conv_lateral_2 (
-    fm_t input_feature_map[1024][46][80],
-    wt_t layer_weights[256][1024][1][1],
-    wt_t layer_bias[256],
-    fm_t output_feature_map[256][46][80]
-);
-void fpn_tiled_conv_lateral_1 (
-    fm_t input_feature_map[512][92][160],
-    wt_t layer_weights[256][512][1][1],
-    wt_t layer_bias[256],
-    fm_t output_feature_map[256][92][160]
-);
-void fpn_tiled_conv_lateral_0 (
-    fm_t input_feature_map[256][184][320],
-    wt_t layer_weights[256][256][1][1],
-    wt_t layer_bias[256],
-    fm_t output_feature_map[256][184][320]
-);
-
-template<const int fm_input_depth,const int fm_input_height,const int fm_input_width,const int N_TILE_ROWS,const int N_TILE_COLS>
-void fpn_load_input_tile_block_from_DRAM_3x3 (
-    fm_t in_fm_buf[8][23 +2][20 +2],
-    fm_t in_fm[fm_input_depth][fm_input_height][fm_input_width],
-    int ti,
-    int tj,
-    int d
-);
-
-template<const int fm_input_depth,const int fm_input_height,const int fm_input_width,const int N_TILE_ROWS,const int N_TILE_COLS>
-void fpn_load_input_tile_block_from_DRAM_1x1 (
-    fm_t in_fm_buf[8][23][20],
-    fm_t in_fm[fm_input_depth][fm_input_height][fm_input_width],
-    int ti,
-    int tj,
-    int d
-);
-template<const int output_depth,const int input_depth>
-void fpn_load_layer_params_from_DRAM_1x1 (
-    wt_t weight_buf[16][8][1][1],
-    wt_t bias_buf[16],
-    wt_t weights[output_depth][input_depth][1][1],
-    wt_t bias[output_depth],
-    int b,
-    int d
-);
-template<const int output_depth,const int input_depth>
-void fpn_load_layer_params_from_DRAM_3x3 (
-    wt_t weight_buf[16][8][3][3],
-    wt_t bias_buf[16],
-    wt_t weights[output_depth][input_depth][3][3],
-    wt_t bias[output_depth],
-    int b,
-    int d
-);
-
-
-
-
-template<const int output_depth>
-void fpn_save_partial_output_tile_block (
-    fm_t partial_out_buf[16][23][20],
-    fm_t out_fm_buf[16][23][20],
-    wt_t bias_buf[16],
-    int d
-);
-
-
-
-
-template<const int fm_output_depth,const int fm_output_height,const int fm_output_width>
-void fpn_store_output_tile_to_DRAM (
-    fm_t out_fm[fm_output_depth][fm_output_height][fm_output_width],
-    fm_t out_fm_buf[16][23][20],
-    int ti,
-    int tj,
-    int b
-);
-
-
-
-
+# 911 "./qdtrack.h"
 template<const int N_OUT_CH>
 void rpn_load_bias_params (
         fm_t param_buf[64],
@@ -34488,14 +33959,12 @@ void rpn_3x3_conv(
         bool relu
 );
 
-__attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
+void rpn_top(
 
 
     fm_t rpn_input0_fm[256][184][320],
     fm_t rpn_input1_fm[256][92][160],
     fm_t rpn_input2_fm[256][46][80],
-
-
 
 
 
@@ -34511,28 +33980,15 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
     fm_t rpn_output2_cls_fm[3][46][80],
 
 
-
-
     fm_t rpn_output0_reg_fm[12][184][320],
     fm_t rpn_output1_reg_fm[12][92][160],
     fm_t rpn_output2_reg_fm[12][46][80],
 
 
 
-
-
     fm_t rpn_output0_fm[256][184][320],
     fm_t rpn_output1_fm[256][92][160],
-    fm_t rpn_output2_fm[256][46][80],
-
-
-
-
-
-    fm_t bboxes[4720][4],
-    fm_t dets[1000][5]
-
-
+    fm_t rpn_output2_fm[256][46][80]
 
 );
 
@@ -34550,9 +34006,6 @@ void rpn_top2(
     fm_t rpn_anchor2_cls_fm [3*46*80],
 
 
-
-
-
     fm_t rpn_input3_fm[256][23][40],
     fm_t rpn_input4_fm[256][12][20],
 
@@ -34565,23 +34018,11 @@ void rpn_top2(
     wt_t rpn_reg_weight[12][256][1][1],
     wt_t rpn_reg_bias[12],
 
-
-
-
     fm_t rpn_output3_cls_fm[3][23][40],
     fm_t rpn_output4_cls_fm[3][12][20],
 
-
-
-
-
     fm_t rpn_output3_reg_fm[12][23][40],
     fm_t rpn_output4_reg_fm[12][12][20],
-
-
-
-
-
 
     fm_t rpn_output3_fm[256][23][40],
     fm_t rpn_output4_fm[256][12][20],
@@ -34604,152 +34045,7 @@ void rpn_top2(
 
 
 void test_top (
-    fm_t resnet_layer0_input_fm[3][736][1280],
-    wt_t resnet_layer0_conv1_weights[64][3][7][7],
-    wt_t resnet_layer0_bn1_params[3][64],
-    fm_t resnet_layer0_output_fm[64][184][320],
-
-    fm_t resnet_layer1_input_fm[64][184][320],
-    wt_t resnet_layer1_0_conv1_weights[64][64],
-    wt_t resnet_layer1_0_bn1_params[4][64],
-    wt_t resnet_layer1_0_conv2_weights[64][64][3][3],
-    wt_t resnet_layer1_0_bn2_params[4][64],
-    wt_t resnet_layer1_0_conv3_weights[256][64],
-    wt_t resnet_layer1_0_bn3_params[4][256],
-    wt_t resnet_layer1_0_downsample_0_weights[256][64],
-    wt_t resnet_layer1_0_downsample_1_params[4][256],
-    wt_t resnet_layer1_1_conv1_weights[64][256],
-    wt_t resnet_layer1_1_bn1_params[4][64],
-    wt_t resnet_layer1_1_conv2_weights[64][64][3][3],
-    wt_t resnet_layer1_1_bn2_params[4][64],
-    wt_t resnet_layer1_1_conv3_weights[256][64],
-    wt_t resnet_layer1_1_bn3_params[4][256],
-    wt_t resnet_layer1_2_conv1_weights[64][256],
-    wt_t resnet_layer1_2_bn1_params[4][64],
-    wt_t resnet_layer1_2_conv2_weights[64][64][3][3],
-    wt_t resnet_layer1_2_bn2_params[4][64],
-    wt_t resnet_layer1_2_conv3_weights[256][64],
-    wt_t resnet_layer1_2_bn3_params[4][256],
-    fm_t resnet_layer1_output_fm[256][184][320],
-
-    fm_t resnet_layer2_input_fm[256][184][320],
-    wt_t resnet_layer2_0_conv1_weights[128][256],
- wt_t resnet_layer2_0_bn1_params[3][128],
-    wt_t resnet_layer2_0_conv2_weights[128][128][3][3],
- wt_t resnet_layer2_0_bn2_params[3][128],
-    wt_t resnet_layer2_0_conv3_weights[512][128],
- wt_t resnet_layer2_0_bn3_params[3][512],
-    wt_t resnet_layer2_0_downsample_0_weights[512][256],
- wt_t resnet_layer2_0_downsample_1_params[3][512],
-    wt_t resnet_layer2_1_conv1_weights[128][512],
- wt_t resnet_layer2_1_bn1_params[3][128],
-    wt_t resnet_layer2_1_conv2_weights[128][128][3][3],
- wt_t resnet_layer2_1_bn2_params[3][128],
-    wt_t resnet_layer2_1_conv3_weights[512][128],
- wt_t resnet_layer2_1_bn3_params[3][512],
-    wt_t resnet_layer2_2_conv1_weights[128][512],
- wt_t resnet_layer2_2_bn1_params[3][128],
-    wt_t resnet_layer2_2_conv2_weights[128][128][3][3],
- wt_t resnet_layer2_2_bn2_params[3][128],
-    wt_t resnet_layer2_2_conv3_weights[512][128],
- wt_t resnet_layer2_2_bn3_params[3][512],
-    wt_t resnet_layer2_3_conv1_weights[128][512],
- wt_t resnet_layer2_3_bn1_params[3][128],
-    wt_t resnet_layer2_3_conv2_weights[128][128][3][3],
- wt_t resnet_layer2_3_bn2_params[3][128],
-    wt_t resnet_layer2_3_conv3_weights[512][128],
- wt_t resnet_layer2_3_bn3_params[3][512],
-    fm_t resnet_layer2_output_fm[512][184][320],
-
-    fm_t resnet_layer3_input_fm[512][92][160],
-    wt_t resnet_layer3_0_conv1_weights[256][512],
- wt_t resnet_layer3_0_bn1_params[3][256],
-    wt_t resnet_layer3_0_conv2_weights[256][256][3][3],
- wt_t resnet_layer3_0_bn2_params[3][256],
-    wt_t resnet_layer3_0_conv3_weights[1024][256],
- wt_t resnet_layer3_0_bn3_params[3][1024],
-    wt_t resnet_layer3_0_downsample_0_weights[1024][512],
- wt_t resnet_layer3_0_downsample_1_params[3][1024],
-    wt_t resnet_layer3_1_conv1_weights[256][1024],
- wt_t resnet_layer3_1_bn1_params[3][256],
-    wt_t resnet_layer3_1_conv2_weights[256][256][3][3],
- wt_t resnet_layer3_1_bn2_params[3][256],
-    wt_t resnet_layer3_1_conv3_weights[1024][256],
- wt_t resnet_layer3_1_bn3_params[3][1024],
-    wt_t resnet_layer3_2_conv1_weights[256][1024],
- wt_t resnet_layer3_2_bn1_params[3][256],
-    wt_t resnet_layer3_2_conv2_weights[256][256][3][3],
- wt_t resnet_layer3_2_bn2_params[3][256],
-    wt_t resnet_layer3_2_conv3_weights[1024][256],
- wt_t resnet_layer3_2_bn3_params[3][1024],
-    wt_t resnet_layer3_3_conv1_weights[256][1024],
- wt_t resnet_layer3_3_bn1_params[3][256],
-    wt_t resnet_layer3_3_conv2_weights[256][256][3][3],
- wt_t resnet_layer3_3_bn2_params[3][256],
-    wt_t resnet_layer3_3_conv3_weights[1024][256],
- wt_t resnet_layer3_3_bn3_params[3][1024],
-    wt_t resnet_layer3_4_conv1_weights[256][1024],
- wt_t resnet_layer3_4_bn1_params[3][256],
-    wt_t resnet_layer3_4_conv2_weights[256][256][3][3],
- wt_t resnet_layer3_4_bn2_params[3][256],
-    wt_t resnet_layer3_4_conv3_weights[1024][256],
- wt_t resnet_layer3_4_bn3_params[3][1024],
-    wt_t resnet_layer3_5_conv1_weights[256][1024],
- wt_t resnet_layer3_5_bn1_params[3][256],
-    wt_t resnet_layer3_5_conv2_weights[256][256][3][3],
- wt_t resnet_layer3_5_bn2_params[3][256],
-    wt_t resnet_layer3_5_conv3_weights[1024][256],
- wt_t resnet_layer3_5_bn3_params[3][1024],
-    fm_t resnet_layer3_output_fm[1024][92][160],
-
-    fm_t resnet_layer4_input_fm[1024][46][80],
-    wt_t resnet_layer4_0_conv1_weights[512][1024],
- wt_t resnet_layer4_0_bn1_params[3][512],
-    wt_t resnet_layer4_0_conv2_weights[512][512][3][3],
- wt_t resnet_layer4_0_bn2_params[3][512],
-    wt_t resnet_layer4_0_conv3_weights[2048][512],
- wt_t resnet_layer4_0_bn3_params[3][2048],
-    wt_t resnet_layer4_0_downsample_0_weights[2048][1024],
- wt_t resnet_layer4_0_downsample_1_params[3][2048],
-    wt_t resnet_layer4_1_conv1_weights[512][2048],
- wt_t resnet_layer4_1_bn1_params[3][512],
-    wt_t resnet_layer4_1_conv2_weights[512][512][3][3],
- wt_t resnet_layer4_1_bn2_params[3][512],
-    wt_t resnet_layer4_1_conv3_weights[2048][512],
- wt_t resnet_layer4_1_bn3_params[3][2048],
-    wt_t resnet_layer4_2_conv1_weights[512][2048],
- wt_t resnet_layer4_2_bn1_params[3][512],
-    wt_t resnet_layer4_2_conv2_weights[512][512][3][3],
- wt_t resnet_layer4_2_bn2_params[3][512],
-    wt_t resnet_layer4_2_conv3_weights[2048][512],
- wt_t resnet_layer4_2_bn3_params[3][2048],
-    fm_t resnet_layer4_output_fm[2048][46][80],
-
-     fm_t lateral_3_input_feature_map[2048][23][40],
-     wt_t lateral_3_layer_weights[256][2048][1][1],
-     wt_t lateral_3_layer_bias[256],
- fm_t lateral_2_input_feature_map[1024][46][80],
-     wt_t lateral_2_layer_weights[256][1024][1][1],
-     wt_t lateral_2_layer_bias[256],
- fm_t lateral_1_input_feature_map[512][92][160],
-     wt_t lateral_1_layer_weights[256][512][1][1],
-     wt_t lateral_1_layer_bias[256],
- fm_t lateral_0_input_feature_map[256][184][320],
-     wt_t lateral_0_layer_weights[256][256][1][1],
-     wt_t lateral_0_layer_bias[256],
-     wt_t fpn_3_layer_weights[256][256][3][3],
-     wt_t fpn_3_layer_bias[256],
-     fm_t fpn_3_output_feature_map[256][23][40],
-     wt_t fpn_2_layer_weights[256][256][3][3],
-     wt_t fpn_2_layer_bias[256],
-     fm_t fpn_2_output_feature_map[256][46][80],
-     wt_t fpn_1_layer_weights[256][256][3][3],
-     wt_t fpn_1_layer_bias[256],
-     fm_t fpn_1_output_feature_map[256][92][160],
-     wt_t fpn_0_layer_weights[256][256][3][3],
-     wt_t fpn_0_layer_bias[256],
-     fm_t fpn_0_output_feature_map[256][184][320],
-
+# 1248 "./qdtrack.h"
     int rpn_topk_index0[1000],
     int rpn_topk_index1[1000],
     int rpn_topk_index2[1000],
@@ -39268,18 +38564,13 @@ fm_t rpn_anchor0_cls_fm[3*184*320];
 fm_t rpn_anchor1_cls_fm[3*92*160];
 fm_t rpn_anchor2_cls_fm[3*46*80];
 
-
-
 fm_t rpn_anchor0_reg_fm[12*184*320/4][4];
 fm_t rpn_anchor1_reg_fm[12*92*160/4][4];
 fm_t rpn_anchor2_reg_fm[12*46*80/4][4];
 
-
-
 int rpn_topk_index0[1000];
 int rpn_topk_index1[1000];
 int rpn_topk_index2[1000];
-
 
 
 fm_t rpn_in_fm_buf[64][46 + 5][40 + 5];
@@ -39304,14 +38595,12 @@ wt_t rpn_param_buf[64];
 
 
 
-__attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
+void rpn_top(
 
 
     fm_t rpn_input0_fm[256][184][320],
     fm_t rpn_input1_fm[256][92][160],
     fm_t rpn_input2_fm[256][46][80],
-
-
 
 
 
@@ -39327,36 +38616,27 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
     fm_t rpn_output2_cls_fm[3][46][80],
 
 
-
-
     fm_t rpn_output0_reg_fm[12][184][320],
     fm_t rpn_output1_reg_fm[12][92][160],
     fm_t rpn_output2_reg_fm[12][46][80],
 
 
 
-
-
     fm_t rpn_output0_fm[256][184][320],
     fm_t rpn_output1_fm[256][92][160],
-    fm_t rpn_output2_fm[256][46][80],
-# 94 "./rpn_top.cpp"
-    fm_t bboxes[4720][4],
-    fm_t dets[1000][5]
+    fm_t rpn_output2_fm[256][46][80]
+
+
 )
 {
-#line 50 "/nethome/mjung76/resnet_rpn_fpn/script.tcl"
-#pragma HLSDIRECTIVE TOP name=rpn_top
-# 97 "./rpn_top.cpp"
-
     std::cout << "Begin processing RPN CONV 0..." << std::endl;
 
 
-    VITIS_LOOP_101_1: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_78_1: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_103_2: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_80_2: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_105_3: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_82_3: for(int w = 0; w < 320; w++)
             {
                 rpn_layer_in_fm[c][h][w] = rpn_input0_fm[c][h][w];
 
@@ -39372,11 +38652,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
                     (rpn_conv_weight, rpn_conv_bias, true);
 
 
-    VITIS_LOOP_121_4: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_98_4: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_123_5: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_100_5: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_125_6: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_102_6: for(int w = 0; w < 320; w++)
             {
                 rpn_output0_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
                 rpn_layer_in_fm[c][h][w]=0;
@@ -39388,11 +38668,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
 
     std::cout << "Begin processing RPN CONV 1..." << std::endl;
 
-    VITIS_LOOP_137_7: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_114_7: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_139_8: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_116_8: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_141_9: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_118_9: for(int w = 0; w < 160; w++)
             {
                 rpn_layer_in_fm[c][h][w] = rpn_input1_fm[c][h][w];
             }
@@ -39406,11 +38686,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
                     (rpn_conv_weight, rpn_conv_bias, true);
 
 
-    VITIS_LOOP_155_10: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_132_10: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_157_11: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_134_11: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_159_12: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_136_12: for(int w = 0; w < 160; w++)
             {
                 rpn_output1_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
                 rpn_layer_in_fm[c][h][w]=0;
@@ -39424,11 +38704,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
     std::cout << "Begin processing RPN CONV 2..." << std::endl;
 
 
-    VITIS_LOOP_173_13: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_150_13: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_175_14: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_152_14: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_177_15: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_154_15: for(int w = 0; w < 80; w++)
             {
                 rpn_layer_in_fm[c][h][w] = rpn_input2_fm[c][h][w];
             }
@@ -39442,11 +38722,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
                     (rpn_conv_weight, rpn_conv_bias, true);
 
 
-    VITIS_LOOP_191_16: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_168_16: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_193_17: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_170_17: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_195_18: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_172_18: for(int w = 0; w < 80; w++)
             {
                 rpn_output2_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
                 rpn_layer_in_fm[c][h][w]=0;
@@ -39454,16 +38734,16 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
             }
         }
     }
-# 283 "./rpn_top.cpp"
+# 188 "./rpn_top.cpp"
     std::cout << "Begin processing RPN CLS 0..." << std::endl;
 
 
 
-    VITIS_LOOP_287_19: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_192_19: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_289_20: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_194_20: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_291_21: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_196_21: for(int w = 0; w < 320; w++)
             {
                 rpn_layer_in_fm[c][h][w] = rpn_output0_fm[c][h][w];
 
@@ -39479,11 +38759,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
                     (rpn_cls_weight, rpn_cls_bias, false);
 
 
-    VITIS_LOOP_307_22: for(int h = 0; h < 184; h++)
+    VITIS_LOOP_212_22: for(int h = 0; h < 184; h++)
     {
-        VITIS_LOOP_309_23: for(int w = 0; w < 320; w++)
+        VITIS_LOOP_214_23: for(int w = 0; w < 320; w++)
         {
-            VITIS_LOOP_311_24: for(int c = 0; c < 3; c++)
+            VITIS_LOOP_216_24: for(int c = 0; c < 3; c++)
             {
                 rpn_output0_cls_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
                 rpn_anchor0_cls_fm[h*(320*3) + w*3 + c] = 1/(1+(fm_t)exp((float)(-1*rpn_layer_out_fm[c][h][w])));
@@ -39499,11 +38779,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
 
 
 
-    VITIS_LOOP_327_25: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_232_25: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_329_26: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_234_26: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_331_27: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_236_27: for(int w = 0; w < 160; w++)
             {
                 rpn_layer_in_fm[c][h][w] = rpn_output1_fm[c][h][w];
             }
@@ -39516,11 +38796,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
                     (rpn_cls_weight, rpn_cls_bias, false);
 
 
-    VITIS_LOOP_344_28: for(int h = 0; h < 92; h++)
+    VITIS_LOOP_249_28: for(int h = 0; h < 92; h++)
     {
-        VITIS_LOOP_346_29: for(int w = 0; w < 160; w++)
+        VITIS_LOOP_251_29: for(int w = 0; w < 160; w++)
         {
-            VITIS_LOOP_348_30: for(int c = 0; c < 3; c++)
+            VITIS_LOOP_253_30: for(int c = 0; c < 3; c++)
             {
                 rpn_output1_cls_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
                 rpn_anchor1_cls_fm[h*(160*3) + w*3 + c] = 1/(1+(fm_t)exp((float)(-1*rpn_layer_out_fm[c][h][w])));
@@ -39532,11 +38812,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
 
     std::cout << "Begin processing RPN CLS 2..." << std::endl;
 
-    VITIS_LOOP_360_31: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_265_31: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_362_32: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_267_32: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_364_33: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_269_33: for(int w = 0; w < 80; w++)
             {
                 rpn_layer_in_fm[c][h][w] = rpn_output2_fm[c][h][w];
             }
@@ -39549,11 +38829,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
                     (rpn_cls_weight, rpn_cls_bias, false);
 
 
-    VITIS_LOOP_377_34: for(int h = 0; h < 46; h++)
+    VITIS_LOOP_282_34: for(int h = 0; h < 46; h++)
     {
-        VITIS_LOOP_379_35: for(int w = 0; w < 80; w++)
+        VITIS_LOOP_284_35: for(int w = 0; w < 80; w++)
         {
-            VITIS_LOOP_381_36: for(int c = 0; c < 3; c++)
+            VITIS_LOOP_286_36: for(int c = 0; c < 3; c++)
             {
                 rpn_output2_cls_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
                 rpn_anchor2_cls_fm[h*(80*3) + w*3 + c] = 1/(1+(fm_t)exp((float)(-1*rpn_layer_out_fm[c][h][w])));
@@ -39562,16 +38842,16 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
             }
         }
     }
-# 474 "./rpn_top.cpp"
+# 303 "./rpn_top.cpp"
     std::cout << "Begin processing RPN REG 0..." << std::endl;
 
 
 
-    VITIS_LOOP_478_37: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_307_37: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_480_38: for(int h = 0; h < 184; h++)
+        VITIS_LOOP_309_38: for(int h = 0; h < 184; h++)
         {
-            VITIS_LOOP_482_39: for(int w = 0; w < 320; w++)
+            VITIS_LOOP_311_39: for(int w = 0; w < 320; w++)
             {
                 rpn_layer_in_fm[c][h][w] = rpn_output0_fm[c][h][w];
             }
@@ -39585,11 +38865,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
                     (rpn_reg_weight, rpn_reg_bias, false);
 
 
-    VITIS_LOOP_496_40: for(int h = 0; h < 184; h++)
+    VITIS_LOOP_325_40: for(int h = 0; h < 184; h++)
     {
-        VITIS_LOOP_498_41: for(int w = 0; w < 320; w++)
+        VITIS_LOOP_327_41: for(int w = 0; w < 320; w++)
         {
-            VITIS_LOOP_500_42: for(int c = 0; c < 12; c++)
+            VITIS_LOOP_329_42: for(int c = 0; c < 12; c++)
             {
                 rpn_output0_reg_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
                 rpn_anchor0_reg_fm[(h*(320*12)+w*12 +c)/4][(h*(320*12)+w*12 +c)%4]= rpn_layer_out_fm[c][h][w];
@@ -39604,11 +38884,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
 
 
 
-    VITIS_LOOP_515_43: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_344_43: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_517_44: for(int h = 0; h < 92; h++)
+        VITIS_LOOP_346_44: for(int h = 0; h < 92; h++)
         {
-            VITIS_LOOP_519_45: for(int w = 0; w < 160; w++)
+            VITIS_LOOP_348_45: for(int w = 0; w < 160; w++)
             {
                 rpn_layer_in_fm[c][h][w] = rpn_output1_fm[c][h][w];
             }
@@ -39622,11 +38902,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
                     (rpn_reg_weight, rpn_reg_bias, false);
 
 
-    VITIS_LOOP_533_46: for(int h = 0; h < 92; h++)
+    VITIS_LOOP_362_46: for(int h = 0; h < 92; h++)
     {
-        VITIS_LOOP_535_47: for(int w = 0; w < 160; w++)
+        VITIS_LOOP_364_47: for(int w = 0; w < 160; w++)
         {
-            VITIS_LOOP_537_48: for(int c = 0; c < 12; c++)
+            VITIS_LOOP_366_48: for(int c = 0; c < 12; c++)
             {
                 rpn_output1_reg_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
                 rpn_anchor1_reg_fm[(h*(160*12)+w*12 +c)/4][(h*(160*12)+w*12 +c)%4]= rpn_layer_out_fm[c][h][w];
@@ -39641,11 +38921,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
 
 
 
-    VITIS_LOOP_552_49: for(int c = 0; c < 256; c++)
+    VITIS_LOOP_381_49: for(int c = 0; c < 256; c++)
     {
-        VITIS_LOOP_554_50: for(int h = 0; h < 46; h++)
+        VITIS_LOOP_383_50: for(int h = 0; h < 46; h++)
         {
-            VITIS_LOOP_556_51: for(int w = 0; w < 80; w++)
+            VITIS_LOOP_385_51: for(int w = 0; w < 80; w++)
             {
                 rpn_layer_in_fm[c][h][w] = rpn_output2_fm[c][h][w];
             }
@@ -39659,11 +38939,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
                     (rpn_reg_weight, rpn_reg_bias, false);
 
 
-    VITIS_LOOP_570_52: for(int h = 0; h < 46; h++)
+    VITIS_LOOP_399_52: for(int h = 0; h < 46; h++)
     {
-        VITIS_LOOP_572_53: for(int w = 0; w < 80; w++)
+        VITIS_LOOP_401_53: for(int w = 0; w < 80; w++)
         {
-            VITIS_LOOP_574_54: for(int c = 0; c < 12; c++)
+            VITIS_LOOP_403_54: for(int c = 0; c < 12; c++)
             {
                 rpn_output2_reg_fm[c][h][w] = rpn_layer_out_fm[c][h][w];
                 rpn_anchor2_reg_fm[(h*(80*12)+w*12 +c)/4][(h*(80*12)+w*12 +c)%4]= rpn_layer_out_fm[c][h][w];
@@ -39672,16 +38952,16 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
             }
         }
     }
-# 681 "./rpn_top.cpp"
+# 426 "./rpn_top.cpp"
    std::cout << "Begin processing RPN Anchor Gen 0..." << std::endl;
 
 
     bool flag0[3*184*320]={false};
-    VITIS_LOOP_685_55: for(int i = 0; i<1000; i++)
+    VITIS_LOOP_430_55: for(int i = 0; i<1000; i++)
     {
         fm_t maximum_score = 0.0;
         int index = -1;
-        VITIS_LOOP_689_56: for(int j = 0; j<3*184*320; j++)
+        VITIS_LOOP_434_56: for(int j = 0; j<3*184*320; j++)
         {
             if(flag0[j] == true) continue;
             if(rpn_anchor0_cls_fm[j]>maximum_score)
@@ -39700,11 +38980,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
 
 
     bool flag1[3*92*160]={false};
-    VITIS_LOOP_708_57: for(int i = 0; i<1000; i++)
+    VITIS_LOOP_453_57: for(int i = 0; i<1000; i++)
     {
         fm_t maximum_score = 0.0;
         int index = -1;
-        VITIS_LOOP_712_58: for(int j = 0; j<3*92*160; j++)
+        VITIS_LOOP_457_58: for(int j = 0; j<3*92*160; j++)
         {
             if(flag1[j] == true) continue;
             if(rpn_anchor1_cls_fm[j]>maximum_score)
@@ -39723,11 +39003,11 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
 
 
     bool flag2[3*46*80]={false};
-    VITIS_LOOP_731_59: for(int i = 0; i<1000; i++)
+    VITIS_LOOP_476_59: for(int i = 0; i<1000; i++)
     {
         fm_t maximum_score = 0.0;
         int index = -1;
-        VITIS_LOOP_735_60: for(int j = 0; j<3*46*80; j++)
+        VITIS_LOOP_480_60: for(int j = 0; j<3*46*80; j++)
         {
             if(flag2[j] == true) continue;
             if(rpn_anchor2_cls_fm[j]>maximum_score)
@@ -39740,5 +39020,5 @@ __attribute__((sdx_kernel("rpn_top", 0))) void rpn_top(
             rpn_topk_index2[i]=index;
             flag2[index]=true;
     }
-# 979 "./rpn_top.cpp"
+# 508 "./rpn_top.cpp"
 }
