@@ -114,6 +114,9 @@ synth_resnet:
 synth_fpn:
 	vitis_hls script_fpn.tcl
 
+synth_rpn:
+	vitis_hls script_rpn.tcl
+
 clean:
 	rm -f -r csim.d 
 	rm -f *.out *.gcno *.gcda *.txt *.o *.d
