@@ -40125,7 +40125,7 @@ inline __attribute__((nodebug)) bool operator!=(
     typedef float fm_t;
     typedef float wt_t;
 # 128 "./fpn.h"
-void fpn_top(
+__attribute__((sdx_kernel("fpn_top", 0))) void fpn_top(
  fm_t lateral_3_input_feature_map[2048][23][40],
      wt_t lateral_3_layer_weights[256][2048][1][1],
      wt_t lateral_3_layer_bias[256],
@@ -40283,7 +40283,7 @@ fm_t lateral_1_output_feature_map[256][92][160];
 fm_t lateral_2_output_feature_map[256][46][80];
 fm_t lateral_3_output_feature_map[256][23][40];
 
-void fpn_top(
+__attribute__((sdx_kernel("fpn_top", 0))) void fpn_top(
  fm_t lateral_3_input_feature_map[2048][23][40],
      wt_t lateral_3_layer_weights[256][2048][1][1],
      wt_t lateral_3_layer_bias[256],
@@ -40314,6 +40314,10 @@ void fpn_top(
 
 )
 {
+#line 50 "/nethome/mjung76/resnet_rpn_fpn/script_fpn.tcl"
+#pragma HLSDIRECTIVE TOP name=fpn_top
+# 45 "./fpn_top.cpp"
+
 
 
 

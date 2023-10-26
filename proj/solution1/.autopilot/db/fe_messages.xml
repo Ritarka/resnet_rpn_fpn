@@ -1,16 +1,4 @@
 <xilinx:hls_fe_msgs>
-    <msg msg_groups="" msg_id="207-5292" msg_severity="WARNING" msg_loc="./rpn_top.cpp:94:10" msg_body="unused parameter 'bboxes'">
-        <args ClangWarningOption="unused-parameter"/>
-    </msg>
-    <msg msg_groups="" msg_id="207-5292" msg_severity="WARNING" msg_loc="./rpn_top.cpp:95:10" msg_body="unused parameter 'dets'">
-        <args ClangWarningOption="unused-parameter"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/nethome/mjung76/resnet_rpn_fpn/script.tcl:50:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaContext="directive" ARG_PragmaFunction="rpn_top" ARG_PragmaIsValid="1" ARG_PragmaOptions="name=rpn_top" ARG_PragmaType="top" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./rpn_conv_3x3.cpp:12:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="rpn_conv_3x3" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
     <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:88:9" msg_body="HLS pragma dump">
         <args ARG_PragmaFunction="fpn_load_layer_params_from_DRAM_1x1" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
@@ -19,6 +7,9 @@
     </msg>
     <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_utils.cpp:178:9" msg_body="HLS pragma dump">
         <args ARG_PragmaFunction="fpn_save_partial_output_tile_block" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/nethome/mjung76/resnet_rpn_fpn/script_fpn.tcl:50:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="directive" ARG_PragmaFunction="fpn_top" ARG_PragmaIsValid="1" ARG_PragmaOptions="name=fpn_top" ARG_PragmaType="top" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
     <msg msg_groups="" msg_id="207-4072" msg_severity="WARNING" msg_loc="./fpn_tiled_conv_lateral_3.cpp:1:17" msg_body="using directive refers to implicitly-defined namespace 'std'">
         <args/>
@@ -383,187 +374,212 @@
     <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./fpn_conv_1x1.cpp:37:9" msg_body="HLS pragma dump">
         <args ARG_PragmaFunction="fpn_conv_1x1" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:292:0" msg_body="Inlining function 'void rpn_load_input_fm_tile&lt;256, 184, 320, 0&gt;(float (*) [51][45], float (*) [184][320], int, int, int, int)' into 'void rpn_3x3_conv&lt;256, 184, 320, 256, 184, 320, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)'">
-        <args Callee="void rpn_load_input_fm_tile&lt;256, 184, 320, 0&gt;(float (*) [51][45], float (*) [184][320], int, int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 85 Column 0" Caller="void rpn_3x3_conv&lt;256, 184, 320, 256, 184, 320, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 292 Column 0"/>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-291" msg_severity="INFO" msg_loc="./fpn_conv_3x3.cpp:42:21" msg_body="Loop 'TILE_SLICE_WIDTH' is marked as complete unroll implied by the pipeline pragma">
+        <args LoopName="TILE_SLICE_WIDTH"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:292:0" msg_body="Inlining function 'void rpn_load_weights_3x3&lt;256, 256&gt;(float (*) [3][3], float (*) [256][3][3], int, int, int)' into 'void rpn_3x3_conv&lt;256, 184, 320, 256, 184, 320, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)'">
-        <args Callee="void rpn_load_weights_3x3&lt;256, 256&gt;(float (*) [3][3], float (*) [256][3][3], int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 149 Column 0" Caller="void rpn_3x3_conv&lt;256, 184, 320, 256, 184, 320, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 292 Column 0"/>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-291" msg_severity="INFO" msg_loc="./fpn_conv_3x3.cpp:50:25" msg_body="Loop 'KERNEL_GROUP' is marked as complete unroll implied by the pipeline pragma">
+        <args LoopName="KERNEL_GROUP"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:292:0" msg_body="Inlining function 'rpn_save_partial_out_buf(float (*) [46][40], float (*) [46][40], int) (.33)' into 'void rpn_3x3_conv&lt;256, 184, 320, 256, 184, 320, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)'">
-        <args Callee="rpn_save_partial_out_buf(float (*) [46][40], float (*) [46][40], int) (.33)" Callee-DebugLoc="File ./rpn_util.h Line 183 Column 0" Caller="void rpn_3x3_conv&lt;256, 184, 320, 256, 184, 320, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 292 Column 0"/>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-291" msg_severity="INFO" msg_loc="./fpn_conv_1x1.cpp:27:21" msg_body="Loop 'TILE_SLICE_WIDTH' is marked as complete unroll implied by the pipeline pragma">
+        <args LoopName="TILE_SLICE_WIDTH"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:292:0" msg_body="Inlining function 'void rpn_load_bias_params&lt;256&gt;(float*, float*, int)' into 'void rpn_3x3_conv&lt;256, 184, 320, 256, 184, 320, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)'">
-        <args Callee="void rpn_load_bias_params&lt;256&gt;(float*, float*, int)" Callee-DebugLoc="File ./rpn_util.h Line 45 Column 0" Caller="void rpn_3x3_conv&lt;256, 184, 320, 256, 184, 320, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 292 Column 0"/>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-291" msg_severity="INFO" msg_loc="./fpn_conv_1x1.cpp:35:25" msg_body="Loop 'KERNEL_GROUP' is marked as complete unroll implied by the pipeline pragma">
+        <args LoopName="KERNEL_GROUP"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:292:0" msg_body="Inlining function 'rpn_conv_bias_add(float (*) [46][40], float*, bool) (.34)' into 'void rpn_3x3_conv&lt;256, 184, 320, 256, 184, 320, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)'">
-        <args Callee="rpn_conv_bias_add(float (*) [46][40], float*, bool) (.34)" Callee-DebugLoc="File ./rpn_util.h Line 57 Column 0" Caller="void rpn_3x3_conv&lt;256, 184, 320, 256, 184, 320, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 292 Column 0"/>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="./fpn_conv_3x3.cpp:23:0" msg_body="Unrolling loop 'TILE_SLICE_WIDTH' (./fpn_conv_3x3.cpp:42:21) in function 'fpn_conv_3x3' completely with a factor of 20">
+        <args Factor="20" LoopLoc="./fpn_conv_3x3.cpp:42:21" LoopName="TILE_SLICE_WIDTH"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:292:0" msg_body="Inlining function 'void rpn_store_out_buf_to_DDR&lt;1&gt;(float (*) [184][320], float (*) [46][40], int, int, int)' into 'void rpn_3x3_conv&lt;256, 184, 320, 256, 184, 320, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)'">
-        <args Callee="void rpn_store_out_buf_to_DDR&lt;1&gt;(float (*) [184][320], float (*) [46][40], int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 209 Column 0" Caller="void rpn_3x3_conv&lt;256, 184, 320, 256, 184, 320, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 292 Column 0"/>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="./fpn_conv_3x3.cpp:23:0" msg_body="Unrolling loop 'KERNEL_GROUP' (./fpn_conv_3x3.cpp:50:25) in function 'fpn_conv_3x3' completely with a factor of 16">
+        <args Factor="16" LoopLoc="./fpn_conv_3x3.cpp:50:25" LoopName="KERNEL_GROUP"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:292:0" msg_body="Inlining function 'void rpn_load_input_fm_tile&lt;256, 92, 160, 0&gt;(float (*) [51][45], float (*) [184][320], int, int, int, int)' into 'void rpn_3x3_conv&lt;256, 92, 160, 256, 92, 160, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)'">
-        <args Callee="void rpn_load_input_fm_tile&lt;256, 92, 160, 0&gt;(float (*) [51][45], float (*) [184][320], int, int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 85 Column 0" Caller="void rpn_3x3_conv&lt;256, 92, 160, 256, 92, 160, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 292 Column 0"/>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="./fpn_utils.cpp:168:0" msg_body="Unrolling loop 'PARTIAL_OUTPUT_BUFFER_DEPTH' (./fpn_utils.cpp:176:13) in function 'fpn_save_partial_output_tile_block&lt;2048&gt;' completely with a factor of 16">
+        <args Factor="16" LoopLoc="./fpn_utils.cpp:176:13" LoopName="PARTIAL_OUTPUT_BUFFER_DEPTH"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:292:0" msg_body="Inlining function 'void rpn_load_weights_3x3&lt;256, 256&gt;(float (*) [3][3], float (*) [256][3][3], int, int, int)' into 'void rpn_3x3_conv&lt;256, 92, 160, 256, 92, 160, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)'">
-        <args Callee="void rpn_load_weights_3x3&lt;256, 256&gt;(float (*) [3][3], float (*) [256][3][3], int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 149 Column 0" Caller="void rpn_3x3_conv&lt;256, 92, 160, 256, 92, 160, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 292 Column 0"/>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="./fpn_utils.cpp:168:0" msg_body="Unrolling loop 'PARTIAL_OUTPUT_BUFFER_DEPTH' (./fpn_utils.cpp:176:13) in function 'fpn_save_partial_output_tile_block&lt;1024&gt;' completely with a factor of 16">
+        <args Factor="16" LoopLoc="./fpn_utils.cpp:176:13" LoopName="PARTIAL_OUTPUT_BUFFER_DEPTH"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:292:0" msg_body="Inlining function 'rpn_save_partial_out_buf(float (*) [46][40], float (*) [46][40], int) (.33)' into 'void rpn_3x3_conv&lt;256, 92, 160, 256, 92, 160, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)'">
-        <args Callee="rpn_save_partial_out_buf(float (*) [46][40], float (*) [46][40], int) (.33)" Callee-DebugLoc="File ./rpn_util.h Line 183 Column 0" Caller="void rpn_3x3_conv&lt;256, 92, 160, 256, 92, 160, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 292 Column 0"/>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="./fpn_utils.cpp:168:0" msg_body="Unrolling loop 'PARTIAL_OUTPUT_BUFFER_DEPTH' (./fpn_utils.cpp:176:13) in function 'fpn_save_partial_output_tile_block&lt;512&gt;' completely with a factor of 16">
+        <args Factor="16" LoopLoc="./fpn_utils.cpp:176:13" LoopName="PARTIAL_OUTPUT_BUFFER_DEPTH"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:292:0" msg_body="Inlining function 'void rpn_load_bias_params&lt;256&gt;(float*, float*, int)' into 'void rpn_3x3_conv&lt;256, 92, 160, 256, 92, 160, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)'">
-        <args Callee="void rpn_load_bias_params&lt;256&gt;(float*, float*, int)" Callee-DebugLoc="File ./rpn_util.h Line 45 Column 0" Caller="void rpn_3x3_conv&lt;256, 92, 160, 256, 92, 160, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 292 Column 0"/>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="./fpn_utils.cpp:168:0" msg_body="Unrolling loop 'PARTIAL_OUTPUT_BUFFER_DEPTH' (./fpn_utils.cpp:176:13) in function 'fpn_save_partial_output_tile_block&lt;256&gt;' completely with a factor of 16">
+        <args Factor="16" LoopLoc="./fpn_utils.cpp:176:13" LoopName="PARTIAL_OUTPUT_BUFFER_DEPTH"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:292:0" msg_body="Inlining function 'rpn_conv_bias_add(float (*) [46][40], float*, bool) (.34)' into 'void rpn_3x3_conv&lt;256, 92, 160, 256, 92, 160, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)'">
-        <args Callee="rpn_conv_bias_add(float (*) [46][40], float*, bool) (.34)" Callee-DebugLoc="File ./rpn_util.h Line 57 Column 0" Caller="void rpn_3x3_conv&lt;256, 92, 160, 256, 92, 160, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 292 Column 0"/>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="./fpn_conv_1x1.cpp:8:0" msg_body="Unrolling loop 'TILE_SLICE_WIDTH' (./fpn_conv_1x1.cpp:27:21) in function 'fpn_conv_1x1' completely with a factor of 20">
+        <args Factor="20" LoopLoc="./fpn_conv_1x1.cpp:27:21" LoopName="TILE_SLICE_WIDTH"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:292:0" msg_body="Inlining function 'void rpn_store_out_buf_to_DDR&lt;1&gt;(float (*) [184][320], float (*) [46][40], int, int, int)' into 'void rpn_3x3_conv&lt;256, 92, 160, 256, 92, 160, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)'">
-        <args Callee="void rpn_store_out_buf_to_DDR&lt;1&gt;(float (*) [184][320], float (*) [46][40], int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 209 Column 0" Caller="void rpn_3x3_conv&lt;256, 92, 160, 256, 92, 160, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 292 Column 0"/>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="./fpn_conv_1x1.cpp:8:0" msg_body="Unrolling loop 'KERNEL_GROUP' (./fpn_conv_1x1.cpp:35:25) in function 'fpn_conv_1x1' completely with a factor of 16">
+        <args Factor="16" LoopLoc="./fpn_conv_1x1.cpp:35:25" LoopName="KERNEL_GROUP"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:292:0" msg_body="Inlining function 'void rpn_load_input_fm_tile&lt;256, 46, 80, 0&gt;(float (*) [51][45], float (*) [184][320], int, int, int, int)' into 'void rpn_3x3_conv&lt;256, 46, 80, 256, 46, 80, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)'">
-        <args Callee="void rpn_load_input_fm_tile&lt;256, 46, 80, 0&gt;(float (*) [51][45], float (*) [184][320], int, int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 85 Column 0" Caller="void rpn_3x3_conv&lt;256, 46, 80, 256, 46, 80, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 292 Column 0"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_0.cpp:10:0" msg_body="Inlining function 'void fpn_load_input_tile_block_from_DRAM_1x1&lt;256, 184, 320, 8, 16&gt;(float (*) [23][20], float (*) [184][320], int, int, int)' into 'fpn_tiled_conv_lateral_0(float (*) [184][320], float (*) [256][1][1], float*, float (*) [184][320])'">
+        <args Callee="void fpn_load_input_tile_block_from_DRAM_1x1&lt;256, 184, 320, 8, 16&gt;(float (*) [23][20], float (*) [184][320], int, int, int)" Callee-DebugLoc="File ./fpn_utils.cpp Line 55 Column 0" Caller="fpn_tiled_conv_lateral_0(float (*) [184][320], float (*) [256][1][1], float*, float (*) [184][320])" Caller-DebugLoc="File ./fpn_tiled_conv_lateral_0.cpp Line 10 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:292:0" msg_body="Inlining function 'void rpn_load_weights_3x3&lt;256, 256&gt;(float (*) [3][3], float (*) [256][3][3], int, int, int)' into 'void rpn_3x3_conv&lt;256, 46, 80, 256, 46, 80, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)'">
-        <args Callee="void rpn_load_weights_3x3&lt;256, 256&gt;(float (*) [3][3], float (*) [256][3][3], int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 149 Column 0" Caller="void rpn_3x3_conv&lt;256, 46, 80, 256, 46, 80, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 292 Column 0"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_0.cpp:10:0" msg_body="Inlining function 'void fpn_store_output_tile_to_DRAM&lt;256, 184, 320&gt;(float (*) [184][320], float (*) [23][20], int, int, int)' into 'fpn_tiled_conv_lateral_0(float (*) [184][320], float (*) [256][1][1], float*, float (*) [184][320])'">
+        <args Callee="void fpn_store_output_tile_to_DRAM&lt;256, 184, 320&gt;(float (*) [184][320], float (*) [23][20], int, int, int)" Callee-DebugLoc="File ./fpn_utils.cpp Line 203 Column 0" Caller="fpn_tiled_conv_lateral_0(float (*) [184][320], float (*) [256][1][1], float*, float (*) [184][320])" Caller-DebugLoc="File ./fpn_tiled_conv_lateral_0.cpp Line 10 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:292:0" msg_body="Inlining function 'rpn_save_partial_out_buf(float (*) [46][40], float (*) [46][40], int) (.33)' into 'void rpn_3x3_conv&lt;256, 46, 80, 256, 46, 80, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)'">
-        <args Callee="rpn_save_partial_out_buf(float (*) [46][40], float (*) [46][40], int) (.33)" Callee-DebugLoc="File ./rpn_util.h Line 183 Column 0" Caller="void rpn_3x3_conv&lt;256, 46, 80, 256, 46, 80, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 292 Column 0"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_1.cpp:10:0" msg_body="Inlining function 'void fpn_load_input_tile_block_from_DRAM_1x1&lt;512, 92, 160, 4, 8&gt;(float (*) [23][20], float (*) [92][160], int, int, int)' into 'fpn_tiled_conv_lateral_1(float (*) [92][160], float (*) [512][1][1], float*, float (*) [92][160])'">
+        <args Callee="void fpn_load_input_tile_block_from_DRAM_1x1&lt;512, 92, 160, 4, 8&gt;(float (*) [23][20], float (*) [92][160], int, int, int)" Callee-DebugLoc="File ./fpn_utils.cpp Line 55 Column 0" Caller="fpn_tiled_conv_lateral_1(float (*) [92][160], float (*) [512][1][1], float*, float (*) [92][160])" Caller-DebugLoc="File ./fpn_tiled_conv_lateral_1.cpp Line 10 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:292:0" msg_body="Inlining function 'void rpn_load_bias_params&lt;256&gt;(float*, float*, int)' into 'void rpn_3x3_conv&lt;256, 46, 80, 256, 46, 80, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)'">
-        <args Callee="void rpn_load_bias_params&lt;256&gt;(float*, float*, int)" Callee-DebugLoc="File ./rpn_util.h Line 45 Column 0" Caller="void rpn_3x3_conv&lt;256, 46, 80, 256, 46, 80, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 292 Column 0"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_1.cpp:10:0" msg_body="Inlining function 'void fpn_store_output_tile_to_DRAM&lt;256, 92, 160&gt;(float (*) [92][160], float (*) [23][20], int, int, int)' into 'fpn_tiled_conv_lateral_1(float (*) [92][160], float (*) [512][1][1], float*, float (*) [92][160])'">
+        <args Callee="void fpn_store_output_tile_to_DRAM&lt;256, 92, 160&gt;(float (*) [92][160], float (*) [23][20], int, int, int)" Callee-DebugLoc="File ./fpn_utils.cpp Line 203 Column 0" Caller="fpn_tiled_conv_lateral_1(float (*) [92][160], float (*) [512][1][1], float*, float (*) [92][160])" Caller-DebugLoc="File ./fpn_tiled_conv_lateral_1.cpp Line 10 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:292:0" msg_body="Inlining function 'rpn_conv_bias_add(float (*) [46][40], float*, bool) (.34)' into 'void rpn_3x3_conv&lt;256, 46, 80, 256, 46, 80, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)'">
-        <args Callee="rpn_conv_bias_add(float (*) [46][40], float*, bool) (.34)" Callee-DebugLoc="File ./rpn_util.h Line 57 Column 0" Caller="void rpn_3x3_conv&lt;256, 46, 80, 256, 46, 80, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 292 Column 0"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_2.cpp:10:0" msg_body="Inlining function 'void fpn_load_input_tile_block_from_DRAM_1x1&lt;1024, 46, 80, 2, 4&gt;(float (*) [23][20], float (*) [46][80], int, int, int)' into 'fpn_tiled_conv_lateral_2(float (*) [46][80], float (*) [1024][1][1], float*, float (*) [46][80])'">
+        <args Callee="void fpn_load_input_tile_block_from_DRAM_1x1&lt;1024, 46, 80, 2, 4&gt;(float (*) [23][20], float (*) [46][80], int, int, int)" Callee-DebugLoc="File ./fpn_utils.cpp Line 55 Column 0" Caller="fpn_tiled_conv_lateral_2(float (*) [46][80], float (*) [1024][1][1], float*, float (*) [46][80])" Caller-DebugLoc="File ./fpn_tiled_conv_lateral_2.cpp Line 10 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:292:0" msg_body="Inlining function 'void rpn_store_out_buf_to_DDR&lt;1&gt;(float (*) [184][320], float (*) [46][40], int, int, int)' into 'void rpn_3x3_conv&lt;256, 46, 80, 256, 46, 80, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)'">
-        <args Callee="void rpn_store_out_buf_to_DDR&lt;1&gt;(float (*) [184][320], float (*) [46][40], int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 209 Column 0" Caller="void rpn_3x3_conv&lt;256, 46, 80, 256, 46, 80, 1, 0, 0&gt;(float (*) [256][3][3], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 292 Column 0"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_2.cpp:10:0" msg_body="Inlining function 'void fpn_store_output_tile_to_DRAM&lt;256, 46, 80&gt;(float (*) [46][80], float (*) [23][20], int, int, int)' into 'fpn_tiled_conv_lateral_2(float (*) [46][80], float (*) [1024][1][1], float*, float (*) [46][80])'">
+        <args Callee="void fpn_store_output_tile_to_DRAM&lt;256, 46, 80&gt;(float (*) [46][80], float (*) [23][20], int, int, int)" Callee-DebugLoc="File ./fpn_utils.cpp Line 203 Column 0" Caller="fpn_tiled_conv_lateral_2(float (*) [46][80], float (*) [1024][1][1], float*, float (*) [46][80])" Caller-DebugLoc="File ./fpn_tiled_conv_lateral_2.cpp Line 10 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_load_input_fm_tile&lt;256, 184, 320, 0&gt;(float (*) [51][45], float (*) [184][320], int, int, int, int)' into 'void rpn_1x1_conv&lt;256, 184, 320, 3, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_load_input_fm_tile&lt;256, 184, 320, 0&gt;(float (*) [51][45], float (*) [184][320], int, int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 85 Column 0" Caller="void rpn_1x1_conv&lt;256, 184, 320, 3, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_3.cpp:14:0" msg_body="Inlining function 'void fpn_load_input_tile_block_from_DRAM_1x1&lt;2048, 23, 40, 1, 2&gt;(float (*) [23][20], float (*) [23][40], int, int, int)' into 'fpn_tiled_conv_lateral_3(float (*) [23][40], float (*) [2048][1][1], float*, float (*) [23][40])'">
+        <args Callee="void fpn_load_input_tile_block_from_DRAM_1x1&lt;2048, 23, 40, 1, 2&gt;(float (*) [23][20], float (*) [23][40], int, int, int)" Callee-DebugLoc="File ./fpn_utils.cpp Line 55 Column 0" Caller="fpn_tiled_conv_lateral_3(float (*) [23][40], float (*) [2048][1][1], float*, float (*) [23][40])" Caller-DebugLoc="File ./fpn_tiled_conv_lateral_3.cpp Line 14 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_load_weights_1x1&lt;3, 256&gt;(float (*) [1][1], float (*) [256][1][1], int, int, int)' into 'void rpn_1x1_conv&lt;256, 184, 320, 3, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_load_weights_1x1&lt;3, 256&gt;(float (*) [1][1], float (*) [256][1][1], int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 170 Column 0" Caller="void rpn_1x1_conv&lt;256, 184, 320, 3, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_3.cpp:14:0" msg_body="Inlining function 'void fpn_store_output_tile_to_DRAM&lt;256, 23, 40&gt;(float (*) [23][40], float (*) [23][20], int, int, int)' into 'fpn_tiled_conv_lateral_3(float (*) [23][40], float (*) [2048][1][1], float*, float (*) [23][40])'">
+        <args Callee="void fpn_store_output_tile_to_DRAM&lt;256, 23, 40&gt;(float (*) [23][40], float (*) [23][20], int, int, int)" Callee-DebugLoc="File ./fpn_utils.cpp Line 203 Column 0" Caller="fpn_tiled_conv_lateral_3(float (*) [23][40], float (*) [2048][1][1], float*, float (*) [23][40])" Caller-DebugLoc="File ./fpn_tiled_conv_lateral_3.cpp Line 14 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'rpn_conv_1x1(float (*) [46][40], float (*) [51][45], float (*) [1][1], int, int)' into 'void rpn_1x1_conv&lt;256, 184, 320, 3, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="rpn_conv_1x1(float (*) [46][40], float (*) [51][45], float (*) [1][1], int, int)" Callee-DebugLoc="File ./rpn_conv_1x1.cpp Line 10 Column 0" Caller="void rpn_1x1_conv&lt;256, 184, 320, 3, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_0.cpp:13:0" msg_body="Inlining function 'void fpn_load_input_tile_block_from_DRAM_3x3&lt;256, 184, 320, 8, 16&gt;(float (*) [25][22], float (*) [184][320], int, int, int)' into 'fpn_tiled_conv_fpn_0(float (*) [184][320], float (*) [256][3][3], float*, float (*) [184][320])'">
+        <args Callee="void fpn_load_input_tile_block_from_DRAM_3x3&lt;256, 184, 320, 8, 16&gt;(float (*) [25][22], float (*) [184][320], int, int, int)" Callee-DebugLoc="File ./fpn_utils.cpp Line 11 Column 0" Caller="fpn_tiled_conv_fpn_0(float (*) [184][320], float (*) [256][3][3], float*, float (*) [184][320])" Caller-DebugLoc="File ./fpn_tiled_conv_fpn_0.cpp Line 13 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'rpn_save_partial_out_buf(float (*) [46][40], float (*) [46][40], int) (.33)' into 'void rpn_1x1_conv&lt;256, 184, 320, 3, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="rpn_save_partial_out_buf(float (*) [46][40], float (*) [46][40], int) (.33)" Callee-DebugLoc="File ./rpn_util.h Line 183 Column 0" Caller="void rpn_1x1_conv&lt;256, 184, 320, 3, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_0.cpp:13:0" msg_body="Inlining function 'void fpn_store_output_tile_to_DRAM&lt;256, 184, 320&gt;(float (*) [184][320], float (*) [23][20], int, int, int)' into 'fpn_tiled_conv_fpn_0(float (*) [184][320], float (*) [256][3][3], float*, float (*) [184][320])'">
+        <args Callee="void fpn_store_output_tile_to_DRAM&lt;256, 184, 320&gt;(float (*) [184][320], float (*) [23][20], int, int, int)" Callee-DebugLoc="File ./fpn_utils.cpp Line 203 Column 0" Caller="fpn_tiled_conv_fpn_0(float (*) [184][320], float (*) [256][3][3], float*, float (*) [184][320])" Caller-DebugLoc="File ./fpn_tiled_conv_fpn_0.cpp Line 13 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_load_bias_params&lt;3&gt;(float*, float*, int)' into 'void rpn_1x1_conv&lt;256, 184, 320, 3, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_load_bias_params&lt;3&gt;(float*, float*, int)" Callee-DebugLoc="File ./rpn_util.h Line 45 Column 0" Caller="void rpn_1x1_conv&lt;256, 184, 320, 3, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_1.cpp:14:0" msg_body="Inlining function 'void fpn_load_input_tile_block_from_DRAM_3x3&lt;256, 92, 160, 4, 8&gt;(float (*) [25][22], float (*) [92][160], int, int, int)' into 'fpn_tiled_conv_fpn_1(float (*) [92][160], float (*) [256][3][3], float*, float (*) [92][160])'">
+        <args Callee="void fpn_load_input_tile_block_from_DRAM_3x3&lt;256, 92, 160, 4, 8&gt;(float (*) [25][22], float (*) [92][160], int, int, int)" Callee-DebugLoc="File ./fpn_utils.cpp Line 11 Column 0" Caller="fpn_tiled_conv_fpn_1(float (*) [92][160], float (*) [256][3][3], float*, float (*) [92][160])" Caller-DebugLoc="File ./fpn_tiled_conv_fpn_1.cpp Line 14 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'rpn_conv_bias_add(float (*) [46][40], float*, bool) (.34)' into 'void rpn_1x1_conv&lt;256, 184, 320, 3, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="rpn_conv_bias_add(float (*) [46][40], float*, bool) (.34)" Callee-DebugLoc="File ./rpn_util.h Line 57 Column 0" Caller="void rpn_1x1_conv&lt;256, 184, 320, 3, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_1.cpp:14:0" msg_body="Inlining function 'void fpn_store_output_tile_to_DRAM&lt;256, 92, 160&gt;(float (*) [92][160], float (*) [23][20], int, int, int)' into 'fpn_tiled_conv_fpn_1(float (*) [92][160], float (*) [256][3][3], float*, float (*) [92][160])'">
+        <args Callee="void fpn_store_output_tile_to_DRAM&lt;256, 92, 160&gt;(float (*) [92][160], float (*) [23][20], int, int, int)" Callee-DebugLoc="File ./fpn_utils.cpp Line 203 Column 0" Caller="fpn_tiled_conv_fpn_1(float (*) [92][160], float (*) [256][3][3], float*, float (*) [92][160])" Caller-DebugLoc="File ./fpn_tiled_conv_fpn_1.cpp Line 14 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_store_out_buf_to_DDR&lt;1&gt;(float (*) [184][320], float (*) [46][40], int, int, int)' into 'void rpn_1x1_conv&lt;256, 184, 320, 3, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_store_out_buf_to_DDR&lt;1&gt;(float (*) [184][320], float (*) [46][40], int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 209 Column 0" Caller="void rpn_1x1_conv&lt;256, 184, 320, 3, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_2.cpp:14:0" msg_body="Inlining function 'void fpn_load_input_tile_block_from_DRAM_3x3&lt;256, 46, 80, 2, 4&gt;(float (*) [25][22], float (*) [46][80], int, int, int)' into 'fpn_tiled_conv_fpn_2(float (*) [46][80], float (*) [256][3][3], float*, float (*) [46][80])'">
+        <args Callee="void fpn_load_input_tile_block_from_DRAM_3x3&lt;256, 46, 80, 2, 4&gt;(float (*) [25][22], float (*) [46][80], int, int, int)" Callee-DebugLoc="File ./fpn_utils.cpp Line 11 Column 0" Caller="fpn_tiled_conv_fpn_2(float (*) [46][80], float (*) [256][3][3], float*, float (*) [46][80])" Caller-DebugLoc="File ./fpn_tiled_conv_fpn_2.cpp Line 14 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_load_input_fm_tile&lt;256, 92, 160, 0&gt;(float (*) [51][45], float (*) [184][320], int, int, int, int)' into 'void rpn_1x1_conv&lt;256, 92, 160, 3, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_load_input_fm_tile&lt;256, 92, 160, 0&gt;(float (*) [51][45], float (*) [184][320], int, int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 85 Column 0" Caller="void rpn_1x1_conv&lt;256, 92, 160, 3, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_2.cpp:14:0" msg_body="Inlining function 'void fpn_store_output_tile_to_DRAM&lt;256, 46, 80&gt;(float (*) [46][80], float (*) [23][20], int, int, int)' into 'fpn_tiled_conv_fpn_2(float (*) [46][80], float (*) [256][3][3], float*, float (*) [46][80])'">
+        <args Callee="void fpn_store_output_tile_to_DRAM&lt;256, 46, 80&gt;(float (*) [46][80], float (*) [23][20], int, int, int)" Callee-DebugLoc="File ./fpn_utils.cpp Line 203 Column 0" Caller="fpn_tiled_conv_fpn_2(float (*) [46][80], float (*) [256][3][3], float*, float (*) [46][80])" Caller-DebugLoc="File ./fpn_tiled_conv_fpn_2.cpp Line 14 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_load_weights_1x1&lt;3, 256&gt;(float (*) [1][1], float (*) [256][1][1], int, int, int)' into 'void rpn_1x1_conv&lt;256, 92, 160, 3, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_load_weights_1x1&lt;3, 256&gt;(float (*) [1][1], float (*) [256][1][1], int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 170 Column 0" Caller="void rpn_1x1_conv&lt;256, 92, 160, 3, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_3.cpp:13:0" msg_body="Inlining function 'void fpn_load_input_tile_block_from_DRAM_3x3&lt;256, 23, 40, 1, 2&gt;(float (*) [25][22], float (*) [23][40], int, int, int)' into 'fpn_tiled_conv_fpn_3(float (*) [23][40], float (*) [256][3][3], float*, float (*) [23][40])'">
+        <args Callee="void fpn_load_input_tile_block_from_DRAM_3x3&lt;256, 23, 40, 1, 2&gt;(float (*) [25][22], float (*) [23][40], int, int, int)" Callee-DebugLoc="File ./fpn_utils.cpp Line 11 Column 0" Caller="fpn_tiled_conv_fpn_3(float (*) [23][40], float (*) [256][3][3], float*, float (*) [23][40])" Caller-DebugLoc="File ./fpn_tiled_conv_fpn_3.cpp Line 13 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'rpn_conv_1x1(float (*) [46][40], float (*) [51][45], float (*) [1][1], int, int)' into 'void rpn_1x1_conv&lt;256, 92, 160, 3, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="rpn_conv_1x1(float (*) [46][40], float (*) [51][45], float (*) [1][1], int, int)" Callee-DebugLoc="File ./rpn_conv_1x1.cpp Line 10 Column 0" Caller="void rpn_1x1_conv&lt;256, 92, 160, 3, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_3.cpp:13:0" msg_body="Inlining function 'void fpn_store_output_tile_to_DRAM&lt;256, 23, 40&gt;(float (*) [23][40], float (*) [23][20], int, int, int)' into 'fpn_tiled_conv_fpn_3(float (*) [23][40], float (*) [256][3][3], float*, float (*) [23][40])'">
+        <args Callee="void fpn_store_output_tile_to_DRAM&lt;256, 23, 40&gt;(float (*) [23][40], float (*) [23][20], int, int, int)" Callee-DebugLoc="File ./fpn_utils.cpp Line 203 Column 0" Caller="fpn_tiled_conv_fpn_3(float (*) [23][40], float (*) [256][3][3], float*, float (*) [23][40])" Caller-DebugLoc="File ./fpn_tiled_conv_fpn_3.cpp Line 13 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'rpn_save_partial_out_buf(float (*) [46][40], float (*) [46][40], int) (.33)' into 'void rpn_1x1_conv&lt;256, 92, 160, 3, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="rpn_save_partial_out_buf(float (*) [46][40], float (*) [46][40], int) (.33)" Callee-DebugLoc="File ./rpn_util.h Line 183 Column 0" Caller="void rpn_1x1_conv&lt;256, 92, 160, 3, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./fpn_top.cpp:45:0" msg_body="Inlining function 'fpn_tiled_conv_lateral_3(float (*) [23][40], float (*) [2048][1][1], float*, float (*) [23][40])' into 'fpn_top(float (*) [23][40], float (*) [2048][1][1], float*, float (*) [46][80], float (*) [1024][1][1], float*, float (*) [92][160], float (*) [512][1][1], float*, float (*) [184][320], float (*) [256][1][1], float*, float (*) [256][3][3], float*, float (*) [23][40], float (*) [256][3][3], float*, float (*) [46][80], float (*) [256][3][3], float*, float (*) [92][160], float (*) [256][3][3], float*, float (*) [184][320])'">
+        <args Callee="fpn_tiled_conv_lateral_3(float (*) [23][40], float (*) [2048][1][1], float*, float (*) [23][40])" Callee-DebugLoc="File ./fpn_tiled_conv_lateral_3.cpp Line 14 Column 0" Caller="fpn_top(float (*) [23][40], float (*) [2048][1][1], float*, float (*) [46][80], float (*) [1024][1][1], float*, float (*) [92][160], float (*) [512][1][1], float*, float (*) [184][320], float (*) [256][1][1], float*, float (*) [256][3][3], float*, float (*) [23][40], float (*) [256][3][3], float*, float (*) [46][80], float (*) [256][3][3], float*, float (*) [92][160], float (*) [256][3][3], float*, float (*) [184][320])" Caller-DebugLoc="File ./fpn_top.cpp Line 45 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_load_bias_params&lt;3&gt;(float*, float*, int)' into 'void rpn_1x1_conv&lt;256, 92, 160, 3, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_load_bias_params&lt;3&gt;(float*, float*, int)" Callee-DebugLoc="File ./rpn_util.h Line 45 Column 0" Caller="void rpn_1x1_conv&lt;256, 92, 160, 3, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_0.cpp:26:7" msg_body="Applying array_partition to 'conv_in_buf': Complete partitioning on dimension 3.">
+        <args Dim="3" Mode="Complete" UOName="conv_in_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'rpn_conv_bias_add(float (*) [46][40], float*, bool) (.34)' into 'void rpn_1x1_conv&lt;256, 92, 160, 3, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="rpn_conv_bias_add(float (*) [46][40], float*, bool) (.34)" Callee-DebugLoc="File ./rpn_util.h Line 57 Column 0" Caller="void rpn_1x1_conv&lt;256, 92, 160, 3, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_0.cpp:29:7" msg_body="Applying array_partition to 'conv_bias_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="conv_bias_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_store_out_buf_to_DDR&lt;1&gt;(float (*) [184][320], float (*) [46][40], int, int, int)' into 'void rpn_1x1_conv&lt;256, 92, 160, 3, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_store_out_buf_to_DDR&lt;1&gt;(float (*) [184][320], float (*) [46][40], int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 209 Column 0" Caller="void rpn_1x1_conv&lt;256, 92, 160, 3, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_0.cpp:32:7" msg_body="Applying array_partition to 'conv_wt_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="conv_wt_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_load_input_fm_tile&lt;256, 46, 80, 0&gt;(float (*) [51][45], float (*) [184][320], int, int, int, int)' into 'void rpn_1x1_conv&lt;256, 46, 80, 3, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_load_input_fm_tile&lt;256, 46, 80, 0&gt;(float (*) [51][45], float (*) [184][320], int, int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 85 Column 0" Caller="void rpn_1x1_conv&lt;256, 46, 80, 3, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_0.cpp:35:7" msg_body="Applying array_partition to 'conv_out_buf': Complete partitioning on dimension 1. Complete partitioning on dimension 3.">
+        <args Dim="islist 1 3" Mode="islist Complete Complete" UOName="conv_out_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_load_weights_1x1&lt;3, 256&gt;(float (*) [1][1], float (*) [256][1][1], int, int, int)' into 'void rpn_1x1_conv&lt;256, 46, 80, 3, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_load_weights_1x1&lt;3, 256&gt;(float (*) [1][1], float (*) [256][1][1], int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 170 Column 0" Caller="void rpn_1x1_conv&lt;256, 46, 80, 3, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_0.cpp:40:7" msg_body="Applying array_partition to 'partial_out_fm_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="partial_out_fm_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'rpn_conv_1x1(float (*) [46][40], float (*) [51][45], float (*) [1][1], int, int)' into 'void rpn_1x1_conv&lt;256, 46, 80, 3, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="rpn_conv_1x1(float (*) [46][40], float (*) [51][45], float (*) [1][1], int, int)" Callee-DebugLoc="File ./rpn_conv_1x1.cpp Line 10 Column 0" Caller="void rpn_1x1_conv&lt;256, 46, 80, 3, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_1.cpp:24:7" msg_body="Applying array_partition to 'conv_in_buf': Complete partitioning on dimension 3.">
+        <args Dim="3" Mode="Complete" UOName="conv_in_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'rpn_save_partial_out_buf(float (*) [46][40], float (*) [46][40], int) (.33)' into 'void rpn_1x1_conv&lt;256, 46, 80, 3, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="rpn_save_partial_out_buf(float (*) [46][40], float (*) [46][40], int) (.33)" Callee-DebugLoc="File ./rpn_util.h Line 183 Column 0" Caller="void rpn_1x1_conv&lt;256, 46, 80, 3, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_1.cpp:27:7" msg_body="Applying array_partition to 'conv_bias_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="conv_bias_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_load_bias_params&lt;3&gt;(float*, float*, int)' into 'void rpn_1x1_conv&lt;256, 46, 80, 3, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_load_bias_params&lt;3&gt;(float*, float*, int)" Callee-DebugLoc="File ./rpn_util.h Line 45 Column 0" Caller="void rpn_1x1_conv&lt;256, 46, 80, 3, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_1.cpp:30:7" msg_body="Applying array_partition to 'conv_wt_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="conv_wt_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'rpn_conv_bias_add(float (*) [46][40], float*, bool) (.34)' into 'void rpn_1x1_conv&lt;256, 46, 80, 3, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="rpn_conv_bias_add(float (*) [46][40], float*, bool) (.34)" Callee-DebugLoc="File ./rpn_util.h Line 57 Column 0" Caller="void rpn_1x1_conv&lt;256, 46, 80, 3, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_1.cpp:33:7" msg_body="Applying array_partition to 'conv_out_buf': Complete partitioning on dimension 1. Complete partitioning on dimension 3.">
+        <args Dim="islist 1 3" Mode="islist Complete Complete" UOName="conv_out_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_store_out_buf_to_DDR&lt;1&gt;(float (*) [184][320], float (*) [46][40], int, int, int)' into 'void rpn_1x1_conv&lt;256, 46, 80, 3, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_store_out_buf_to_DDR&lt;1&gt;(float (*) [184][320], float (*) [46][40], int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 209 Column 0" Caller="void rpn_1x1_conv&lt;256, 46, 80, 3, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_1.cpp:38:7" msg_body="Applying array_partition to 'partial_out_fm_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="partial_out_fm_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_load_input_fm_tile&lt;256, 184, 320, 0&gt;(float (*) [51][45], float (*) [184][320], int, int, int, int)' into 'void rpn_1x1_conv&lt;256, 184, 320, 12, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_load_input_fm_tile&lt;256, 184, 320, 0&gt;(float (*) [51][45], float (*) [184][320], int, int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 85 Column 0" Caller="void rpn_1x1_conv&lt;256, 184, 320, 12, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_2.cpp:24:7" msg_body="Applying array_partition to 'conv_in_buf': Complete partitioning on dimension 3.">
+        <args Dim="3" Mode="Complete" UOName="conv_in_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_load_weights_1x1&lt;12, 256&gt;(float (*) [1][1], float (*) [256][1][1], int, int, int)' into 'void rpn_1x1_conv&lt;256, 184, 320, 12, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_load_weights_1x1&lt;12, 256&gt;(float (*) [1][1], float (*) [256][1][1], int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 170 Column 0" Caller="void rpn_1x1_conv&lt;256, 184, 320, 12, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_2.cpp:27:7" msg_body="Applying array_partition to 'conv_bias_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="conv_bias_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'rpn_conv_1x1(float (*) [46][40], float (*) [51][45], float (*) [1][1], int, int)' into 'void rpn_1x1_conv&lt;256, 184, 320, 12, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="rpn_conv_1x1(float (*) [46][40], float (*) [51][45], float (*) [1][1], int, int)" Callee-DebugLoc="File ./rpn_conv_1x1.cpp Line 10 Column 0" Caller="void rpn_1x1_conv&lt;256, 184, 320, 12, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_2.cpp:30:7" msg_body="Applying array_partition to 'conv_wt_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="conv_wt_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'rpn_save_partial_out_buf(float (*) [46][40], float (*) [46][40], int) (.33)' into 'void rpn_1x1_conv&lt;256, 184, 320, 12, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="rpn_save_partial_out_buf(float (*) [46][40], float (*) [46][40], int) (.33)" Callee-DebugLoc="File ./rpn_util.h Line 183 Column 0" Caller="void rpn_1x1_conv&lt;256, 184, 320, 12, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_2.cpp:33:7" msg_body="Applying array_partition to 'conv_out_buf': Complete partitioning on dimension 1. Complete partitioning on dimension 3.">
+        <args Dim="islist 1 3" Mode="islist Complete Complete" UOName="conv_out_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_load_bias_params&lt;12&gt;(float*, float*, int)' into 'void rpn_1x1_conv&lt;256, 184, 320, 12, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_load_bias_params&lt;12&gt;(float*, float*, int)" Callee-DebugLoc="File ./rpn_util.h Line 45 Column 0" Caller="void rpn_1x1_conv&lt;256, 184, 320, 12, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_2.cpp:38:7" msg_body="Applying array_partition to 'partial_out_fm_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="partial_out_fm_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'rpn_conv_bias_add(float (*) [46][40], float*, bool) (.34)' into 'void rpn_1x1_conv&lt;256, 184, 320, 12, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="rpn_conv_bias_add(float (*) [46][40], float*, bool) (.34)" Callee-DebugLoc="File ./rpn_util.h Line 57 Column 0" Caller="void rpn_1x1_conv&lt;256, 184, 320, 12, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_0.cpp:29:7" msg_body="Applying array_partition to 'conv_in_buf': Complete partitioning on dimension 3.">
+        <args Dim="3" Mode="Complete" UOName="conv_in_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_store_out_buf_to_DDR&lt;1&gt;(float (*) [184][320], float (*) [46][40], int, int, int)' into 'void rpn_1x1_conv&lt;256, 184, 320, 12, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_store_out_buf_to_DDR&lt;1&gt;(float (*) [184][320], float (*) [46][40], int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 209 Column 0" Caller="void rpn_1x1_conv&lt;256, 184, 320, 12, 184, 320, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_0.cpp:32:7" msg_body="Applying array_partition to 'conv_bias_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="conv_bias_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_load_input_fm_tile&lt;256, 92, 160, 0&gt;(float (*) [51][45], float (*) [184][320], int, int, int, int)' into 'void rpn_1x1_conv&lt;256, 92, 160, 12, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_load_input_fm_tile&lt;256, 92, 160, 0&gt;(float (*) [51][45], float (*) [184][320], int, int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 85 Column 0" Caller="void rpn_1x1_conv&lt;256, 92, 160, 12, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_0.cpp:35:7" msg_body="Applying array_partition to 'conv_wt_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="conv_wt_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_load_weights_1x1&lt;12, 256&gt;(float (*) [1][1], float (*) [256][1][1], int, int, int)' into 'void rpn_1x1_conv&lt;256, 92, 160, 12, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_load_weights_1x1&lt;12, 256&gt;(float (*) [1][1], float (*) [256][1][1], int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 170 Column 0" Caller="void rpn_1x1_conv&lt;256, 92, 160, 12, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_0.cpp:38:7" msg_body="Applying array_partition to 'conv_out_buf': Complete partitioning on dimension 1. Complete partitioning on dimension 3.">
+        <args Dim="islist 1 3" Mode="islist Complete Complete" UOName="conv_out_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'rpn_conv_1x1(float (*) [46][40], float (*) [51][45], float (*) [1][1], int, int)' into 'void rpn_1x1_conv&lt;256, 92, 160, 12, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="rpn_conv_1x1(float (*) [46][40], float (*) [51][45], float (*) [1][1], int, int)" Callee-DebugLoc="File ./rpn_conv_1x1.cpp Line 10 Column 0" Caller="void rpn_1x1_conv&lt;256, 92, 160, 12, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_0.cpp:43:7" msg_body="Applying array_partition to 'partial_out_fm_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="partial_out_fm_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'rpn_save_partial_out_buf(float (*) [46][40], float (*) [46][40], int) (.33)' into 'void rpn_1x1_conv&lt;256, 92, 160, 12, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="rpn_save_partial_out_buf(float (*) [46][40], float (*) [46][40], int) (.33)" Callee-DebugLoc="File ./rpn_util.h Line 183 Column 0" Caller="void rpn_1x1_conv&lt;256, 92, 160, 12, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_1.cpp:30:7" msg_body="Applying array_partition to 'conv_in_buf': Complete partitioning on dimension 3.">
+        <args Dim="3" Mode="Complete" UOName="conv_in_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_load_bias_params&lt;12&gt;(float*, float*, int)' into 'void rpn_1x1_conv&lt;256, 92, 160, 12, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_load_bias_params&lt;12&gt;(float*, float*, int)" Callee-DebugLoc="File ./rpn_util.h Line 45 Column 0" Caller="void rpn_1x1_conv&lt;256, 92, 160, 12, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_1.cpp:33:7" msg_body="Applying array_partition to 'conv_bias_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="conv_bias_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'rpn_conv_bias_add(float (*) [46][40], float*, bool) (.34)' into 'void rpn_1x1_conv&lt;256, 92, 160, 12, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="rpn_conv_bias_add(float (*) [46][40], float*, bool) (.34)" Callee-DebugLoc="File ./rpn_util.h Line 57 Column 0" Caller="void rpn_1x1_conv&lt;256, 92, 160, 12, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_1.cpp:36:7" msg_body="Applying array_partition to 'conv_wt_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="conv_wt_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_store_out_buf_to_DDR&lt;1&gt;(float (*) [184][320], float (*) [46][40], int, int, int)' into 'void rpn_1x1_conv&lt;256, 92, 160, 12, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_store_out_buf_to_DDR&lt;1&gt;(float (*) [184][320], float (*) [46][40], int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 209 Column 0" Caller="void rpn_1x1_conv&lt;256, 92, 160, 12, 92, 160, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_1.cpp:39:7" msg_body="Applying array_partition to 'conv_out_buf': Complete partitioning on dimension 1. Complete partitioning on dimension 3.">
+        <args Dim="islist 1 3" Mode="islist Complete Complete" UOName="conv_out_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_load_input_fm_tile&lt;256, 46, 80, 0&gt;(float (*) [51][45], float (*) [184][320], int, int, int, int)' into 'void rpn_1x1_conv&lt;256, 46, 80, 12, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_load_input_fm_tile&lt;256, 46, 80, 0&gt;(float (*) [51][45], float (*) [184][320], int, int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 85 Column 0" Caller="void rpn_1x1_conv&lt;256, 46, 80, 12, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_1.cpp:44:7" msg_body="Applying array_partition to 'partial_out_fm_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="partial_out_fm_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_load_weights_1x1&lt;12, 256&gt;(float (*) [1][1], float (*) [256][1][1], int, int, int)' into 'void rpn_1x1_conv&lt;256, 46, 80, 12, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_load_weights_1x1&lt;12, 256&gt;(float (*) [1][1], float (*) [256][1][1], int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 170 Column 0" Caller="void rpn_1x1_conv&lt;256, 46, 80, 12, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_2.cpp:31:7" msg_body="Applying array_partition to 'conv_in_buf': Complete partitioning on dimension 3.">
+        <args Dim="3" Mode="Complete" UOName="conv_in_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'rpn_conv_1x1(float (*) [46][40], float (*) [51][45], float (*) [1][1], int, int)' into 'void rpn_1x1_conv&lt;256, 46, 80, 12, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="rpn_conv_1x1(float (*) [46][40], float (*) [51][45], float (*) [1][1], int, int)" Callee-DebugLoc="File ./rpn_conv_1x1.cpp Line 10 Column 0" Caller="void rpn_1x1_conv&lt;256, 46, 80, 12, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_2.cpp:34:7" msg_body="Applying array_partition to 'conv_bias_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="conv_bias_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'rpn_save_partial_out_buf(float (*) [46][40], float (*) [46][40], int) (.33)' into 'void rpn_1x1_conv&lt;256, 46, 80, 12, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="rpn_save_partial_out_buf(float (*) [46][40], float (*) [46][40], int) (.33)" Callee-DebugLoc="File ./rpn_util.h Line 183 Column 0" Caller="void rpn_1x1_conv&lt;256, 46, 80, 12, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_2.cpp:37:7" msg_body="Applying array_partition to 'conv_wt_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="conv_wt_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_load_bias_params&lt;12&gt;(float*, float*, int)' into 'void rpn_1x1_conv&lt;256, 46, 80, 12, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_load_bias_params&lt;12&gt;(float*, float*, int)" Callee-DebugLoc="File ./rpn_util.h Line 45 Column 0" Caller="void rpn_1x1_conv&lt;256, 46, 80, 12, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_2.cpp:40:7" msg_body="Applying array_partition to 'conv_out_buf': Complete partitioning on dimension 1. Complete partitioning on dimension 3.">
+        <args Dim="islist 1 3" Mode="islist Complete Complete" UOName="conv_out_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'rpn_conv_bias_add(float (*) [46][40], float*, bool) (.34)' into 'void rpn_1x1_conv&lt;256, 46, 80, 12, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="rpn_conv_bias_add(float (*) [46][40], float*, bool) (.34)" Callee-DebugLoc="File ./rpn_util.h Line 57 Column 0" Caller="void rpn_1x1_conv&lt;256, 46, 80, 12, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_2.cpp:45:7" msg_body="Applying array_partition to 'partial_out_fm_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="partial_out_fm_buf"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./rpn_util.h:230:0" msg_body="Inlining function 'void rpn_store_out_buf_to_DDR&lt;1&gt;(float (*) [184][320], float (*) [46][40], int, int, int)' into 'void rpn_1x1_conv&lt;256, 46, 80, 12, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)'">
-        <args Callee="void rpn_store_out_buf_to_DDR&lt;1&gt;(float (*) [184][320], float (*) [46][40], int, int, int)" Callee-DebugLoc="File ./rpn_util.h Line 209 Column 0" Caller="void rpn_1x1_conv&lt;256, 46, 80, 12, 46, 80, 1, 0, 0, 0, 1, 0&gt;(float (*) [256][1][1], float*, bool)" Caller-DebugLoc="File ./rpn_util.h Line 230 Column 0"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_3.cpp:29:7" msg_body="Applying array_partition to 'conv_in_buf': Complete partitioning on dimension 3.">
+        <args Dim="3" Mode="Complete" UOName="conv_in_buf"/>
     </msg>
-    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-167" msg_severity="WARNING" msg_loc="./rpn_util.h:173:32" msg_body="The program may have out of bound array access"/>
-    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-167" msg_severity="WARNING" msg_loc="./rpn_util.h:48:24" msg_body="The program may have out of bound array access"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_3.cpp:32:7" msg_body="Applying array_partition to 'conv_bias_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="conv_bias_buf"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_3.cpp:35:7" msg_body="Applying array_partition to 'conv_wt_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="conv_wt_buf"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_3.cpp:38:7" msg_body="Applying array_partition to 'conv_out_buf': Complete partitioning on dimension 1. Complete partitioning on dimension 3.">
+        <args Dim="islist 1 3" Mode="islist Complete Complete" UOName="conv_out_buf"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_fpn_3.cpp:43:7" msg_body="Applying array_partition to 'partial_out_fm_buf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="partial_out_fm_buf"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_3.cpp:30:7" msg_body="Applying array_partition to 'conv_in_buf.i': Complete partitioning on dimension 3.">
+        <args Dim="3" Mode="Complete" UOName="conv_in_buf.i"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_3.cpp:33:7" msg_body="Applying array_partition to 'conv_bias_buf.i': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="conv_bias_buf.i"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_3.cpp:36:7" msg_body="Applying array_partition to 'conv_wt_buf.i': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="conv_wt_buf.i"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_3.cpp:39:7" msg_body="Applying array_partition to 'conv_out_buf.i': Complete partitioning on dimension 1. Complete partitioning on dimension 3.">
+        <args Dim="islist 1 3" Mode="islist Complete Complete" UOName="conv_out_buf.i"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./fpn_tiled_conv_lateral_3.cpp:44:7" msg_body="Applying array_partition to 'partial_out_fm_buf.i': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="partial_out_fm_buf.i"/>
+    </msg>
 </xilinx:hls_fe_msgs>
 

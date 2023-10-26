@@ -17,12 +17,17 @@ add_files ./fpn_top.cpp
 add_files ./fpn_utils.cpp
 
 
-set_top resnet_top
+set_top resnet_top_1
 add_files ./resnet_batchnorm.cpp
 add_files ./resnet_conv_1x1.cpp
 add_files ./resnet_conv_3x3.cpp
 add_files ./resnet_conv_7x7.cpp
 add_files ./resnet_top.cpp
+set_top resnet_top_2
+add_files ./resnet_batchnorm.cpp
+add_files ./resnet_conv_1x1.cpp
+add_files ./resnet_conv_3x3.cpp
+add_files ./resnet_conv_7x7.cpp
 add_files ./resnet_top2.cpp
 
 
@@ -30,6 +35,9 @@ set_top rpn_top
 add_files ./rpn_conv_1x1.cpp
 add_files ./rpn_conv_3x3.cpp
 add_files ./rpn_top.cpp
+set_top rpn_top2
+add_files ./rpn_conv_1x1.cpp
+add_files ./rpn_conv_3x3.cpp
 add_files ./rpn_top2.cpp
 
 
