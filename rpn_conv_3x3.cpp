@@ -9,10 +9,10 @@ void rpn_conv_3x3 (
         int S
 )
 {
-#pragma HLS inline off
-    //#pragma HLS array_partition variable=out_fm dim=1 complete
-    //#pragma HLS array_partition variable=in_fm dim=1 complete
-    //#pragma HLS array_partition variable=wt_buf dim=1 complete
+    #pragma HLS inline off
+    // #pragma HLS array_partition variable=Y_buf dim=1 complete
+    // #pragma HLS array_partition variable=X_buf dim=1 complete
+    // #pragma HLS array_partition variable=W_buf dim=1 complete
 
     // For each row in stride steps
     for(int i = 0; i < RPN_OUT_BUF_ROWS; i=i+S) 

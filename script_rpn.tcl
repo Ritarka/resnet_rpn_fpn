@@ -1,3 +1,4 @@
+
 # TCL commands for batch-mode HLS
 open_project -reset proj
 
@@ -30,10 +31,10 @@ set_top rpn_top
 add_files ./rpn_conv_1x1.cpp
 add_files ./rpn_conv_3x3.cpp
 add_files ./rpn_top.cpp
-set_top rpn_top2
-add_files ./rpn_conv_1x1.cpp
-add_files ./rpn_conv_3x3.cpp
-add_files ./rpn_top2.cpp
+# set_top rpn_top2
+# add_files ./rpn_conv_1x1.cpp
+# add_files ./rpn_conv_3x3.cpp
+# add_files ./rpn_top2.cpp
 
 
 # add_files -tb ./bin
@@ -42,7 +43,9 @@ add_files -tb ./test_top_rpn.cpp
 
 
 open_solution "solution1" -flow_target vivado
-set_part {xczu9eg-ffvb1156-2-e}
+# Set the target part
+set_part {xc7z020clg400-1}
+# Create clock constraint
 create_clock -period 10 -name default
 
 ## C simulation

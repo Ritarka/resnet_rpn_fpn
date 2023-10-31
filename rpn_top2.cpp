@@ -63,7 +63,7 @@ void rpn_top2   (
 )
 {
 
-    std::cout << "Begin processing RPN CONV 3..." << std::endl;
+    // std::cout << "Begin processing RPN CONV 3..." << std::endl;
 
 
 
@@ -98,7 +98,7 @@ void rpn_top2   (
         }
     }
 
-    std::cout << "Begin processing RPN CONV 4..." << std::endl;
+    // std::cout << "Begin processing RPN CONV 4..." << std::endl;
 
 
 
@@ -141,7 +141,7 @@ void rpn_top2   (
     //----------------------------------------------------------------------
 
 
-    std::cout << "Begin processing RPN CLS 3..." << std::endl;
+    // std::cout << "Begin processing RPN CLS 3..." << std::endl;
 
     for(int c = 0; c < RPN_CONV_IN_CH; c++)
     {
@@ -179,7 +179,7 @@ void rpn_top2   (
 
 
 
-   std::cout << "Begin processing RPN CLS 4..." << std::endl;
+   // std::cout << "Begin processing RPN CLS 4..." << std::endl;
 
 
 
@@ -223,7 +223,7 @@ void rpn_top2   (
     //----------------------------------------------------------------------
 
 
-    std::cout << "Begin processing RPN REG 3..." << std::endl;
+    // std::cout << "Begin processing RPN REG 3..." << std::endl;
 
 
 
@@ -262,7 +262,7 @@ void rpn_top2   (
 
 
 
-   std::cout << "Begin processing RPN REG 4..." << std::endl;
+   // std::cout << "Begin processing RPN REG 4..." << std::endl;
 
 
 
@@ -307,7 +307,7 @@ void rpn_top2   (
     //----------------------------------------------------------------------
 
 
-   std::cout << "Begin processing RPN Anchor Gen 3..." << std::endl;
+   // std::cout << "Begin processing RPN Anchor Gen 3..." << std::endl;
 
 
 
@@ -330,7 +330,7 @@ void rpn_top2   (
     }
 
 
-   std::cout << "Begin processing RPN Anchor Gen 4..." << std::endl;
+   // std::cout << "Begin processing RPN Anchor Gen 4..." << std::endl;
 
     fm_t rois[RPN_PRE_NMS_SIZE][4];
     fm_t deltas[RPN_PRE_NMS_SIZE][4];
@@ -428,7 +428,7 @@ void rpn_top2   (
     // NMS 
     //----------------------------------------------------------------------
 
-    std::cout << "Begin processing NMS..." << std::endl;
+    // std::cout << "Begin processing NMS..." << std::endl;
 
     int nms_index[RPN_PRE_NMS_SIZE];
     bool nms_flag[RPN_PRE_NMS_SIZE]={false};

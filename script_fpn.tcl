@@ -39,7 +39,7 @@ add_files -tb ./test_top_fpn.cpp
 
 
 open_solution "solution1" -flow_target vivado
-set_part {xczu9eg-ffvb1156-2-e}
+set_part {xc7z020clg400-1}
 create_clock -period 10 -name default
 
 ## C simulation

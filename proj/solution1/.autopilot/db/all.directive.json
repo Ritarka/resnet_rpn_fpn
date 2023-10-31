@@ -1,7 +1,7 @@
 [
   {
     "functionLabel": "",
-    "functionName": "fpn_top",
+    "functionName": "rpn_top",
     "id": 0,
     "ifcond": "",
     "insert_position": "",
@@ -11,13 +11,13 @@
       "option": [
         {
           "name": "name",
-          "value": "fpn_top"
+          "value": "rpn_top"
         }
       ]
     },
     "slx": false,
-    "sourceFile": "/nethome/mjung76/resnet_rpn_fpn/script_fpn.tcl",
-    "sourceLine": 50,
+    "sourceFile": "/nethome/mjung76/resnet_rpn_fpn/script_rpn.tcl",
+    "sourceLine": 56,
     "success": true
   }
 ]
