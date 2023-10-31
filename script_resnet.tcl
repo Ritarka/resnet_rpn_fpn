@@ -23,12 +23,12 @@ add_files ./resnet_conv_1x1.cpp
 add_files ./resnet_conv_3x3.cpp
 add_files ./resnet_conv_7x7.cpp
 add_files ./resnet_top.cpp
-set_top resnet_top_2
-add_files ./resnet_batchnorm.cpp
-add_files ./resnet_conv_1x1.cpp
-add_files ./resnet_conv_3x3.cpp
-add_files ./resnet_conv_7x7.cpp
-add_files ./resnet_top2.cpp
+# set_top resnet_top_2
+# add_files ./resnet_batchnorm.cpp
+# add_files ./resnet_conv_1x1.cpp
+# add_files ./resnet_conv_3x3.cpp
+# add_files ./resnet_conv_7x7.cpp
+# add_files ./resnet_top2.cpp
 
 
 # set_top rpn_top
@@ -44,7 +44,7 @@ add_files -tb ./test_top_resnet.cpp
 
 
 open_solution "solution1" -flow_target vivado
-set_part {xczu9eg-ffvb1156-2-e}
+set_part {xc7z020clg400-1}
 create_clock -period 10 -name default
 
 ## C simulation

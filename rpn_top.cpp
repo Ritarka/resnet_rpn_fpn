@@ -34,17 +34,12 @@ wt_t rpn_weight_buf_7x7[RPN_IN_BUF_CH][7][7];
 wt_t rpn_param_buf[RPN_OUT_BUF_CH];
 
 
-
-
-
-
 void rpn_top(
     
     //Inputs to RPN
     fm_t rpn_input0_fm[RPN_CONV_IN_CH][RPN_INPUT0_IN_FM_HEIGHT][RPN_INPUT0_IN_FM_WIDTH],
     fm_t rpn_input1_fm[RPN_CONV_IN_CH][RPN_INPUT1_IN_FM_HEIGHT][RPN_INPUT1_IN_FM_WIDTH],
     fm_t rpn_input2_fm[RPN_CONV_IN_CH][RPN_INPUT2_IN_FM_HEIGHT][RPN_INPUT2_IN_FM_WIDTH],
-
 
     //Weights and Bias for convolutions
     wt_t rpn_conv_weight[RPN_CONV_OUT_CH][RPN_CONV_IN_CH][3][3],
@@ -63,16 +58,12 @@ void rpn_top(
     fm_t rpn_output1_reg_fm[RPN_REG_OUT_CH][RPN_INPUT1_IN_FM_HEIGHT][RPN_INPUT1_IN_FM_WIDTH],
     fm_t rpn_output2_reg_fm[RPN_REG_OUT_CH][RPN_INPUT2_IN_FM_HEIGHT][RPN_INPUT2_IN_FM_WIDTH],
 
-
-
     fm_t rpn_output0_fm[RPN_CONV_IN_CH][RPN_INPUT0_IN_FM_HEIGHT][RPN_INPUT0_IN_FM_WIDTH],
     fm_t rpn_output1_fm[RPN_CONV_IN_CH][RPN_INPUT1_IN_FM_HEIGHT][RPN_INPUT1_IN_FM_WIDTH],
     fm_t rpn_output2_fm[RPN_CONV_IN_CH][RPN_INPUT2_IN_FM_HEIGHT][RPN_INPUT2_IN_FM_WIDTH]
-    
-
 )
 {
-    std::cout << "Begin processing RPN CONV 0..." << std::endl;
+    // std::cout << "Begin processing RPN CONV 0..." << std::endl;
     
 
     for(int c = 0; c < RPN_CONV_IN_CH; c++)
@@ -109,7 +100,7 @@ void rpn_top(
     }
 
 
-    std::cout << "Begin processing RPN CONV 1..." << std::endl;
+    // std::cout << "Begin processing RPN CONV 1..." << std::endl;
 
     for(int c = 0; c < RPN_CONV_IN_CH; c++)
     {
@@ -144,7 +135,7 @@ void rpn_top(
 
 
 
-    std::cout << "Begin processing RPN CONV 2..." << std::endl;
+    // std::cout << "Begin processing RPN CONV 2..." << std::endl;
 
 
     for(int c = 0; c < RPN_CONV_IN_CH; c++)
@@ -185,7 +176,7 @@ void rpn_top(
 
 
 
-    std::cout << "Begin processing RPN CLS 0..." << std::endl;
+    // std::cout << "Begin processing RPN CLS 0..." << std::endl;
 
 
 
@@ -225,7 +216,7 @@ void rpn_top(
     }
 
 
-    std::cout << "Begin processing RPN CLS 1..." << std::endl;
+    // std::cout << "Begin processing RPN CLS 1..." << std::endl;
 
 
 
@@ -260,7 +251,7 @@ void rpn_top(
         }
     }
 
-    std::cout << "Begin processing RPN CLS 2..." << std::endl;
+    // std::cout << "Begin processing RPN CLS 2..." << std::endl;
 
     for(int c = 0; c < RPN_CONV_IN_CH; c++)
     {
@@ -300,7 +291,7 @@ void rpn_top(
 
 
 
-    std::cout << "Begin processing RPN REG 0..." << std::endl;
+    // std::cout << "Begin processing RPN REG 0..." << std::endl;
 
 
 
@@ -337,7 +328,7 @@ void rpn_top(
     }
 
 
-    std::cout << "Begin processing RPN REG 1..." << std::endl;
+    // std::cout << "Begin processing RPN REG 1..." << std::endl;
 
 
 
@@ -374,7 +365,7 @@ void rpn_top(
     }
 
 
-    std::cout << "Begin processing RPN REG 2..." << std::endl;
+    // std::cout << "Begin processing RPN REG 2..." << std::endl;
 
 
 
@@ -423,7 +414,7 @@ void rpn_top(
     //Sorting topk indices for anchor0
     // rpn_anchor0_cls_fm=>scores
 
-   std::cout << "Begin processing RPN Anchor Gen 0..." << std::endl;
+   // std::cout << "Begin processing RPN Anchor Gen 0..." << std::endl;
 
 
     bool flag0[RPN_CLS_OUT_CH*RPN_INPUT0_IN_FM_HEIGHT*RPN_INPUT0_IN_FM_WIDTH]={false};
@@ -446,7 +437,7 @@ void rpn_top(
     }
 
 
-   std::cout << "Begin processing RPN Anchor Gen 1..." << std::endl;
+   // std::cout << "Begin processing RPN Anchor Gen 1..." << std::endl;
 
 
     bool flag1[RPN_CLS_OUT_CH*RPN_INPUT1_IN_FM_HEIGHT*RPN_INPUT1_IN_FM_WIDTH]={false};
@@ -468,7 +459,7 @@ void rpn_top(
     }
 
 
-   std::cout << "Begin processing RPN Anchor Gen 2..." << std::endl;
+   // std::cout << "Begin processing RPN Anchor Gen 2..." << std::endl;
 
 
 
@@ -490,19 +481,4 @@ void rpn_top(
             rpn_topk_index2[i]=index;
             flag2[index]=true;
     }
-
-
-    // //----------------------------------------------------------------------
-    // // PRE NMS WORK: Converting BBoxesPred to Original Size Bbox
-    // //----------------------------------------------------------------------
-
-
-
-    // //----------------------------------------------------------------------
-    // // NMS 
-    // //----------------------------------------------------------------------
-
-
-
-    
 }

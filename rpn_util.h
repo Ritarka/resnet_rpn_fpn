@@ -22,9 +22,6 @@ extern fm_t rpn_partial_out_fm_buf[RPN_OUT_BUF_CH][RPN_OUT_BUF_ROWS][RPN_OUT_BUF
 extern fm_t rpn_ds_fm_buf[RPN_OUT_BUF_CH][RPN_OUT_BUF_ROWS][RPN_OUT_BUF_COLS];
 
 // TODO: Replace these by pointer-based access to DRAM
-//float rpn_layer_out_fm[N_LAYER4_0_DS_OUT_CH][N_LAYER4_0_FM_HEIGHT][N_LAYER4_0_FM_WIDTH];
-//float rpn_layer_in_fm[N_LAYER4_0_DS_OUT_CH][N_LAYER4_0_FM_HEIGHT][N_LAYER4_0_FM_WIDTH];
-//float ds_fm[N_LAYER4_0_DS_OUT_CH][N_LAYER4_0_FM_HEIGHT][N_LAYER4_0_FM_WIDTH];
 extern fm_t rpn_layer_out_fm[2048][184][320];
 extern fm_t rpn_layer_in_fm[2048][184][320];
 

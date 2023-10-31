@@ -63,10 +63,10 @@ rpn_conv_3x3.o:./rpn_conv_3x3.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 rpn_top.o:./rpn_top.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-rpn_top2.o:./rpn_top2.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# rpn_top2.o:./rpn_top2.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 
-test_top.o: ./test_top.cpp
+test_top_rpn.o: ./test_top_rpn.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 
 ##TO BE MODIFIED END
@@ -96,9 +96,9 @@ IP_DEP+=rpn_conv_3x3.o
 IP_DEP+=rpn_top.o
 IP_DEP+=rpn_top2.o
 
-IP_DEP+=test_top.o
+IP_DEP+=test_top_rpn.o
 
-main.o:./tb_test_top.cpp
+main.o:./tb_test_top_rpn.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -I "${ASSEMBLE_SRC_ROOT}" -o $@  -c $^   -MMD $(IFLAG)
 
 csim.out: main.o $(IP_DEP)
@@ -111,11 +111,17 @@ synth:
 synth_resnet:
 	vitis_hls script_resnet.tcl
 
+synth_resnet2:
+	vitis_hls script_resnet2.tcl
+
 synth_fpn:
 	vitis_hls script_fpn.tcl
 
 synth_rpn:
 	vitis_hls script_rpn.tcl
+
+synth_rpn2:
+	vitis_hls script_rpn2.tcl
 
 clean:
 	rm -f -r csim.d 
