@@ -1,5 +1,5 @@
 #include "hls_stream.h"
-#include "qdtrack.h"
+#include "qdtrack_resnet2.h"
 
 //template<const int S>
 void resnet_conv_7x7 (
@@ -9,9 +9,10 @@ void resnet_conv_7x7 (
         int f
 )
 {
-    //#pragma HLS array_partition variable=out_fm dim=1 complete
-    //#pragma HLS array_partition variable=in_fm dim=1 complete
-    //#pragma HLS array_partition variable=wt_buf dim=1 complete
+    // #pragma HLS array_partition variable=out_fm dim=1 complete
+    // #pragma HLS array_partition variable=in_fm dim=1 complete
+    // #pragma HLS array_partition variable=wt_buf dim=1 complete
+
     int S = 2; // Stride TODO: Template
 
     // For each row in stride steps
