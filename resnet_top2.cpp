@@ -11,10 +11,6 @@ fm_t resnet_layer_out_fm[2048][184][320];
 fm_t resnet_layer_in_fm[2048][184][320];
 fm_t ds_fm[2048][184][320];
 
-// fm_t resnet_layer0_in_fm [RESNET_LAYER0_CONV1_IN_CH][RESNET_LAYER0_IN_FM_HEIGHT][RESNET_LAYER0_IN_FM_WIDTH];
-// fm_t resnet_layer0_mx_fm [RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_MX_FM_HEIGHT][RESNET_LAYER0_MX_FM_WIDTH];
-// fm_t resnet_layer0_out_fm[RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_OUT_FM_HEIGHT][RESNET_LAYER0_OUT_FM_WIDTH];
-
 wt_t weight_buf_1x1[RESNET_IN_BUF_CH];
 wt_t weight_buf_3x3[RESNET_IN_BUF_CH][3][3];
 wt_t weight_buf_7x7[RESNET_IN_BUF_CH][7][7];
