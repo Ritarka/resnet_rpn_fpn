@@ -1,4 +1,4 @@
-#include "qdtrack.h"
+#include "qdtrack_resnet2.h"
 
 void resnet_conv_1x1 (
         fm_t Y_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS], 
@@ -8,10 +8,9 @@ void resnet_conv_1x1 (
         int S
 )
 {
-
-    //#pragma HLS array_partition variable=out_fm dim=1 complete
-    //#pragma HLS array_partition variable=in_fm dim=1 complete
-    //#pragma HLS array_partition variable=wt_buf dim=1 complete
+    // #pragma HLS array_partition variable=out_fm dim=1 complete
+    // #pragma HLS array_partition variable=in_fm dim=1 complete
+    // #pragma HLS array_partition variable=wt_buf dim=1 complete
 
     // For each row in stride steps
     for(int i = 0; i < RESNET_OUT_BUF_ROWS; i=i+S) 

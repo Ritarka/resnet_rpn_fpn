@@ -27,47 +27,61 @@ resnet_conv_3x3.o:./resnet_conv_3x3.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 resnet_conv_7x7.o:./resnet_conv_7x7.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-resnet_top.o:./resnet_top.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# resnet_top.o:./resnet_top.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 resnet_top2.o:./resnet_top2.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# resnet_top3.o:./resnet_top3.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 
-fpn_conv_3x3.o:./fpn_conv_3x3.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_conv_1x1.o:./fpn_conv_1x1.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_tiled_conv_fpn_3.o:./fpn_tiled_conv_fpn_3.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_tiled_conv_fpn_2.o:./fpn_tiled_conv_fpn_2.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_tiled_conv_fpn_1.o:./fpn_tiled_conv_fpn_1.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_tiled_conv_fpn_0.o:./fpn_tiled_conv_fpn_0.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_tiled_conv_lateral_3.o:./fpn_tiled_conv_lateral_3.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_tiled_conv_lateral_2.o:./fpn_tiled_conv_lateral_2.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_tiled_conv_lateral_1.o:./fpn_tiled_conv_lateral_1.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_tiled_conv_lateral_0.o:./fpn_tiled_conv_lateral_0.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_utils.o:./fpn_utils.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-fpn_top.o:./fpn_top.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_conv_3x3.o:./fpn_conv_3x3.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_conv_1x1.o:./fpn_conv_1x1.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_tiled_conv_fpn_3.o:./fpn_tiled_conv_fpn_3.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_tiled_conv_fpn_2.o:./fpn_tiled_conv_fpn_2.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_tiled_conv_fpn_1.o:./fpn_tiled_conv_fpn_1.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_tiled_conv_fpn_0.o:./fpn_tiled_conv_fpn_0.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_tiled_conv_lateral_3.o:./fpn_tiled_conv_lateral_3.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_tiled_conv_lateral_2.o:./fpn_tiled_conv_lateral_2.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_tiled_conv_lateral_1.o:./fpn_tiled_conv_lateral_1.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_tiled_conv_lateral_0.o:./fpn_tiled_conv_lateral_0.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_utils.o:./fpn_utils.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# fpn_top.o:./fpn_top.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 
-rpn_conv_1x1.o:./rpn_conv_1x1.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-rpn_conv_3x3.o:./rpn_conv_3x3.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-rpn_top.o:./rpn_top.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# rpn_conv_1x1.o:./rpn_conv_1x1.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# rpn_conv_3x3.o:./rpn_conv_3x3.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# rpn_top.o:./rpn_top.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 # rpn_top2.o:./rpn_top2.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 
-test_top_rpn.o: ./test_top_rpn.cpp
+# test_top_resnet.o: ./test_top_resnet.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+test_top_resnet2.o: ./test_top_resnet2.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# test_top_resnet3.o: ./test_top_resnet3.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# test_top_fpn.o: ./test_top_fpn.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# test_top_rpn.o: ./test_top_rpn.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# test_top_rpn2.o: ./test_top_rpn2.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# test_top.o: ./test_top.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 
 ##TO BE MODIFIED END
 
@@ -75,30 +89,37 @@ IP_DEP+=resnet_conv_1x1.o
 IP_DEP+=resnet_conv_3x3.o
 IP_DEP+=resnet_conv_7x7.o
 IP_DEP+=resnet_batchnorm.o
-IP_DEP+=resnet_top.o
+# IP_DEP+=resnet_top.o
 IP_DEP+=resnet_top2.o
+# IP_DEP+=resnet_top3.o
 
-IP_DEP+=fpn_conv_3x3.o
-IP_DEP+=fpn_conv_1x1.o
-IP_DEP+=fpn_tiled_conv_fpn_3.o
-IP_DEP+=fpn_tiled_conv_fpn_2.o
-IP_DEP+=fpn_tiled_conv_fpn_1.o
-IP_DEP+=fpn_tiled_conv_fpn_0.o
-IP_DEP+=fpn_tiled_conv_lateral_3.o
-IP_DEP+=fpn_tiled_conv_lateral_2.o
-IP_DEP+=fpn_tiled_conv_lateral_1.o
-IP_DEP+=fpn_tiled_conv_lateral_0.o
-IP_DEP+=fpn_utils.o
-IP_DEP+=fpn_top.o
+# IP_DEP+=fpn_conv_3x3.o
+# IP_DEP+=fpn_conv_1x1.o
+# IP_DEP+=fpn_tiled_conv_fpn_3.o
+# IP_DEP+=fpn_tiled_conv_fpn_2.o
+# IP_DEP+=fpn_tiled_conv_fpn_1.o
+# IP_DEP+=fpn_tiled_conv_fpn_0.o
+# IP_DEP+=fpn_tiled_conv_lateral_3.o
+# IP_DEP+=fpn_tiled_conv_lateral_2.o
+# IP_DEP+=fpn_tiled_conv_lateral_1.o
+# IP_DEP+=fpn_tiled_conv_lateral_0.o
+# IP_DEP+=fpn_utils.o
+# IP_DEP+=fpn_top.o
 
-IP_DEP+=rpn_conv_1x1.o
-IP_DEP+=rpn_conv_3x3.o
-IP_DEP+=rpn_top.o
-IP_DEP+=rpn_top2.o
+# IP_DEP+=rpn_conv_1x1.o
+# IP_DEP+=rpn_conv_3x3.o
+# IP_DEP+=rpn_top.o
+# IP_DEP+=rpn_top2.o
 
-IP_DEP+=test_top_rpn.o
+# IP_DEP+=test_top_resnet.o
+IP_DEP+=test_top_resnet2.o
+# IP_DEP+=test_top_resnet3.o
+# IP_DEP+=test_top_fpn.o
+# IP_DEP+=test_top_rpn.o
+# IP_DEP+=test_top_rpn2.o
+# IP_DEP+=test_top.o
 
-main.o:./tb_test_top_rpn.cpp
+main.o:./tb_test_top_resnet2.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -I "${ASSEMBLE_SRC_ROOT}" -o $@  -c $^   -MMD $(IFLAG)
 
 csim.out: main.o $(IP_DEP)
@@ -113,6 +134,12 @@ synth_resnet:
 
 synth_resnet2:
 	vitis_hls script_resnet2.tcl
+
+synth_resnet3:
+	vitis_hls script_resnet3.tcl
+
+synth_resnet4:
+	vitis_hls script_resnet4.tcl
 
 synth_fpn:
 	vitis_hls script_fpn.tcl
