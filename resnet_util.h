@@ -10,9 +10,6 @@ extern fm_t partial_out_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OU
 extern fm_t ds_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS];
 
 // TODO: Replace these by pointer-based access to DRAM
-//float resnet_layer_out_fm[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH];
-//float resnet_layer_in_fm[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH];
-//float ds_fm[RESNET_LAYER4_0_DS_OUT_CH][RESNET_LAYER4_0_FM_HEIGHT][RESNET_LAYER4_0_FM_WIDTH];
 extern fm_t resnet_layer_out_fm[2048][184][320];
 extern fm_t resnet_layer_in_fm[2048][184][320];
 extern fm_t ds_fm[2048][184][320];

@@ -56,31 +56,6 @@
 #define RESNET_LAYER1_0_DS_IN_CH    64
 #define RESNET_LAYER1_0_DS_OUT_CH  256
 
-// #define RESNET_LAYER1_0_CONV1_IN_CH    64
-// #define RESNET_LAYER1_0_CONV1_OUT_CH   64
-// #define RESNET_LAYER1_0_CONV2_IN_CH    64
-// #define RESNET_LAYER1_0_CONV2_OUT_CH   64
-// #define RESNET_LAYER1_0_CONV3_IN_CH    64
-// #define RESNET_LAYER1_0_CONV3_OUT_CH  256
-
-// #define RESNET_LAYER1_CONV1_IN_CH   256
-// #define RESNET_LAYER1_CONV1_OUT_CH   64
-// #define RESNET_LAYER1_CONV2_IN_CH    64
-// #define RESNET_LAYER1_CONV2_OUT_CH   64
-// #define RESNET_LAYER1_CONV3_IN_CH    64
-// #define RESNET_LAYER1_CONV3_OUT_CH  256
-
-// //--------------------------------------------------------------------------
-// // Layer 1: Block-wise stride parameters
-// //--------------------------------------------------------------------------
-// #define RESNET_LAYER1_0_DS_STRIDE     1
-// #define RESNET_LAYER1_0_CONV1_STRIDE  1
-// #define RESNET_LAYER1_0_CONV2_STRIDE  1
-// #define RESNET_LAYER1_0_CONV3_STRIDE  1
-// #define RESNET_LAYER1_CONV1_STRIDE    1
-// #define RESNET_LAYER1_CONV2_STRIDE    1
-// #define RESNET_LAYER1_CONV3_STRIDE    1
-
 //--------------------------------------------------------------------------
 // Layer 2: Sizes of botteleck layers' input feature maps
 //--------------------------------------------------------------------------

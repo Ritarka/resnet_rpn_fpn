@@ -1,5 +1,5 @@
 #include "hls_stream.h"
-#include "qdtrack_resnet2.h"
+#include "qdtrack_resnet3.h"
 
 //template<const int S>
 void resnet_conv_7x7 (
@@ -27,7 +27,7 @@ void resnet_conv_7x7 (
             Y_buf[f][i/S][j/S] = 0.0;
 
             // For each channel (pipelined)
-	        for(int c = 0; c < RESNET_LAYER0_CONV1_IN_CH; c++)
+	        for(int c = 0; c < 3; c++)
             {
                 // Perform convolution operation (i.e. element-wise MAC)
                 for(int m = i; m < i + 7; m++) // Kernel height = 7

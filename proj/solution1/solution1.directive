@@ -1,8 +1,8 @@
 <AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView">
     <sourceFile name="">
-        <directive functionName="resnet_top_2" label="" functionLabel="">
+        <directive functionName="resnet_top_3" label="" functionLabel="">
             <pragma name="TOP">
-                <option name="name" value="resnet_top_2"/>
+                <option name="name" value="resnet_top_3"/>
             </pragma>
         </directive>
     </sourceFile>

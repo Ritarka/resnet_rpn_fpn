@@ -85,9 +85,6 @@ wt_t    fixp_layer1_2_bn3_params[3][RESNET_LAYER1_CONV3_OUT_CH];
 //--------------------------------------------------------------------------
 float   golden_maxpool_out[RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_OUT_FM_HEIGHT][RESNET_LAYER0_OUT_FM_WIDTH];
 float   golden_layer1_2_bn3_relu_out[RESNET_LAYER1_CONV3_OUT_CH][RESNET_LAYER1_FM_HEIGHT][RESNET_LAYER1_FM_WIDTH];
-// float   golden_layer2_3_bn3_relu_out[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_FM_HEIGHT][RESNET_LAYER2_FM_WIDTH];
-// float   golden_layer3_5_bn3_relu_out[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_FM_HEIGHT][RESNET_LAYER3_FM_WIDTH];
-// float   golden_layer4_2_bn3_relu_out[RESNET_LAYER4_CONV3_OUT_CH][RESNET_LAYER4_FM_HEIGHT][RESNET_LAYER4_FM_WIDTH];
 
 
 void resnet_load_weights()
