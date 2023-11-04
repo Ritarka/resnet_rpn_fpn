@@ -1,4 +1,4 @@
-#include "qdtrack_resnet3.h"
+#include "qdtrack_resnet0.h"
 
 void resnet_conv_1x1 (
         fm_t Y_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS], 
@@ -8,26 +8,43 @@ void resnet_conv_1x1 (
         int S
 )
 {
-    // #pragma HLS array_partition variable=out_fm dim=1 complete
-    // #pragma HLS array_partition variable=in_fm dim=1 complete
-    // #pragma HLS array_partition variable=wt_buf dim=1 complete
-
     // For each row in stride steps
-    for(int i = 0; i < RESNET_OUT_BUF_ROWS; i=i+S) 
+    for (int i = 0; i < RESNET_OUT_BUF_ROWS; i += S)
     {
         // For each column in stride steps
-        for(int j = 0; j < RESNET_OUT_BUF_COLS; j=j+S) 
+        for (int j = 0; j < RESNET_OUT_BUF_COLS; j += S)
         {
             // Clear output buffer
-            Y_buf[f][i/S][j/S] = 0.0;
+            Y_buf[f][i / S][j / S] = 0.0;
 
             // For each channel (pipelined)
-	        for(int c = 0; c < RESNET_OUT_BUF_CH; c++)
+            CHANNEL:
+            for (int c = 0; c < RESNET_OUT_BUF_CH; c++)
             {
-                // Perform convolution operation (i.e. element-wise MAC)
+                // Perform convolution operation (i.e., element-wise MAC)
                 // Stride = S
-                Y_buf[f][i/S][j/S] += X_buf[c][i][j] * W_buf[c]; 
+                Y_buf[f][i / S][j / S] += X_buf[c][i][j] * W_buf[c];
             }
         }
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////////
+    // // For each row in stride steps
+    // for(int i = 0; i < RESNET_OUT_BUF_ROWS; i=i+S) 
+    // {
+    //     // For each column in stride steps
+    //     for(int j = 0; j < RESNET_OUT_BUF_COLS; j=j+S) 
+    //     {
+    //         // Clear output buffer
+    //         Y_buf[f][i/S][j/S] = 0.0;
+
+    //         // For each channel (pipelined)
+	//         for(int c = 0; c < RESNET_OUT_BUF_CH; c++)
+    //         {
+    //             // Perform convolution operation (i.e. element-wise MAC)
+    //             // Stride = S
+    //             Y_buf[f][i/S][j/S] += X_buf[c][i][j] * W_buf[c]; 
+    //         }
+    //     }
+    // }
 }

@@ -1,5 +1,5 @@
-#include "qdtrack.h"
-#include "resnet_util.h"
+#include "qdtrack_resnet0.h"
+#include "resnet_util0.h"
 
 void resnet_layer0(
         fm_t   resnet_layer0_input_fm[RESNET_LAYER0_CONV1_IN_CH][RESNET_LAYER0_IN_FM_HEIGHT][RESNET_LAYER0_IN_FM_WIDTH],
@@ -9,7 +9,6 @@ void resnet_layer0(
 )
 {
     //TODO: Update with pointer-based loading of input feature map
-    //std::cout << RESNET_LAYER0_CONV1_IN_CH << "\t" << RESNET_LAYER0_IN_FM_HEIGHT << "\t" << RESNET_LAYER0_IN_FM_WIDTH << std::endl;
 
     for(int c = 0; c < RESNET_LAYER0_CONV1_IN_CH; c++)
     {
@@ -17,7 +16,6 @@ void resnet_layer0(
         {
             for(int w = 0; w < RESNET_LAYER0_IN_FM_WIDTH; w++)
             {
-                //resnet_layer0_in_fm[c][h][w] = (float) resnet_layer0_input_fm[c][h][w];
                 resnet_layer0_in_fm[c][h][w] = resnet_layer0_input_fm[c][h][w];
             }
         }
@@ -36,7 +34,6 @@ void resnet_layer0(
     {
         for(int tj = 0; tj < (RESNET_LAYER0_IN_FM_WIDTH / RESNET_IN_BUF_COLS); tj++)
         {
-            //std::cout << ti << "," << tj << std::endl;
             std::cout << "Processing Tile " << ti*(RESNET_LAYER0_IN_FM_WIDTH / RESNET_IN_BUF_COLS) + tj + 1;
             std::cout << "/" << num_of_tiles << std::endl;
             
@@ -58,16 +55,9 @@ void resnet_layer0(
 	        	        {
 	        	            in_fm_buf[c][i][j] = 0.0;
 	        	        }
-                        // For an input feature map smaller than buffer size, pad zero
-                        // at at the bottom of the feature map
-                        //else if(RESNET_LAST_LAYER_EN && (i > (RESNET_IN_BUF_ROWS/2) + P - 1)) // Assumes buffer height is even
-	        	        //{
-	        	        //    in_fm_buf[c][i][j] = 0.0;
-	        	        //}
                         // Copy the input feature map elements otherwise
 	        	        else
 	        	        {
-	        	            //in_fm_buf[c][i][j] = (float) resnet_layer0_in_fm[c][ti*RESNET_IN_BUF_ROWS + i - P][tj*RESNET_IN_BUF_COLS + j - P];
 	        	            in_fm_buf[c][i][j] = (fm_t) resnet_layer0_in_fm[c][ti*RESNET_IN_BUF_ROWS + i - P][tj*RESNET_IN_BUF_COLS + j - P];
 	        	        }
                     }
@@ -91,14 +81,11 @@ void resnet_layer0(
                 // Perform convolution
                 resnet_conv_7x7(out_fm_buf, in_fm_buf, weight_buf_7x7, f);
 	        }
-            
-            //std::cout << "Before batchnorm" << std::endl;
             // Load BatchNorm params
             resnet_load_batchnorm_params<RESNET_LAYER0_CONV1_OUT_CH>(param_buf, resnet_layer0_bn1_params, 0);
 
 	        // BatchNorm
 	        resnet_batchnorm(out_fm_buf, param_buf, true);
-            //std::cout << "After batchnorm" << std::endl;
             
             // Store to DDR
             for(int f = 0; f < RESNET_OUT_BUF_CH; f++)
@@ -144,7 +131,6 @@ void resnet_layer0(
 		               }
                        else
                        {
-                           //in_fm_buf[c][i][j] = (float) resnet_layer0_mx_fm[c][ti*RESNET_IN_BUF_ROWS + i - P][tj*RESNET_IN_BUF_COLS + j - P];
                            in_fm_buf[c][i][j] = (fm_t) resnet_layer0_mx_fm[c][ti*RESNET_IN_BUF_ROWS + i - P][tj*RESNET_IN_BUF_COLS + j - P];
                        }
                    }
