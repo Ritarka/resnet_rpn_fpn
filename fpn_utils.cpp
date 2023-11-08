@@ -1,4 +1,4 @@
-#include "fpn.h"
+#include "fpn0.h"
 
 template<const int fm_input_depth,const int fm_input_height,const int fm_input_width,const int N_TILE_ROWS,const int N_TILE_COLS>
 void fpn_load_input_tile_block_from_DRAM_3x3 (
@@ -9,40 +9,68 @@ void fpn_load_input_tile_block_from_DRAM_3x3 (
     int  d
 )
 {
-    const int depth_offset  =  d * FPN_IN_BUF_CH;
-    const int height_offset = ti * FPN_OUT_BUF_ROWS; // OUT_BUF is intended, not a typo. 
-    const int width_offset  = tj * FPN_OUT_BUF_COLS;
-        
-    INPUT_BUFFER_DEPTH:
-    for(int c = 0; c < FPN_IN_BUF_CH; c++)
+    const int depth_offset = d * FPN_IN_BUF_CH;
+    const int height_offset = ti * FPN_OUT_BUF_ROWS; // OUT_BUF is intended, not a typo.
+    const int width_offset = tj * FPN_OUT_BUF_COLS;
+
+    for (int c = 0; c < FPN_IN_BUF_CH; c++)
     {
-        INPUT_BUFFER_HEIGHT:
-        for(int i = 0; i < FPN_IN_BUF_ROWS+2; i++)
+        for (int i = 0; i < FPN_IN_BUF_ROWS + 2; i++)
         {
-            INPUT_BUFFER_WIDTH:
-            for(int j = 0; j < FPN_IN_BUF_COLS+2; j++)
+            for (int j = 0; j < FPN_IN_BUF_COLS + 2; j++)
             {
-                // For tile cubes in the first column and/or the first row, 
-                // pad zero to the left and/or at the top (similar to Part A)
-                if((ti == 0 && i < 1) || (tj == 0 && j < 1))
-		        {
-		            in_fm_buf[c][i][j] = (fm_t) 0;
-		        }
-                // For tile cubes in the last column and/or the last row, 
-                // pad zero to the right and/or at the bottom (similar to Part A)
-                else if(((ti == N_TILE_ROWS - 1) && (i > FPN_OUT_BUF_ROWS)) 
-                     || ((tj == N_TILE_COLS - 1) && (j > FPN_OUT_BUF_COLS)))
-		        {
-		            in_fm_buf[c][i][j] = (fm_t) 0;
-		        }
-                // For all other tiles, copy each feature as is from input feature map
-		        else
-		        {
-                    in_fm_buf[c][i][j] = in_fm[depth_offset + c][height_offset + i - 1][width_offset + j - 1];
-		        }
+                // Calculate the source coordinates from the input feature map
+                int src_height = height_offset + i - 1;
+                int src_width = width_offset + j - 1;
+
+                // Check if the source coordinates are within valid bounds
+                if (src_height >= 0 && src_height < fm_input_height && src_width >= 0 && src_width < fm_input_width)
+                {
+                    in_fm_buf[c][i][j] = in_fm[depth_offset + c][src_height][src_width];
+                }
+                else
+                {
+                    in_fm_buf[c][i][j] = (fm_t)0;
+                }
             }
         }
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // const int depth_offset  =  d * FPN_IN_BUF_CH;
+    // const int height_offset = ti * FPN_OUT_BUF_ROWS; // OUT_BUF is intended, not a typo. 
+    // const int width_offset  = tj * FPN_OUT_BUF_COLS;
+        
+    // INPUT_BUFFER_DEPTH:
+    // for(int c = 0; c < FPN_IN_BUF_CH; c++)
+    // {
+    //     INPUT_BUFFER_HEIGHT:
+    //     for(int i = 0; i < FPN_IN_BUF_ROWS+2; i++)
+    //     {
+    //         INPUT_BUFFER_WIDTH:
+    //         for(int j = 0; j < FPN_IN_BUF_COLS+2; j++)
+    //         {
+    //             // For tile cubes in the first column and/or the first row, 
+    //             // pad zero to the left and/or at the top (similar to Part A)
+    //             if((ti == 0 && i < 1) || (tj == 0 && j < 1))
+	// 	        {
+	// 	            in_fm_buf[c][i][j] = (fm_t) 0;
+	// 	        }
+    //             // For tile cubes in the last column and/or the last row, 
+    //             // pad zero to the right and/or at the bottom (similar to Part A)
+    //             else if(((ti == N_TILE_ROWS - 1) && (i > FPN_OUT_BUF_ROWS)) 
+    //                  || ((tj == N_TILE_COLS - 1) && (j > FPN_OUT_BUF_COLS)))
+	// 	        {
+	// 	            in_fm_buf[c][i][j] = (fm_t) 0;
+	// 	        }
+    //             // For all other tiles, copy each feature as is from input feature map
+	// 	        else
+	// 	        {
+    //                 in_fm_buf[c][i][j] = in_fm[depth_offset + c][height_offset + i - 1][width_offset + j - 1];
+	// 	        }
+    //         }
+    //     }
+    // }
 }
 template<const int fm_input_depth,const int fm_input_height,const int fm_input_width,const int N_TILE_ROWS,const int N_TILE_COLS>
 void fpn_load_input_tile_block_from_DRAM_1x1 (
@@ -219,39 +247,3 @@ void fpn_store_output_tile_to_DRAM (
         }
     }
 }
-
-//Function to store outputs to DRAM
-//template<const int fm_output_depth,const int fm_output_height,const int fm_output_width>
-//void store_output_tile_to_DRAM (
-//    fm_t out_fm[fm_output_depth][fm_output_height][fm_output_width], 
-//    fm_t out_fm_buf[FPN_OUT_BUF_CH][FPN_OUT_BUF_ROWS][FPN_OUT_BUF_COLS],
-//    wt_t bias_buf[FPN_OUT_BUF_CH],
-//    int  ti,
-//    int  tj,
-//    int  b,
-//    int  d
-//)
-//{
-//    const int depth_offset  =  b * FPN_OUT_BUF_CH;
-//    const int height_offset = ti * FPN_OUT_BUF_ROWS;
-//    const int width_offset  = tj * FPN_OUT_BUF_COLS;
-//
-//    OUTPUT_BUFFER_DEPTH:
-//    for(int f = 0; f < FPN_OUT_BUF_CH; f++)
-//    {
-//        OUTPUT_BUFFER_HEIGHT:
-//        for(int i = 0; i < FPN_OUT_BUF_ROWS; i++)
-//        {
-//            OUTPUT_BUFFER_WIDTH:
-//            for(int j = 0; j < FPN_OUT_BUF_COLS; j++)
-//            {
-//		if(d == 0){ 	// Initialize buffer for first kernel group and add bias
-//			out_fm[depth_offset + f][height_offset + i][width_offset + j] = out_fm_buf[f][i][j] + bias_buf[f];
-//		}	
-//		else{		// Accumulate otherwise
-//              		out_fm[depth_offset + f][height_offset + i][width_offset + j] += out_fm_buf[f][i][j];
-//		}
-//            }
-//        }
-//    }
-//}

@@ -9,45 +9,86 @@ void resnet_conv_7x7 (
         int f
 )
 {
-    const int S = 2; // Stride
+    int S = 2; // Stride
 
-    // Loop over rows in stride steps
+    // Local accumulators for each channel
+    fm_t local_accum[RESNET_OUT_BUF_CH];
+#pragma HLS array_partition variable=local_accum complete
+
+    // For each row in stride steps
     for (int i = 0; i < RESNET_OUT_BUF_ROWS; i += S)
     {
-        // Loop over columns in stride steps
+        // For each column in stride steps
         for (int j = 0; j < RESNET_OUT_BUF_COLS; j += S)
         {
-            // Clear output buffer
-            Y_buf[f][i / S][j / S] = 0.0;
-
-            // Loop over channels (pipelined)
-            CHANNEL:
-            for (int c = 0; c < 3; c++)
+#pragma HLS pipeline
+            // Initialize local accumulators to zero
+            for (int c = 0; c < RESNET_OUT_BUF_CH; c++)
             {
-                // Unroll the kernel computation loops for height and width to increase parallelism
-                for (int m = i; m < i + 7; m += 1) // Kernel height = 7
+                local_accum[c] = 0.0;
+            }
+
+            // Perform convolution operation (i.e., element-wise MAC)
+            for (int m = i; m < i + 7; m++)
+            {
+                for (int n = j; n < j + 7; n++)
                 {
-                    for (int n = j; n < j + 7; n += 1) // Kernel width = 7
+                    // For each channel (pipelined)
+                    for (int c = 0; c < RESNET_OUT_BUF_CH; c++)
                     {
-                        // Temporary variables to accumulate results
-                        fm_t temp_result = 0.0;
-
-                        // Element-wise MAC operations
-                        for (int mi = 0; mi < 7; mi++)
-                        {
-                            for (int ni = 0; ni < 7; ni++)
-                            {
-                                temp_result += X_buf[c][m + mi][n + ni] * W_buf[c][mi][ni];
-                            }
-                        }
-
-                        // Accumulate the result into the output buffer
-                        Y_buf[f][i / S][j / S] += temp_result;
+                        local_accum[c] += X_buf[c][m][n] * W_buf[c][m - i][n - j];
                     }
                 }
             }
+
+            // Assign the local accumulators to the output buffer
+            for (int c = 0; c < RESNET_OUT_BUF_CH; c++)
+            {
+                Y_buf[f][i / S][j / S] = local_accum[c];
+            }
         }
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    // const int S = 2; // Stride
+
+    // // Loop over rows in stride steps
+    // for (int i = 0; i < RESNET_OUT_BUF_ROWS; i += S)
+    // {
+    //     // Loop over columns in stride steps
+    //     for (int j = 0; j < RESNET_OUT_BUF_COLS; j += S)
+    //     {
+    //         // Clear output buffer
+    //         Y_buf[f][i / S][j / S] = 0.0;
+
+    //         // Loop over channels (pipelined)
+    //         CHANNEL:
+    //         for (int c = 0; c < 3; c++)
+    //         {
+    //             // Unroll the kernel computation loops for height and width to increase parallelism
+    //             for (int m = i; m < i + 7; m += 1) // Kernel height = 7
+    //             {
+    //                 for (int n = j; n < j + 7; n += 1) // Kernel width = 7
+    //                 {
+    //                     // Temporary variables to accumulate results
+    //                     fm_t temp_result = 0.0;
+
+    //                     // Element-wise MAC operations
+    //                     for (int mi = 0; mi < 7; mi++)
+    //                     {
+    //                         for (int ni = 0; ni < 7; ni++)
+    //                         {
+    //                             temp_result += X_buf[c][m + mi][n + ni] * W_buf[c][mi][ni];
+    //                         }
+    //                     }
+
+    //                     // Accumulate the result into the output buffer
+    //                     Y_buf[f][i / S][j / S] += temp_result;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     // const int S = 2; // Stride

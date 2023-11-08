@@ -1,6 +1,4 @@
 #include "qdtrack_resnet0.h"
-//#include <cmath>
-// #include "hls_math.h"
 
 const wt_t EPSILON = 0.00001;
 
@@ -9,58 +7,72 @@ void resnet_batchnorm(
         wt_t bn_params[3][RESNET_OUT_BUF_CH], 
         bool enable_relu)
 {
+// #pragma HLS inline
+// #pragma HLS array_partition variable=feature_map complete dim=1
+// #pragma HLS array_partition variable=bn_params complete dim=1
+
+//     // Precompute constants for each channel
+//     wt_t scale[RESNET_OUT_BUF_CH];
+//     wt_t bias[RESNET_OUT_BUF_CH];
+//     wt_t mean[RESNET_OUT_BUF_CH];
+
+//     LOOP1: for (int k = 0; k < RESNET_OUT_BUF_CH; k++) {
+// #pragma HLS pipeline
+//         scale[k] = bn_params[0][k];
+//         bias[k] = bn_params[1][k];
+//         mean[k] = bn_params[2][k];
+//     }
+
+//     LOOP2: for (int k = 0; k < RESNET_OUT_BUF_CH; k++) {
+//         LOOP3: for (int i = 0; i < RESNET_OUT_BUF_ROWS; i++) {
+//             LOOP4: for (int j = 0; j < RESNET_OUT_BUF_COLS; j++) {
+// #pragma HLS pipeline
+//                 fm_t feature_val = feature_map[k][i][j];
+//                 wt_t scale_val = scale[k];
+//                 wt_t bias_val = bias[k];
+//                 wt_t mean_val = mean[k];
+//                 fm_t normalized_value = (feature_val - mean_val) * scale_val + bias_val;
+//                 if (enable_relu && normalized_value < 0.0) {
+//                     feature_map[k][i][j] = 0.0;
+//                 } else {
+//                     feature_map[k][i][j] = normalized_value;
+//                 }
+//             }
+//         }
+//     }
+    ////////////////////////////////////////////////////////////////////////////////////////
+    #pragma HLS inline off
+
+    wt_t scale[RESNET_OUT_BUF_CH];
+    wt_t bias[RESNET_OUT_BUF_CH];
+    wt_t mean[RESNET_OUT_BUF_CH];
+
+    // Precompute constants for each channel
     for (int k = 0; k < RESNET_OUT_BUF_CH; k++)
     {
-        wt_t scale = bn_params[0][k];
-        wt_t bias = bn_params[1][k];
-        wt_t mean = bn_params[2][k];
+        scale[k] = bn_params[0][k];
+        bias[k] = bn_params[1][k];
+        mean[k] = bn_params[2][k];
+    }
 
+    for (int k = 0; k < RESNET_OUT_BUF_CH; k++)
+    {
         for (int i = 0; i < RESNET_OUT_BUF_ROWS; i++)
         {
             for (int j = 0; j < RESNET_OUT_BUF_COLS; j++)
             {
-                feature_map[k][i][j] = (feature_map[k][i][j] - mean) * scale + bias;
-
-                if (enable_relu && feature_map[k][i][j] < 0.0)
+                fm_t normalized_value = (feature_map[k][i][j] - mean[k]) * scale[k] + bias[k];
+                if (enable_relu && normalized_value < 0.0)
                 {
                     feature_map[k][i][j] = 0.0;
+                }
+                else
+                {
+                    feature_map[k][i][j] = normalized_value;
                 }
             }
         }
     }
-
-    /////////////////////////////////////////////////////////////////////////////////////////////
-    // for (int k = 0; k < RESNET_OUT_BUF_CH; k++)
-    // {
-    //     wt_t scale = bn_params[0][k];
-    //     wt_t bias = bn_params[1][k];
-    //     wt_t mean = bn_params[2][k];
-
-    //     if (enable_relu)
-    //     {
-    //         for (int i = 0; i < RESNET_OUT_BUF_ROWS; i++)
-    //         {
-    //             for (int j = 0; j < RESNET_OUT_BUF_COLS; j++)
-    //             {
-    //                 feature_map[k][i][j] = (feature_map[k][i][j] - mean) * scale + bias;
-    //                 if (feature_map[k][i][j] < 0.0)
-    //                 {
-    //                     feature_map[k][i][j] = 0.0;
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     else
-    //     {
-    //         for (int i = 0; i < RESNET_OUT_BUF_ROWS; i++)
-    //         {
-    //             for (int j = 0; j < RESNET_OUT_BUF_COLS; j++)
-    //             {
-    //                 feature_map[k][i][j] = (feature_map[k][i][j] - mean) * scale + bias;
-    //             }
-    //         }
-    //     }
-    // }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // // Loop unroll factors
@@ -120,17 +132,21 @@ void resnet_add_residual_fm(
         bool enable_relu)
 {
 
-    for (int k = 0; k < RESNET_OUT_BUF_CH; k++)
-    {
-        for (int i = 0; i < RESNET_OUT_BUF_ROWS; i++)
-        {
-            for (int j = 0; j < RESNET_OUT_BUF_COLS; j++)
-            {
+#pragma HLS array_partition variable=feature_map complete dim=1
+#pragma HLS array_partition variable=feature_map complete dim=2
+#pragma HLS array_partition variable=feature_map complete dim=3
+#pragma HLS array_partition variable=residual_map complete dim=1
+#pragma HLS array_partition variable=residual_map complete dim=2
+#pragma HLS array_partition variable=residual_map complete dim=3
+
+    for (int k = 0; k < RESNET_OUT_BUF_CH; k++) {
+        for (int i = 0; i < RESNET_OUT_BUF_ROWS; i++) {
+            for (int j = 0; j < RESNET_OUT_BUF_COLS; j++) {
+#pragma HLS pipeline
                 feature_map[k][i][j] += residual_map[k][i][j];
 
-                if (enable_relu && feature_map[k][i][j] < 0.0)
-                {
-                    feature_map[k][i][j] = 0.0;
+                if (enable_relu) {
+                    feature_map[k][i][j] = (feature_map[k][i][j] > 0.0) ? feature_map[k][i][j] : 0.0;
                 }
             }
         }

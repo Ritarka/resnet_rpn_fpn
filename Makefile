@@ -64,7 +64,7 @@ resnet_top1.o:./resnet_top1.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 # fpn_utils.o:./fpn_utils.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-# fpn_top.o:./fpn_top.cpp
+# fpn_top.o:./fpn_top0.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 
 ########################################################
@@ -92,7 +92,7 @@ test_top_resnet1.o: ./test_top_resnet1.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 # test_top_resnet4.o: ./test_top_resnet4.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-# test_top_fpn.o: ./test_top_fpn.cpp
+# test_top_fpn.o: ./test_top_fpn0.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 # test_top_rpn.o: ./test_top_rpn.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
@@ -179,8 +179,17 @@ synth_resnet4:
 ########################################################
 # FPN LAYERS
 ########################################################
-synth_fpn:
-	vitis_hls script_fpn.tcl
+synth_fpn0:
+	vitis_hls script_fpn0.tcl
+
+synth_fpn1:
+	vitis_hls script_fpn1.tcl
+
+synth_fpn2:
+	vitis_hls script_fpn2.tcl
+
+synth_fpn3:
+	vitis_hls script_fpn3.tcl
 
 ########################################################
 # RPN LAYERS
