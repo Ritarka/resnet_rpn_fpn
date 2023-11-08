@@ -37,8 +37,6 @@ void resnet_load_weights()
     ifs_l0_conv1_param.read((char*)(***resnet_layer0_conv1_weights), RESNET_LAYER0_CONV1_OUT_CH*RESNET_LAYER0_CONV1_IN_CH*7*7*sizeof(float));
     ifs_l0_conv1_param.close();
 
-    //cout << resnet_layer0_conv1_weights[0][0][1][1] << std::endl;
-
     ifstream ifs_l0_bn1_param("/usr/scratch/rsamanta9/bin/resnet_backbone/bn1_params.bin", ios::in | ios::binary);
     ifs_l0_bn1_param.read((char*)(*resnet_layer0_bn1_params), 3*RESNET_LAYER0_CONV1_OUT_CH*sizeof(float));
     ifs_l0_bn1_param.close();

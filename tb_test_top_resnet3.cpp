@@ -122,12 +122,7 @@ wt_t    fixp_layer3_5_bn3_params[3][RESNET_LAYER3_CONV3_OUT_CH];
 //--------------------------------------------------------------------------
 // PyTorch reference outputs
 //--------------------------------------------------------------------------
-// float   golden_maxpool_out[RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_OUT_FM_HEIGHT][RESNET_LAYER0_OUT_FM_WIDTH];
-// float   golden_layer1_2_bn3_relu_out[RESNET_LAYER1_CONV3_OUT_CH][RESNET_LAYER1_FM_HEIGHT][RESNET_LAYER1_FM_WIDTH];
-// float   golden_layer2_3_bn3_relu_out[RESNET_LAYER2_CONV3_OUT_CH][RESNET_LAYER2_FM_HEIGHT][RESNET_LAYER2_FM_WIDTH];
 float   golden_layer3_5_bn3_relu_out[RESNET_LAYER3_CONV3_OUT_CH][RESNET_LAYER3_FM_HEIGHT][RESNET_LAYER3_FM_WIDTH];
-// float   golden_layer4_2_bn3_relu_out[RESNET_LAYER4_CONV3_OUT_CH][RESNET_LAYER4_FM_HEIGHT][RESNET_LAYER4_FM_WIDTH];
-
 
 void resnet_load_weights()
 {
@@ -434,23 +429,6 @@ int main ()
     // Convert floating point weights to fixed-point
     cout << "Converting ResNet-50 params to fixed-point type ..." << endl;
     resnet_convert_weights_type();
-    
-    // // Read input image
-    // ifstream ifs_input_img("/usr/scratch/rsamanta9/bin/resnet_backbone/qdtrack_image0.bin", ios::in | ios::binary);
-    // ifs_input_img.read((char*)(**input_image), 3*736*1280*sizeof(float));
-    // ifs_input_img.close();
-
-    // // Convert input image data to fixed point
-    // for(int c = 0; c < RESNET_LAYER0_CONV1_IN_CH; c++)
-    // {
-    //     for(int h = 0; h < RESNET_LAYER0_IN_FM_HEIGHT; h++)
-    //     {
-    //         for(int w = 0; w < RESNET_LAYER0_IN_FM_WIDTH; w++)
-    //         {
-    //             resnet_layer0_input_fm[c][h][w] = (fm_t) input_image[c][h][w];
-    //         }
-    //     }
-    // }
     
 #ifdef TEST_COMPLETE_MODEL // {
     //----------------------------------------------------------------------

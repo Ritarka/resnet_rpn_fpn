@@ -1,7 +1,4 @@
-//Author : Rohan Banerjee (rbanerjee45@gatech.edu)
-//Description : Tiling convolution for 3x3 layer 3
-
-#include "fpn.h"
+#include "fpn0.h"
 #include "fpn_utils.cpp"
 
 void fpn_tiled_conv_fpn_3 (

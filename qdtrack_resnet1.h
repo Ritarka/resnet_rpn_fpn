@@ -43,19 +43,6 @@
 #define RESNET_LAST_LAYER_ENABLE   1
 #define RESNET_LAST_LAYER_DISABLE  0
 
-// //--------------------------------------------------------------------------
-// // Layer 0: Sizes of botteleck layers' input feature maps
-// //--------------------------------------------------------------------------
-// #define RESNET_LAYER0_IN_FM_HEIGHT    736
-// #define RESNET_LAYER0_IN_FM_WIDTH    1280
-// #define RESNET_LAYER0_MX_FM_HEIGHT    368
-// #define RESNET_LAYER0_MX_FM_WIDTH     640
-// #define RESNET_LAYER0_OUT_FM_HEIGHT   184
-// #define RESNET_LAYER0_OUT_FM_WIDTH    320
-
-// #define RESNET_LAYER0_CONV1_IN_CH     3
-// #define RESNET_LAYER0_CONV1_OUT_CH   64
-
 //--------------------------------------------------------------------------
 // Layer 1: Sizes of botteleck layers' input feature maps
 //--------------------------------------------------------------------------

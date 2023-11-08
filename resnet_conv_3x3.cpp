@@ -9,43 +9,143 @@ void resnet_conv_3x3 (
         int S
 )
 {
-        // Loop over rows in stride steps
-    for (int i = 0; i < RESNET_OUT_BUF_ROWS; i += S)
+    fm_t local_Y[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS];
+#pragma HLS array_partition variable=local_Y dim=1 complete
+#pragma HLS array_partition variable=local_Y dim=2 complete
+#pragma HLS array_partition variable=local_Y dim=3 complete
+
+    // For each row in stride steps
+    for(int i = 0; i < RESNET_OUT_BUF_ROWS; i += S) 
     {
-        // Loop over columns in stride steps
-        for (int j = 0; j < RESNET_OUT_BUF_COLS; j += S)
+        // For each column in stride steps
+        for(int j = 0; j < RESNET_OUT_BUF_COLS; j += S) 
         {
-            // Clear output buffer
-            Y_buf[f][i / S][j / S] = 0.0;
+#pragma HLS pipeline
+            // Initialize local accumulators
+            fm_t local_accum[RESNET_OUT_BUF_CH] = {0.0};
 
-            // Loop over channels (pipelined)
+            // For each channel (pipelined)
             CHANNEL:
-            for (int c = 0; c < RESNET_OUT_BUF_CH; c++)
+            for(int c = 0; c < RESNET_OUT_BUF_CH; c++)
             {
-                // Unroll the kernel computation loops for height and width
-                // to increase parallelism
-                for (int m = 0; m < 3; m++)
+                // Unroll kernel height and width loops
+                KERNEL_HEIGHT:
+                for(int m = i; m < i + 3; m++)
                 {
-                    for (int n = 0; n < 3; n++)
+                    KERNEL_WIDTH:
+                    for(int n = j; n < j + 3; n++)
                     {
-                        // Calculate the current indices for input and weight
-                        int x_row = i + m;
-                        int x_col = j + n;
-
-                        // Calculate the current weight index
-                        int w_row = m;
-                        int w_col = n;
-
-                        // Compute the convolution result for a single element
-                        fm_t temp_result = X_buf[c][x_row][x_col] * W_buf[c][w_row][w_col];
-
-                        // Accumulate the result into the output buffer
-                        Y_buf[f][i / S][j / S] += temp_result;
+                        // Perform convolution operation (i.e., element-wise MAC)
+                        local_accum[c] += X_buf[c][m][n] * W_buf[c][m-i][n-j];
                     }
                 }
             }
+
+            // Assign the results to the local buffer
+            for(int c = 0; c < RESNET_OUT_BUF_CH; c++)
+            {
+                local_Y[c][i/S][j/S] = local_accum[c];
+            }
         }
     }
+
+    // Copy the local buffer to the global output buffer
+    for(int c = 0; c < RESNET_OUT_BUF_CH; c++)
+    {
+        for(int i = 0; i < RESNET_OUT_BUF_ROWS; i += S)
+        {
+            for(int j = 0; j < RESNET_OUT_BUF_COLS; j += S)
+            {
+#pragma HLS pipeline
+                Y_buf[c][i/S][j/S] = local_Y[c][i/S][j/S];
+            }
+        }
+    }
+
+//     fm_t local_Y[RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS];
+// #pragma HLS array_partition variable=local_Y dim=1 complete
+// #pragma HLS array_partition variable=local_Y dim=2 complete
+
+
+//     // For each row in stride steps
+//     for(int i = 0; i < RESNET_OUT_BUF_ROWS; i=i+S) 
+//     {
+//         // For each column in stride steps
+//         for(int j = 0; j < RESNET_OUT_BUF_COLS; j=j+S) 
+//         {
+//             // Initialize local accumulator
+//             fm_t local_accum = 0.0;
+
+//             // For each channel (pipelined)
+//             CHANNEL:
+//             for(int c = 0; c < RESNET_OUT_BUF_CH; c++)
+//             {
+//                 // Unroll kernel height and width loops
+//                 KERNEL_HEIGHT:
+//                 for(int m = i; m < i + 3; m++)
+//                 {
+//                     KERNEL_WIDTH:
+//                     for(int n = j; n < j + 3; n++)
+//                     {
+//                         // Perform convolution operation (i.e., element-wise MAC)
+//                         local_accum += X_buf[c][m][n] * W_buf[c][m-i][n-j];
+//                     }
+//                 }
+//             }
+
+//             // Assign the result to the local buffer
+//             local_Y[i/S][j/S] = local_accum;
+//         }
+//     }
+
+//     // Copy the local buffer to the global output buffer
+//     for(int i = 0; i < RESNET_OUT_BUF_ROWS; i=i+S) 
+//     {
+//         for(int j = 0; j < RESNET_OUT_BUF_COLS; j=j+S) 
+//         {
+// #pragma HLS pipeline
+//             Y_buf[f][i/S][j/S] = local_Y[i/S][j/S];
+//         }
+//     }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //     // Loop over rows in stride steps
+    // for (int i = 0; i < RESNET_OUT_BUF_ROWS; i += S)
+    // {
+    //     // Loop over columns in stride steps
+    //     for (int j = 0; j < RESNET_OUT_BUF_COLS; j += S)
+    //     {
+    //         // Clear output buffer
+    //         Y_buf[f][i / S][j / S] = 0.0;
+
+    //         // Loop over channels (pipelined)
+    //         CHANNEL:
+    //         for (int c = 0; c < RESNET_OUT_BUF_CH; c++)
+    //         {
+    //             // Unroll the kernel computation loops for height and width
+    //             // to increase parallelism
+    //             for (int m = 0; m < 3; m++)
+    //             {
+    //                 for (int n = 0; n < 3; n++)
+    //                 {
+    //                     // Calculate the current indices for input and weight
+    //                     int x_row = i + m;
+    //                     int x_col = j + n;
+
+    //                     // Calculate the current weight index
+    //                     int w_row = m;
+    //                     int w_col = n;
+
+    //                     // Compute the convolution result for a single element
+    //                     fm_t temp_result = X_buf[c][x_row][x_col] * W_buf[c][w_row][w_col];
+
+    //                     // Accumulate the result into the output buffer
+    //                     Y_buf[f][i / S][j / S] += temp_result;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // // Loop over rows in stride steps
