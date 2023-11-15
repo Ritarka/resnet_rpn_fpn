@@ -30,7 +30,11 @@ resnet_conv_7x7.o:./resnet_conv_7x7.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 # resnet_top0.o:./resnet_top0.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-resnet_top1.o:./resnet_top1.cpp
+# resnet_top1_0.o:./resnet_top1_0.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# resnet_top1_1.o:./resnet_top1_1.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+resnet_top1_2.o:./resnet_top1_2.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 # resnet_top2.o:./resnet_top2.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
@@ -84,7 +88,11 @@ resnet_top1.o:./resnet_top1.cpp
 ########################################################
 # test_top_resnet0.o: ./test_top_resnet0.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-test_top_resnet1.o: ./test_top_resnet1.cpp
+# test_top_resnet1_0.o: ./test_top_resnet1_0.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# test_top_resnet1_1.o: ./test_top_resnet1_1.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+test_top_resnet1_2.o: ./test_top_resnet1_2.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 # test_top_resnet2.o: ./test_top_resnet2.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
@@ -109,7 +117,9 @@ IP_DEP+=resnet_conv_3x3.o
 IP_DEP+=resnet_conv_7x7.o
 IP_DEP+=resnet_batchnorm.o
 # IP_DEP+=resnet_top0.o
-IP_DEP+=resnet_top1.o
+# IP_DEP+=resnet_top1_0.o
+# IP_DEP+=resnet_top1_1.o
+IP_DEP+=resnet_top1_2.o
 # IP_DEP+=resnet_top2.o
 # IP_DEP+=resnet_top3.o
 # IP_DEP+=resnet_top4.o
@@ -139,7 +149,9 @@ IP_DEP+=resnet_top1.o
 # IP_DEP+=rpn_top2.o
 
 # IP_DEP+=test_top_resnet0.o
-IP_DEP+=test_top_resnet1.o
+# IP_DEP+=test_top_resnet1_0.o
+# IP_DEP+=test_top_resnet1_1.o
+IP_DEP+=test_top_resnet1_2.o
 # IP_DEP+=test_top_resnet2.o
 # IP_DEP+=test_top_resnet3.o
 # IP_DEP+=test_top_resnet4.o
@@ -148,7 +160,7 @@ IP_DEP+=test_top_resnet1.o
 # IP_DEP+=test_top_rpn2.o
 # IP_DEP+=test_top.o
 
-main.o:./tb_test_top_resnet1.cpp
+main.o:./tb_test_top_resnet1_2.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -I "${ASSEMBLE_SRC_ROOT}" -o $@  -c $^   -MMD $(IFLAG)
 
 csim.out: main.o $(IP_DEP)
@@ -164,8 +176,14 @@ synth:
 synth_resnet0:
 	vitis_hls script_resnet0.tcl
 
-synth_resnet1:
-	vitis_hls script_resnet1.tcl
+synth_resnet1_0:
+	vitis_hls script_resnet1_0.tcl
+
+synth_resnet1_1:
+	vitis_hls script_resnet1_1.tcl
+
+synth_resnet1_2:
+	vitis_hls script_resnet1_2.tcl
 
 synth_resnet2:
 	vitis_hls script_resnet2.tcl

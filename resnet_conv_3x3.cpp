@@ -1,4 +1,4 @@
-#include "qdtrack_resnet0.h"
+#include "qdtrack_resnet1_0.h"
 
 //template<const int S>
 void resnet_conv_3x3 (

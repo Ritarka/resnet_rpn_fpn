@@ -8,12 +8,22 @@ void resnet_layer0(
         fm_t   resnet_layer0_output_fm[RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_OUT_FM_HEIGHT][RESNET_LAYER0_OUT_FM_WIDTH]
 )
 {
+    //--------------------------------------------------------------------------
+    // Defines interface IO ports for HLS. 
+    //--------------------------------------------------------------------------
+    #pragma HLS INTERFACE m_axi depth=1 port=resnet_layer0_input_fm bundle=fm
+    #pragma HLS INTERFACE m_axi depth=1 port=resnet_layer0_conv1_weights bundle=wt
+    #pragma HLS INTERFACE m_axi depth=1 port=resnet_layer0_bn1_params bundle=wt
+    #pragma HLS INTERFACE m_axi depth=1 port=resnet_layer0_output_fm bundle=fm
+
+    
     // Use HLS pragma to control memory access
     #pragma HLS array_partition variable=resnet_layer0_input_fm complete dim=1
     #pragma HLS array_partition variable=resnet_layer0_output_fm complete dim=1
     #pragma HLS array_partition variable=resnet_layer0_bn1_params complete
     #pragma HLS array_partition variable=resnet_layer0_conv1_weights complete dim=1
     //TODO: Update with pointer-based loading of input feature map
+
 
     #pragma HLS inline off
     for(int c = 0; c < RESNET_LAYER0_CONV1_IN_CH; c++)

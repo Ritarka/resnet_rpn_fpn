@@ -1,5 +1,5 @@
 #include "hls_stream.h"
-#include "qdtrack_resnet0.h"
+#include "qdtrack_resnet1_0.h"
 
 //template<const int S>
 void resnet_conv_7x7 (
@@ -12,39 +12,55 @@ void resnet_conv_7x7 (
     int S = 2; // Stride
 
     // Local accumulators for each channel
-    fm_t local_accum[RESNET_OUT_BUF_CH];
-#pragma HLS array_partition variable=local_accum complete
+    fm_t local_Y[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS];
+#pragma HLS array_partition variable=local_Y dim=1 complete
+#pragma HLS array_partition variable=local_Y dim=2 complete
+#pragma HLS array_partition variable=local_Y dim=3 complete
 
     // For each row in stride steps
-    for (int i = 0; i < RESNET_OUT_BUF_ROWS; i += S)
+    for(int i = 0; i < RESNET_OUT_BUF_ROWS; i += S) 
     {
         // For each column in stride steps
-        for (int j = 0; j < RESNET_OUT_BUF_COLS; j += S)
+        for(int j = 0; j < RESNET_OUT_BUF_COLS; j += S) 
         {
 #pragma HLS pipeline
-            // Initialize local accumulators to zero
-            for (int c = 0; c < RESNET_OUT_BUF_CH; c++)
-            {
-                local_accum[c] = 0.0;
-            }
+            // Initialize local accumulators
+            fm_t local_accum[RESNET_OUT_BUF_CH] = {0.0};
 
-            // Perform convolution operation (i.e., element-wise MAC)
-            for (int m = i; m < i + 7; m++)
+            // For each channel (pipelined)
+            CHANNEL:
+            for(int c = 0; c < RESNET_OUT_BUF_CH; c++)
             {
-                for (int n = j; n < j + 7; n++)
+                // Unroll kernel height and width loops
+                KERNEL_HEIGHT:
+                for(int m = i; m < i + 7; m++)
                 {
-                    // For each channel (pipelined)
-                    for (int c = 0; c < RESNET_OUT_BUF_CH; c++)
+                    KERNEL_WIDTH:
+                    for(int n = j; n < j + 7; n++)
                     {
-                        local_accum[c] += X_buf[c][m][n] * W_buf[c][m - i][n - j];
+                        // Perform convolution operation (i.e., element-wise MAC)
+                        local_accum[c] += X_buf[c][m][n] * W_buf[c][m-i][n-j];
                     }
                 }
             }
 
-            // Assign the local accumulators to the output buffer
-            for (int c = 0; c < RESNET_OUT_BUF_CH; c++)
+            // Assign the results to the local buffer
+            for(int c = 0; c < RESNET_OUT_BUF_CH; c++)
             {
-                Y_buf[f][i / S][j / S] = local_accum[c];
+                local_Y[c][i/S][j/S] = local_accum[c];
+            }
+        }
+    }
+
+    // Copy the local buffer to the global output buffer
+    for(int c = 0; c < RESNET_OUT_BUF_CH; c++)
+    {
+        for(int i = 0; i < RESNET_OUT_BUF_ROWS; i += S)
+        {
+            for(int j = 0; j < RESNET_OUT_BUF_COLS; j += S)
+            {
+#pragma HLS pipeline
+                Y_buf[c][i/S][j/S] = local_Y[c][i/S][j/S];
             }
         }
     }

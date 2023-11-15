@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Messages>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="RUNTIME" content="Finished File checks and directory preparation: CPU user time: 0.1 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.12 seconds; current allocated memory: 1.483 GB." resolution=""/>
-	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./resnet_top1.cpp&apos; ..." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="RUNTIME" content="Finished File checks and directory preparation: CPU user time: 0.09 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.11 seconds; current allocated memory: 1.483 GB." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./resnet_top1_2.cpp&apos; ..." resolution=""/>
+	<Message severity="WARNING" prefix="[HLS 207-5558]" key="HLS 207-5558" tag="" content="unexpected pragma parameter &apos;prot&apos; (./resnet_layer1_2.cpp:19:37)" resolution=""/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./resnet_conv_7x7.cpp&apos; ..." resolution=""/>
+	<Message severity="WARNING" prefix="[HLS 207-5292]" key="HLS 207-5292" tag="" content="unused parameter &apos;f&apos; (./resnet_conv_7x7.cpp:9:13)" resolution=""/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./resnet_conv_3x3.cpp&apos; ..." resolution=""/>
 	<Message severity="WARNING" prefix="[HLS 207-5292]" key="HLS 207-5292" tag="" content="unused parameter &apos;f&apos; (./resnet_conv_3x3.cpp:8:13)" resolution=""/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./resnet_conv_1x1.cpp&apos; ..." resolution=""/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;./resnet_batchnorm.cpp&apos; ..." resolution=""/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="RUNTIME" content="Finished Source Code Analysis and Preprocessing: CPU user time: 25.61 seconds. CPU system time: 6.04 seconds. Elapsed time: 32.85 seconds; current allocated memory: 1.487 GB." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="RUNTIME" content="Finished Source Code Analysis and Preprocessing: CPU user time: 23.04 seconds. CPU system time: 5.42 seconds. Elapsed time: 30.64 seconds; current allocated memory: 1.486 GB." resolution=""/>
 	<Message severity="INFO" prefix="[HLS 200-777]" key="HLS 200-777" tag="" content="Using interface defaults for &apos;Vivado&apos; flow target." resolution=""/>
-	<Message severity="INFO" prefix="[HLS 200-1995]" key="HLS 200-1995" tag="" content="There were 6,395 instructions in the design after the &apos;Compile/Link&apos; phase of compilation. See the Design Size Report for more details: /nethome/mjung76/resnet_rpn_fpn/proj/solution1/syn/report/csynth_design_size.rpt" resolution=""/>
-	<Message severity="INFO" prefix="[HLS 200-1995]" key="HLS 200-1995" tag="" content="There were 11,506 instructions in the design after the &apos;Unroll/Inline&apos; phase of compilation. See the Design Size Report for more details: /nethome/mjung76/resnet_rpn_fpn/proj/solution1/syn/report/csynth_design_size.rpt" resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-1995]" key="HLS 200-1995" tag="" content="There were 1,961 instructions in the design after the &apos;Compile/Link&apos; phase of compilation. See the Design Size Report for more details: /nethome/mjung76/resnet_rpn_fpn/proj/solution1/syn/report/csynth_design_size.rpt" resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-1995]" key="HLS 200-1995" tag="" content="There were 3,603 instructions in the design after the &apos;Unroll/Inline&apos; phase of compilation. See the Design Size Report for more details: /nethome/mjung76/resnet_rpn_fpn/proj/solution1/syn/report/csynth_design_size.rpt" resolution=""/>
+	<Message severity="INFO" prefix="[Common 17-41]" key="Common 17-41" tag="" content="Interrupt caught. Command should exit soon." resolution=""/>
+	<Message severity="INFO" prefix="[Common 17-41]" key="Common 17-41" tag="" content="Interrupt caught. Command should exit soon." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="RUNTIME" content="Finished Command csynth_design CPU user time: 25.82 seconds. CPU system time: 6.12 seconds. Elapsed time: 124.36 seconds; current allocated memory: 11.438 MB." resolution=""/>
+	<Message severity="INFO" prefix="[Common 17-344]" key="Common 17-344" tag="" content="&apos;source&apos; was cancelled" resolution=""/>
 </Messages>
