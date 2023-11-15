@@ -1,5 +1,5 @@
 #include "hls_stream.h"
-#include "qdtrack_resnet1.h"
+#include "qdtrack_resnet1_1.h"
 
 #pragma once 
 
@@ -13,10 +13,6 @@ extern fm_t ds_fm_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COL
 extern fm_t resnet_layer_out_fm[2048][184][320];
 extern fm_t resnet_layer_in_fm[2048][184][320];
 extern fm_t ds_fm[2048][184][320];
-
-// extern fm_t resnet_layer0_in_fm [RESNET_LAYER0_CONV1_IN_CH][RESNET_LAYER0_IN_FM_HEIGHT][RESNET_LAYER0_IN_FM_WIDTH];
-// extern fm_t resnet_layer0_mx_fm [RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_MX_FM_HEIGHT][RESNET_LAYER0_MX_FM_WIDTH];
-// extern fm_t resnet_layer0_out_fm[RESNET_LAYER0_CONV1_OUT_CH][RESNET_LAYER0_OUT_FM_HEIGHT][RESNET_LAYER0_OUT_FM_WIDTH];
 
 // Convolution Weight Buffers
 extern wt_t weight_buf_1x1[RESNET_IN_BUF_CH];

@@ -1,4 +1,4 @@
-#include "qdtrack_resnet0.h"
+#include "qdtrack_resnet1_0.h"
 
 void resnet_conv_1x1 (
         fm_t Y_buf[RESNET_OUT_BUF_CH][RESNET_OUT_BUF_ROWS][RESNET_OUT_BUF_COLS], 

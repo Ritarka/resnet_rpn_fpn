@@ -1,4 +1,4 @@
-#include "qdtrack_resnet0.h"
+#include "qdtrack_resnet1_0.h"
 
 const wt_t EPSILON = 0.00001;
 

@@ -1,7 +1,7 @@
 [
   {
     "functionLabel": "",
-    "functionName": "resnet_top_1",
+    "functionName": "resnet_top_1_2",
     "id": 0,
     "ifcond": "",
     "insert_position": "",
@@ -11,12 +11,12 @@
       "option": [
         {
           "name": "name",
-          "value": "resnet_top_1"
+          "value": "resnet_top_1_2"
         }
       ]
     },
     "slx": false,
-    "sourceFile": "/nethome/mjung76/resnet_rpn_fpn/script_resnet1.tcl",
+    "sourceFile": "/nethome/mjung76/resnet_rpn_fpn/script_resnet1_2.tcl",
     "sourceLine": 28,
     "success": true
   }
