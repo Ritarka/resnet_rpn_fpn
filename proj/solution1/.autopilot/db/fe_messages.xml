@@ -1,123 +1,56 @@
 <xilinx:hls_fe_msgs>
-    <msg msg_groups="PRAGMA_INVALID" msg_id="207-5558" msg_severity="WARNING" msg_loc="./resnet_layer1_2.cpp:19:37" msg_body="unexpected pragma parameter 'prot'">
-        <args ClangWarningOption="invalid-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer0.cpp:14:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="resnet_layer0" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=1 port=resnet_layer0_input_fm bundle=fm" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer1_2.cpp:15:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_layer1_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=1 port=resnet_layer1_output_fm bundle=fm" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer0.cpp:15:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="resnet_layer0" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=1 port=resnet_layer0_conv1_weights bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer1_2.cpp:16:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_layer1_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=1 port=resnet_layer1_2_conv1_weights bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer0.cpp:16:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="resnet_layer0" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=1 port=resnet_layer0_bn1_params bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer1_2.cpp:17:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_layer1_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=1 port=resnet_layer1_2_bn1_params bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer0.cpp:17:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="resnet_layer0" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=1 port=resnet_layer0_output_fm bundle=fm" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer1_2.cpp:18:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_layer1_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=1 port=resnet_layer1_2_conv2_weights bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer0.cpp:21:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="resnet_layer0" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=resnet_layer0_input_fm complete dim=1" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer1_2.cpp:19:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_layer1_2" ARG_PragmaIsValid="0" ARG_PragmaOptions="m_axi depth=1 prot=" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer0.cpp:22:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="resnet_layer0" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=resnet_layer0_output_fm complete dim=1" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer1_2.cpp:20:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_layer1_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=1 port=resnet_layer1_2_conv3_weights bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer0.cpp:23:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="resnet_layer0" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=resnet_layer0_bn1_params complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer1_2.cpp:21:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_layer1_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi depth=1 port=resnet_layer1_2_bn3_params bundle=wt" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer0.cpp:24:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="resnet_layer0" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=resnet_layer0_conv1_weights complete dim=1" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer1_2.cpp:26:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_layer1_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=resnet_layer1_output_fm complete dim=1" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer0.cpp:28:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="resnet_layer0" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer1_2.cpp:27:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_layer1_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=resnet_layer1_2_conv1_weights complete dim=1" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/nethome/mjung76/resnet_rpn_fpn/script_resnet0.tcl:28:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="directive" ARG_PragmaFunction="resnet_top_0" ARG_PragmaIsValid="1" ARG_PragmaOptions="name=resnet_top_0" ARG_PragmaType="top" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer1_2.cpp:28:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_layer1_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=resnet_layer1_2_bn1_params complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./resnet_layer0.cpp:10:0" msg_body="Inlining function 'resnet_conv_7x7(float (*) [46][40], float (*) [51][45], float (*) [7][7], int)' into 'resnet_layer0(float (*) [736][1280], float (*) [3][7][7], float (*) [64], float (*) [184][320])'">
+        <args Callee="resnet_conv_7x7(float (*) [46][40], float (*) [51][45], float (*) [7][7], int)" Callee-DebugLoc="File ./resnet_conv_7x7.cpp Line 245 Column 0" Caller="resnet_layer0(float (*) [736][1280], float (*) [3][7][7], float (*) [64], float (*) [184][320])" Caller-DebugLoc="File ./resnet_layer0.cpp Line 10 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer1_2.cpp:29:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_layer1_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=resnet_layer1_2_conv2_weights complete dim=1" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./resnet_layer0.cpp:10:0" msg_body="Inlining function 'void resnet_load_batchnorm_params&lt;64&gt;(float (*) [64], float (*) [64], int)' into 'resnet_layer0(float (*) [736][1280], float (*) [3][7][7], float (*) [64], float (*) [184][320])'">
+        <args Callee="void resnet_load_batchnorm_params&lt;64&gt;(float (*) [64], float (*) [64], int)" Callee-DebugLoc="File ./resnet_util0.h Line 145 Column 0" Caller="resnet_layer0(float (*) [736][1280], float (*) [3][7][7], float (*) [64], float (*) [184][320])" Caller-DebugLoc="File ./resnet_layer0.cpp Line 10 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer1_2.cpp:30:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_layer1_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=resnet_layer1_2_bn2_params complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="./resnet_layer0.cpp:10:0" msg_body="Inlining function 'resnet_batchnorm(float (*) [46][40], float (*) [64], bool)' into 'resnet_layer0(float (*) [736][1280], float (*) [3][7][7], float (*) [64], float (*) [184][320])'">
+        <args Callee="resnet_batchnorm(float (*) [46][40], float (*) [64], bool)" Callee-DebugLoc="File ./resnet_batchnorm.cpp Line 224 Column 0" Caller="resnet_layer0(float (*) [736][1280], float (*) [3][7][7], float (*) [64], float (*) [184][320])" Caller-DebugLoc="File ./resnet_layer0.cpp Line 10 Column 0"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer1_2.cpp:31:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_layer1_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=resnet_layer1_2_conv3_weights complete dim=1" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-167" msg_severity="WARNING" msg_loc="./resnet_util0.h:150:31" msg_body="The program may have out of bound array access"/>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-167" msg_severity="WARNING" msg_loc="./resnet_util0.h:150:29" msg_body="The program may have out of bound array access"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./resnet_top0.cpp:32:0" msg_body="Applying array_partition to 'resnet_layer0_input_fm': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="resnet_layer0_input_fm"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_layer1_2.cpp:32:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_layer1_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=resnet_layer1_2_bn3_params complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./resnet_top0.cpp:32:0" msg_body="Applying array_partition to 'resnet_layer0_conv1_weights': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="resnet_layer0_conv1_weights"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/nethome/mjung76/resnet_rpn_fpn/script_resnet1_2.tcl:28:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaContext="directive" ARG_PragmaFunction="resnet_top_1_2" ARG_PragmaIsValid="1" ARG_PragmaOptions="name=resnet_top_1_2" ARG_PragmaType="top" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./resnet_top0.cpp:32:0" msg_body="Applying array_partition to 'resnet_layer0_bn1_params': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="resnet_layer0_bn1_params"/>
     </msg>
-    <msg msg_groups="" msg_id="207-5292" msg_severity="WARNING" msg_loc="./resnet_conv_7x7.cpp:9:13" msg_body="unused parameter 'f'">
-        <args ClangWarningOption="unused-parameter"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_conv_7x7.cpp:16:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_conv_7x7" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=local_Y dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_conv_7x7.cpp:17:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_conv_7x7" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=local_Y dim=2 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_conv_7x7.cpp:18:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_conv_7x7" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=local_Y dim=3 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_conv_7x7.cpp:26:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_conv_7x7" ARG_PragmaIsValid="1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_conv_7x7.cpp:62:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_conv_7x7" ARG_PragmaIsValid="1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="" msg_id="207-5292" msg_severity="WARNING" msg_loc="./resnet_conv_3x3.cpp:8:13" msg_body="unused parameter 'f'">
-        <args ClangWarningOption="unused-parameter"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_conv_3x3.cpp:13:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_conv_3x3" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=local_Y dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_conv_3x3.cpp:14:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_conv_3x3" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=local_Y dim=2 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_conv_3x3.cpp:15:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_conv_3x3" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=local_Y dim=3 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_conv_3x3.cpp:23:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_conv_3x3" ARG_PragmaIsValid="1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_conv_3x3.cpp:59:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_conv_3x3" ARG_PragmaIsValid="1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_conv_1x1.cpp:13:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_conv_1x1" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=local_Y dim=1 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_conv_1x1.cpp:14:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_conv_1x1" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=local_Y dim=2 complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_conv_1x1.cpp:22:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_conv_1x1" ARG_PragmaIsValid="1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_conv_1x1.cpp:44:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_conv_1x1" ARG_PragmaIsValid="1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_batchnorm.cpp:44:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_batchnorm" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_batchnorm.cpp:135:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_add_residual_fm" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=feature_map complete dim=1" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_batchnorm.cpp:136:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_add_residual_fm" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=feature_map complete dim=2" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_batchnorm.cpp:137:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_add_residual_fm" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=feature_map complete dim=3" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_batchnorm.cpp:138:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_add_residual_fm" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=residual_map complete dim=1" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_batchnorm.cpp:139:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_add_residual_fm" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=residual_map complete dim=2" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_batchnorm.cpp:140:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_add_residual_fm" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=residual_map complete dim=3" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="./resnet_batchnorm.cpp:145:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="resnet_add_residual_fm" ARG_PragmaIsValid="1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="./resnet_top0.cpp:32:0" msg_body="Applying array_partition to 'resnet_layer0_output_fm': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="resnet_layer0_output_fm"/>
     </msg>
 </xilinx:hls_fe_msgs>
 
