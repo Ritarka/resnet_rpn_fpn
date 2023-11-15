@@ -16,8 +16,8 @@ add_files -tb ./test_top_resnet1_1.cpp
 
 
 open_solution "solution1" -flow_target vivado
-set_part {xc7z020clg400-1}
-# set_part {xczu9eg-ffvb1156-2-e}
+# set_part {xc7z020clg400-1}
+set_part {xczu9eg-ffvb1156-2-e}
 create_clock -period 10 -name default
 
 ## C simulation

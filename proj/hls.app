@@ -1,8 +1,8 @@
-<AutoPilot:project xmlns:AutoPilot="com.autoesl.autopilot.project" top="resnet_top_1_2" name="proj">
+<AutoPilot:project xmlns:AutoPilot="com.autoesl.autopilot.project" top="resnet_top_0" name="proj">
     <files>
-        <file name="../../test_top_resnet1_2.cpp" sc="0" tb="1" cflags="-Wno-unknown-pragmas" csimflags="" blackbox="false"/>
-        <file name="../../tb_test_top_resnet1_2.cpp" sc="0" tb="1" cflags="-Wno-unknown-pragmas" csimflags="" blackbox="false"/>
-        <file name="./resnet_top1_2.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
+        <file name="../../test_top_resnet0.cpp" sc="0" tb="1" cflags="-Wno-unknown-pragmas" csimflags="" blackbox="false"/>
+        <file name="../../tb_test_top_resnet0.cpp" sc="0" tb="1" cflags="-Wno-unknown-pragmas" csimflags="" blackbox="false"/>
+        <file name="./resnet_top0.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
         <file name="./resnet_conv_7x7.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
         <file name="./resnet_conv_3x3.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
         <file name="./resnet_conv_1x1.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>

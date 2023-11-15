@@ -34,10 +34,16 @@ resnet_conv_7x7.o:./resnet_conv_7x7.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 # resnet_top1_1.o:./resnet_top1_1.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-resnet_top1_2.o:./resnet_top1_2.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-# resnet_top2.o:./resnet_top2.cpp
+# resnet_top1_2.o:./resnet_top1_2.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# resnet_top2_0.o:./resnet_top2_0.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# resnet_top2_1.o:./resnet_top2_1.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# resnet_top2_2.o:./resnet_top2_2.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+resnet_top2_3.o:./resnet_top2_3.cpp
+	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 # resnet_top3.o:./resnet_top3.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 # resnet_top4.o:./resnet_top4.cpp
@@ -92,10 +98,16 @@ resnet_top1_2.o:./resnet_top1_2.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 # test_top_resnet1_1.o: ./test_top_resnet1_1.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-test_top_resnet1_2.o: ./test_top_resnet1_2.cpp
-	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
-# test_top_resnet2.o: ./test_top_resnet2.cpp
+# test_top_resnet1_2.o: ./test_top_resnet1_2.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# test_top_resnet2_0.o: ./test_top_resnet2_0.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# test_top_resnet2_1.o: ./test_top_resnet2_1.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+# test_top_resnet2_2.o: ./test_top_resnet2_2.cpp
+# 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
+test_top_resnet2_3.o: ./test_top_resnet2_3.cpp
+	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 # test_top_resnet3.o: ./test_top_resnet3.cpp
 # 	$(CC) $(GCOV)  $(CFLAG)  -o $@ -c $^    -MMD $(IFLAG)
 # test_top_resnet4.o: ./test_top_resnet4.cpp
@@ -119,8 +131,11 @@ IP_DEP+=resnet_batchnorm.o
 # IP_DEP+=resnet_top0.o
 # IP_DEP+=resnet_top1_0.o
 # IP_DEP+=resnet_top1_1.o
-IP_DEP+=resnet_top1_2.o
-# IP_DEP+=resnet_top2.o
+# IP_DEP+=resnet_top1_2.o
+# IP_DEP+=resnet_top2_0.o
+# IP_DEP+=resnet_top2_1.o
+# IP_DEP+=resnet_top2_2.o
+IP_DEP+=resnet_top2_3.o
 # IP_DEP+=resnet_top3.o
 # IP_DEP+=resnet_top4.o
 
@@ -151,8 +166,11 @@ IP_DEP+=resnet_top1_2.o
 # IP_DEP+=test_top_resnet0.o
 # IP_DEP+=test_top_resnet1_0.o
 # IP_DEP+=test_top_resnet1_1.o
-IP_DEP+=test_top_resnet1_2.o
-# IP_DEP+=test_top_resnet2.o
+# IP_DEP+=test_top_resnet1_2.o
+# IP_DEP+=test_top_resnet2_0.o
+# IP_DEP+=test_top_resnet2_1.o
+# IP_DEP+=test_top_resnet2_2.o
+IP_DEP+=test_top_resnet2_3.o
 # IP_DEP+=test_top_resnet3.o
 # IP_DEP+=test_top_resnet4.o
 # IP_DEP+=test_top_fpn.o
@@ -160,7 +178,7 @@ IP_DEP+=test_top_resnet1_2.o
 # IP_DEP+=test_top_rpn2.o
 # IP_DEP+=test_top.o
 
-main.o:./tb_test_top_resnet1_2.cpp
+main.o:./tb_test_top_resnet2_3.cpp
 	$(CC) $(GCOV)  $(CFLAG)  -I "${ASSEMBLE_SRC_ROOT}" -o $@  -c $^   -MMD $(IFLAG)
 
 csim.out: main.o $(IP_DEP)
@@ -185,8 +203,17 @@ synth_resnet1_1:
 synth_resnet1_2:
 	vitis_hls script_resnet1_2.tcl
 
-synth_resnet2:
-	vitis_hls script_resnet2.tcl
+synth_resnet2_0:
+	vitis_hls script_resnet2_0.tcl
+
+synth_resnet2_1:
+	vitis_hls script_resnet2_1.tcl
+
+synth_resnet2_2:
+	vitis_hls script_resnet2_2.tcl
+
+synth_resnet2_3:
+	vitis_hls script_resnet2_3.tcl
 
 synth_resnet3:
 	vitis_hls script_resnet3.tcl

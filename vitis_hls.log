@@ -8,14 +8,14 @@
 
 source /tools/software/xilinx/Vitis_HLS/2023.1/scripts/vitis_hls/hls.tcl -notrace
 INFO: [HLS 200-10] Running '/tools/software/xilinx/Vitis_HLS/2023.1/bin/unwrapped/lnx64.o/vitis_hls'
-INFO: [HLS 200-10] For user 'mjung76' on host 'ece-linlabsrv01.ece.gatech.edu' (Linux_x86_64 version 4.18.0-477.15.1.el8_8.x86_64) on Wed Nov 15 10:54:51 EST 2023
+INFO: [HLS 200-10] For user 'mjung76' on host 'ece-linlabsrv01.ece.gatech.edu' (Linux_x86_64 version 4.18.0-477.15.1.el8_8.x86_64) on Wed Nov 15 12:50:07 EST 2023
 INFO: [HLS 200-10] On os "Red Hat Enterprise Linux release 8.8 (Ootpa)"
 INFO: [HLS 200-10] In directory '/nethome/mjung76/resnet_rpn_fpn'
-Sourcing Tcl script 'script_resnet1_2.tcl'
-INFO: [HLS 200-1510] Running: source script_resnet1_2.tcl
+Sourcing Tcl script 'script_resnet0.tcl'
+INFO: [HLS 200-1510] Running: source script_resnet0.tcl
 INFO: [HLS 200-1510] Running: open_project -reset proj 
 INFO: [HLS 200-10] Opening and resetting project '/nethome/mjung76/resnet_rpn_fpn/proj'.
-INFO: [HLS 200-1510] Running: set_top resnet_top_1_2 
+INFO: [HLS 200-1510] Running: set_top resnet_top_0 
 INFO: [HLS 200-1510] Running: add_files ./resnet_batchnorm.cpp 
 INFO: [HLS 200-10] Adding design file './resnet_batchnorm.cpp' to the project
 INFO: [HLS 200-1510] Running: add_files ./resnet_conv_1x1.cpp 
@@ -24,31 +24,569 @@ INFO: [HLS 200-1510] Running: add_files ./resnet_conv_3x3.cpp
 INFO: [HLS 200-10] Adding design file './resnet_conv_3x3.cpp' to the project
 INFO: [HLS 200-1510] Running: add_files ./resnet_conv_7x7.cpp 
 INFO: [HLS 200-10] Adding design file './resnet_conv_7x7.cpp' to the project
-INFO: [HLS 200-1510] Running: add_files ./resnet_top1_2.cpp 
-INFO: [HLS 200-10] Adding design file './resnet_top1_2.cpp' to the project
-INFO: [HLS 200-1510] Running: add_files -tb ./tb_test_top_resnet1_2.cpp 
-INFO: [HLS 200-10] Adding test bench file './tb_test_top_resnet1_2.cpp' to the project
-INFO: [HLS 200-1510] Running: add_files -tb ./test_top_resnet1_2.cpp 
-INFO: [HLS 200-10] Adding test bench file './test_top_resnet1_2.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files ./resnet_top0.cpp 
+INFO: [HLS 200-10] Adding design file './resnet_top0.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb ./tb_test_top_resnet0.cpp 
+INFO: [HLS 200-10] Adding test bench file './tb_test_top_resnet0.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb ./test_top_resnet0.cpp 
+INFO: [HLS 200-10] Adding test bench file './test_top_resnet0.cpp' to the project
 INFO: [HLS 200-1510] Running: open_solution solution1 -flow_target vivado 
 INFO: [HLS 200-10] Creating and opening solution '/nethome/mjung76/resnet_rpn_fpn/proj/solution1'.
 INFO: [HLS 200-1505] Using flow_target 'vivado'
 Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=200-1505.html
-INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
-INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+INFO: [HLS 200-1510] Running: set_part xczu9eg-ffvb1156-2-e 
+INFO: [HLS 200-1611] Setting target device to 'xczu9eg-ffvb1156-2-e'
 INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
 INFO: [HLS 200-1510] Running: csynth_design 
-INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.09 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.11 seconds; current allocated memory: 1.483 GB.
-INFO: [HLS 200-10] Analyzing design file './resnet_top1_2.cpp' ... 
-WARNING: [HLS 207-5558] unexpected pragma parameter 'prot' (./resnet_layer1_2.cpp:19:37)
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.09 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.12 seconds; current allocated memory: 1.483 GB.
+INFO: [HLS 200-10] Analyzing design file './resnet_top0.cpp' ... 
 INFO: [HLS 200-10] Analyzing design file './resnet_conv_7x7.cpp' ... 
-WARNING: [HLS 207-5292] unused parameter 'f' (./resnet_conv_7x7.cpp:9:13)
 INFO: [HLS 200-10] Analyzing design file './resnet_conv_3x3.cpp' ... 
-WARNING: [HLS 207-5292] unused parameter 'f' (./resnet_conv_3x3.cpp:8:13)
 INFO: [HLS 200-10] Analyzing design file './resnet_conv_1x1.cpp' ... 
 INFO: [HLS 200-10] Analyzing design file './resnet_batchnorm.cpp' ... 
-INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 23.04 seconds. CPU system time: 5.42 seconds. Elapsed time: 30.64 seconds; current allocated memory: 1.486 GB.
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 23.21 seconds. CPU system time: 5.38 seconds. Elapsed time: 29.3 seconds; current allocated memory: 1.486 GB.
 INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
-INFO: [HLS 200-1995] There were 1,961 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details: /nethome/mjung76/resnet_rpn_fpn/proj/solution1/syn/report/csynth_design_size.rpt
-INFO: [HLS 200-1995] There were 3,603 instructions in the design after the 'Unroll/Inline' phase of compilation. See the Design Size Report for more details: /nethome/mjung76/resnet_rpn_fpn/proj/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 775 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details: /nethome/mjung76/resnet_rpn_fpn/proj/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 536 instructions in the design after the 'Unroll/Inline' phase of compilation. See the Design Size Report for more details: /nethome/mjung76/resnet_rpn_fpn/proj/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 844 instructions in the design after the 'Performance/Pipeline' phase of compilation. See the Design Size Report for more details: /nethome/mjung76/resnet_rpn_fpn/proj/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,376 instructions in the design after the 'Optimizations' phase of compilation. See the Design Size Report for more details: /nethome/mjung76/resnet_rpn_fpn/proj/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 214-178] Inlining function 'resnet_conv_7x7(float (*) [46][40], float (*) [51][45], float (*) [7][7], int)' into 'resnet_layer0(float (*) [736][1280], float (*) [3][7][7], float (*) [64], float (*) [184][320])' (./resnet_layer0.cpp:10:0)
+INFO: [HLS 214-178] Inlining function 'void resnet_load_batchnorm_params<64>(float (*) [64], float (*) [64], int)' into 'resnet_layer0(float (*) [736][1280], float (*) [3][7][7], float (*) [64], float (*) [184][320])' (./resnet_layer0.cpp:10:0)
+INFO: [HLS 214-178] Inlining function 'resnet_batchnorm(float (*) [46][40], float (*) [64], bool)' into 'resnet_layer0(float (*) [736][1280], float (*) [3][7][7], float (*) [64], float (*) [184][320])' (./resnet_layer0.cpp:10:0)
+WARNING: [HLS 214-167] The program may have out of bound array access (./resnet_util0.h:150:31)
+WARNING: [HLS 214-167] The program may have out of bound array access (./resnet_util0.h:150:29)
+INFO: [HLS 214-248] Applying array_partition to 'resnet_layer0_input_fm': Complete partitioning on dimension 1. (./resnet_top0.cpp:32:0)
+INFO: [HLS 214-248] Applying array_partition to 'resnet_layer0_conv1_weights': Complete partitioning on dimension 1. (./resnet_top0.cpp:32:0)
+INFO: [HLS 214-248] Applying array_partition to 'resnet_layer0_bn1_params': Complete partitioning on dimension 1. (./resnet_top0.cpp:32:0)
+INFO: [HLS 214-248] Applying array_partition to 'resnet_layer0_output_fm': Complete partitioning on dimension 1. (./resnet_top0.cpp:32:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 4 seconds. CPU system time: 0.99 seconds. Elapsed time: 8.51 seconds; current allocated memory: 1.487 GB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 1.487 GB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.14 seconds. CPU system time: 0 seconds. Elapsed time: 0.16 seconds; current allocated memory: 1.491 GB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.23 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.23 seconds; current allocated memory: 1.495 GB.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_33_3' (./resnet_layer0.cpp:33) in function 'resnet_layer0' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_61_8' (./resnet_layer0.cpp:61) in function 'resnet_layer0' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_90_12' (./resnet_layer0.cpp:90) in function 'resnet_layer0' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_268_5' (./resnet_conv_7x7.cpp:268) in function 'resnet_layer0' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_148_2' (./resnet_util0.h:148) in function 'resnet_layer0' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_229_3' (./resnet_batchnorm.cpp:229) in function 'resnet_layer0' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_111_15' (./resnet_layer0.cpp:111) in function 'resnet_layer0' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_142_20' (./resnet_layer0.cpp:142) in function 'resnet_layer0' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_169_25' (./resnet_layer0.cpp:169) in function 'resnet_layer0' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_189_28' (./resnet_layer0.cpp:189) in function 'resnet_layer0' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_202_31' (./resnet_layer0.cpp:202) in function 'resnet_layer0' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_50_3' (./resnet_top0.cpp:50) in function 'resnet_top_0' automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (./resnet_layer0.cpp:61:46) to (./resnet_layer0.cpp:61:38) in function 'resnet_layer0'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (./resnet_layer0.cpp:142:47) to (./resnet_layer0.cpp:142:39) in function 'resnet_layer0'... converting 3 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'resnet_layer0' (./resnet_conv_7x7.cpp:29:35)...9 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.92 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.97 seconds; current allocated memory: 1.523 GB.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_48_2' (./resnet_top0.cpp:48:26) in function 'resnet_top_0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_46_1' (./resnet_top0.cpp:46:22) in function 'resnet_top_0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_31_2' (./resnet_layer0.cpp:31:26) in function 'resnet_layer0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_29_1' (./resnet_layer0.cpp:29:19) in function 'resnet_layer0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_59_7' (./resnet_layer0.cpp:59:34) in function 'resnet_layer0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_57_6' (./resnet_layer0.cpp:57:30) in function 'resnet_layer0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_88_11' (./resnet_layer0.cpp:88:39) in function 'resnet_layer0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_86_10' (./resnet_layer0.cpp:86:35) in function 'resnet_layer0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_266_4' (./resnet_conv_7x7.cpp:266:35) in function 'resnet_layer0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_263_3' (./resnet_conv_7x7.cpp:263:28) in function 'resnet_layer0'.
+WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_255_2' (./resnet_conv_7x7.cpp:255:27) in function 'resnet_layer0' the outer loop is not a perfect loop because there is nontrivial logic in the loop latch.
+Resolution: For help on HLS 200-960 see www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=200-960.html
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_252_1' (./resnet_conv_7x7.cpp:252:23) in function 'resnet_layer0'.
+WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_83_9' (./resnet_layer0.cpp:83:30) in function 'resnet_layer0' more than one sub loop.
+Resolution: For help on HLS 200-960 see www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=200-960.html
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_146_1' (./resnet_util0.h:146:23) in function 'resnet_layer0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_227_2' (./resnet_batchnorm.cpp:227:26) in function 'resnet_layer0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_225_1' (./resnet_batchnorm.cpp:225:22) in function 'resnet_layer0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_109_14' (./resnet_layer0.cpp:109:36) in function 'resnet_layer0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_107_13' (./resnet_layer0.cpp:107:32) in function 'resnet_layer0'.
+WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_51_5' (./resnet_layer0.cpp:51:26) in function 'resnet_layer0' more than one sub loop.
+Resolution: For help on HLS 200-960 see www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=200-960.html
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_49_4' (./resnet_layer0.cpp:49:22) in function 'resnet_layer0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_140_19' (./resnet_layer0.cpp:140:35) in function 'resnet_layer0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_138_18' (./resnet_layer0.cpp:138:31) in function 'resnet_layer0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_167_24' (./resnet_layer0.cpp:167:43) in function 'resnet_layer0'.
+WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_161_23' (./resnet_layer0.cpp:161:39) in function 'resnet_layer0' the outer loop is not a perfect loop because there is nontrivial logic in the loop latch.
+Resolution: For help on HLS 200-960 see www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=200-960.html
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_159_22' (./resnet_layer0.cpp:159:35) in function 'resnet_layer0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_157_21' (./resnet_layer0.cpp:157:31) in function 'resnet_layer0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_187_27' (./resnet_layer0.cpp:187:35) in function 'resnet_layer0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_185_26' (./resnet_layer0.cpp:185:31) in function 'resnet_layer0'.
+WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_135_17' (./resnet_layer0.cpp:135:27) in function 'resnet_layer0' more than one sub loop.
+Resolution: For help on HLS 200-960 see www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=200-960.html
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_133_16' (./resnet_layer0.cpp:133:24) in function 'resnet_layer0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_200_30' (./resnet_layer0.cpp:200:28) in function 'resnet_layer0'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_198_29' (./resnet_layer0.cpp:198:24) in function 'resnet_layer0'.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.7 seconds. CPU system time: 0.06 seconds. Elapsed time: 0.83 seconds; current allocated memory: 1.641 GB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'resnet_top_0' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'resnet_layer0_Pipeline_VITIS_LOOP_29_1_VITIS_LOOP_31_2_VITIS_LOOP_33_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln35) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_29_1_VITIS_LOOP_31_2_VITIS_LOOP_33_3'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 5, loop 'VITIS_LOOP_29_1_VITIS_LOOP_31_2_VITIS_LOOP_33_3'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.24 seconds. CPU system time: 0.08 seconds. Elapsed time: 0.37 seconds; current allocated memory: 1.643 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.11 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.15 seconds; current allocated memory: 1.643 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'resnet_layer0_Pipeline_VITIS_LOOP_57_6_VITIS_LOOP_59_7_VITIS_LOOP_61_8' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=add_ln72) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_57_6_VITIS_LOOP_59_7_VITIS_LOOP_61_8'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 5, loop 'VITIS_LOOP_57_6_VITIS_LOOP_59_7_VITIS_LOOP_61_8'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.36 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.4 seconds; current allocated memory: 1.644 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.11 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 1.644 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'resnet_layer0_Pipeline_VITIS_LOOP_86_10_VITIS_LOOP_88_11_VITIS_LOOP_90_12' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_86_10_VITIS_LOOP_88_11_VITIS_LOOP_90_12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 2, loop 'VITIS_LOOP_86_10_VITIS_LOOP_88_11_VITIS_LOOP_90_12'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.36 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.4 seconds; current allocated memory: 1.647 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.09 seconds. CPU system time: 0 seconds. Elapsed time: 0.18 seconds; current allocated memory: 1.648 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'resnet_layer0_Pipeline_VITIS_LOOP_263_3_VITIS_LOOP_266_4_VITIS_LOOP_268_5' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=add_ln270_1) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_263_3_VITIS_LOOP_266_4_VITIS_LOOP_268_5'.
+WARNING: [HLS 200-880] The II Violation in module 'resnet_layer0_Pipeline_VITIS_LOOP_263_3_VITIS_LOOP_266_4_VITIS_LOOP_268_5' (loop 'VITIS_LOOP_263_3_VITIS_LOOP_266_4_VITIS_LOOP_268_5'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 0) between 'store' operation ('add4418_i_write_ln268', ./resnet_conv_7x7.cpp:268->./resnet_layer0.cpp:98) of variable 'add44_i', ./resnet_conv_7x7.cpp:270->./resnet_layer0.cpp:98 on local variable 'add4418_i' and 'load' operation ('add4418_i_load', ./resnet_conv_7x7.cpp:270->./resnet_layer0.cpp:98) on local variable 'add4418_i'.
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'resnet_layer0_Pipeline_VITIS_LOOP_263_3_VITIS_LOOP_266_4_VITIS_LOOP_268_5' (loop 'VITIS_LOOP_263_3_VITIS_LOOP_266_4_VITIS_LOOP_268_5'): Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 0) between 'store' operation ('add4418_i_write_ln268', ./resnet_conv_7x7.cpp:268->./resnet_layer0.cpp:98) of variable 'add44_i', ./resnet_conv_7x7.cpp:270->./resnet_layer0.cpp:98 on local variable 'add4418_i' and 'load' operation ('add4418_i_load', ./resnet_conv_7x7.cpp:270->./resnet_layer0.cpp:98) on local variable 'add4418_i'.
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=200-880.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 3, Depth = 13, loop 'VITIS_LOOP_263_3_VITIS_LOOP_266_4_VITIS_LOOP_268_5'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.4 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.49 seconds; current allocated memory: 1.649 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.2 seconds. CPU system time: 0 seconds. Elapsed time: 0.24 seconds; current allocated memory: 1.649 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'resnet_layer0_Pipeline_VITIS_LOOP_146_1_VITIS_LOOP_148_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_146_1_VITIS_LOOP_148_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 2, loop 'VITIS_LOOP_146_1_VITIS_LOOP_148_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.15 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.18 seconds; current allocated memory: 1.649 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.05 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.07 seconds; current allocated memory: 1.649 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'resnet_layer0_Pipeline_VITIS_LOOP_225_1_VITIS_LOOP_227_2_VITIS_LOOP_229_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln231) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_225_1_VITIS_LOOP_227_2_VITIS_LOOP_229_3'.
+WARNING: [HLS 200-885] The II Violation in module 'resnet_layer0_Pipeline_VITIS_LOOP_225_1_VITIS_LOOP_227_2_VITIS_LOOP_229_3' (loop 'VITIS_LOOP_225_1_VITIS_LOOP_227_2_VITIS_LOOP_229_3'): Unable to schedule 'load' operation ('param_buf_1_load_1', ./resnet_batchnorm.cpp:225->./resnet_layer0.cpp:104) on array 'param_buf_1' due to limited memory ports (II = 1). Please consider using a memory core with more ports or partitioning the array 'param_buf_1'.
+Resolution: For help on HLS 200-885 see www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=200-885.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 2, Depth = 19, loop 'VITIS_LOOP_225_1_VITIS_LOOP_227_2_VITIS_LOOP_229_3'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.38 seconds. CPU system time: 0 seconds. Elapsed time: 0.42 seconds; current allocated memory: 1.650 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.29 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.32 seconds; current allocated memory: 1.650 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'resnet_layer0_Pipeline_VITIS_LOOP_107_13_VITIS_LOOP_109_14_VITIS_LOOP_111_15' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln113_1) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln113) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_107_13_VITIS_LOOP_109_14_VITIS_LOOP_111_15'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 5, loop 'VITIS_LOOP_107_13_VITIS_LOOP_109_14_VITIS_LOOP_111_15'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.29 seconds. CPU system time: 0 seconds. Elapsed time: 0.33 seconds; current allocated memory: 1.651 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.11 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 1.651 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'resnet_layer0_Pipeline_VITIS_LOOP_138_18_VITIS_LOOP_140_19_VITIS_LOOP_142_20' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=add_ln150_3) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln150_1) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_138_18_VITIS_LOOP_140_19_VITIS_LOOP_142_20'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 6, loop 'VITIS_LOOP_138_18_VITIS_LOOP_140_19_VITIS_LOOP_142_20'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.34 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.38 seconds; current allocated memory: 1.652 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.12 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.15 seconds; current allocated memory: 1.652 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'resnet_layer0_Pipeline_VITIS_LOOP_167_24_VITIS_LOOP_169_25' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=add_ln171) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_167_24_VITIS_LOOP_169_25'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 7, loop 'VITIS_LOOP_167_24_VITIS_LOOP_169_25'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.2 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.24 seconds; current allocated memory: 1.652 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.13 seconds. CPU system time: 0 seconds. Elapsed time: 0.15 seconds; current allocated memory: 1.652 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'resnet_layer0_Pipeline_VITIS_LOOP_185_26_VITIS_LOOP_187_27_VITIS_LOOP_189_28' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln191_1) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln191) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_185_26_VITIS_LOOP_187_27_VITIS_LOOP_189_28'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 5, loop 'VITIS_LOOP_185_26_VITIS_LOOP_187_27_VITIS_LOOP_189_28'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.26 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.29 seconds; current allocated memory: 1.653 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.11 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.15 seconds; current allocated memory: 1.653 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'resnet_layer0_Pipeline_VITIS_LOOP_198_29_VITIS_LOOP_200_30_VITIS_LOOP_202_31' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln204) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_198_29_VITIS_LOOP_200_30_VITIS_LOOP_202_31'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 6, loop 'VITIS_LOOP_198_29_VITIS_LOOP_200_30_VITIS_LOOP_202_31'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.38 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.43 seconds; current allocated memory: 1.656 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.16 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.2 seconds; current allocated memory: 1.656 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'resnet_layer0' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln179) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1.08 seconds. CPU system time: 0 seconds. Elapsed time: 1.14 seconds; current allocated memory: 1.658 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.51 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.57 seconds; current allocated memory: 1.658 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'resnet_top_0' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln52) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_46_1_VITIS_LOOP_48_2_VITIS_LOOP_50_3'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 4, loop 'VITIS_LOOP_46_1_VITIS_LOOP_48_2_VITIS_LOOP_50_3'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.62 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.72 seconds; current allocated memory: 1.663 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.23 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.3 seconds; current allocated memory: 1.664 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'resnet_layer0_Pipeline_VITIS_LOOP_29_1_VITIS_LOOP_31_2_VITIS_LOOP_33_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'resnet_layer0_Pipeline_VITIS_LOOP_29_1_VITIS_LOOP_31_2_VITIS_LOOP_33_3' pipeline 'VITIS_LOOP_29_1_VITIS_LOOP_31_2_VITIS_LOOP_33_3' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_2ns_10ns_10ns_12_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mux_3_2_32_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'resnet_layer0_Pipeline_VITIS_LOOP_29_1_VITIS_LOOP_31_2_VITIS_LOOP_33_3'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.27 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.34 seconds; current allocated memory: 1.665 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'resnet_layer0_Pipeline_VITIS_LOOP_57_6_VITIS_LOOP_59_7_VITIS_LOOP_61_8' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'resnet_layer0_Pipeline_VITIS_LOOP_57_6_VITIS_LOOP_59_7_VITIS_LOOP_61_8' pipeline 'VITIS_LOOP_57_6_VITIS_LOOP_59_7_VITIS_LOOP_61_8' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'ama_addmuladd_8ns_6ns_6ns_6ns_14_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_2ns_10ns_11s_13_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_2ns_7ns_8_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'resnet_layer0_Pipeline_VITIS_LOOP_57_6_VITIS_LOOP_59_7_VITIS_LOOP_61_8'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.22 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.29 seconds; current allocated memory: 1.668 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'resnet_layer0_Pipeline_VITIS_LOOP_86_10_VITIS_LOOP_88_11_VITIS_LOOP_90_12' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'resnet_layer0_Pipeline_VITIS_LOOP_86_10_VITIS_LOOP_88_11_VITIS_LOOP_90_12' pipeline 'VITIS_LOOP_86_10_VITIS_LOOP_88_11_VITIS_LOOP_90_12' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mux_64_6_32_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'resnet_layer0_Pipeline_VITIS_LOOP_86_10_VITIS_LOOP_88_11_VITIS_LOOP_90_12'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.29 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.35 seconds; current allocated memory: 1.670 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'resnet_layer0_Pipeline_VITIS_LOOP_263_3_VITIS_LOOP_266_4_VITIS_LOOP_268_5' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'resnet_layer0_Pipeline_VITIS_LOOP_263_3_VITIS_LOOP_266_4_VITIS_LOOP_268_5' pipeline 'VITIS_LOOP_263_3_VITIS_LOOP_266_4_VITIS_LOOP_268_5' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'ama_addmuladd_8ns_18ns_6ns_18ns_18_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'faddfsub_32ns_32ns_32_4_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_3_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_2ns_7ns_8_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'resnet_layer0_Pipeline_VITIS_LOOP_263_3_VITIS_LOOP_266_4_VITIS_LOOP_268_5'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.27 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.35 seconds; current allocated memory: 1.675 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'resnet_layer0_Pipeline_VITIS_LOOP_146_1_VITIS_LOOP_148_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'resnet_layer0_Pipeline_VITIS_LOOP_146_1_VITIS_LOOP_148_2' pipeline 'VITIS_LOOP_146_1_VITIS_LOOP_148_2' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mux_3_2_32_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'resnet_layer0_Pipeline_VITIS_LOOP_146_1_VITIS_LOOP_148_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.23 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.28 seconds; current allocated memory: 1.677 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'resnet_layer0_Pipeline_VITIS_LOOP_225_1_VITIS_LOOP_227_2_VITIS_LOOP_229_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [HLS 200-2049] Adding the rewind optimization to the pipelined process 'VITIS_LOOP_225_1_VITIS_LOOP_227_2_VITIS_LOOP_229_3' with inout ports inside a dataflow region can result in the creation of loop-carried dependencies and errors. Use caution when adding the rewind optimization to such loops.
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'resnet_layer0_Pipeline_VITIS_LOOP_225_1_VITIS_LOOP_227_2_VITIS_LOOP_229_3' pipeline 'VITIS_LOOP_225_1_VITIS_LOOP_227_2_VITIS_LOOP_229_3' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'faddfsub_32ns_32ns_32_4_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fcmp_32ns_32ns_1_2_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_3_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_7ns_6ns_6ns_13_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'resnet_layer0_Pipeline_VITIS_LOOP_225_1_VITIS_LOOP_227_2_VITIS_LOOP_229_3'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.16 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.23 seconds; current allocated memory: 1.679 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'resnet_layer0_Pipeline_VITIS_LOOP_107_13_VITIS_LOOP_109_14_VITIS_LOOP_111_15' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'resnet_layer0_Pipeline_VITIS_LOOP_107_13_VITIS_LOOP_109_14_VITIS_LOOP_111_15' pipeline 'VITIS_LOOP_107_13_VITIS_LOOP_109_14_VITIS_LOOP_111_15' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_7ns_6ns_5ns_13_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_7ns_9ns_9ns_16_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'resnet_layer0_Pipeline_VITIS_LOOP_107_13_VITIS_LOOP_109_14_VITIS_LOOP_111_15'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.28 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.37 seconds; current allocated memory: 1.681 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'resnet_layer0_Pipeline_VITIS_LOOP_138_18_VITIS_LOOP_140_19_VITIS_LOOP_142_20' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'resnet_layer0_Pipeline_VITIS_LOOP_138_18_VITIS_LOOP_140_19_VITIS_LOOP_142_20' pipeline 'VITIS_LOOP_138_18_VITIS_LOOP_140_19_VITIS_LOOP_142_20' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'ama_addmuladd_13ns_6ns_6ns_6ns_18_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_7ns_9ns_10s_17_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_7ns_7ns_13_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'resnet_layer0_Pipeline_VITIS_LOOP_138_18_VITIS_LOOP_140_19_VITIS_LOOP_142_20'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.25 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.33 seconds; current allocated memory: 1.685 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'resnet_layer0_Pipeline_VITIS_LOOP_167_24_VITIS_LOOP_169_25' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'resnet_layer0_Pipeline_VITIS_LOOP_167_24_VITIS_LOOP_169_25' pipeline 'VITIS_LOOP_167_24_VITIS_LOOP_169_25' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'ama_addmuladd_13ns_18ns_6ns_18ns_18_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fcmp_32ns_32ns_1_2_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'resnet_layer0_Pipeline_VITIS_LOOP_167_24_VITIS_LOOP_169_25'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.28 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.35 seconds; current allocated memory: 1.686 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'resnet_layer0_Pipeline_VITIS_LOOP_185_26_VITIS_LOOP_187_27_VITIS_LOOP_189_28' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'resnet_layer0_Pipeline_VITIS_LOOP_185_26_VITIS_LOOP_187_27_VITIS_LOOP_189_28' pipeline 'VITIS_LOOP_185_26_VITIS_LOOP_187_27_VITIS_LOOP_189_28' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_7ns_6ns_5ns_13_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_7ns_8ns_8ns_15_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'resnet_layer0_Pipeline_VITIS_LOOP_185_26_VITIS_LOOP_187_27_VITIS_LOOP_189_28'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.18 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.25 seconds; current allocated memory: 1.688 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'resnet_layer0_Pipeline_VITIS_LOOP_198_29_VITIS_LOOP_200_30_VITIS_LOOP_202_31' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'resnet_layer0_Pipeline_VITIS_LOOP_198_29_VITIS_LOOP_200_30_VITIS_LOOP_202_31' pipeline 'VITIS_LOOP_198_29_VITIS_LOOP_200_30_VITIS_LOOP_202_31' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_7ns_8ns_8ns_15_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'resnet_layer0_Pipeline_VITIS_LOOP_198_29_VITIS_LOOP_200_30_VITIS_LOOP_202_31'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.27 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.34 seconds; current allocated memory: 1.691 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'resnet_layer0' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'faddfsub_32ns_32ns_32_4_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fcmp_32ns_32ns_1_2_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_3_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_7ns_6ns_5ns_13_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_128ns_3ns_130_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_4ns_6ns_8_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_4ns_7ns_10_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_5ns_6ns_9_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_5ns_7ns_11_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_64ns_64ns_128_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_7ns_7ns_13_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'resnet_layer0'.
+INFO: [RTMG 210-278] Implementing memory 'resnet_top_0_resnet_layer0_resnet_layer0_in_fm_1_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'resnet_top_0_resnet_layer0_param_buf_1_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'resnet_top_0_resnet_layer0_out_fm_buf_1_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'resnet_top_0_resnet_layer0_resnet_layer0_mx_fm_1_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'resnet_top_0_resnet_layer0_weight_buf_7x7_1_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'resnet_top_0_resnet_layer0_in_fm_buf_1_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'resnet_top_0_resnet_layer0_resnet_layer0_out_fm_1_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.51 seconds. CPU system time: 0.13 seconds. Elapsed time: 1.98 seconds; current allocated memory: 1.717 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'resnet_top_0' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_input_fm_0' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_input_fm_1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_input_fm_2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_0' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_3' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_4' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_5' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_6' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_7' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_8' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_9' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_10' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_11' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_12' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_13' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_14' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_15' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_16' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_17' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_18' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_19' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_20' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_21' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_22' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_23' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_24' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_25' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_26' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_27' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_28' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_29' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_30' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_31' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_32' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_33' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_34' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_35' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_36' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_37' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_38' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_39' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_40' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_41' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_42' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_43' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_44' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_45' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_46' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_47' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_48' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_49' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_50' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_51' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_52' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_53' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_54' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_55' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_56' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_57' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_58' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_59' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_60' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_61' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_62' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_conv1_weights_63' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_bn1_params_0' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_bn1_params_1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_bn1_params_2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_0' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_3' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_4' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_5' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_6' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_7' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_8' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_9' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_10' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_11' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_12' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_13' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_14' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_15' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_16' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_17' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_18' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_19' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_20' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_21' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_22' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_23' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_24' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_25' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_26' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_27' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_28' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_29' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_30' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_31' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_32' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_33' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_34' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_35' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_36' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_37' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_38' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_39' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_40' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_41' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_42' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_43' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_44' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_45' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_46' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_47' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_48' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_49' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_50' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_51' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_52' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_53' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_54' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_55' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_56' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_57' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_58' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_59' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_60' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_61' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_62' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer0_output_fm_63' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'resnet_top_0/resnet_layer1_input_fm' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'resnet_top_0' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_7ns_8ns_8ns_15_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mux_64_6_32_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'resnet_top_0'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.71 seconds. CPU system time: 0.12 seconds. Elapsed time: 2.65 seconds; current allocated memory: 1.717 GB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 2.47 seconds. CPU system time: 0.35 seconds. Elapsed time: 3.84 seconds; current allocated memory: 1.720 GB.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 11.77 seconds. CPU system time: 0.1 seconds. Elapsed time: 12.03 seconds; current allocated memory: 1.745 GB.
+INFO: [VHDL 208-304] Generating VHDL RTL for resnet_top_0.
+INFO: [VLOG 209-307] Generating Verilog RTL for resnet_top_0.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 142.53 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 56.89 seconds. CPU system time: 7.67 seconds. Elapsed time: 72.95 seconds; current allocated memory: 268.391 MB.
+INFO: [HLS 200-112] Total CPU user time: 62.38 seconds. Total CPU system time: 9.54 seconds. Total elapsed time: 81.91 seconds; peak allocated memory: 1.745 GB.
+INFO: [Common 17-206] Exiting vitis_hls at Wed Nov 15 12:51:28 2023...

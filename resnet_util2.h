@@ -1,5 +1,5 @@
 #include "hls_stream.h"
-#include "qdtrack_resnet2.h"
+#include "qdtrack_resnet2_0.h"
 
 #pragma once 
 
