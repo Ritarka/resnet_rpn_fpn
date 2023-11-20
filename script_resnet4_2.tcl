@@ -2,21 +2,22 @@
 open_project -reset proj
 
 # Define the top modules
-set_top resnet_top_4
+set_top resnet_top_4_2
 add_files ./resnet_batchnorm.cpp
 add_files ./resnet_conv_1x1.cpp
 add_files ./resnet_conv_3x3.cpp
 add_files ./resnet_conv_7x7.cpp
-add_files ./resnet_top4.cpp
+add_files ./resnet_top4_2.cpp
 
 
 # add_files -tb ./bin
-add_files -tb ./tb_test_top_resnet4.cpp
-add_files -tb ./test_top_resnet4.cpp
+add_files -tb ./tb_test_top_resnet4_2.cpp
+add_files -tb ./test_top_resnet4_2.cpp
 
 
 open_solution "solution1" -flow_target vivado
-set_part {xc7z020clg400-1}
+# set_part {xc7z020clg400-1}
+set_part {xczu9eg-ffvb1156-2-e}
 create_clock -period 10 -name default
 
 ## C simulation
